@@ -1,25 +1,49 @@
-import logo from './logo.svg';
+import React from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CssBaseline from "@mui/material/CssBaseline";
+
+
+
 import './App.css';
 
+import Layout from "./Layout";
+import SecondLayout from "./SecondLayout";
+import HomePage from "./app/home/HomePage";
+import CategoriesPage from "./app/categories/CategoriesPage";
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  //Using system preferences to set theme mode.
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? "dark" : "light",
+        },
+      }),
+    [prefersDarkMode]
   );
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
+          </Route>
+
+          {/* <Route path="/" element={<SecondLayout />}> */}
+            {/* <Route path="/categories" element={<CategoriesPage />} />
+          </Route> */}
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+
 }
 
 export default App;
