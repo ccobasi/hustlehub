@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
+import Button from '@mui/material/Button';
 
 const Navbar = () => {
   return (
     <>
       <header>
+        <NavLink to="/">
+          <img src="#" alt="Logo" />
+        </NavLink>
         <nav>
           <ul>
             <li>
@@ -19,8 +23,8 @@ const Navbar = () => {
               <NavLink to="/contact">Contact</NavLink>
             </li>
           </ul>
+          <Button variant="contained"><NavLink to='/signup'>SignUp</NavLink></Button>
         </nav>
-        <NavLink to='/signup'>Signup</NavLink>
       </header>
     </>
   );

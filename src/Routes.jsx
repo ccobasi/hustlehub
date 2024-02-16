@@ -12,8 +12,8 @@ import Contact from "./pages/Contact";
 import Programes from "./pages/Progames";
 import NotFound from "./pages/NotFound";
 
-import { RootLayout } from "./Layouts/RootLayout";
-import { OtherPages } from "./Layouts/OtherPages";
+import { RootLayout } from "./layouts/RootLayout";
+import { OtherPages } from "./layouts/OtherPages";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
