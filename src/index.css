@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.MuiButton-contained{
+  text-transform: capitalize !important;
+
+}
+
+.headerSignUpButton{
+  position: relative;
+  left: 27%;
+  top: 8px;
+}
+
+.headerSearch{
+  position: relative;
+  left: 26%;
+  top: 8px;
+  padding: 2px;
+  
+}
+.mobileSignUpButton{
+  position: relative;
+  left: 2%;
+ 
+}
+.mobileNavSearch{
+  position: relative;
+  left: -2%;
+}
+
+.footerLink{
+  position: relative;
+  right: -230%;
+}
+
+.footerCopyright{
+  position: relative;
+  right: -148%;
+}
+
+.firstFeature{
+  position: relative;
+margin-top: 20px;
+}
