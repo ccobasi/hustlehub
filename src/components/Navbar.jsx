@@ -1,31 +1,46 @@
-import { NavLink } from "react-router-dom";
-import Button from '@mui/material/Button';
+import { Stack, Typography } from "@mui/material";
+import { Button } from "@mui/material/";
+import Link from "@mui/material/Link";
 
 const Navbar = () => {
   return (
     <>
       <header>
-        <NavLink to="/">
-          <img src="#" alt="Logo" />
-        </NavLink>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">About</NavLink>
-            </li>
-            <li>
-              <NavLink to="/programs">Programes</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact">Contact</NavLink>
-            </li>
-          </ul>
-          <Button variant="contained"><NavLink to='/signup'>SignUp</NavLink></Button>
-        </nav>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          spacing={1.5}
+        >
+          <Link to="/">
+            <img src="#" alt="Logo" />
+          </Link>
+          <nav>
+            <Stack direction="row" alignItems="center" spacing={5.5}>
+              <ul>
+                <Stack direction="row" alignItems="center" spacing={1.5}>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">About</Link>
+                  </li>
+                  <li>
+                    <Link to="/programs">Programes</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact">Contact</Link>
+                  </li>
+                </Stack>
+              </ul>
+              <Button variant="contained" to="/signup">
+                SignUp
+              </Button>
+            </Stack>
+          </nav>
+        </Stack>
       </header>
+      <Typography variant="body1">Some text</Typography>
     </>
   );
 };
