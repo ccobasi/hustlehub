@@ -55,3 +55,9 @@ code {
   position: relative;
 margin-top: 20px;
 }
+
+.imgAvatars{
+  position: relative;
+  left: 18%;
+
+}

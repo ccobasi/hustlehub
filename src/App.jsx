@@ -2,11 +2,14 @@ import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignUp from "./app/components/SignUp";
+import SignIn from "./app/components/SignIn";
+import ForgetPassword from "./app/components/ForgetPassword";
+import SecondLayout from "./SecondLayout";
 import CssBaseline from "@mui/material/CssBaseline";
 
 
-
-import './App.css';
+import "./App.css";
 
 import Layout from "./Layout";
 import HomePage from "./app/home/HomePage";
@@ -34,15 +37,19 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
           </Route>
+          <Route path="/" element={<SecondLayout />}>
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
+          </Route>
 
           {/* <Route path="/" element={<SecondLayout />}> */}
-            {/* <Route path="/categories" element={<CategoriesPage />} />
+          {/* <Route path="/categories" element={<CategoriesPage />} />
           </Route> */}
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
   );
-
 }
 
 export default App;
