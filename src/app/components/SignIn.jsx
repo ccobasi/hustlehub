@@ -17,16 +17,16 @@ import FormControl from "@mui/material/FormControl";
 import { useState } from "react";
 import Divider from "@mui/material/Divider";
 import ImageAvatars from "./ImageAvatars";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
+import Stack from "@mui/material/Stack";
+
+
 
 import {
    
   EmailOutlined,
-  AccountCircleOutlined,
-  ManageAccountsOutlined,
+ 
   VpnKey,
-  PhoneAndroidOutlined,
+  
   VisibilityOffOutlined,
   VisibilityOutlined,
 } from "@mui/icons-material";
@@ -62,9 +62,13 @@ export default function SignIn() {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5" sx={{ mt: "5%" }}>
-          <b>Welcome Back</b>
+        <Stack direction="row">
+        <Typography component="h1" variant="h5" sx={{ mt: "10%" }}>
+          <b>Welcome Back</b> 
         </Typography>
+        <img alt="Waving Hand Emogi" src="/assets/waving-hand-emoji.png" style={{height:"60px", width:"60px", }}/>
+        </Stack>
+        
         <Typography component="h1" variant="body2" sx={{ mt: "3%" }}>
           Let's log in.Apply to jobs!
         </Typography>
