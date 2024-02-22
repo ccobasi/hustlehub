@@ -14,6 +14,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+
+
  const ResponsiveNavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const callFromNavbar = (value) => {
@@ -117,7 +119,7 @@ const MobileMenuSection = () => {
           }}
         >
           <MenuItem>
-            <a href="" style={{ textDecoration: "none", color: "#87CEEB" }}>
+            <a href="/project-update" style={{ textDecoration: "none", color: "#87CEEB" }}>
               Profile
             </a>
           </MenuItem>
@@ -229,6 +231,7 @@ const Search = ({ queryData, searchBox }) => {
         className="headerSearch"
         sx={{ display: { md: "flex", xs: "none" } }}
       >
+      
         <input
           type="text"
           placeholder="Search"
@@ -236,12 +239,13 @@ const Search = ({ queryData, searchBox }) => {
           onChange={onChangeFunction}
           onClick={searchBox}
         ></input>
+        
       </Box>
     </>
   );
 };
 
-const MobileNavSearch = ({ queryData, searchBox }) => {
+export const MobileNavSearch = ({ queryData, searchBox }) => {
   const [query, setQuery] = useState("");
 
   const onChangeFunction = (e) => setQuery(e.target.value);
@@ -256,13 +260,22 @@ const MobileNavSearch = ({ queryData, searchBox }) => {
         className="mobileNavSearch"
         sx={{ display: { xs: "flex", md: "none" } }}
       >
-        <input
+          
+          <input
           type="text"
           placeholder="Search"
           value={query}
           onChange={onChangeFunction}
           onClick={searchBox}
-        ></input>
+          style={{borderRadius:"8px" , paddingLeft:"10px", paddingTop:"3px",paddingBottom:"3px"}}
+        >
+        </input>
+        
+        
+        
+        
+        
+         
       </Box>
     </>
   );

@@ -7,13 +7,15 @@ import SignIn from "./app/components/SignIn";
 import ForgetPassword from "./app/components/ForgetPassword";
 import SecondLayout from "./SecondLayout";
 import CssBaseline from "@mui/material/CssBaseline";
-
-
+import MessagePage from "./app/message/MessagePage";
+import NotificationPage from "./app/notification/NotificationPage";
+import CategoriesPage from "./app/project/CategoriesPage";
+import ProjectsUpdatePage from "./app/project/ProjectsUpdatePage";
 import "./App.css";
 
 import Layout from "./Layout";
 import HomePage from "./app/home/HomePage";
-import CategoriesPage from "./app/categories/CategoriesPage";
+
 
 function App() {
   //Using system preferences to set theme mode.
@@ -41,6 +43,10 @@ function App() {
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/categories" element={<CategoriesPage/>}/> 
+            <Route path="/notification" element={<NotificationPage/>}/>
+            <Route path="/message" element={<MessagePage/>}/>
+            <Route path="/project-update" element={<ProjectsUpdatePage/>}/>
           </Route>
 
           {/* <Route path="/" element={<SecondLayout />}> */}
