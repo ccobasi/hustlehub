@@ -13,7 +13,12 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-
+import Backdrop from '@mui/material/Backdrop';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import { Stack } from '@mui/material';
+import Divider from '@mui/material/Divider';
+import { ArrowForwardIos } from '@mui/icons-material';
 
 
  const ResponsiveNavBar = () => {
@@ -33,7 +38,7 @@ import MenuItem from "@mui/material/MenuItem";
         <Toolbar disableGutters>
           <MobileUserAccountCircle />
 
-          <MobileMenuSection />
+          <MobileTransitionsModal />
           <MobileUserAppTitle />
 
           <UserAppTitle />
@@ -75,75 +80,84 @@ const MenuSection = () => {
   );
 };
 
-const MobileMenuSection = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+
+
+
+const MobileTransitionsModal=()=> {
+
+  const style = {
+    position: 'absolute',
+    top: '17%',
+    left: '80%',
+    transform: 'translate(-50%, -50%)',
+    width: 240,
+    bgcolor: 'background.paper',
+    border: '0px solid #000',
+    boxShadow: 24,
+    p: 4,
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
-      <Box sx={{ display: { xs: "flex", md: "none" } }}>
-        <Tooltip title="Open Menu">
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="#87CEEB"
-          >
-            <MenuIcon />
-          </IconButton>
-        </Tooltip>
+<Box sx={{ display: { xs: "flex", md: "none" } }}>
+      <IconButton onClick={handleOpen}><MenuIcon/></IconButton>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+        
+      >
+        
+        <Fade in={open}>
+          <Box sx={style}  className="transitionalModalBox">
 
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorElNav}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          open={Boolean(anchorElNav)}
-          onClose={handleCloseNavMenu}
-          sx={{
-            display: { xs: "block", md: "none" },
-          }}
-        >
-          <MenuItem>
-            <a href="/project-update" style={{ textDecoration: "none", color: "#87CEEB" }}>
+           <Stack direction="column">
+           <Stack direction="row">
+           <a href="/project-update" style={{ textDecoration: "none", color: "#87CEEB" }}>
               Profile
-            </a>
-          </MenuItem>
-
-          <MenuItem>
-            <a href="" style={{ textDecoration: "none", color: "#87CEEB" }}>
+            </a>  <ArrowForwardIos sx={{ml:"56%"}}/>
+           </Stack>
+           <Divider/>
+          
+           <Stack direction="row">
+           <a href="" style={{ textDecoration: "none", color: "#87CEEB" }}>
               Messages
-            </a>
-          </MenuItem>
-          <MenuItem>
+            </a>  <ArrowForwardIos sx={{ml:"41%"}}/>
+           </Stack>
+            <Divider/>
+            <Stack direction="row">
             <a href="" style={{ textDecoration: "none", color: "#87CEEB" }}>
               Settings
-            </a>
-          </MenuItem>
-          <MenuItem>
+            </a>   <ArrowForwardIos sx={{ml:"48%"}}/>
+           </Stack>
+            <Divider/>
+            <Stack direction="row">
             <a href="" style={{ textDecoration: "none", color: "#87CEEB" }}>
               How It Works
-            </a>
-          </MenuItem>
-        </Menu>
-      </Box>
+            </a>  <ArrowForwardIos sx={{ml:"27%"}}/>
+           </Stack>
+            <Divider/>
+           </Stack>
+          </Box>
+        </Fade>
+      </Modal>
+    </Box>
     </>
   );
-};
+}
+
 
 const MobileUserAccountCircle = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);

@@ -11,6 +11,9 @@ import MessagePage from "./app/message/MessagePage";
 import NotificationPage from "./app/notification/NotificationPage";
 import CategoriesPage from "./app/project/CategoriesPage";
 import ProjectsUpdatePage from "./app/project/ProjectsUpdatePage";
+import BrowseProjectPage from "./app/project/BrowseProjectsPage";
+import { AboutPage } from "./app/about/AboutPage";
+
 import "./App.css";
 
 import Layout from "./Layout";
@@ -38,6 +41,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
+            <Route path="/about/question/21334565" element={<AboutPage/>}/>
+            
           </Route>
           <Route path="/" element={<SecondLayout />}>
             <Route path="/sign-up" element={<SignUp />} />
@@ -47,6 +52,7 @@ function App() {
             <Route path="/notification" element={<NotificationPage/>}/>
             <Route path="/message" element={<MessagePage/>}/>
             <Route path="/project-update" element={<ProjectsUpdatePage/>}/>
+            <Route path="/browse-project" element={<BrowseProjectPage/>}/>
           </Route>
 
           {/* <Route path="/" element={<SecondLayout />}> */}

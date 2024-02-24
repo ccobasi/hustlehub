@@ -62,3 +62,7 @@ margin-top: 20px;
 
 }
 
+/* Select Component customization*/
+.MuiBox-root fieldset{
+  border-color: #87CEEB !important;
+}

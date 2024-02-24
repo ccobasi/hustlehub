@@ -110,7 +110,7 @@ const HomePage = () => {
         </Typography>
 
         <Link
-          href="/testimonials"
+          href="/about/question/21334565"
           sx={{
             textDecoration: "none",
             ml: "39%",
@@ -188,7 +188,7 @@ const HomePage = () => {
       
     
       <Button
-        onClick={() => navigate("/opportunities")}
+        onClick={() => navigate("/browse-project")}
         variant="contained"
         sx={{
           backgroundColor: "#87CEEB",
