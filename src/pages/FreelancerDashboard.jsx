@@ -1,20 +1,139 @@
-import React from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from 'react';
 import './styles/freelancer-dashboard.css'; 
+import './styles/profile-drop.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Img from '../assets/mask-group-kU6.png'
 import Left from '../assets/akar-icons-chevron-left-ZQr.png'
+import Verify from '../assets/ic-round-verified.png';
+import Icon from '../assets/image-4-rWA.png'
+import One from '../assets/star-1-oie.png'
+import Two from '../assets/star-2-zvS.png'
+import Three from '../assets/star-3-hCa.png'
+import Four from '../assets/star-4-XLi.png'
+import Five from '../assets/star-5-TEN.png'
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Close from '../assets/akar-icons-cross.png'
+import Personal from '../assets/group-187.png'
+import Vector from '../assets/vector-dav.png'
+import Proposal from '../assets/group.png'
+import Resume from '../assets/group-186.png'
+import Portfolio from '../assets/group-188.png'
+import Support from '../assets/vector-FNE.png'
+import Settings from '../assets/vector-KMx.png'
+import Logout from '../assets/group-191.png'
+// import Premium from '../assets/group-181.png'
 
 const theme = createTheme();
 
+const style = {
+  position: 'absolute',
+  top: '40%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  height: 800,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  pt: 2,
+  px: 4,
+  pb: 3,
+};
+
 
 const FreelancerDashboard = () => {
+  
+const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+
+
   return (
     <ThemeProvider theme={theme}>
     <div className="freelancer-dashboard-vUN">
       <div className="auto-group-cypa-JvA">
     <div className="auto-group-6cte-EJ2">
-      <img className="akar-icons-chevron-left-ABg" src={Left}/>
-      <p className="edit-tdU">Edit</p>
+      <img className="akar-icons-chevron-left-ABg" onClick={handleOpen} src={Left}/>
+      <p className="edit-tdU" >Edit</p>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...style, width: 200}}>
+          <div className="profile-drop-toQ">
+  <div className="group-185-dkz">
+    
+    <div className="group-215-4za">
+      <div className="group-214-R4S">
+        <div className="auto-group-822a-7CA">
+          <div className="group-180-psG">
+            <div className="group-90-xyU">
+              <img className="mask-group-hAN" src={Img}/>
+            </div>
+            <p className="haley-jessica-pEz">Haley Jessica</p>
+            <div className="group-101-LUE">
+              <p className="ux-designer-Gsg">UX Designer</p>
+              <img className="ic-round-verified-Ay4" src={Verify}/>
+            </div>
+          </div>
+          <img className="akar-icons-cross-6ri" src={Close} onClick={handleClose}/>
+        </div>
+        <p className="view-profile-dLr">View Profile</p>
+        <div className="auto-group-h2az-YTp">
+          <img className="group-187-skz" src={Personal}/>
+          <p className="type8-D4A">Personal Info</p>
+        </div>
+        <div className="auto-group-qiji-XqY">
+          <img className="vector-4qU" src={Vector}/>
+          <p className="type8-oo4">Applications</p>
+        </div>
+        <div className="auto-group-g2kq-YVk">
+          <img className="group-4yt" src={Proposal}/>
+          <p className="type8-QH4">Proposals</p>
+        </div>
+        <div className="auto-group-sjjc-LwQ">
+          <img className="group-186-HLr" src={Resume}/>
+          <p className="type8-opz">Resumes</p>
+        </div>
+        <div className="auto-group-os58-kES">
+          <img className="group-188-5Xc" src={Portfolio}/>
+          <p className="type8-oCi">Portfolio</p>
+        </div>
+        <div className="auto-group-pbwv-js4">
+          <img className="vector-H7t" src={Support}/>
+          <p className="type8-DnE">Support</p>
+        </div>
+        <div className="group-193-xzi">
+          <img className="vector-u9G" src={Settings}/>
+          <p className="type8-ESS">Settings</p>
+        </div>
+        <div className="group-192-y98">
+          <img className="group-191-WPx" src={Logout}/>
+          <p className="type8-SHc">Logout</p>
+        </div>
+        {/* <div className="button-man">
+          <div className="group-182-VWn">
+            <img className="group-181-TCi" src={Premium}/>
+            <p className="next-CAJ">Go Premium</p>
+          </div>
+        </div> */}
+      </div>
+    </div>
+  </div>
+          </div>
+          
+        </Box>
+      </Modal>
     </div>
     <div className="auto-group-qktu-NYe">
       <div className="group-102-HvW">
@@ -25,7 +144,7 @@ const FreelancerDashboard = () => {
           <p className="haley-jessica-oGa">Haley Jessica</p>
           <div className="group-101-7YA">
             <p className="ux-designer-Esg">UX Designer</p>
-            <img className="ic-round-verified-Lvi" src="../assets/ic-round-verified.png"/>
+            <img className="ic-round-verified-Lvi" src={Verify}/>
           </div>
         </div>
         <div className="group-94-sQr">
@@ -53,7 +172,7 @@ const FreelancerDashboard = () => {
         </div>
         <div className="component-2-Npn">
           <div className="auto-group-z4lw-Wg6">
-            <img className="image-4-sWe" src="./assets/image-4-rWA.png"/>
+            <img className="image-4-sWe" src={Icon}/>
           </div>
           <div className="auto-group-51fk-QmU">
             <p className="product-manager-Ycn">UX Intern</p>
@@ -97,11 +216,11 @@ const FreelancerDashboard = () => {
               has a good eye for design.
               </p>
               <div className="rating-d3C">
-                <img className="star-1-xrA" src="./assets/star-1-oie.png"/>
-                <img className="star-2-W6z" src="./assets/star-2-zvS.png"/>
-                <img className="star-3-36v" src="./assets/star-3-hCa.png"/>
-                <img className="star-4-yWN" src="./assets/star-4-XLi.png"/>
-                <img className="star-5-K4S" src="./assets/star-5-TEN.png"/>
+                <img className="star-1-xrA" src={One}/>
+                <img className="star-2-W6z" src={Two}/>
+                <img className="star-3-36v" src={Three}/>
+                <img className="star-4-yWN" src={Four}/>
+                <img className="star-5-K4S" src={Five}/>
               </div>
             </div>
             <div className="line-184-raA">
