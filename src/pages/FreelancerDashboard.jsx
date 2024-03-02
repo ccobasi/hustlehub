@@ -23,6 +23,7 @@ import Portfolio from '../assets/group-188.png'
 import Support from '../assets/vector-FNE.png'
 import Settings from '../assets/vector-KMx.png'
 import Logout from '../assets/group-191.png'
+import { Link } from 'react-router-dom';
 // import Premium from '../assets/group-181.png'
 
 const theme = createTheme();
@@ -62,7 +63,7 @@ const [open, setOpen] = React.useState(false);
       <div className="auto-group-cypa-JvA">
     <div className="auto-group-6cte-EJ2">
       <img className="akar-icons-chevron-left-ABg" onClick={handleOpen} src={Left}/>
-      <p className="edit-tdU" >Edit</p>
+      <Link to="/edit"><p className="edit-tdU" >Edit</p></Link>
       <Modal
         open={open}
         onClose={handleClose}
