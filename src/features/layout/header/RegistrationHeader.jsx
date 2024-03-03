@@ -7,11 +7,14 @@ import { ArrowBackIos, ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
-const SecondHeader = () => {
+
+const RegistrationHeader = () => {
   //Use system preference to set theme mode
   const theme = useTheme();
   //instantiate useNavigate object
   let navigate = useNavigate();
+
+  let isCleint = true;
 
   return (
     <React.Fragment>
@@ -58,7 +61,7 @@ const SecondHeader = () => {
                       : theme.palette.grey[300],
                 },
               }}
-              href="/services"
+              href={isCleint ? "/" : "/services"}
             >
               HustleHub
             </Link>
@@ -87,4 +90,4 @@ const SecondHeader = () => {
   );
 };
 
-export default SecondHeader;
+export default RegistrationHeader;

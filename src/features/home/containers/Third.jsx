@@ -41,8 +41,9 @@ export default function Third({sourceSet,image, imageLabel, name, jobTitle, rati
                   pb: "20px",
                   pt: "20px",
                 }}
+             
               >
-                {name}
+                {name} 
               </Typography>
               <Typography sx={{textAlign:"center"}} component="legend">{jobTitle}
               <Rating name="job-rating" value={rating}/>

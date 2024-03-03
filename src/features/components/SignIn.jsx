@@ -18,6 +18,7 @@ import { useState } from "react";
 import Divider from "@mui/material/Divider";
 import ImageAvatars from "./ImageAvatars";
 import Stack from "@mui/material/Stack";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -32,6 +33,9 @@ import {
 } from "@mui/icons-material";
 
 export default function SignIn() {
+
+ 
+  let navigate = useNavigate();
     //When the user enters the password into the input field and 
     //wants to see the password, the visibility icon in the button allows them to see the password, as it hides or unhides the text from the text field input.
     const [psw, setPsw] = useState(false);
@@ -50,6 +54,7 @@ export default function SignIn() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    navigate('/client');
   };
 
   return (

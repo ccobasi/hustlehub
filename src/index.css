@@ -53,7 +53,7 @@ code {
 
 .firstFeature{
   position: relative;
-margin-top: 20px;
+margin-top: 30%;
 }
 
 .imgAvatars{
@@ -65,4 +65,25 @@ margin-top: 20px;
 /* Select Component customization*/
 .MuiBox-root fieldset{
   border-color: #87CEEB !important;
+}
+
+.clientVerifiedIcon{
+  position: relative;
+  left: 3%;
+  
+}
+
+.clientDrawerLink{
+  position: absolute;
+  top: 36%;
+  left: 40%;
+
+}
+.clientShareOutlinedIcon{
+  position: relative;
+  left: 90%;
+}
+
+.clientSkillsButton{
+  border-radius: 2px;
 }

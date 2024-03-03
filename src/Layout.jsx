@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
-import ResponsiveNavBar from "./app/layout/header/ResponsiveNavBar";
-import FixedBottomNavigation from "./app/layout/footer/FixedBottomNavigation";
+import ResponsiveNavBar from "./features/layout/header/ResponsiveNavBar";
+import FixedBottomNavigation from "./features/layout/footer/FixedBottomNavigation";
 
-import FooterSection from "./app/layout/footer/FooterSection";
+import FooterSection from "./features/layout/footer/FooterSection";
 
 
 
