@@ -184,7 +184,7 @@ const MobileUserAppTitle = () => {
           textAlign: "center",
         }}
       >
-     #########
+     
       </Typography>
     </>
   );

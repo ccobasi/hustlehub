@@ -13,7 +13,6 @@ import "./App.css";
 
 import Layout from "./Layout";
 import HomePage from "./app/home/HomePage";
-import CategoriesPage from "./app/categories/CategoriesPage";
 
 function App() {
   //Using system preferences to set theme mode.
@@ -43,9 +42,7 @@ function App() {
             <Route path="/forget-password" element={<ForgetPassword />} />
           </Route>
 
-          {/* <Route path="/" element={<SecondLayout />}> */}
-          {/* <Route path="/categories" element={<CategoriesPage />} />
-          </Route> */}
+    
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
