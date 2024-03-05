@@ -9,6 +9,7 @@ import Error from "./Error";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Signup from "./pages/Signup";
 import Programes from "./pages/Progames";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         <Route path="/about" element={<About />} />
         <Route path="/progames" element={<Programes />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/clientdashboard" element={<ClientDashboard />} />
       </Route>

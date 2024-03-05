@@ -22,6 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #fafafd;
+  padding-top: 40px;
 }
 .homepage-QRc .status-bar-iphone-x-or-newer-EQe {
   margin-bottom: 0.4rem;
@@ -114,6 +115,11 @@ body {
   background-color: #d9d9d9;
   border-radius: 1.7rem;
   flex-shrink: 0;
+}
+
+.logo {
+  width: 100px;
+  height: 70px;
 }
 .homepage-QRc .auto-group-hg4w-sA6 .frame-hev {
   margin-right: 10.6rem;
@@ -1496,4 +1502,15 @@ body {
   top: 166.5rem;
   object-fit: contain;
   vertical-align: top;
+}
+
+@media (min-width: 768px){
+  .homepage-QRc .auto-group-tfbc-zUv .auto-group-pqyr-u66 {
+    width: 100%;
+  }
+
+  .homepage-QRc .auto-group-tfbc-zUv .auto-group-pqyr-u66 .rectangle-201-Lz2,
+    .homepage-QRc .auto-group-tfbc-zUv .auto-group-pqyr-u66 .rectangle-202-sDG, .homepage-QRc .auto-group-tfbc-zUv .auto-group-pqyr-u66 .rectangle-203-BUr, .homepage-QRc .auto-group-tfbc-zUv .auto-group-pqyr-u66 .rectangle-205-ufk, .homepage-QRc .auto-group-tfbc-zUv .auto-group-pqyr-u66 .rectangle-204-3GA{
+    width: 90%;
+  }
 }

@@ -1,0 +1,548 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 37.5rem;
+}.register-7qY {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafd;
+}
+.register-7qY .auto-group-djjk-2xW {
+  margin-bottom: 2rem;
+  width: 100%;
+  height: 4.4rem;
+  position: relative;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn {
+  width: 37.5rem;
+  height: 4.4rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn .notch-tE2 {
+  width: 37.5rem;
+  height: 4.6rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn .right-side-RDx {
+  width: 6.6661rem;
+  height: 1.1336rem;
+  position: absolute;
+  left: 29.3667rem;
+  top: 1.7331rem;
+  display: flex;
+  align-items: center;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn .right-side-RDx .mobile-signal-8eA {
+  margin: 0rem 0.503rem 0rem 0rem;
+  width: 1.7rem;
+  height: 1.0667rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn .right-side-RDx .wifi-qYa {
+  margin: 0rem 0.503rem 0.037rem 0rem;
+  width: 1.5272rem;
+  height: 1.0966rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn .right-side-RDx .battery-kfY {
+  margin-top: 0.0003rem;
+  width: 2.4328rem;
+  height: 1.1333rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn .left-side-gJJ {
+  width: 5.4rem;
+  height: 2.1rem;
+  position: absolute;
+  left: 2.4rem;
+  top: 1.2rem;
+  border-radius: 2.4rem;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-Mzn .left-side-gJJ .time-p9c {
+  box-sizing: border-box;
+  padding: 0.1rem 1.4rem 0rem 1.4rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3333333333;
+  letter-spacing: -0.05rem;
+  color: #ffffff;
+  font-family: SF Pro Text, 'Source Sans Pro';
+  white-space: nowrap;
+  border-radius: 2.4rem;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr {
+  width: 37.5rem;
+  height: 4.4rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr .notch-ygi {
+  width: 37.5rem;
+  height: 4.6rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr .right-side-8Ji {
+  width: 6.6661rem;
+  height: 1.1336rem;
+  position: absolute;
+  left: 29.3667rem;
+  top: 1.7331rem;
+  display: flex;
+  align-items: center;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr .right-side-8Ji .mobile-signal-3wU {
+  margin: 0rem 0.503rem 0rem 0rem;
+  width: 1.7rem;
+  height: 1.0667rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr .right-side-8Ji .wifi-mca {
+  margin: 0rem 0.503rem 0.037rem 0rem;
+  width: 1.5272rem;
+  height: 1.0966rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr .right-side-8Ji .battery-VHg {
+  margin-top: 0.0003rem;
+  width: 2.4328rem;
+  height: 1.1333rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr .left-side-DzN {
+  width: 5.4rem;
+  height: 2.1rem;
+  position: absolute;
+  left: 2.4rem;
+  top: 1.2rem;
+  border-radius: 2.4rem;
+}
+.register-7qY .auto-group-djjk-2xW .status-bar-iphone-x-or-newer-4Jr .left-side-DzN .time-ZoL {
+  box-sizing: border-box;
+  padding: 0.1rem 1.4rem 0rem 1.4rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3333333333;
+  letter-spacing: -0.05rem;
+  color: #0c0c26;
+  font-family: SF Pro Text, 'Source Sans Pro';
+  white-space: nowrap;
+  border-radius: 2.4rem;
+}
+.register-7qY .akar-icons-chevron-left-3Ci {
+  margin-left: 2.5rem;
+  width: 0.8rem;
+  height: 1.6rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt {
+  box-sizing: border-box;
+  padding: 1.6rem 2.4rem 0.8rem 2.4rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-46-Uop {
+  margin: 0rem 13.9rem 1.8rem 0rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-46-Uop .headline-RDG {
+  margin-bottom: 0.7rem;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.3999999364;
+  letter-spacing: -0.036rem;
+  color: #0c0c26;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-46-Uop .headline-HmG {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5999999728;
+  letter-spacing: -0.014rem;
+  color: #0c0c26;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .auto-group-bu1x-cYe {
+  margin-bottom: 1.6rem;
+  width: 100%;
+  height: 5.2rem;
+  position: relative;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .auto-group-bu1x-cYe .profile2-1-9oU {
+  width: 1.1408rem;
+  height: 1.6052rem;
+  position: absolute;
+  left: 2.7167rem;
+  top: 1.8rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.register-7qY .auto-group-ewjl-NVt .auto-group-bu1x-cYe .group-59-szN {
+  box-sizing: border-box;
+  padding: 1.6rem 5.5rem 1.5rem 5.5rem;
+  width: 32.7rem;
+  height: 5.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.014rem;
+  color: #afb0b5;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  border: solid 0.1rem #afb0b5;
+  border-radius: 1rem;
+}
+.register-7qY .auto-group-ewjl-NVt .group-48-VF4 {
+  margin-bottom: 1.3rem;
+  box-sizing: border-box;
+  padding: 1.6rem 22.7rem 1.5rem 2.578rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.1rem #afb0b5;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-48-VF4 .mail-outline-1-cKg {
+  margin: 0rem 1.378rem 0.1rem 0rem;
+  width: 1.5438rem;
+  height: 1.25rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-48-VF4 .e-mail-j9Q {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.014rem;
+  color: #afb0b5;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-60-dEn {
+  margin-bottom: 1.3rem;
+  box-sizing: border-box;
+  padding: 1.2rem 2.292rem 1.3rem 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.1rem #afb0b5;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-60-dEn .checked-user-male-MAn {
+  margin-right: 1.1rem;
+  width: 2.4rem;
+  height: 2.7rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-60-dEn .choose-role-UWJ {
+  margin: 0.2rem 14.326rem 0rem 0rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.014rem;
+  color: #afb0b5;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-60-dEn .rectangle-72-yhx {
+  margin-bottom: 0.7801rem;
+  width: 1.8816rem;
+  height: 1.8793rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-47-t4E {
+  margin-bottom: 1.6rem;
+  box-sizing: border-box;
+  padding: 1.5rem 2.375rem 1.6rem 2.629rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.1rem #afb0b5;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-47-t4E .password6-1-18r {
+  margin: 0.1rem 1.329rem 0rem 0rem;
+  width: 1.5417rem;
+  height: 1.5417rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-47-t4E .password-vWi {
+  margin-right: 15.8749rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.014rem;
+  color: #afb0b5;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-47-t4E .eye-qdg {
+  margin-top: 0.1rem;
+  width: 2.25rem;
+  height: 1.5rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-58-Z3t {
+  margin-bottom: 3.2rem;
+  box-sizing: border-box;
+  padding: 1.5rem 2.375rem 1.6rem 2.629rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.1rem #afb0b5;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-58-Z3t .password6-1-Gyt {
+  margin: 0.1rem 1.329rem 0rem 0rem;
+  width: 1.5417rem;
+  height: 1.5417rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-58-Z3t .confirm-password-QKQ {
+  margin-right: 9.9749rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.014rem;
+  color: #afb0b5;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-58-Z3t .eye-WtE {
+  margin-top: 0.1rem;
+  width: 2.25rem;
+  height: 1.5rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .button-2bg {
+  margin-bottom: 3.2rem;
+  width: 100%;
+  height: 5.6rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.016rem;
+  color: #ffffff;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #87ceeb;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-52-JJJ {
+  margin-bottom: 3.1rem;
+  width: 100%;
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-52-JJJ .line-182-2zz {
+  margin-bottom: 0.05rem;
+  width: 9.8rem;
+  height: 0.05rem;
+  background-color: #afb0b5;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-52-JJJ .or-continue-with-NJA {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #afb0b5;
+  font-family: Circular Std, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-52-JJJ .line-183-hbL {
+  margin-bottom: 0.05rem;
+  width: 9.8rem;
+  height: 0.05rem;
+  background-color: #afb0b5;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-57-ErA {
+  margin: 0rem 5.6rem 3.2rem 5.5rem;
+  width: calc(100% - 11.1rem);
+  height: 5.6rem;
+  display: flex;
+  column-gap: 2.4rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-57-ErA .group-56-9TL {
+  box-sizing: border-box;
+  padding: 1.5rem 1.745rem 1.499rem 1.743rem;
+  height: 100%;
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.0199999996);
+  background-color: #ffffff;
+  border-radius: 2.8rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-57-ErA .group-56-9TL .cib-apple-HpS {
+  width: 2.1117rem;
+  height: 2.6012rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.register-7qY .auto-group-ewjl-NVt .group-57-ErA .group-55-Pca {
+  box-sizing: border-box;
+  padding: 1.633rem 1.633rem 1.633rem 1.633rem;
+  height: 100%;
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.0199999996);
+  background-color: #ffffff;
+  border-radius: 2.8rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-57-ErA .group-55-Pca .flat-color-icons-google-LGv {
+  width: 2.3333rem;
+  height: 2.3333rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+}
+.register-7qY .auto-group-ewjl-NVt .group-57-ErA .group-54-2vS {
+  box-sizing: border-box;
+  padding: 1.582rem 1.575rem 1.582rem 1.575rem;
+  height: 100%;
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.0199999996);
+  background-color: #ffffff;
+  border-radius: 2.8rem;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .group-57-ErA .group-54-2vS .ion-logo-facebook-LAS {
+  width: 2.45rem;
+  height: 2.4353rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.register-7qY .auto-group-ewjl-NVt .have-an-account-log-in-yUJ {
+  margin-bottom: 2.9rem;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #bdbec2;
+  font-family: Circular Std, 'Source Sans Pro';
+  white-space: nowrap;
+  display: flex;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+.register-7qY .auto-group-ewjl-NVt .have-an-account-log-in-yUJ .have-an-account-log-in-yUJ-sub-0 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #bdbec2;
+  font-family: Circular Std, 'Source Sans Pro';
+}
+.register-7qY .auto-group-ewjl-NVt .have-an-account-log-in-yUJ .have-an-account-log-in-yUJ-sub-1 {
+}
+.register-7qY .auto-group-ewjl-NVt .have-an-account-log-in-yUJ .have-an-account-log-in-yUJ-sub-2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #bdbec2;
+  font-family: Circular Std, 'Source Sans Pro';
+}
+.register-7qY .auto-group-ewjl-NVt .have-an-account-log-in-yUJ .have-an-account-log-in-yUJ-sub-3 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #87ceeb;
+  font-family: Circular Std, 'Source Sans Pro';
+}
+.register-7qY .auto-group-ewjl-NVt .home-indicator-BMQ {
+  margin: 0rem 9.6rem 0rem 9.7rem;
+  width: calc(100% - 19.3rem);
+  height: 0.5rem;
+  background-color: #0c0c26;
+  border-radius: 10rem;
+  flex-shrink: 0;
+}

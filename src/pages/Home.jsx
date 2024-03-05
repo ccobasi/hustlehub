@@ -2,10 +2,6 @@
 import React from 'react'
 import './styles.css'
 import './styles/homepage.css'; 
-
-import Img4 from '../assets/frame.png';
-import Img5 from '../assets/search1-1.png';
-import Img6 from '../assets/auto-group-yeza.png';
 import Img7 from '../assets/bookmark5.png';
 import Img8 from '../assets/logos-dribbble-icon-cLE.png';
 import Img9 from '../assets/logos-dribbble-icon.png';
@@ -42,22 +38,8 @@ const Home = () => {
   return (
     <>
        <div className="homepage-QRc">
+        
       
-      <div className="auto-group-hg4w-sA6">
-        <div className="ellipse-799-aaJ"></div>
-        <img className="frame-hev" src={Img4} alt="Frame" />
-        <div className="auto-group-7sdc-SsQ">
-          <div className="search-AHc">
-            <div className="auto-group-r8f8-Vqg">
-              <img className="search1-1-c9c" src={Img5} alt="Search 1" />
-              <div className="search-a-job-or-position-Gzr">Search</div>
-            </div>
-            <img className="auto-group-yeza-4JS" src={Img6} alt="Auto Group" />
-          </div>
-          <div className="ellipse-798-b3U"></div>
-          <div className="group-233-Jia">Sign Up</div>
-        </div>
-      </div>
       <div className="auto-group-tfbc-zUv">
         <div className="auto-group-pqyr-u66">
           <p className="how-it-works-cWJ">How it Works</p>
