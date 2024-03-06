@@ -12,7 +12,6 @@ export default function FooterSection() {
         p: 3,
         mt: 9,
         position:"static"
-        
       }}
     >
       <Container maxWidth="lg">
@@ -33,6 +32,7 @@ export default function FooterSection() {
                       ? theme.palette.grey[700]
                       : theme.palette.grey[500],
                 },
+                
               }}
             >
               Blog &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

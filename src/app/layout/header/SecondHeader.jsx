@@ -6,6 +6,7 @@ import { AppBar, Box, Button, Menu, MenuItem } from "@mui/material";
 import { ArrowBackIos, ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import Logo from '../../../assets/hlogo.png'
 
 const SecondHeader = () => {
   //Use system preference to set theme mode
@@ -58,9 +59,14 @@ const SecondHeader = () => {
                       : theme.palette.grey[300],
                 },
               }}
-              href="/services"
+              href="/"
             >
-              HustleHub
+              <Link to="/"><img src={Logo} className='logo' alt="logo" style={{
+                    order: 1,
+                    fontSize: "2.3rem",
+                    width: "150px",
+                    height: "70px",
+                  }}/></Link>
             </Link>
 
             <Box>

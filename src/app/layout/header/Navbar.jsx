@@ -38,7 +38,7 @@ const Navbar = () => {
                       <Link to="/contact">Contact Us</Link>
                     </li>
                     <li>
-                      <CustomButton linkTo="/signup">Sign Up</CustomButton>
+                      <CustomButton linkTo="/sign-up">Sign Up</CustomButton>
                     </li>
         </ul>
         <Link to="/"><img src={Logo} className='logo' alt="logo" /></Link>
