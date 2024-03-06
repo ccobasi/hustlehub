@@ -1,39 +1,39 @@
+import img from '../../../assets/rectangle-114-yQi.png'
 const  secondFeatureData = [
     {
         id: 1,
-      jobTitle: "Job Title #1",
+      jobTitle: "Writing & Translation",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "../../../assets/rectangle-114-yQi.png",
+      image: {img},
   
       imageLabel: "Business Analysis",
     },
   
     {
         id: 2,
-      jobTitle: "Job Title #2",
+      jobTitle: "Programming & Tech",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "../../../assets/rectangle-114-d98.png",
   
       imageLabel: "Web Development Services",
     },
     {
         id: 3,
-      jobTitle: "Job Title #3",
+      jobTitle: "Software Engineer",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "../../../assets/rectangle-114-7YAOI5.png",
+      image: "../../../assets/rectangle-114-7YAOI5.png",
   
       imageLabel: "Mobile App Development Services",
     },
   
     {
         id: 4,
-      jobTitle: "Job Title #4",
+      jobTitle: "Business & Finance",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "../../../assets/rectangle-114-TXU.png",
+      image: "../../../assets/rectangle-114-TXU.png",
   
       imageLabel: "Design Services",
     },

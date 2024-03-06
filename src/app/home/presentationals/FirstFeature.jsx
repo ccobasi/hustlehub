@@ -1,19 +1,4 @@
 // eslint-disable-next-line no-unused-vars
-// import React from 'react';
-
-// export const FirstFeature = () => {
-//   return (
-//     <div className="hero" style={{ marginTop: '20px', padding: '60px', textAlign: 'center', width: '100%', height: '70vh', fontSize: '35px',
-//   lineHeight: '70px' }}>
-//       <h1>
-//         Require assistance? Seek assistance!
-//         <br />
-//         Discover service providers in your vicinity!
-//       </h1>
-//     </div>
-//   );
-// };
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import banner2 from '../../../assets/banner2.jpg';
 import '../data/style.css'

@@ -12,7 +12,8 @@ const HomePage = () => {
 
   return (
     <>
-      {/*First Home Feature*/}
+      <div className="main" style={{background:"#fafafd"}}>
+        {/*First Home Feature*/}
       <FirstFeature />
 
       <Typography
@@ -204,6 +205,7 @@ const HomePage = () => {
       >
         Find Opportunities
       </Button>
+      </div>
     </>
   );
 };

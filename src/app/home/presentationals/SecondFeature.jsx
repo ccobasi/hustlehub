@@ -7,7 +7,9 @@ export const SecondFeature = () => {
     return <Second key={el.id} {...el} />;
   });
   return (
-    <Grid
+    <>
+    <div className="feature-container">
+      <Grid
       container
       spacing={4}
       sx={{
@@ -18,5 +20,7 @@ export const SecondFeature = () => {
     >
       {secondContainer}
     </Grid>
+    </div>
+    </>
   );
 };
