@@ -17,7 +17,7 @@ export default function WorkExperienceCard({title,subTitle,organization,timefram
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1, overflow: "hidden" }}>
             <Stack direction="row" sx={{justifyContent:"space-between"}}>
-              <HomeRepairServiceOutlined sx={{ ml: "2%",mr:"-57%" }} />{" "}
+              <HomeRepairServiceOutlined sx={{ ml: "2%",mr:"-55%" }} />{" "}
               <Typography sx={{ ml: "" }}>
                 {title}
               </Typography>{" "}

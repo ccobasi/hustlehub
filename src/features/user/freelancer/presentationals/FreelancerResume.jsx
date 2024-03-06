@@ -1,9 +1,9 @@
-import ClientResumeCard from "../containers/ClientResumeCard";
-import clientResumeData from "../data/clientResumeDate";
+import ClientResumeCard from "../../client/containers/ClientResumeCard";
+import freelancerResumeData from "../data/freelancerResumeData";
 import { Grid } from "@mui/material";
 
-export const EditClientEighthFeature = () => {
-  let cardContainer = clientResumeData.map((el) => {
+export const EditFreelancerEighthFeature = () => {
+  let cardContainer = freelancerResumeData.map((el) => {
     return <ClientResumeCard   key={el.id} {...el} />;
   });
   return (

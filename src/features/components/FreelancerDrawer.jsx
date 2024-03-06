@@ -14,30 +14,38 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import HomeRepairServiceOutlinedIcon from "@mui/icons-material/HomeRepairServiceOutlined";
+import { ContentPaste } from "@mui/icons-material";
+
 import { IconButton } from "@mui/material";
 import { useState } from "react";
+import { AssessmentOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import { ClientFirstFeature } from "../user/client/presentationals/ClientCard";
 import Link from "@mui/material/Link";
 
-const clientTemporaryLeftDrawerData = [
+const freelancerTemporaryLeftDrawerData = [
   {
     name: "Personal Info",
     icon: <InfoOutlinedIcon />,
     url: "/",
   },
-  { name: "Portfolio", icon: <HomeRepairServiceOutlinedIcon />, url: "#Inbox" },
-  {
-    name: "Projects",
-    icon: <AssignmentTurnedInOutlinedIcon />,
-    url: "#Outbox",
-  },
   {
     name: "Applications",
-    icon: <WorkspacePremiumOutlinedIcon />,
-    url: "#Home",
+    icon: <AssessmentOutlined/>,
+    url: "/",
   },
+  {
+    name: "Proposals",
+    icon: <AssignmentTurnedInOutlinedIcon />,
+    url: "/",
+  },
+  {
+    name: "Resumes",
+    icon: < ContentPaste/>,
+    url: "/",
+  },
+  { name: "Portfolio", icon: <HomeRepairServiceOutlinedIcon />, url: "#Inbox" },
   { name: "Support", icon: <HelpCenterOutlinedIcon />, url: "#Home" },
   { name: "Settings", icon: <SettingsOutlinedIcon />, url: "#Home" },
   {
@@ -45,9 +53,10 @@ const clientTemporaryLeftDrawerData = [
     icon: <LogoutOutlinedIcon sx={{ color: "red" }} />,
     url: "#Home",
   },
+  
 ];
 
-export default function ClientAnchorTemporaryDrawer() {
+export default function FreelancerAnchorTemporaryDrawer() {
   let navigate = useNavigate();
 
   /*
@@ -76,7 +85,7 @@ export default function ClientAnchorTemporaryDrawer() {
   //Get list function
   const getList = () => (
     <div style={{ width: 250 }}>
-      {clientTemporaryLeftDrawerData.map((item, index) => (
+      {freelancerTemporaryLeftDrawerData.map((item, index) => (
         <ListItem key={index}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <a style={{ textDecoration: "none" }} href={item.url}>
@@ -143,95 +152,4 @@ export default function ClientAnchorTemporaryDrawer() {
   );
 }
 
-//   const list = (anchor) => (
-//     <Box
-//       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-//       role="presentation"
-//       onKeyDown={toggleDrawer(anchor, false)}
-//     >
-//       <IconButton
-//         onClick={toggleDrawer(anchor, false)}
-//         sx={{ alignContent: "end" }}
-//       >
-//         <Cancel />
-//       </IconButton>
-//       <List>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <InfoOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Personal Info" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <HomeRepairServiceOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Portfolio" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <AssignmentTurnedInOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Projects" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <WorkspacePremiumOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Applications" />
-//           </ListItemButton>
-//         </ListItem>
 
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <HelpCenterOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Support" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <SettingsOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Settings" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <LogoutOutlinedIcon sx={{ color: "red" }} />
-//             </ListItemIcon>
-//             <ListItemText primary="Logout" />
-//           </ListItemButton>
-//         </ListItem>
-//       </List>
-
-//     </Box>
-//   );
-
-//   let anchor = "left";
-
-//   return (
-//     <div>
-//       <React.Fragment key={anchor}>
-//         <Button onClick={toggleDrawer(anchor, true)}>Profile</Button>
-//         <Drawer
-//           anchor={anchor}
-//           open={state[anchor]}
-//           onClose={toggleDrawer(anchor, false)}
-//         >
-//           {list(anchor)}
-//         </Drawer>
-//       </React.Fragment>
-//     </div>
-//   );
-// }

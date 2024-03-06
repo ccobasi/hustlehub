@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { EditClientFirstFeature } from "./presentationala/EditClientCard";
-import { EditClientSecondFeature } from "./presentationala/AboutClientCard";
-import { EditClientFifthFeature } from "./presentationala/ClientSkill";
-import { EditClientThirdFeature } from "./presentationala/WorkExperience";
-import { EditClientFourthFeature } from "./presentationala/Education";
-import { EditClientSixthFeature } from "./presentationala/ClientLanguage";
-import { EditClientSeventhFeature } from "./presentationala/ClientAppreciation";
-import { EditClientEighthFeature } from "./presentationala/ClientResume";
+import { EditClientFirstFeature } from "./presentationals/EditClientCard";
+import { EditClientSecondFeature } from "./presentationals/AboutClientCard";
+import { EditClientFifthFeature } from "./presentationals/ClientSkill";
+import { EditClientThirdFeature } from "./presentationals/WorkExperience";
+import { EditClientFourthFeature } from "./presentationals/Education";
+import { EditClientSixthFeature } from "./presentationals/ClientLanguage";
+import { EditClientSeventhFeature } from "./presentationals/ClientAppreciation";
+import { EditClientEighthFeature } from "./presentationals/ClientResume";
 
 const EditClientPage = () => {
   //Instatiate useNavigate

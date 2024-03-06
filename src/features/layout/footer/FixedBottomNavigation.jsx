@@ -42,7 +42,7 @@ export default function FixedBottomNavigation() {
             <BottomNavigationAction onClick={()=>navigate('/notification')} label="Search" icon={<Search />} />
           
          
-            <BottomNavigationAction label="Dashboard" icon={<Dashboard />} />
+            <BottomNavigationAction label="Dashboard" icon={<Dashboard  onClick={()=> navigate('/project-review')}/>} />
           
         </BottomNavigation>
       </Paper>

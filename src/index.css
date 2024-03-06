@@ -73,10 +73,10 @@ margin-top: 30%;
   
 }
 
-.clientDrawerLink{
+.drawerLink{
   position: absolute;
-  top: 36%;
-  left: 40%;
+  top: 38%;
+  left: 34%;
 
 }
 .clientShareOutlinedIcon{
@@ -87,3 +87,4 @@ margin-top: 30%;
 .clientSkillsButton{
   border-radius: 2px;
 }
+

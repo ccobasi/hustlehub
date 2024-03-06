@@ -2,13 +2,19 @@ import * as React from "react";
 import List from "@mui/material/List";
 
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { Grid, Container, Link } from "@mui/material";
+import { Grid, Stack, Link } from "@mui/material";
 
-export default function ProjectContainer({title,imageLabel,sourceSet,company}) {
+export default function FreelancerProjectContainer({
+  company,
+  title,
+  imageLabel,
+  sourceSet,
+  location,
+  timeframe,
+}) {
   return (
     <>
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
@@ -26,38 +32,26 @@ export default function ProjectContainer({title,imageLabel,sourceSet,company}) {
               <Avatar alt={imageLabel} src={sourceSet} />
             </ListItemAvatar>
             <ListItem sx={{ justifyContent: "flex-start" }}>
-              <Typography variant="h6" sx={{ mb: "0%",overflow: "hidden", textOverflow: "ellipsis" }}>
+              <Typography variant="h6" sx={{ ml: "0%", mr: "27%" ,overflow: "hidden", textOverflow: "ellipsis" ,}}>
                 {title}
               </Typography>
+              <Typography sx={{ ml: "30%",overflow: "hidden", textOverflow: "ellipsis" , }}>{location}</Typography>
             </ListItem>
           </ListItem>
-          <ListItem >
+          <ListItem>
             <Typography
+              variant="body2"
               sx={{
-                ml: "17%",
-                
-                width: "100%",
-             
-                overflow: "hidden", textOverflow: "ellipsis"
-            
+                ml: "10%",
+                mr: "15%",
+                overflow: "hidden", textOverflow: "ellipsis" ,
               }}
             >
-              {company} 
+              {company}
             </Typography>
-           <ListItem>
-           <Link
-        href="/categories"
-        sx={{
-          textDecoration: "none",
-          ml: "35%",
-          color: "#87CEEB",
-          
-        }}
-      >
-    View Project
-      </Link>
-           </ListItem>
-               
+            <Typography variant="body2" sx={{ ml: "38%" ,overflow: "hidden", textOverflow: "ellipsis" ,}}>
+              {timeframe}
+            </Typography>
           </ListItem>
         </List>
       </Grid>

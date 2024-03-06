@@ -1,17 +1,21 @@
 import { Typography, Link, Stack, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ClientFirstFeature } from "./presentationals/ClientCard";
-import ClientSecondFeature from "./presentationals/ProjectContainer";
+import { FreelancerFirstFeature } from "./presentationals/FreelancerCard";
+import FreelancerSecondFeature from "./presentationals/AnalyticsContainer";
+import FreelancerThirdFeature from "./presentationals/ProjectContainer";
+import FreelancerFourthFeature from "./presentationals/Earning";
+import FreelancerFifthFeature from "./presentationals/ReviewsAndRatings";
 
 
-const ClientPage = () => {
+
+export default function FreelancerPage() {
   //Instatiate useNavigate
   let navigate = useNavigate();
 
   return (
     <>
-      {/*First Client Feature*/}
-      <ClientFirstFeature />
+      {/*First Freelancer Feature*/}
+      <FreelancerFirstFeature />
 
       {/*First Heading*/}
       <Typography
@@ -24,40 +28,48 @@ const ClientPage = () => {
           pt: "20px",
 
           ml: "23.5%",
+          mt: "8%",
         }}
       >
-        My Projects
-        <Link
-          href="/create-project"
-          sx={{
-            textDecoration: "none",
-            ml: "35%",
-            color: "#87CEEB",
-          }}
-        >
-          Create a Project
-        </Link>
+        <b>Analytics</b>
       </Typography>
 
-      {/*Second Client Feature*/}
-      <ClientSecondFeature />
-
+      {/*Second Freelancer Feature*/}
+      <FreelancerSecondFeature />
       {/*Second Heading*/}
-      <Box sx={{ mt: "5%" }}>
+      <Stack direction="row">
+        <Typography
+          variant="h6"
+          sx={{
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.grey[600]
+                : theme.palette.grey[300],
+            mt: "8%",
+
+            ml: "23.5%",
+          }}
+        >
+          <b>My Projects</b>
+        </Typography>
         <Link
           href="/categories"
           sx={{
             textDecoration: "none",
-            ml: "67%",
+            ml: "32%",
             color: "#87CEEB",
+            mt: "8%",
           }}
         >
-          View All Project
+          See all
         </Link>
-      </Box>
+      </Stack>
+
+      {/*Third Freelancer Feature*/}
+
+      <FreelancerThirdFeature />
 
       {/*Third Heading*/}
-
       <Stack direction="row">
         <Typography
           variant="h6"
@@ -68,24 +80,27 @@ const ClientPage = () => {
                 : theme.palette.grey[300],
 
             ml: "24%",
-            mt: "2%",
+
+            mt: "8%",
           }}
         >
-          Payment History
+          <b>Earnings</b>
         </Typography>
-
         <Link
           href="/about/question/21334565"
           sx={{
             textDecoration: "none",
-            ml: "33%",
-            mt: "2%",
+            ml: "36%",
+            mt: "8%",
             color: "#87CEEB",
           }}
         >
           See all
         </Link>
       </Stack>
+
+      {/**Freelancer Fourth Feature */}
+      <FreelancerFourthFeature />
 
       {/*Fourth Heading*/}
 
@@ -99,26 +114,27 @@ const ClientPage = () => {
                 : theme.palette.grey[300],
 
             ml: "24%",
+            mr: "9%",
             mt: "2%",
           }}
         >
-          Messages
+          <b>Reviews and Ratings</b>
         </Typography>
 
         <Link
           href="/about/question/21334565"
           sx={{
             textDecoration: "none",
-            ml: "39.5%",
+            ml: "10%",
             mt: "2%",
             color: "#87CEEB",
           }}
         >
-          See all
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View more
         </Link>
       </Stack>
+
+      <FreelancerFifthFeature />
     </>
   );
-};
-
-export default ClientPage;
+}

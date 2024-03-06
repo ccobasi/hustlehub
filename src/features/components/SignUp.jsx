@@ -1,13 +1,8 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { InputAdornment } from "@mui/material";
@@ -17,11 +12,9 @@ import FormControl from "@mui/material/FormControl";
 import { useState } from "react";
 import Divider from "@mui/material/Divider";
 import ImageAvatars from "./ImageAvatars";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
+import { useNavigate } from "react-router-dom";
 
 import {
-   
   EmailOutlined,
   AccountCircleOutlined,
   ManageAccountsOutlined,
@@ -32,21 +25,24 @@ import {
 } from "@mui/icons-material";
 
 export default function SignUp() {
-    //When the user enters the password into the input field and 
-    //wants to see the password, the visibility icon in the button allows them to see the password, as it hides or unhides the text from the text field input.
-    const [psw, setPsw] = useState(false);
-    const handleShowPsw = () => setPsw((show) => !show);
-    const handleHidePsw = (e) => {
-       e.preventDefault();
-    };
+  //When the user enters the password into the input field and
+  //wants to see the password, the visibility icon in the button allows them to see the password, as it hides or unhides the text from the text field input.
+  const [psw, setPsw] = useState(false);
+  const handleShowPsw = () => setPsw((show) => !show);
+  const handleHidePsw = (e) => {
+    e.preventDefault();
+  };
 
-    {/**Handle show or hide confirm psw */}
-    const [confirmPsw, setConfirmPsw] = useState(false);
-    const handleShowConfirmPsw = () => setConfirmPsw((show) => !show);
-    const handleHideConfirmPsw = (e) => {
-       e.preventDefault();
-    };
- 
+  {
+    /**Handle show or hide confirm psw */
+  }
+  const [confirmPsw, setConfirmPsw] = useState(false);
+  const handleShowConfirmPsw = () => setConfirmPsw((show) => !show);
+  const handleHideConfirmPsw = (e) => {
+    e.preventDefault();
+  };
+
+  let navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,6 +51,7 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    navigate("/freelancer");
   };
 
   return (
@@ -74,7 +71,6 @@ export default function SignUp() {
           Let's Register.Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-         
           {/**Registration Form Control */}
           <FormControl fullWidth>
             {/**Full Name Textfield */}
@@ -95,7 +91,7 @@ export default function SignUp() {
               }}
               sx={{ pb: "5%" }}
             />
-             {/**Email Textfield */}
+            {/**Email Textfield */}
             <TextField
               required
               fullWidth
@@ -113,7 +109,7 @@ export default function SignUp() {
               }}
               sx={{ pb: "5%" }}
             />
-             {/**Mobile Number Textfield */}
+            {/**Mobile Number Textfield */}
             <TextField
               required
               fullWidth
@@ -131,7 +127,7 @@ export default function SignUp() {
               }}
               sx={{ pb: "5%" }}
             />
-             {/**Choose Role Textfield */}
+            {/**Choose Role Textfield */}
             <TextField
               required
               fullWidth
@@ -151,13 +147,13 @@ export default function SignUp() {
               <MenuItem value="Business Owner">Business Owner</MenuItem>
               <MenuItem value="Talent">Talent</MenuItem>
             </TextField>
-             {/**Password Textfield */}
+            {/**Password Textfield */}
             <TextField
               required
               fullWidth
               name="password"
               label="Password"
-              type={psw ? 'text' : 'password'}
+              type={psw ? "text" : "password"}
               id="password"
               placeholder="Enter your password"
               autoComplete="new-password"
@@ -169,9 +165,11 @@ export default function SignUp() {
                 ),
                 endAdornment: (
                   <InputAdornment>
-                    <IconButton  onClick={handleShowPsw}
-                        onMouseDown={handleHidePsw}
-                        edge="end">
+                    <IconButton
+                      onClick={handleShowPsw}
+                      onMouseDown={handleHidePsw}
+                      edge="end"
+                    >
                       {psw ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
                     </IconButton>
                   </InputAdornment>
@@ -179,14 +177,14 @@ export default function SignUp() {
               }}
               sx={{ pb: "5%" }}
             />
-             {/**Confirm Password Textfield */}
+            {/**Confirm Password Textfield */}
             <TextField
               required
               fullWidth
               name="password"
               label="Confirm Password"
               placeholder="Confirm your password"
-              type={confirmPsw ? 'text' : 'password'}
+              type={confirmPsw ? "text" : "password"}
               id="password"
               autoComplete="new-password"
               InputProps={{
@@ -197,10 +195,16 @@ export default function SignUp() {
                 ),
                 endAdornment: (
                   <InputAdornment>
-                     <IconButton  onClick={handleShowConfirmPsw}
-                        onMouseDown={handleHideConfirmPsw}
-                        edge="end">
-                      {confirmPsw ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+                    <IconButton
+                      onClick={handleShowConfirmPsw}
+                      onMouseDown={handleHideConfirmPsw}
+                      edge="end"
+                    >
+                      {confirmPsw ? (
+                        <VisibilityOffOutlined />
+                      ) : (
+                        <VisibilityOutlined />
+                      )}
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -208,7 +212,7 @@ export default function SignUp() {
             ></TextField>
           </FormControl>
 
-         {/**Submit button*/}
+          {/**Submit button*/}
           <Button
             type="submit"
             fullWidth
@@ -220,27 +224,20 @@ export default function SignUp() {
           {/**Divider */}
           <Divider>Or continue with</Divider>
           {/**Image Avatars */}
-              <Box className="imgAvatars">
-              <ImageAvatars />
-              </Box>
-               
-              
-         
-
+          <Box className="imgAvatars">
+            <ImageAvatars />
+          </Box>
 
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Typography>
                 Have an account?{" "}
-                <a href="/sign-in" style={{ color: "#87CEEB", mb:"20%" }}>
+                <a href="/sign-in" style={{ color: "#87CEEB", mb: "20%" }}>
                   Log in
                 </a>
               </Typography>
             </Grid>
-            
           </Grid>
-         
-         
         </Box>
       </Box>
     </Container>

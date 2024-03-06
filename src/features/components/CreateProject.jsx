@@ -11,22 +11,36 @@ import Typography from "@mui/material/Typography";
 
 const clientCreateProjectData = [
   {
-    id:0,
+    id: 0,
     title: "Job position*",
     description: "Web Developer",
 
     url: "/job-position",
   },
-  { id:1,
-    title: "Type of workplace", description: "Remote", url: "/workplace-type" },
-  {id:2,
-     title: "Job location", description: "California", url: "/location" },
-  { id:3,title: "Company", description: "Ecommerce Company", url: "/company" },
-  { id:4,title: "Employment type", description: "Contract", url: "/employment-type" },
-  {id:5,
+  {
+    id: 1,
+    title: "Type of workplace",
+    description: "Remote",
+    url: "/workplace",
+  },
+  { id: 2, title: "Job location", description: "California", url: "/location" },
+  {
+    id: 3,
+    title: "Company",
+    description: "Ecommerce Company",
+    url: "/company",
+  },
+  {
+    id: 4,
+    title: "Employment type",
+    description: "Contract",
+    url: "/employment",
+  },
+  {
+    id: 5,
     title: "Description",
     description: "Lorem peum dolor sit amat, conisacturtur ud po",
-    url: "job-description",
+    url: "/description",
   },
 ];
 

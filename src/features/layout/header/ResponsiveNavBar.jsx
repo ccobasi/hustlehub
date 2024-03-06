@@ -17,7 +17,7 @@ import Fade from "@mui/material/Fade";
 import { Stack } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { ArrowForwardIos } from "@mui/icons-material";
-import ClientAnchorTemporaryDrawer from "../../components/ClientDrawer";
+
 
 const ResponsiveNavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -68,7 +68,7 @@ const MenuSection = () => {
         </NavLink>
 
         <NavLink
-          to="/client-drawer"
+          to="/freelancer-drawer"
           style={{ textDecoration: "none", color: "#87CEEB" }}
         >
           Messages &nbsp;&nbsp;
@@ -142,7 +142,7 @@ const MobileTransitionsModal = () => {
 
                 <Stack direction="row">
                   <a
-                    href=""
+                    href="/freelancer-drawer"
                     style={{ textDecoration: "none", color: "#87CEEB" }}
                   >
                     Messages
