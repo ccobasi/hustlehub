@@ -4,6 +4,7 @@ import { FirstFeature } from "./presentationals/FirstFeature";
 import { SecondFeature } from "./presentationals/SecondFeature";
 import { ThirdFeature } from "./presentationals/ThirdFeature";
 import { FourthFeature } from "./presentationals/FourthFeature";
+import { FifthFeature } from "./presentationals/FifthFeature";
 
 
 const HomePage = () => {
@@ -243,7 +244,7 @@ textAlign: "left"
           See all
         </Link>
       </Stack>
-      
+      <FifthFeature/>
     
       <Button
         onClick={() => navigate("/opportunities")}

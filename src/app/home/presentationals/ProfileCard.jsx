@@ -22,16 +22,17 @@ const ProfileCard = ({ profilePicture, name, title, rating }) => {
           align-items: center;
           justify-content: center;
           padding: 10px;
-          border: 1px solid #ddd;
+          
           border-radius: 10px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          
           max-width: 370px;
           height: 170px;
           margin: 0 auto;
         }
 
         .profile-picture {
-          margin-right: 10px;
+          margin-left: 10px;
+          float: left;
         }
 
         .details {
