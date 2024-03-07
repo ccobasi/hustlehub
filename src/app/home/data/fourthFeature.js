@@ -1,9 +1,9 @@
 const fourthFeatureData = [
     {
         id:1,
-      name: "Name #1",
+      name: "Emily Willis",
   
-      jobTitle: "Job Title #1",
+      jobTitle: "Outstanding Service",
   
       sourceSet:
         "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",

@@ -1,24 +1,56 @@
-import Fourth from "../containers/Fourth";
-import fourthFeatureData from "../data/fourthFeature";
-import { Grid } from "@mui/material";
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import ProfileCard from "./ProfileCard";
+import Img from "../../../assets/ellipse-782-bg-KhY.png";
+import Img1 from "../../../assets/ellipse-782-bg-y4z.png";
 
 export const FourthFeature = () => {
-  let fourthContainer = fourthFeatureData.map((el) => {
-    return <Fourth key={el.id} {...el} />;
-  });
-  return (
-    <Grid
-      container
-      spacing={4}
-      sx={{
-        margin: "auto",
-        alignItems: "end",
-        maxWidth: "70%",
-      }}
-    >
-      {fourthContainer}
-    </Grid>
+  const thirdStyle = {
+    marginBottom: '60px',
+  }
+  const containerStyle = {
+    display: "flex",
+    gap: "30px",
+    width: "767px",
+    height: "170px",
+    top: "704px",
+    left: "20px",
+    borderRadius: "24px",
+    border: "1px solid #FFFFFF",
+  };
 
-    
+  const cardStyle = {
+    width: '370px',
+    height: '170px',
+    top: '704px',
+    left: '20px',
+    borderRadius: '24px',
+    background: '#e9f1f4',
+  };
+
+  return (
+    <>
+      <div className="third" style={thirdStyle}>
+        <div className="container" style={containerStyle}>
+          <div className="card" style={cardStyle}>
+            <ProfileCard
+              profilePicture={Img}
+              name="Emily Willis"
+              title="Outstanding Service"
+              rating={4.5}
+            />
+          </div>
+          <div className="card" style={cardStyle}>
+            <ProfileCard
+              profilePicture={Img1}
+              name="John Doe"
+              title="Very Trusted"
+              rating={4.5}
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
+

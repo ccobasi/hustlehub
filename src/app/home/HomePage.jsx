@@ -40,6 +40,14 @@ const HomePage = () => {
           textDecoration: "none",
           ml: "64%",
           color: "#87CEEB",
+          fontFamily: "Poppins",
+          fontSize: "18px",
+          fontWeight: "400",
+          lineHeight: "21px",
+          letterSpacing: "-0.01em",
+          textAlign: "left",
+        
+
         }}
       >
         See all
@@ -62,7 +70,24 @@ const HomePage = () => {
 
       {/*Third Home Feature*/}
       <ThirdFeature />
+          <Link
+        href="#"
+        sx={{
+          textDecoration: "none",
+          ml: "64%",
+          color: "#87CEEB",
+          fontFamily: "Poppins",
+          fontSize: "18px",
+          fontWeight: "400",
+          lineHeight: "21px",
+          letterSpacing: "-0.01em",
+          textAlign: "left",
+        
 
+        }}
+      >
+        Freelancer Search
+      </Link>
       <Typography
         variant="h6"
         sx={{
@@ -71,11 +96,22 @@ const HomePage = () => {
               ? theme.palette.grey[600]
               : theme.palette.grey[300],
           pt: "20px",
+          
+          ml: "22%",
+          
+fontFamily: "Poppins",
+fontSize: "16px",
+fontWeight: "600",
+lineHeight: "21px",
+letterSpacing: "-0.01em",
+textAlign: "left",
 
-          ml: "28%",
+
+
         }}
       >
-        Why Businesses Turn To #########
+        
+        Why Businesses Turn to Hustle Hub
       </Typography>
 
       <Typography
@@ -87,11 +123,17 @@ const HomePage = () => {
               : theme.palette.grey[300],
           pt: "20px",
 
-          ml: "28%",
+          ml: "22%",
           mr: "18%",
+
+          
+
         }}
       >
         Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+        <p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p style={{fontFamily: "Poppins",fontSize: "16px",fontWeight: "400",lineHeight: "21px",letterSpacing: "-0.01em",textAlign: "right",color: "#87CEEB",
+}}>See all</p>
       </Typography>
 
       <Stack direction="row">
@@ -104,7 +146,14 @@ const HomePage = () => {
                 : theme.palette.grey[300],
             pt: "20px",
 
-            ml: "28%",
+            ml: "22%",
+            fontFamily: "Poppins",
+fontSize: "18px",
+fontWeight: "400",
+lineHeight: "21px",
+letterSpacing: "-0.01em",
+textAlign: "left"
+
           }}
         >
           Testimonials
@@ -119,7 +168,7 @@ const HomePage = () => {
             color: "#87CEEB",
           }}
         >
-          See all
+          
         </Link>
       </Stack>
       {/*Fourth Home Feature*/}
@@ -152,7 +201,15 @@ const HomePage = () => {
               : theme.palette.grey[300],
           pt: "20px",
 
-          ml: "28%",
+          ml: "20%",
+          
+
+fontSize: "18px",
+fontWeight: "600",
+lineHeight: "21px",
+letterSpacing: "-0.01em",
+textAlign: "left"
+
         }}
       >
         <b>Find Great Work</b>

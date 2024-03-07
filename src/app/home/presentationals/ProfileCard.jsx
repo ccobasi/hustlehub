@@ -1,21 +1,4 @@
 // eslint-disable-next-line no-unused-vars
-// import React from 'react';
-
-// const ProfileCard = ({ profilePicture, name, title, rating }) => {
-//   return (
-//     <div className="profile-card">
-//       <img src={profilePicture} style={{width:"50px", height:"50px", borderRadius:"25px"}} alt="Profile" className="profile-picture" />
-//       <div className="details">
-//         <h2 className="name">{name}</h2>
-//         <p className="title">{title}</p>
-//         <div className="rating">Rating: {rating}</div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfileCard;
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
 
 const ProfileCard = ({ profilePicture, name, title, rating }) => {
