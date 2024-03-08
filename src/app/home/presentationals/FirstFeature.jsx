@@ -10,7 +10,7 @@ export const FirstFeature = () => {
       <div id="main_slider" className="carousel slide banner-main" data-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="first-slide" src={banner} alt="First slide" style={{width: '100vw'}}/>
+            <img className="first-slide" src={banner} alt="First slide" style={{width: '100vw'}} />
             <div className="container">
               <div className="carousel-caption relative">
                 <h1>
