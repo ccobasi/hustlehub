@@ -83,6 +83,7 @@ export default function FooterSection() {
           <Typography
             variant="body2"
             align="center"
+            
             sx={{
               color: (theme) =>
                 theme.palette.mode === "light"
@@ -92,7 +93,7 @@ export default function FooterSection() {
             className="footerCopyright"
           >
             {"Copyright © "}
-            {new Date().getFullYear()} Appspot Digital Solutions
+            {new Date().getFullYear()} Hustle Hub
             {"."}All Rights Reserved.
           </Typography>
         </Box>

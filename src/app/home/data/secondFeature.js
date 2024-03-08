@@ -1,11 +1,13 @@
-import img from '../../../assets/rectangle-114-yQi.png'
+import img from '../../../assets/rectangle-114-yQ.png'
+import img1 from  '../../../assets/rectangle-114i.png'
+import img2 from '../../../assets/rectangle-114-7YAi.png'
+import img3 from '../../../assets/rectangle-114-J78i.png'
 const  secondFeatureData = [
     {
         id: 1,
       jobTitle: "Writing & Translation",
-      sourceSet:
-        "../../../assets/rectangle-114-yQi.png",
-      image: {img},
+      sourceSet: img,
+       image: img,
   
       imageLabel: "Business Analysis",
     },
@@ -13,16 +15,14 @@ const  secondFeatureData = [
     {
         id: 2,
       jobTitle: "Programming & Tech",
-      sourceSet:
-        "../../../assets/rectangle-114-d98.png",
+      sourceSet: img1,
   
       imageLabel: "Web Development Services",
     },
     {
         id: 3,
       jobTitle: "Software Engineer",
-      sourceSet:
-        "../../../assets/rectangle-114-7YAOI5.png",
+      sourceSet: img2,
       image: "../../../assets/rectangle-114-7YAOI5.png",
   
       imageLabel: "Mobile App Development Services",
@@ -31,8 +31,7 @@ const  secondFeatureData = [
     {
         id: 4,
       jobTitle: "Business & Finance",
-      sourceSet:
-        "../../../assets/rectangle-114-TXU.png",
+      sourceSet: img3,
       image: "../../../assets/rectangle-114-TXU.png",
   
       imageLabel: "Design Services",

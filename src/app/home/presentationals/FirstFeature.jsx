@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import banner2 from '../../../assets/banner2.jpg';
+// import banner2 from '../../../assets/banner2.jpg';
+import banner from '../../../assets/banner.jpg';
 import '../data/style.css'
 
 export const FirstFeature = () => {
@@ -9,7 +10,7 @@ export const FirstFeature = () => {
       <div id="main_slider" className="carousel slide banner-main" data-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="first-slide" src={banner2} alt="First slide" style={{width: '100vw'}}/>
+            <img className="first-slide" src={banner} alt="First slide" style={{width: '100vw'}}/>
             <div className="container">
               <div className="carousel-caption relative">
                 <h1>

@@ -26,7 +26,7 @@ const HomePage = () => {
               : theme.palette.grey[300],
           pt: "20px",
 
-          ml: "28%",
+          ml: "20%",
         }}
       >
         Categories
@@ -63,7 +63,7 @@ const HomePage = () => {
               : theme.palette.grey[300],
           pt: "20px",
 
-          ml: "28%",
+          ml: "20%",
         }}
       >
         Find Talent Your Way
@@ -98,10 +98,10 @@ const HomePage = () => {
               : theme.palette.grey[300],
           pt: "20px",
           
-          ml: "22%",
+          ml: "20%",
           
-fontFamily: "Poppins",
-fontSize: "16px",
+
+fontSize: "18px",
 fontWeight: "600",
 lineHeight: "21px",
 letterSpacing: "-0.01em",
@@ -148,7 +148,7 @@ textAlign: "left",
             pt: "20px",
 
             ml: "22%",
-            fontFamily: "Poppins",
+            // fontFamily: "Poppins",
 fontSize: "18px",
 fontWeight: "400",
 lineHeight: "21px",
@@ -186,7 +186,7 @@ textAlign: "left"
                 ? theme.palette.grey[400]
                 : theme.palette.grey[500],
           },
-          ml: "25%",
+          ml: "20%",
           mb: "25px",
         }}
       >
@@ -257,7 +257,7 @@ textAlign: "left"
                 ? theme.palette.grey[400]
                 : theme.palette.grey[500],
           },
-          ml: "25%",
+          ml: "20%",
           mb: "95px",
         }}
       >

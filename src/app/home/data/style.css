@@ -304,18 +304,24 @@ input[type="radio"] .styled:checked+label::after {
     position: relative;
 }
 
+.banner-main .carousel-caption{
+    width: 92%;
+    text-align: center;
+}
 .banner-main .carousel-caption h1 {
     color: #020000;
-    font-size: 45px;
-    line-height: 50px;
+    font-size: 55px;
+    line-height: 65px;
     text-transform: uppercase;
+    margin-left: 15%;
 }
 
 .banner-main .carousel-caption p {
     color: #050000;
     font-weight: 500;
-
+    text-align: center;
     line-height: 23px;
+    padding-left: 12%;
 }
 
 .banner-main .carousel-caption a {
@@ -323,18 +329,43 @@ input[type="radio"] .styled:checked+label::after {
     background: #605FA1;
     padding: 9px 0px;
     color: #fff;
-    font-size: 17px;
+    font-size: 22px;
     border-radius: 30px 0px 30px 30px;
     display: inline-block;
     text-align: center;
     margin-top: 20px;
-
+    margin-left: 12%;
 }
 
 .banner-main .carousel-caption a:hover {
     background: #000;
 }
-
 .yellow_bold {
     color: #605FA1;
+}
+
+
+@media (max-width: 768px) {
+    .banner-main .carousel-caption h1 {
+        font-size: 40px;
+        
+        line-height: 50px;
+        
+        margin-left: 0;
+        
+    }
+
+    .banner-main .carousel-caption p {
+        padding-left: 0;
+       
+    }
+
+    .banner-main .carousel-caption a {
+        width: 200px;
+        
+        font-size: 18px;
+        
+        margin-left: 0;
+        
+    }
 }
