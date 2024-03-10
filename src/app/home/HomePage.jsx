@@ -248,6 +248,7 @@ textAlign: "left"
             textDecoration: "none",
             ml: "39%",
             pt: "27px",
+            
             color: "#87CEEB",
           }}
         >
@@ -268,7 +269,8 @@ textAlign: "left"
                 : theme.palette.grey[500],
           },
           ml: "20%",
-          mb: "95px",
+          mb: "55px",
+          mt: "80px"
         }}
       >
         Find Opportunities

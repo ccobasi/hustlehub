@@ -77,14 +77,20 @@
     .fifth .container {
         flex-direction: column;
         margin-bottom: 30px;
+        width: 350px;
+        
         
     }
 
     .fifth .card {
-        width: 40%;
-        margin-left: 10%;
-        height: 150px;
+        width: 80%;
+        margin-left: 5%;
+        height: 135px;
 
+    }
+
+    .fifth .two {
+        margin-left: 30px;
     }
 }
 
