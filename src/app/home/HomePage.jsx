@@ -13,7 +13,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="main" style={{background:"#fafafd"}}>
+      <div className="main" style={{background:"#fafafd", width: "100vw"}}>
         {/*First Home Feature*/}
       <FirstFeature />
 
@@ -131,8 +131,17 @@ textAlign: "left",
 
         }}
       >
-        Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
-        <p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Hustle Hub attracts businesses by offering a solution for project-based work. Key benefits include:
+
+Access to a large and diverse talent pool with various skills.
+Ability to scale workforce up or down based on project needs.
+Cost savings on recruitment, office space, and benefits by hiring freelancers or part-time workers.
+Efficient project management tools for communication and tracking progress.
+Rapid scaling of teams to meet deadlines or workload increases.
+Quality assurance through worker profiles, portfolios, and ratings.
+Global reach to find talent with diverse skills and perspectives.
+Ability to find specialists in niche areas to promote innovation.
+Overall, Hustle Hub helps businesses build flexible, cost-effective project teams with access to a global pool of skilled workers.</p>
         <p style={{fontFamily: "Poppins",fontSize: "16px",fontWeight: "400",lineHeight: "21px",letterSpacing: "-0.01em",textAlign: "right",color: "#87CEEB",
 }}>See all</p>
       </Typography>
@@ -148,7 +157,7 @@ textAlign: "left",
             pt: "20px",
 
             ml: "22%",
-            // fontFamily: "Poppins",
+            
 fontSize: "18px",
 fontWeight: "400",
 lineHeight: "21px",
@@ -188,6 +197,7 @@ textAlign: "left"
           },
           ml: "20%",
           mb: "25px",
+          mt: "20px",
         }}
       >
         Sign Up To Like

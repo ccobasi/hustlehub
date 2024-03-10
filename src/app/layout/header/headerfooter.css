@@ -188,6 +188,10 @@ header{
 }
 
 @media (max-width: 500px) {
+    header {
+            width: 80%;
+        }
+        
     .navbar-container input[type="checkbox"]:checked~.logo {
         display: none;
     }
@@ -195,9 +199,9 @@ header{
 
 
 @media (max-width: 600px) {
-    header {
-        width:  100%;
-    }
+   .navbar {
+    width:  100vw;
+   }
     .navbar-container {
         
         display: flex;

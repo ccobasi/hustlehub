@@ -25,7 +25,10 @@ export default function FixedBottomNavigation() {
     <Box sx={{ pb: 7 }} ref={ref}>
     
       
-      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 , '@media (max-width: 600px)': {
+            display: 'flex', flexDirection: 'column', 
+          }}} elevation={3}>
+       
       <BottomNavigation
           showLabels
           value={value}
