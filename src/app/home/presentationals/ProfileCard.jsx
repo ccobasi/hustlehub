@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
@@ -15,7 +16,7 @@ const ProfileCard = ({ profilePicture, name, title, rating }) => {
         <p className="title">{title}</p>
         <div className="rating">Rating: {rating}</div>
       </div>
-      <style jsx>{`
+      <style jsx="true">{`
         .profile-card {
           display: flex;
           flex-direction: column;
