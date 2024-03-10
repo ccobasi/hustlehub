@@ -13,7 +13,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="main" style={{background:"#fafafd", width: "100vw"}}>
+      <div className="main" style={{background:"#fafafd", width: "100%", overflowX: "hidden"}}>
         {/*First Home Feature*/}
       <FirstFeature />
 

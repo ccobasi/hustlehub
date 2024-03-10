@@ -26,7 +26,7 @@ const ProfileCard = ({ profilePicture, name, title, rating }) => {
           
           border-radius: 10px;
           
-          max-width: 370px;
+          width: 350px;
           height: 170px;
           margin: 0 auto;
         }
