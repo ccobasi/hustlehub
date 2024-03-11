@@ -1,0 +1,110 @@
+.fifth {
+   margin-bottom: 60px;
+}
+.fifth .container {
+    display: flex;
+    gap: 30px;
+    width: 767px;
+    height: 170px;
+    top: 704px;
+    left: 20px;
+    border-radius: 24px;
+}
+
+;
+
+
+
+.fifth  .container .card {
+    width: 370px;
+    height: 186px;
+    top: 704px;
+    left: 20px;
+    background: #87ceeb;
+    border-radius: 24px;
+}
+
+.fifth .one {
+    width: 184px;
+    height: 47px;
+    top: 1521px;
+    left: 55px;
+    border-radius: 12px;
+    color: #FFFFFF;
+    margin-left: 55px;
+    margin-top: 20px;
+    display: flex
+}
+
+.fifth img {
+    width: 46px;
+    height: 46px;
+    margin-right: 20px
+}
+
+.fifth .two {
+    width: 240px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #FFFFFF;
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
+.fifth span {
+    width: 69px;
+    height: 26px;
+    border-radius: 65px;
+    background: #99d5ee;
+    text-align: center;
+    padding-top: 5px
+
+}
+
+.fifth .three {
+    width: 87px;
+    height: 21px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 21px;
+    margin-left: 55px;
+    margin-top: 20px
+}
+
+@media (max-width: 600px) {
+    .fifth .container {
+        flex-direction: column;
+        margin-bottom: 30px;
+        width: 350px;
+        
+        
+    }
+
+    .fifth .card {
+        width: 80%;
+        margin-left: 5%;
+        height: 135px;
+
+    }
+
+    .fifth .two {
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fifth .container {
+        
+        margin-left: 10%;
+
+    } 
+
+    /* .fifth .card {
+        width: 40%;
+        margin-left: 10%;
+        height: 150px;
+
+    }  */
+}
