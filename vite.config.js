@@ -11,5 +11,6 @@ export default defineConfig({
         main: '/src/main.jsx',
       },
     },
+    outDir: 'dist',
   },
 })
