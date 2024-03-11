@@ -1,6 +1,7 @@
 {
   "homepage": "https://ccobasi.github.io/hustlehub",
   "name": "hustlehub",
+  "main": "src/main.jsx",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +9,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "vite build && gh-pages -d dist",
-  "predeploy": "vite build",
+    "predeploy": "vite build",
     "dev": "vite",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
