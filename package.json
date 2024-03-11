@@ -1,17 +1,32 @@
 {
+  "homepage": "https://ccobasi.github.io/hustlehub",
   "name": "hustlehub",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "vite build && gh-pages -d dist",
+  "predeploy": "vite build",
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.10",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.16",
+    "bootstrap": "^5.3.3",
+    "components": "^0.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1",
+    "styled": "^1.0.0",
+    "styled-components": "^6.1.8",
+    "with": "^7.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
@@ -21,6 +36,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.1.1",
+    "react-scripts": "^5.0.1",
     "vite": "^5.1.0"
   }
 }
