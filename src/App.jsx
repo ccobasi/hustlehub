@@ -134,7 +134,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <Routes>
+      <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
@@ -174,6 +174,9 @@ function App() {
             <Route path="/edit-freelancer" element={<EditFreelancerPage />} />
           </Route>
         </Routes>
+
+    
+        
       </BrowserRouter>
     </ThemeProvider>
   );

@@ -8,6 +8,9 @@ import FooterSection from "./features/layout/footer/FooterSection";
 const Layout = () => {
   return (
     <>
+      
+    {/* <ResponsiveNavBar/> */}
+
       {/* Call site for Responsive nav bar  */}
       <ResponsiveNavBar />
       {/* Layout outlet */}
