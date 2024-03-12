@@ -45,7 +45,7 @@ export const HomeGreatWork = () => {
                 : theme.palette.primary.darkModeHeroTitle,
 
             pt: "30px",
-            ml: "20%",
+            ml: "10%",
             width: "299px",
             height: "21px",
             fontFamily: "Poppins",
@@ -70,7 +70,7 @@ export const HomeGreatWork = () => {
             letterSpacing: "-1%",
 
             textDecoration: "none",
-            ml: "20%",
+            ml: "10%",
             pt: "27px",
             color: "#95969D",
           }}
@@ -89,7 +89,7 @@ export const HomeGreatWork = () => {
         sx={{
           margin: "auto",
 
-          maxWidth: "70%",
+          maxWidth: "100%",
           mb: "5%",
         }}
       >

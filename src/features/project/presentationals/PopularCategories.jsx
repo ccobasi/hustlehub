@@ -16,7 +16,7 @@ export const PopularCategories = () => {
       sx={{
         margin: "auto",
         alignItems: "end",
-        maxWidth: "60%",
+        maxWidth: "100%",
       }}
     >
       {popularContainer}

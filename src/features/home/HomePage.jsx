@@ -5,6 +5,7 @@ import { HomeTestimonials } from "./presentationals/HomeTestimonials";
 import { HomeTalents } from "./presentationals/HomeTalents";
 import { WhyBusinessesTurnToHustleHub } from "./presentationals/WhyHustleHub";
 import { HomeGreatWork } from "./presentationals/HomeGreatWork";
+import { Container } from "@mui/material";
 
 export default function HomePage() {
   //Instatiate useNavigate
@@ -18,22 +19,24 @@ export default function HomePage() {
         <title>Hustle Hub Home</title>
       </head>
 
-      {/*First Home Feature*/}
+      <Container component="main" maxWidth="lg">
+        {/*First Home Feature*/}
 
-      <HomeHero />
+        <HomeHero />
 
-      {/*Second Home Feature*/}
-      <HomeCategories />
+        {/*Second Home Feature*/}
+        <HomeCategories />
 
-      {/*Third Home Feature*/}
-      <HomeTalents />
+        {/*Third Home Feature*/}
+        <HomeTalents />
 
-      <WhyBusinessesTurnToHustleHub />
+        <WhyBusinessesTurnToHustleHub />
 
-      {/*FOurth Home Feature*/}
-      <HomeTestimonials />
-      {/* Fifth Home Feature */}
-      <HomeGreatWork />
+        {/*FOurth Home Feature*/}
+        <HomeTestimonials />
+        {/* Fifth Home Feature */}
+        <HomeGreatWork />
+      </Container>
     </>
   );
 }

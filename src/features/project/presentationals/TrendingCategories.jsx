@@ -16,7 +16,7 @@ export const TrendingCategories = () => {
       sx={{
         margin: "auto",
         alignItems: "end",
-        maxWidth: "60%",
+        maxWidth: "100%",
       }}
     >
       {trendingContainer}

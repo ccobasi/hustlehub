@@ -1,9 +1,10 @@
 const  projectsUpdate = [
     {
-        id: 1,
+        id: 0,
       jobTitle: "Application sent",
       description:"Applications fr Google Inc have entered for company review.",
      action:"Application sent",
+     time:"25 minutes",
       sourceSet:
         "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
       image: "/assets/analyze-and-outperform-competition.png",
@@ -12,10 +13,11 @@ const  projectsUpdate = [
     },
   
     {
-        id: 2,
+        id: 1,
       jobTitle: "Your job notification",
       description:"Brandon there are 10+ new jobs for UI/UX Developer in Califormer USA.",
       action:"See new job",
+      time:"1 Hour",
       sourceSet:
         "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
       image: "/assets/analyze-and-outperform-competition.png",
@@ -23,9 +25,10 @@ const  projectsUpdate = [
       imageLabel: "Web Development Services",
     },
     {
-        id: 3,
+        id: 2,
       jobTitle: "",
       action:"See job",
+      time:"6 Hours",
       description:"Twitter Inc is looking for a UI/UX Developer. Check out this and 9 other job recommendations.",
       sourceSet:
         "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
@@ -35,10 +38,11 @@ const  projectsUpdate = [
     },
   
     {
-        id: 4,
+        id: 3,
       jobTitle: "Job Title #4",
       action:"View recommendations",
       description:"Twitter Inc is looking for a UI/UX Developer. Check out this and 9 other job recommendations.",
+      time:"25 minutes",
       sourceSet:
         "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
       image: "/assets/analyze-and-outperform-competition.png",

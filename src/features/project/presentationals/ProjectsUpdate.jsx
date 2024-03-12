@@ -15,8 +15,8 @@ export const Updates = () => {
       spacing={4}
       sx={{
         margin: "auto",
-        alignItems: "end",
-        maxWidth: "70%",
+       
+        maxWidth: "100%",
       }}
     >
       {updatesContainer}

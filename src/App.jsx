@@ -46,7 +46,7 @@ function App() {
         palette: {
           mode: prefersDarkMode ? "dark" : "light",
           primary: {
-            main: "#228B22",
+            main: "#95969D",
 
             darkModeTitleTextColor: "#FAFAFA",
             lightModeTitleTextColor: "#000000",
@@ -56,7 +56,7 @@ function App() {
             lightModeHeroTitle: "#0D0D26",
           },
           secondary: {
-            main: "#87CEEB",
+            main: "#228B22",
           },
 
           status: {

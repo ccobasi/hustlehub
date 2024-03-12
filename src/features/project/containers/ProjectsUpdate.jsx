@@ -11,21 +11,32 @@ export default function ProjectsUpdate(props) {
   return (
     <>
       {/* Grid for project update functionality */}
-      <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
+      <Grid item xs={12} md={6} sx={{ mb: "10px" }}>
         <Card sx={{ display: "flex" }}>
-          <CardContent sx={{ flex: 1, overflow: "hidden" }}>
+          <CardContent
+            sx={{
+              flex: 1,
+              overflow: "hidden",
+              width: "255px",
+              height: "322px",
+            }}
+          >
             <CardMedia
               component="picture"
               sx={{
-                height: "233",
-
                 maxHeight: { xs: 233, md: 167 },
               }}
             >
               <source srcSet={props.sourceSet} />
               <Stack direction="row" sx={{ ml: "15%" }}>
-                <img src={props.image} alt={props.imageLabel} />
-                <MoreVert sx={{ ml: "70%", mt: "3%" }} />
+                <img
+                  src={props.image}
+                  alt={props.imageLabel}
+                  style={{ height: "40px", width: "40px" }}
+                />
+                <MoreVert
+                  sx={{ ml: "70%", mt: "3%", height: "20px", width: "20px" }}
+                />
               </Stack>
             </CardMedia>
 
@@ -33,10 +44,15 @@ export default function ProjectsUpdate(props) {
               component="h4"
               variant="h"
               sx={{
+                fontFamily: "Poppins",
+                fontWeight: "700",
+                fontSize: "14px",
+                lineHeight: "18.23px",
+                textAlign: "center",
                 color: (theme) =>
                   theme.palette.mode === "light"
-                    ? theme.palette.grey[600]
-                    : theme.palette.grey[300],
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
                 pb: "20px",
                 pt: "20px",
                 ml: "12%",
@@ -47,10 +63,15 @@ export default function ProjectsUpdate(props) {
             <Typography
               variant="body2"
               sx={{
+                fontFamily: "Poppins",
+                fontWeight: "400",
+                fontSize: "12px",
+                lineHeight: "15.62px",
+                textAlign: "center",
                 color: (theme) =>
                   theme.palette.mode === "light"
-                    ? theme.palette.grey[600]
-                    : theme.palette.grey[300],
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
                 pb: "20px",
                 pt: "20px",
                 ml: "12%",
@@ -58,7 +79,23 @@ export default function ProjectsUpdate(props) {
             >
               {props.description}
             </Typography>
-            <Button variant="contained" sx={{ ml: "12%" }}>
+            <Button
+              variant="contained"
+              sx={{
+                ml: "12%",
+                width: "143px",
+                height: "32px",
+                fontFamily: "Poppins",
+                fontWeight: "400",
+                fontSize: "12px",
+                lineHeight: "15.62px",
+                textAlign: "center",
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
+              }}
+            >
               {props.action}
             </Button>
           </CardContent>
