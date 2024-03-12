@@ -25,14 +25,15 @@ import {
 } from "@mui/icons-material";
 
 export default function SignUp() {
-  //When the user enters the password into the input field and
-  //wants to see the password, the visibility icon in the button allows them to see the password, as it hides or unhides the text from the text field input.
+  //Initialization of useState Hook
   const [psw, setPsw] = useState(false);
+  //Handler for user to see pw
   const handleShowPsw = () => setPsw((show) => !show);
+  //Handler for user to hide pw
   const handleHidePsw = (e) => {
     e.preventDefault();
   };
-
+  //Handler End
   {
     /**Handle show or hide confirm psw */
   }
@@ -41,9 +42,11 @@ export default function SignUp() {
   const handleHideConfirmPsw = (e) => {
     e.preventDefault();
   };
+  // Handler End
 
+  //Initialization of useNavigate hook
   let navigate = useNavigate();
-
+  //Handler for the submit event
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -53,8 +56,10 @@ export default function SignUp() {
     });
     navigate("/freelancer");
   };
+  //Submit Handle End
 
   return (
+    // Container for Sign Up functionality
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
@@ -241,5 +246,6 @@ export default function SignUp() {
         </Box>
       </Box>
     </Container>
+    //Container End
   );
 }

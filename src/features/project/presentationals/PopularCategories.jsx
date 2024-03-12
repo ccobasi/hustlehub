@@ -1,13 +1,15 @@
-
-import Second from "../../home/containers/Second";
+import Categories from "../../home/containers/Categories";
 import popularCategories from "../data/popularCategories";
 import { Grid } from "@mui/material";
 
 export const PopularCategories = () => {
+  // Data mapping
   let popularContainer = popularCategories.map((el) => {
-    return <Second key={el.id} {...el} />;
+    return <Categories key={el.id} {...el} />;
   });
+  //Mapping End
   return (
+    // Grid for popular categories functionality
     <Grid
       container
       spacing={4}
@@ -19,5 +21,6 @@ export const PopularCategories = () => {
     >
       {popularContainer}
     </Grid>
+    //Grid End
   );
 };

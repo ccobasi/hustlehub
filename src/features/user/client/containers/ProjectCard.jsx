@@ -11,6 +11,7 @@ import { Grid, Container, Link } from "@mui/material";
 export default function ProjectContainer({title,imageLabel,sourceSet,company}) {
   return (
     <>
+    {/* Grid for client project */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <List
           sx={{
@@ -61,6 +62,7 @@ export default function ProjectContainer({title,imageLabel,sourceSet,company}) {
           </ListItem>
         </List>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

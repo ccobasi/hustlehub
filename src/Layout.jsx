@@ -5,27 +5,21 @@ import FixedBottomNavigation from "./features/layout/footer/FixedBottomNavigatio
 
 import FooterSection from "./features/layout/footer/FooterSection";
 
-
-
 const Layout = () => {
- 
-
- 
-
   return (
     <>
-      
-    <ResponsiveNavBar/>
+      {/* Call site for Responsive nav bar  */}
+      <ResponsiveNavBar />
+      {/* Layout outlet */}
       <Outlet />
-  
-<Box sx={{display:{xs:"flex", md:"none"}}}>
-<FixedBottomNavigation/>
-</Box>
-
-<Box sx={{display:{xs:"none", md:"flex"}, bgcolor:"#87CEEB",}}>
-<FooterSection />
-</Box>
- 
+      {/* Box for mobile fixed bottom naviagation */}
+      <Box sx={{ display: { xs: "flex", md: "none" } }}>
+        <FixedBottomNavigation />
+      </Box>
+      {/* Box for medium and large devices footer */}
+      <Box sx={{ display: { xs: "none", md: "flex" }, backgroundColor: "background.default", }}>
+        <FooterSection />
+      </Box>
     </>
   );
 };

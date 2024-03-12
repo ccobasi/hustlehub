@@ -11,6 +11,7 @@ export default function FreelancerReviewsAndRatings({
 }) {
   return (
     <>
+    {/* Grid for freelancer reviews and rating */}
       <Grid item xs={12} md={12} sx={{  backgroundColor: "grey" }}>
         <Card sx={{ display: "flex", boxShadow: 2, mb: "7%", mr: "6%" }}>
           <CardContent
@@ -40,6 +41,7 @@ export default function FreelancerReviewsAndRatings({
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

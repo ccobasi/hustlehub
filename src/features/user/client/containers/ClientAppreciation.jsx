@@ -18,6 +18,7 @@ export default function ClientAppreciationCard({
 }) {
   return (
     <>
+    {/* Grid for Client appreciation card*/}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1, overflow: "hidden" }}>
@@ -51,6 +52,7 @@ export default function ClientAppreciationCard({
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

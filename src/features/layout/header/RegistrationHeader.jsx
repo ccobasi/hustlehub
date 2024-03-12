@@ -7,8 +7,7 @@ import { ArrowBackIos, ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
-
-const RegistrationHeader = () => {
+export default function RegistrationHeader() {
   //Use system preference to set theme mode
   const theme = useTheme();
   //instantiate useNavigate object
@@ -18,6 +17,7 @@ const RegistrationHeader = () => {
 
   return (
     <React.Fragment>
+      {/* Box  arrow back icon*/}
       <Box
         sx={{
           display: { xs: "flex", md: "none" },
@@ -30,7 +30,9 @@ const RegistrationHeader = () => {
           <ArrowBack />
         </IconButton>
       </Box>
+      {/* Box End */}
 
+      {/* Box for app bar*/}
       <Box
         sx={{
           backgroundColor: theme.palette.mode,
@@ -85,9 +87,8 @@ const RegistrationHeader = () => {
             </Box>
           </Toolbar>
         </AppBar>
+        {/* App bar End */}
       </Box>
     </React.Fragment>
   );
-};
-
-export default RegistrationHeader;
+}

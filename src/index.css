@@ -1,90 +1,148 @@
+/*@font-face {
+  font-family: 'MyWebFont';
+  src: url('webfont.eot'); /* IE9 Compat Modes */
+/*src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+/*   url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+/*url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+/*url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+/*url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+/*}*/
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Medium.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("./fonts/Poppins-Regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("./fonts//Poppins-SemiBold.ttf")
+      format("truetype");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue","Poppins",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*body {
+  /* margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh; */
+
+/*}*/
+
+/* body { 
+	max-width: 1080px; 
+	margin: 0 auto !important; 
+	float: none !important; 
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue","Poppins",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+/* 
+.content-wrapper {
+ 
+  min-width: 200px;
+  max-width: 960px;
+  margin: 0 auto;
+} */
+
+/* html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  min-width: 200px;
+  max-width: 960px;
+
+  margin: 0 auto;
+} */
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
-.MuiButton-contained{
+.MuiButton-contained {
   text-transform: capitalize !important;
-
 }
 
-.headerSignUpButton{
+.headerSignUpButton {
   position: relative;
   left: 27%;
   top: 8px;
 }
 
-.headerSearch{
+.headerSearch {
   position: relative;
   left: 26%;
   top: 8px;
   padding: 2px;
-  
 }
-.mobileSignUpButton{
+.mobileSignUpButton {
   position: relative;
   left: 2%;
- 
 }
-.mobileNavSearch{
+.mobileNavSearch {
   position: relative;
   left: -2%;
 }
 
-.footerLink{
+.footerLink {
   position: relative;
   right: -230%;
 }
 
-.footerCopyright{
+.footerCopyright {
   position: relative;
   right: -148%;
 }
 
-.firstFeature{
+.firstFeature {
   position: relative;
-margin-top: 30%;
+  margin-top: 30%;
 }
 
-.imgAvatars{
+.imgAvatars {
   position: relative;
   left: 18%;
-
 }
 
 /* Select Component customization*/
-.MuiBox-root fieldset{
-  border-color: #87CEEB !important;
+.MuiBox-root fieldset {
+  border-color: #87ceeb !important;
 }
 
-.clientVerifiedIcon{
+.clientVerifiedIcon {
   position: relative;
   left: 3%;
-  
 }
 
-.drawerLink{
+.drawerLink {
   position: absolute;
   top: 38%;
   left: 34%;
-
 }
-.clientShareOutlinedIcon{
+.clientShareOutlinedIcon {
   position: relative;
   left: 90%;
 }
 
-.clientSkillsButton{
+.clientSkillsButton {
   border-radius: 2px;
 }
-

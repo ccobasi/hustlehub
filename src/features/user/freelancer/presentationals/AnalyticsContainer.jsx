@@ -3,10 +3,12 @@ import freelancerAnalyticsData from "../data/freelancerAnalyticsData";
 import { Grid } from "@mui/material";
 
 export default function FreelancerSecondFeature   ()  {
+  //Data mapping
   let projectContainer = freelancerAnalyticsData.map((el) => {
     return <FreelancerAnalyticsContainer key={el.id} {...el} />;
-  });
+  });//Mapping End
   return (
+    // Grid
     <Grid
       container
       spacing={4}
@@ -17,7 +19,7 @@ export default function FreelancerSecondFeature   ()  {
       }}
     >
       {projectContainer}
-    </Grid>
+    </Grid>//Grid End
   );
 };
 

@@ -1,211 +1,39 @@
-import { Typography,  Link, Stack, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { FirstFeature } from "./presentationals/FirstFeature";
-import { SecondFeature } from "./presentationals/SecondFeature";
-import { ThirdFeature } from "./presentationals/ThirdFeature";
-import { FourthFeature } from "./presentationals/FourthFeature";
+import { HomeHero } from "./presentationals/HomeHero";
+import { HomeCategories } from "./presentationals/HomeCategories";
+import { HomeTestimonials } from "./presentationals/HomeTestimonials";
+import { HomeTalents } from "./presentationals/HomeTalents";
+import { WhyBusinessesTurnToHustleHub } from "./presentationals/WhyHustleHub";
+import { HomeGreatWork } from "./presentationals/HomeGreatWork";
 
-
-const HomePage = () => {
+export default function HomePage() {
   //Instatiate useNavigate
   let navigate = useNavigate();
 
   return (
     <>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, intial-scale=1" />
+        <title>Hustle Hub Home</title>
+      </head>
+
       {/*First Home Feature*/}
-      <FirstFeature />
 
-      <Typography
-        variant="h6"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
-
-          ml: "28%",
-        }}
-      >
-        Categories
-      </Typography>
+      <HomeHero />
 
       {/*Second Home Feature*/}
-      <SecondFeature />
-
-      <Link
-        href="/categories"
-        sx={{
-          textDecoration: "none",
-          ml: "64%",
-          color: "#87CEEB",
-        }}
-      >
-        See all
-      </Link>
-
-      <Typography
-        variant="h6"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
-
-          ml: "28%",
-        }}
-      >
-        Find Talent Your Way
-      </Typography>
+      <HomeCategories />
 
       {/*Third Home Feature*/}
-      <ThirdFeature />
+      <HomeTalents />
 
-      <Typography
-        variant="h6"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
+      <WhyBusinessesTurnToHustleHub />
 
-          ml: "28%",
-        }}
-      >
-        Why Businesses Turn To #########
-      </Typography>
-
-      <Typography
-        variant="body2"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
-
-          ml: "28%",
-          mr: "18%",
-        }}
-      >
-        Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
-      </Typography>
-
-      <Stack direction="row">
-        <Typography
-          variant="h6"
-          sx={{
-            color: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[600]
-                : theme.palette.grey[300],
-            pt: "20px",
-
-            ml: "28%",
-          }}
-        >
-          Testimonials
-        </Typography>
-
-        <Link
-          href="/about/question/21334565"
-          sx={{
-            textDecoration: "none",
-            ml: "39%",
-            pt: "27px",
-            color: "#87CEEB",
-          }}
-        >
-          See all
-        </Link>
-      </Stack>
-      {/*Fourth Home Feature*/}
-      <FourthFeature />
-
-      <Button
-        variant="contained"
-        onClick={() => navigate("/sign-up")}
-        sx={{
-          backgroundColor: "#87CEEB",
-          "&:hover": {
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[400]
-                : theme.palette.grey[500],
-          },
-          ml: "25%",
-          mb: "25px",
-        }}
-      >
-        Sign Up To Like
-      </Button>
-
-      <Typography
-        variant="h6"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
-
-          ml: "28%",
-        }}
-      >
-        <b>Find Great Work</b>
-      </Typography>
-
-      <Stack direction="row">
-        <Typography
-          variant="h6"
-          sx={{
-            color: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[600]
-                : theme.palette.grey[300],
-            pt: "20px",
-
-            ml: "20%",
-          }}
-        >
-          Featured Projects
-        </Typography>
-
-        <Link
-          href="/projects"
-          sx={{
-            textDecoration: "none",
-            ml: "39%",
-            pt: "27px",
-            color: "#87CEEB",
-          }}
-        >
-          See all
-        </Link>
-      </Stack>
-      
-    
-      <Button
-        onClick={() => navigate("/browse-project")}
-        variant="contained"
-        sx={{
-          backgroundColor: "#87CEEB",
-          "&:hover": {
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[400]
-                : theme.palette.grey[500],
-          },
-          ml: "25%",
-          mb: "95px",
-        }}
-      >
-        Find Opportunities
-      </Button>
+      {/*FOurth Home Feature*/}
+      <HomeTestimonials />
+      {/* Fifth Home Feature */}
+      <HomeGreatWork />
     </>
   );
-};
-
-export default HomePage;
+}

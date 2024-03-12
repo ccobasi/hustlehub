@@ -5,11 +5,7 @@ import TextField from "@mui/material/TextField";
 import CloseIcon from "@mui/icons-material/Close";
 import { InputAdornment } from "@mui/material";
 
-
-
-
-
-//Second Approach
+//Search bar component
 
 const SearchBar = ({ setSearchQuery }) => (
   <form>
@@ -33,21 +29,19 @@ const SearchBar = ({ setSearchQuery }) => (
         ),
         endAdornment: (
           <InputAdornment>
-            <IconButton
-              
-              edge="end"
-            >
-             <CloseIcon/>
+            <IconButton edge="end">
+              <CloseIcon />
             </IconButton>
           </InputAdornment>
         ),
       }}
-      sx={{width:"100%"}}
+      sx={{ width: "100%" }}
     />
   </form>
 );
+//Component End
 
-//create a function to filter our data. This function
+//function to filter our data. This function
 //will return only elements that include our search query.
 
 const filterData = (query, workplaceData) => {
@@ -57,21 +51,21 @@ const filterData = (query, workplaceData) => {
     return workplaceData.filter((d) => d.toLowerCase().includes(query));
   }
 };
+//Filter function End
 
-// create data array to represent our jobPositionData:
-const workplaceData = [
-  "Remote",
-  "On-site",
-  "Hybrid",
-  
-];
+// Data  to represent our jobPositionData:
+const workplaceData = ["Remote", "On-site", "Hybrid"];
+//Data End
 
 export default function Workplace() {
-  //create our Search functional component:
+  //Initialization of useState Hook
   const [searchQuery, setSearchQuery] = useState("");
+  //Call site for the filterData function
   const dataFiltered = filterData(searchQuery, workplaceData);
+  //Call End
   return (
     <>
+      {/* Div container for Workplace search functionality */}
       <div
         style={{
           display: "flex",
@@ -82,10 +76,9 @@ export default function Workplace() {
         }}
       >
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div style={{ padding: 3 }} >
+        <div style={{ padding: 3 }}>
           {dataFiltered.map((d) => (
             <div
-            
               className="text"
               style={{
                 padding: 5,
@@ -104,6 +97,7 @@ export default function Workplace() {
           ))}
         </div>
       </div>
+      {/* Div End */}
     </>
   );
 }

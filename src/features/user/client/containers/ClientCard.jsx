@@ -12,6 +12,7 @@ export default function ClientCard({
 }) {
   return (
     <>
+    {/* Grid for client card */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{boxShadow: 0,}}
           
@@ -62,6 +63,7 @@ export default function ClientCard({
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

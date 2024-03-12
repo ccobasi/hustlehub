@@ -3,10 +3,12 @@ import clientAppreciationData from "../data/clientAppreciationData";
 import { Grid } from "@mui/material";
 
 export const EditClientSeventhFeature = () => {
+  //Data mapping
   let cardContainer = clientAppreciationData.map((el) => {
     return <ClientAppreciationCard  key={el.id} {...el} />;
-  });
+  });//Mapping End
   return (
+    // Grid
     <Grid
       container
       spacing={4}
@@ -18,6 +20,7 @@ export const EditClientSeventhFeature = () => {
     >
       {cardContainer}
     </Grid>
+    // Grid End
 
     
   );

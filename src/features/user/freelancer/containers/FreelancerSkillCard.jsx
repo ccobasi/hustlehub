@@ -8,6 +8,7 @@ import Divider from "@mui/material/Divider";
 import AcUnitOutlined from "@mui/icons-material/AcUnitOutlined";
 import Link from "@mui/material/Link";
 
+//Data for freelancer skills
 const skills = [
   { id: 0, name: "Leadership" },
   { id: 1, name: "Teamwork" },
@@ -18,6 +19,7 @@ const skills = [
 ];
 
 export default function FreelancerSkillCard() {
+  //Get skill function
   const getSkill = () =>
     skills.map((skill, index) => (
       <>
@@ -29,10 +31,11 @@ export default function FreelancerSkillCard() {
           {skill.name}
         </Button>
       </>
-    ));
+    ));//function End
 
   return (
     <>
+    {/* Grid for the freelancer skill */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1, overflow: "hidden" }}>
@@ -51,6 +54,7 @@ export default function FreelancerSkillCard() {
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

@@ -2,7 +2,6 @@ import { Typography, Link, Stack, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Company from "../../components/Company";
 
-
 export default function CompanyPage() {
   //Instatiate useNavigate
   let navigate = useNavigate();
@@ -28,7 +27,7 @@ export default function CompanyPage() {
       </Typography>
 
       {/*First Client Company Feature*/}
-      <Company/>
+      <Company />
 
       {/*Second Heading*/}
 

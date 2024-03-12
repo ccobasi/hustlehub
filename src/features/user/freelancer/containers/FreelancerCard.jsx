@@ -13,6 +13,7 @@ export default function FreelancerCard({
 }) {
   return (
     <>
+    {/* Grid for freelancer card */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{ boxShadow: 0 }}>
           <CardContent
@@ -61,6 +62,7 @@ export default function FreelancerCard({
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

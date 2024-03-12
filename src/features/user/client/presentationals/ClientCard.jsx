@@ -3,10 +3,12 @@ import clientCardData from "../data/clientCard";
 import { Grid } from "@mui/material";
 
 export const ClientFirstFeature = () => {
+  // Data mapping
   let cardContainer = clientCardData.map((el) => {
     return <ClientCard key={el.id} {...el} />;
-  });
+  });//Mapping End
   return (
+    //Grid
     <Grid
       container
       spacing={4}
@@ -17,7 +19,7 @@ export const ClientFirstFeature = () => {
       }}
     >
       {cardContainer}
-    </Grid>
+    </Grid>//Grid End
 
     
   );

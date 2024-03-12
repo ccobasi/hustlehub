@@ -1,4 +1,4 @@
-const  secondFeatureData = [
+const  homeCategoriesData = [
     {
         id: 1,
       jobTitle: "Job Title #1",
@@ -39,4 +39,4 @@ const  secondFeatureData = [
     },
   ];
 
-  export default secondFeatureData;
+  export default homeCategoriesData;

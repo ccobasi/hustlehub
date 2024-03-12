@@ -10,17 +10,16 @@ import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 export default function AboutClientCard(props) {
   return (
     <>
+      {/* Grid for client card */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1, overflow: "hidden" }}>
-            <Stack direction="row" sx={{justifyContent:"space-between"}}>
-              <AccountCircleOutlined sx={{ ml: "2%",mr:"-65%" }} />{" "}
-              <Typography >
-                {props.title}
-              </Typography>
-              <BorderColorOutlinedIcon sx={{mr: "2%" }} />
+            <Stack direction="row" sx={{ justifyContent: "space-between" }}>
+              <AccountCircleOutlined sx={{ ml: "2%", mr: "-65%" }} />{" "}
+              <Typography>{props.title}</Typography>
+              <BorderColorOutlinedIcon sx={{ mr: "2%" }} />
             </Stack>
-            <Divider sx={{mt:"5%",mb:"5%"}}/>
+            <Divider sx={{ mt: "5%", mb: "5%" }} />
             <Typography
               variant="body2"
               sx={{
@@ -37,6 +36,7 @@ export default function AboutClientCard(props) {
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

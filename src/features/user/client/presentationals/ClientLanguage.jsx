@@ -6,6 +6,7 @@ import { Grid } from "@mui/material";
 export const EditClientSixthFeature = () => {
  
   return (
+    //Grid
     <Grid
       container
       spacing={4}
@@ -16,7 +17,7 @@ export const EditClientSixthFeature = () => {
       }}
     >
       {<ClientLanguageCard/>}
-    </Grid>
+    </Grid>//Grid End
 
     
   );

@@ -3,10 +3,12 @@ import clientProjectData from "../data/clientProjectData";
 import { Grid } from "@mui/material";
 
 export const ClientSecondFeature  = () => {
+  //Data mapping
   let projectContainer = clientProjectData.map((el) => {
     return <ProjectContainer key={el.id} {...el} />;
-  });
+  });//Mapping End
   return (
+    //Grid
     <Grid
       container
       spacing={4}
@@ -17,7 +19,7 @@ export const ClientSecondFeature  = () => {
       }}
     >
       {projectContainer}
-    </Grid>
+    </Grid>//Grid End
   );
 };
 

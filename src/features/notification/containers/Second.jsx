@@ -12,6 +12,7 @@ import { Button, Container } from "@mui/material";
 export default function Second(props) {
   return (
     <>
+    {/* Container for Notification functionality  */}
       <Container maxWidth="md" sx={{ mt: 8 }}>
       <List
         sx={{
@@ -55,6 +56,7 @@ export default function Second(props) {
       
       </List>
       </Container>
+      {/* Container End */}
     </>
   );
 }

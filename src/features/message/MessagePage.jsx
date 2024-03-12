@@ -1,28 +1,29 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Typography,  Link, Stack, Button } from "@mui/material";
-import { FirstMessageGroup  } from "./presentationals/FirstMessageGroup ";
-import { SecondMessageGroup  } from "./presentationals/SecondMessageGroup ";
+import { Typography, Link, Stack, Button } from "@mui/material";
+import { FirstMessageGroup } from "./presentationals/FirstMessageGroup ";
+import { SecondMessageGroup } from "./presentationals/SecondMessageGroup ";
 import { MessageSearchBar } from "../components/MessageSearchBar";
 
-
 const MessagePage = () => {
-
+  //Initialization of useState hook
   const [searchQuery, setSearchQuery] = useState("");
-    const callFromNavbar = (value) => {
-      setSearchQuery(value);
-    };
-  
-    const navigate = useNavigate();
-    const searchPage = () => {
-      navigate(`/search`);
-    };
-  
+  //Handler
+  const callFromNavbar = (value) => {
+    setSearchQuery(value);
+  };
+  //Handle End
+  //Initialization of useNaviagte hook
+  const navigate = useNavigate();
+  //Handle for search page
+  const searchPage = () => {
+    navigate(`/search`);
+  };
+  //Handle End
 
   return (
     <>
-   
-    <Typography
+      <Typography
         variant="h5"
         sx={{
           color: (theme) =>
@@ -31,13 +32,13 @@ const MessagePage = () => {
               : theme.palette.grey[300],
           pt: "20px",
           ml: "28%",
-          mt:"5%"
+          mt: "5%",
         }}
       >
         <b>Messages</b>
       </Typography>
 
-       <MessageSearchBar queryData={callFromNavbar} searchBox={searchPage}/>
+      <MessageSearchBar queryData={callFromNavbar} searchBox={searchPage} />
 
       <Typography
         variant="h5"
@@ -71,14 +72,10 @@ const MessagePage = () => {
       >
         <b>Individual Messages</b>
       </Typography>
-       {/*Second Message Feature*/}
-        <SecondMessageGroup />
-    
-      
-      
-      
+      {/*Second Message Feature*/}
+      <SecondMessageGroup />
     </>
   );
 };
- 
+
 export default MessagePage;

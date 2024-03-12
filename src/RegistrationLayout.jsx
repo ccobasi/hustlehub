@@ -7,10 +7,12 @@ import FooterSection from "./features/layout/footer/FooterSection";
 const RegistrationLayout = () => {
   return (
     <>
+      {/* Call site for the registration header */}
       <RegistrationHeader />
+      {/* Outlet for registration Layout */}
       <Outlet />
-
-      <Box sx={{ display: { xs: "none", md: "flex" }, bgcolor: "#87CEEB" }}>
+      {/* Box for the footer of medium and large devices */}
+      <Box sx={{ display: { xs: "none", md: "flex" }, backgroundColor: "background.default", }}>
         <FooterSection />
       </Box>
     </>

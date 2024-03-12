@@ -7,6 +7,7 @@ import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import Divider from "@mui/material/Divider";
 import { WorkspacePremiumOutlined } from "@mui/icons-material";
 
+// Data for client languages
 const languages = [
   { id: 0, name: "English" },
   { id: 1, name: "German" },
@@ -14,9 +15,10 @@ const languages = [
   { id: 3, name: "Mandarin" },
   { id: 4, name: "Italy" },
 
-];
+];//Data End
 
 export default function ClientLanguageCard() {
+  // Get language Function
   const getLanguage = () =>
     languages.map((language, index) => (
       <>
@@ -28,10 +30,11 @@ export default function ClientLanguageCard() {
           {language.name}
         </Button>
       </>
-    ));
+    ));//Function End
 
   return (
     <>
+    {/* Grid for client languaage */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1, overflow: "hidden" }}>
@@ -47,6 +50,7 @@ export default function ClientLanguageCard() {
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

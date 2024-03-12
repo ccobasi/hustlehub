@@ -8,110 +8,186 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import { Stack } from "@mui/material";
+import { Avatar, Stack } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { ArrowForwardIos } from "@mui/icons-material";
+import Search from "@mui/icons-material/Search";
 
+// Data for mobile modal
+const mobileModalData = [
+  {
+    name: "Profile",
+    url: "/",
+    icon: (
+      <ArrowForwardIos
+        sx={{
+          ml: "60%",
+          width: "24px",
+          height: "24px",
+          color: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.primary.lightModeTitleTextColor
+              : theme.palette.primary.darkModeTitleTextColor,
+        }}
+      />
+    ),
+  },
+  {
+    name: "Messages",
+    url: "#Inbox",
+    icon: (
+      <ArrowForwardIos
+        sx={{
+          ml: "38%",
+          width: "24px",
+          height: "24px",
+          color: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.primary.lightModeTitleTextColor
+              : theme.palette.primary.darkModeTitleTextColor,
+        }}
+      />
+    ),
+  },
+  {
+    name: "Settings",
+    url: "#Outbox",
+    icon: (
+      <ArrowForwardIos
+        sx={{
+          ml: "48%",
+          width: "24px",
+          height: "24px",
+          color: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.primary.lightModeTitleTextColor
+              : theme.palette.primary.darkModeTitleTextColor,
+        }}
+      />
+    ),
+  },
+  {
+    name: "How It Works",
 
-const ResponsiveNavBar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const callFromNavbar = (value) => {
-    setSearchQuery(value);
-  };
+    url: "#Home",
+    icon: (
+      <ArrowForwardIos
+        sx={{
+          ml: "58%",
+          mt: "20px",
+          width: "24px",
+          height: "24px",
+          color: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.primary.lightModeTitleTextColor
+              : theme.palette.primary.darkModeTitleTextColor,
+        }}
+      />
+    ),
+  },
+];
 
-  const navigate = useNavigate();
-  const searchPage = () => {
-    navigate(`/search`);
-  };
+// Data for menu section
+const menuSectionData = [
+  {
+    name: "Profile",
+    url: "/",
+  },
+  {
+    name: "Messages",
+    url: "#Inbox",
+  },
+  {
+    name: "Settings",
+    url: "#Outbox",
+  },
+  {
+    name: "How It Works",
 
-  return (
-    <AppBar sx={{ backgroundColor: "background.default", mb: "60px" }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <MobileUserAccountCircle />
-
-          <MobileTransitionsModal />
-          <MobileUserAppTitle />
-
-          <UserAppTitle />
-
-          <MenuSection />
-          <Search queryData={callFromNavbar} searchBox={searchPage} />
-          <MobileNavSearch queryData={callFromNavbar} searchBox={searchPage} />
-          <SignInButton />
-          <MobileSignInButton />
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
-};
-export default ResponsiveNavBar;
-
-const MenuSection = () => {
-  //instantiate useNavigate object
-  let navigate = useNavigate();
-
+    url: "#Home",
+  },
+];
+const AppLogo = () => {
   return (
     <>
-      <Box sx={{ display: { xs: "none", md: "flex" }, ml: "30%" }}>
-        <NavLink
-          to="/client-drawer"
-          style={{ textDecoration: "none", color: "#87CEEB" }}
-        >
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Profile &nbsp;&nbsp;
-        </NavLink>
-
-        <NavLink
-          to="/freelancer-drawer"
-          style={{ textDecoration: "none", color: "#87CEEB" }}
-        >
-          Messages &nbsp;&nbsp;
-        </NavLink>
-        <NavLink
-          to="/categories"
-          style={{ textDecoration: "none", color: "#87CEEB" }}
-        >
-          Settings &nbsp; &nbsp;
-        </NavLink>
-        <NavLink
-          to="/categories"
-          style={{ textDecoration: "none", color: "#87CEEB" }}
-        >
-          How It Works
-        </NavLink>
+      {/* Box for App logo */}
+      <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "flex" } }}>
+        <Avatar
+          sx={{
+            position: "fixed",
+            typography: (theme) => theme.typography.logo,
+          }}
+        />
       </Box>
+      {/* Box End */}
     </>
   );
 };
 
 const MobileTransitionsModal = () => {
-  const style = {
-    position: "absolute",
-    top: "17%",
-    left: "80%",
-    transform: "translate(-50%, -50%)",
-    width: 240,
-    bgcolor: "background.paper",
-    border: "0px solid #87CEEB",
-    boxShadow: 24,
-    p: 4,
-  };
+  //Get list function
+  const getModalList = () => (
+    <Box>
+      {mobileModalData.map((item, index) => (
+        <>
+          <Stack direction="row" key={index}>
+            <Typography
+              component="a"
+              href={item.url}
+              sx={{
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.lightModeTitleTextColor
+                    : theme.palette.primary.darkModeTitleTextColor,
+                fontFamily: "Poppins",
+                textDecoration: "none",
+                fontWeight: "700",
+                fontSize: "16px",
+                lineHeight: "19.2px",
+                letter: "-1.5%",
+                marginTop: "10px",
+                marginBottom: "5px",
+              }}
+            >
+              {item.name}
+            </Typography>
 
+            {item.icon}
+          </Stack>
+          <Divider
+            sx={{
+              width: "134px",
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeTitleTextColor
+                  : theme.palette.primary.darkModeTitleTextColor,
+            }}
+          />
+        </>
+      ))}
+    </Box>
+  );
+  //Function End
+
+  //Intialization of useState hook
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <>
+      {/* Box for the Mobile Transitions Modal*/}
       <Box sx={{ display: { xs: "flex", md: "none" } }}>
         <IconButton onClick={handleOpen}>
-          <MenuIcon />
+          <MenuIcon
+            sx={{
+              typography: (theme) => theme.typography.mobileMenuIcon,
+            }}
+          />
         </IconButton>
         <Modal
           aria-labelledby="transition-modal-title"
@@ -127,75 +203,31 @@ const MobileTransitionsModal = () => {
           }}
         >
           <Fade in={open}>
-            <Box sx={style} className="transitionalModalBox">
-              <Stack direction="column">
-                <Stack direction="row">
-                  <a
-                    href="/client-drawer"
-                    style={{ textDecoration: "none", color: "#87CEEB" }}
-                  >
-                    Profile
-                  </a>{" "}
-                  <ArrowForwardIos sx={{ ml: "56%" }} />
-                </Stack>
-                <Divider />
+            <Box
+              sx={{
+                position: "absolute",
+                top: "22%",
+                left: "80%",
+                transform: "translate(-50%, -50%)",
+                width: "207px",
+                height: "220px",
 
-                <Stack direction="row">
-                  <a
-                    href="/freelancer-drawer"
-                    style={{ textDecoration: "none", color: "#87CEEB" }}
-                  >
-                    Messages
-                  </a>{" "}
-                  <ArrowForwardIos sx={{ ml: "41%" }} />
-                </Stack>
-                <Divider />
-                <Stack direction="row">
-                  <a
-                    href=""
-                    style={{ textDecoration: "none", color: "#87CEEB" }}
-                  >
-                    Settings
-                  </a>{" "}
-                  <ArrowForwardIos sx={{ ml: "48%" }} />
-                </Stack>
-                <Divider />
-                <Stack direction="row">
-                  <a
-                    href=""
-                    style={{ textDecoration: "none", color: "#87CEEB" }}
-                  >
-                    How It Works
-                  </a>{" "}
-                  <ArrowForwardIos sx={{ ml: "27%" }} />
-                </Stack>
-                <Divider />
-              </Stack>
+                bgcolor: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.lightFadeBoxColor
+                    : theme.palette.primary.darkFadeBoxColor,
+
+                borderRadius: "10px",
+
+                p: 4,
+              }}
+            >
+              <Stack direction="column">{getModalList()}</Stack>
             </Box>
           </Fade>
         </Modal>
       </Box>
-    </>
-  );
-};
-
-const MobileUserAccountCircle = () => {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenUserMenu = (event) => {
-    console.log("Mobile User Menu Clicked!");
-    setAnchorElUser(event.currentTarget);
-  };
-
-  return (
-    <>
-      <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
-        <Tooltip title="Log in">
-          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <AccountCircle sx={{ color: "#87CEEB" }} />
-          </IconButton>
-        </Tooltip>
-      </Box>
+      {/* Box End */}
     </>
   );
 };
@@ -203,16 +235,17 @@ const MobileUserAccountCircle = () => {
 const MobileUserAppTitle = () => {
   return (
     <>
+      {/* Mobile App title */}
       <Typography
-        variant="h5"
+        variant="h6"
         noWrap
         component="a"
-        href=""
+        href="/"
         sx={{
-          mr: 2,
           display: { xs: "flex", md: "none" },
+          fontSize: "16px",
           flexGrow: 1,
-          fontFamily: "monospace",
+          fontFamily: "Poppins",
           fontWeight: 50,
           letterSpacing: ".05rem",
           color: "#87CEEB",
@@ -220,78 +253,45 @@ const MobileUserAppTitle = () => {
           textAlign: "center",
         }}
       >
-        #########
+        Hustle Hub
       </Typography>
-    </>
-  );
-};
-
-const UserAppTitle = () => {
-  return (
-    <>
-      <Typography
-        variant="h6"
-        noWrap
-        component="a"
-        href="/"
-        sx={{
-          mr: 2,
-          display: { xs: "none", md: "flex" },
-          fontFamily: "monospace",
-          fontWeight: 700,
-          letterSpacing: ".3rem",
-          color: "#87CEEB",
-          textDecoration: "none",
-        }}
-      >
-        #########
-      </Typography>
-    </>
-  );
-};
-
-const Search = ({ queryData, searchBox }) => {
-  const [query, setQuery] = useState("");
-
-  const onChangeFunction = (e) => setQuery(e.target.value);
-
-  useEffect(() => {
-    queryData(query);
-  }, [query]);
-
-  return (
-    <>
-      <Box
-        className="headerSearch"
-        sx={{ display: { md: "flex", xs: "none" } }}
-      >
-        <input
-          type="text"
-          placeholder="Search"
-          value={query}
-          onChange={onChangeFunction}
-          onClick={searchBox}
-        ></input>
-      </Box>
+      {/* Mobile Title End */}
     </>
   );
 };
 
 export const MobileNavSearch = ({ queryData, searchBox }) => {
+  //Initialization of useState hook
   const [query, setQuery] = useState("");
-
+  //Handler for onChangeFunction
   const onChangeFunction = (e) => setQuery(e.target.value);
-
+  //Intialization of useEffect hook
   useEffect(() => {
     queryData(query);
   }, [query]);
 
   return (
     <>
+      {/* Box for the mobile nav search */}
       <Box
-        className="mobileNavSearch"
-        sx={{ display: { xs: "flex", md: "none" } }}
+        sx={{
+          display: { xs: "flex", md: "none" },
+          width: "118.23px",
+          height: "19px",
+          mr: "20%",
+        }}
       >
+        <Search
+          sx={{
+            position: "absolute",
+            ml: "0.2%",
+            color: "#000000",
+            width: "10.99px",
+            height: "9.92px",
+            top: "27.54px",
+            opacity: "40%",
+          }}
+        />
         <input
           type="text"
           placeholder="Search"
@@ -303,9 +303,17 @@ export const MobileNavSearch = ({ queryData, searchBox }) => {
             paddingLeft: "10px",
             paddingTop: "3px",
             paddingBottom: "3px",
+            border: "1px solid #AAA6B9",
+            fontFamily: "Poppins",
+            fontWeight: "400",
+            lineHeight: "15px",
+            fontSize: "10px",
+            color: "#95969D",
+            backgroundColor: "#F2F2F3",
           }}
         ></input>
       </Box>
+      {/* Box End  */}
     </>
   );
 };
@@ -315,26 +323,178 @@ const MobileSignInButton = () => {
   let navigate = useNavigate();
 
   return (
-    <Box
-      className="mobileSignUpButton"
-      sx={{ display: { xs: "flex", md: "none" } }}
-    >
-      <Button
-        onClick={() => navigate("/sign-up")}
-        variant="contained"
+    <>
+      {/* Box for mobile sign in feature */}
+      <Box
         sx={{
-          backgroundColor: "#87CEEB",
-          "&:hover": {
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[400]
-                : theme.palette.grey[500],
-          },
+          display: { xs: "flex", md: "none" },
+          width: "62px",
+          height: "24px",
+          top: "7px",
+          ml: "3px",
+          borderRadius: "5px",
         }}
       >
-        Sign Up
-      </Button>
-    </Box>
+        <Button
+          onClick={() => navigate("/sign-up")}
+          variant="contained"
+          sx={{
+            backgroundColor: "#87CEEB",
+            "&:hover": {
+              backgroundColor: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.grey[400]
+                  : theme.palette.grey[500],
+            },
+            fontFamily: "Poppins",
+            fontWeight: "500",
+            fontSize: "8px",
+            top: "2px",
+          }}
+        >
+          Sign Up
+        </Button>
+      </Box>
+      {/* Box End */}
+    </>
+  );
+};
+
+const UserAppTitle = () => {
+  return (
+    <>
+      {/* App title */}
+      <Typography
+        variant="h6"
+        noWrap
+        component="a"
+        href="/"
+        sx={{
+          display: { xs: "none", md: "flex" },
+          fontSize: "16px",
+          flexGrow: 1,
+          fontFamily: "Poppins",
+          fontWeight: 50,
+          letterSpacing: ".05rem",
+          color: "#87CEEB",
+          textDecoration: "none",
+          textAlign: "center",
+          marginTop: "10px",
+          marginBottom: "5px",
+          ml: "2%",
+          mr: "7%",
+        }}
+      >
+        Hustle Hub
+      </Typography>
+      {/* Title End */}
+    </>
+  );
+};
+
+const MenuSection = () => {
+  //instantiate of useNavigate hook
+  let navigate = useNavigate();
+
+  //Get list function
+  const getMenuSectionList = () => (
+    <Stack direction="row">
+      {menuSectionData.map((item, index) => (
+        <Stack key={index}>
+          <Typography
+            component="a"
+            href={item.url}
+            sx={{
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeTitleTextColor
+                  : theme.palette.primary.darkModeTitleTextColor,
+              fontFamily: "Poppins",
+              textDecoration: "none",
+              fontWeight: "700",
+              fontSize: "16px",
+              lineHeight: "19.2px",
+
+              marginTop: "10px",
+              marginBottom: "5px",
+
+              my: 1,
+              mx: 1.5,
+            }}
+          >
+            {item.name}
+          </Typography>
+        </Stack>
+      ))}
+    </Stack>
+  );
+  // Function End
+  return (
+    <>
+      {/* Box */}
+      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        {getMenuSectionList()}
+      </Box>
+      {/* Box End */}
+    </>
+  );
+};
+
+const NavBarSearch = ({ queryData, searchBox }) => {
+  //Intialization of useState Hook
+  const [query, setQuery] = useState("");
+  //Handle for onChangeFunction
+  const onChangeFunction = (e) => setQuery(e.target.value);
+  //Use effect hook
+  useEffect(() => {
+    queryData(query);
+  }, [query]);
+
+  return (
+    <>
+      {/* Box for the Search Feature */}
+      <Box
+        sx={{
+          display: { md: "flex", xs: "none" },
+          width: "118.23px",
+          height: "19px",
+          mr: "5%",
+        }}
+      >
+        <Search
+          sx={{
+            position: "absolute",
+            ml: "0.2%",
+            color: "#000000",
+            width: "10.99px",
+            height: "9.92px",
+            top: "27.54px",
+            opacity: "40%",
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Search"
+          value={query}
+          onChange={onChangeFunction}
+          onClick={searchBox}
+          style={{
+            borderRadius: "8px",
+            paddingLeft: "10px",
+            paddingTop: "3px",
+            paddingBottom: "3px",
+            border: "1px solid #AAA6B9",
+            fontFamily: "Poppins",
+            fontWeight: "400",
+            lineHeight: "15px",
+            fontSize: "10px",
+            color: "#95969D",
+            backgroundColor: "#F2F2F3",
+          }}
+        ></input>
+      </Box>
+      {/* Box End */}
+    </>
   );
 };
 
@@ -343,25 +503,88 @@ const SignInButton = () => {
   let navigate = useNavigate();
 
   return (
-    <Box
-      className="headerSignUpButton"
-      sx={{ display: { md: "flex", xs: "none" } }}
-    >
-      <Button
-        onClick={() => navigate("/sign-up")}
-        variant="contained"
+    <>
+      {/* Box for the Signin Feature */}
+      <Box
         sx={{
-          backgroundColor: "#87CEEB",
-          "&:hover": {
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[400]
-                : theme.palette.grey[500],
-          },
+          display: { md: "flex", xs: "none" },
+          width: "62px",
+          height: "24px",
+          top: "7px",
+          ml: "3px",
+          borderRadius: "5px",
         }}
       >
-        Sign Up
-      </Button>
-    </Box>
+        <Button
+          onClick={() => navigate("/sign-up")}
+          variant="contained"
+          sx={{
+            backgroundColor: "#87CEEB",
+            "&:hover": {
+              backgroundColor: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.grey[400]
+                  : theme.palette.grey[500],
+            },
+            fontFamily: "Poppins",
+            fontWeight: "500",
+            fontSize: "8px",
+            top: "2px",
+          }}
+        >
+          Sign Up
+        </Button>
+      </Box>
+      {/* Box End */}
+    </>
   );
 };
+
+export default function ResponsiveNavBar() {
+  //Initialization of useState Hook
+  const [searchQuery, setSearchQuery] = useState("");
+  //Handler for callFromNavbar
+  const callFromNavbar = (value) => {
+    setSearchQuery(value);
+  };
+  //Initialization of useNavigate hook
+  const navigate = useNavigate();
+  //Handler for searchPage
+  const searchPage = () => {
+    navigate(`/search`);
+  };
+
+  return (
+    <>
+      {/* App or Navigation bar */}
+      <AppBar
+        elevation="3"
+        sx={{
+          backgroundColor: "background.default",
+          typography: (theme) => theme.typography.appBar,
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <AppLogo />
+
+            <MobileTransitionsModal />
+            <MobileUserAppTitle />
+
+            <UserAppTitle />
+
+            <MenuSection />
+            <NavBarSearch queryData={callFromNavbar} searchBox={searchPage} />
+            <MobileNavSearch
+              queryData={callFromNavbar}
+              searchBox={searchPage}
+            />
+            <SignInButton />
+            <MobileSignInButton />
+          </Toolbar>
+        </Container>
+      </AppBar>
+      {/* Bar End  */}
+    </>
+  );
+}

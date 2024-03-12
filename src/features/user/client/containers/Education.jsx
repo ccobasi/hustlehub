@@ -1,13 +1,15 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { Box, Stack } from "@mui/material";
+import {  Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import SchoolOutlined from "@mui/icons-material/SchoolOutlined";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import AddCircleOutline from "@mui/icons-material/AddCircleOutline";
-import HomeRepairServiceOutlined from "@mui/icons-material/HomeRepairServiceOutlined";
+
+
+
 
 export default function EducationCard({
   title,
@@ -17,6 +19,7 @@ export default function EducationCard({
 }) {
   return (
     <>
+    {/* Grid for client educational card  */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1, overflow: "hidden" }}>
@@ -50,6 +53,7 @@ export default function EducationCard({
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

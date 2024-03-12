@@ -7,6 +7,7 @@ import { FourthFeature } from "./presentationals/FourthFeature";
 export const AboutPage = () => {
   return (
     <>
+      {/* Box for the AboutUs page */}
       <Box>
         <Grid
           container
@@ -34,6 +35,7 @@ export const AboutPage = () => {
           <FourthFeature />
         </Grid>
       </Box>
+      {/* Box End */}
     </>
   );
 };

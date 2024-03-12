@@ -13,6 +13,7 @@ import HomeRepairServiceOutlined from "@mui/icons-material/HomeRepairServiceOutl
 export default function WorkExperienceCard({title,subTitle,organization,timeframe }) {
   return (
     <>
+    {/* Grid for client work experience */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1, overflow: "hidden" }}>
@@ -48,6 +49,7 @@ export default function WorkExperienceCard({title,subTitle,organization,timefram
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

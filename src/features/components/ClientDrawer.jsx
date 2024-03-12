@@ -21,6 +21,7 @@ import Container from "@mui/material/Container";
 import { ClientFirstFeature } from "../user/client/presentationals/ClientCard";
 import Link from "@mui/material/Link";
 
+// Data for the client Temporary left drawer
 const clientTemporaryLeftDrawerData = [
   {
     name: "Personal Info",
@@ -48,11 +49,11 @@ const clientTemporaryLeftDrawerData = [
 ];
 
 export default function ClientAnchorTemporaryDrawer() {
+  // Initialization of useNavigate hook
   let navigate = useNavigate();
 
   /*
-  react useState hook to save the current open/close state of the drawer,
-  normally variables dissapear afte the function was executed
+   useState hook to save the current open/close state of the drawer
   */
   const [open, setState] = useState(true);
 
@@ -72,6 +73,7 @@ export default function ClientAnchorTemporaryDrawer() {
     setState(open);
     navigate("/");
   };
+  // Function End
 
   //Get list function
   const getList = () => (
@@ -86,12 +88,13 @@ export default function ClientAnchorTemporaryDrawer() {
       ))}
     </div>
   );
+  // Function End
 
   return (
     <Container>
       {/* The outside of the drawer */}
       <Drawer
-        //from which side the drawer slides in
+        //Drawer side
         anchor="left"
         //if open is true --> drawer is shown
         open={open}
@@ -127,19 +130,24 @@ export default function ClientAnchorTemporaryDrawer() {
               View Profile
             </Link>
           </Box>
+          {/* Card End */}
 
           <Divider sx={{ mb: 2 }} />
 
           {getList()}
-
+          {/* Box for Go Premium button */}
           <Box sx={{ mt: "20%" }}>
             <Button>
               <WorkspacePremiumOutlinedIcon /> Go Premium
             </Button>
           </Box>
+          {/* Box End */}
         </Box>
+        {/* Inside Box End */}
       </Drawer>
+      {/* Drawer End */}
     </Container>
+    // Container End
   );
 }
 

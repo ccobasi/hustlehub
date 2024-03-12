@@ -24,6 +24,7 @@ import Container from "@mui/material/Container";
 import { ClientFirstFeature } from "../user/client/presentationals/ClientCard";
 import Link from "@mui/material/Link";
 
+//Freelancer data for the temporary drawer
 const freelancerTemporaryLeftDrawerData = [
   {
     name: "Personal Info",
@@ -32,7 +33,7 @@ const freelancerTemporaryLeftDrawerData = [
   },
   {
     name: "Applications",
-    icon: <AssessmentOutlined/>,
+    icon: <AssessmentOutlined />,
     url: "/",
   },
   {
@@ -42,7 +43,7 @@ const freelancerTemporaryLeftDrawerData = [
   },
   {
     name: "Resumes",
-    icon: < ContentPaste/>,
+    icon: <ContentPaste />,
     url: "/",
   },
   { name: "Portfolio", icon: <HomeRepairServiceOutlinedIcon />, url: "#Inbox" },
@@ -53,14 +54,15 @@ const freelancerTemporaryLeftDrawerData = [
     icon: <LogoutOutlinedIcon sx={{ color: "red" }} />,
     url: "#Home",
   },
-  
 ];
+//Data End
 
 export default function FreelancerAnchorTemporaryDrawer() {
+  //Initialization of useNavigate hook
   let navigate = useNavigate();
 
   /*
-  react useState hook to save the current open/close state of the drawer,
+   useState hook to save the current open/close state of the drawer,
   normally variables dissapear afte the function was executed
   */
   const [open, setState] = useState(true);
@@ -81,6 +83,7 @@ export default function FreelancerAnchorTemporaryDrawer() {
     setState(open);
     navigate("/");
   };
+  //ToggleDrawer function End
 
   //Get list function
   const getList = () => (
@@ -95,6 +98,7 @@ export default function FreelancerAnchorTemporaryDrawer() {
       ))}
     </div>
   );
+  //List function End
 
   return (
     <Container>
@@ -109,7 +113,7 @@ export default function FreelancerAnchorTemporaryDrawer() {
         //function that is called when the drawer should open
         onOpen={toggleDrawer(true)}
       >
-        {/* The inside of the drawer */}
+        {/* Box for the inside of the drawer  */}
         <Box
           sx={{
             p: 2,
@@ -147,9 +151,10 @@ export default function FreelancerAnchorTemporaryDrawer() {
             </Button>
           </Box>
         </Box>
+        {/* Insde Box End */}
       </Drawer>
+      {/* Drawer End */}
     </Container>
+    // Drawer outside container End
   );
 }
-
-

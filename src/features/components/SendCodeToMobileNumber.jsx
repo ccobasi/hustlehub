@@ -1,50 +1,47 @@
 import React from "react";
-import { Button,  TextField, Box } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import {
- 
-  PhoneAndroidOutlined,
- 
-} from "@mui/icons-material";
+import { PhoneAndroidOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 export const SendCodeToMobileNumber = () => {
-     //Instatiate useNavigate
+  //Instatiate useNavigate
   let navigate = useNavigate();
-
-
+  //Handler for the submit event
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       mobileNumber: data.get("mobileNumber"),
     });
-    navigate('/');
+    navigate("/");
   };
+  //handler End
   return (
     <>
+      {/* Box for the registration form */}
       <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 12 }}>
         {/**Registration Form Control */}
         <FormControl fullWidth>
           {/**Mobile Number Textfield */}
           <TextField
-              required
-              fullWidth
-              id="mobileNumber"
-              label="Mobile Number"
-              name="mobileNumber"
-              autoComplete="mobile-number"
-              placeholder="Enter your mobile number"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment>
-                    <PhoneAndroidOutlined />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{ pb: "5%" }}
-            />
+            required
+            fullWidth
+            id="mobileNumber"
+            label="Mobile Number"
+            name="mobileNumber"
+            autoComplete="mobile-number"
+            placeholder="Enter your mobile number"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment>
+                  <PhoneAndroidOutlined />
+                </InputAdornment>
+              ),
+            }}
+            sx={{ pb: "5%" }}
+          />
         </FormControl>
         {/**Submit button*/}
         <Button
@@ -56,6 +53,7 @@ export const SendCodeToMobileNumber = () => {
           Send code
         </Button>
       </Box>
+      {/* Box End */}
     </>
   );
 };

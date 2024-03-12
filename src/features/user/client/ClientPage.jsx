@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { ClientFirstFeature } from "./presentationals/ClientCard";
 import ClientSecondFeature from "./presentationals/ProjectContainer";
 
-
 const ClientPage = () => {
   //Instatiate useNavigate
   let navigate = useNavigate();

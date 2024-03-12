@@ -17,6 +17,7 @@ export default function FreelancerProjectContainer({
 }) {
   return (
     <>
+    {/* Grid for freelancer projects */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <List
           sx={{
@@ -55,6 +56,7 @@ export default function FreelancerProjectContainer({
           </ListItem>
         </List>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

@@ -19,9 +19,11 @@ export default function ProjectReviewCard({
   sourceSet,
   imageLabel,
 }) {
+  // Initialization of useNaviage hook
   let navigate = useNavigate();
   return (
     <>
+    {/* Grid for client project review */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Typography component="h4" variant="h6">
           {title}
@@ -71,6 +73,7 @@ export default function ProjectReviewCard({
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

@@ -1,13 +1,10 @@
-import { Typography,  Link, Stack, Button } from "@mui/material";
-import Notification from './presentationals/Notification';
-
+import { Typography, Link, Stack, Button } from "@mui/material";
+import Notification from "./presentationals/Notification";
 
 const NotificationPage = () => {
-  
-
   return (
     <>
-    <Typography
+      <Typography
         variant="h5"
         sx={{
           color: (theme) =>
@@ -24,12 +21,9 @@ const NotificationPage = () => {
 
       {/*First Notification Feature*/}
 
-      <Notification/>
-      
-      
-      
+      <Notification />
     </>
   );
 };
- 
+
 export default NotificationPage;

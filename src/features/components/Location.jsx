@@ -9,7 +9,7 @@ import { InputAdornment } from "@mui/material";
 
 
 
-//Second Approach
+//Search bar component
 
 const SearchBar = ({ setSearchQuery }) => (
   <form>
@@ -46,8 +46,10 @@ const SearchBar = ({ setSearchQuery }) => (
     />
   </form>
 );
+//Component End
 
-//create a function to filter our data. This function
+
+//function to filter our data. This function
 //will return only elements that include our search query.
 
 const filterData = (query, jobLocationData) => {
@@ -57,8 +59,9 @@ const filterData = (query, jobLocationData) => {
     return jobLocationData.filter((d) => d.toLowerCase().includes(query));
   }
 };
+//Filter function End
 
-// create data array to represent our jobPositionData:
+// data to represent our jobPositionData:
 const jobLocationData = [
   "Ohanku, Aba, Abia State",
   "Ogba, Ikeja, Lagos State",
@@ -81,13 +84,18 @@ const jobLocationData = [
   "Ohanku, Aba, Abia State",
   "Ogba, Ikeja, Lagos State",
 ];
+//Data End
 
 export default function JobLocation() {
-  //create our Search functional component:
+  //Initialization of useState hook
   const [searchQuery, setSearchQuery] = useState("");
+  //Call site of the filterData function
   const dataFiltered = filterData(searchQuery, jobLocationData);
+  //Call End
+
   return (
     <>
+    {/* Div container for the Search bar functionality */}
       <div
         style={{
           display: "flex",
@@ -120,6 +128,7 @@ export default function JobLocation() {
           ))}
         </div>
       </div>
+      {/* Div End */}
     </>
   );
 }

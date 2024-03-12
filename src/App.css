@@ -1,5 +1,15 @@
+/* #root {
+  max-width: 1280px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0rem;
+  text-align: left;
+} */
+
+
+
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -37,7 +47,6 @@
   }
 }
 
-.transitionalModalBox{
+.transitionalModalBox {
   border-radius: 8px;
 }
-       

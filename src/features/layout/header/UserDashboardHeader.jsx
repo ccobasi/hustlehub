@@ -3,20 +3,20 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { AppBar, Box, Button, Menu, MenuItem } from "@mui/material";
-import { ArrowBackIos, ArrowBack } from "@mui/icons-material";
+import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
-const UserDashboardHeader = () => {
+export default function UserDashboardHeader() {
   //Use system preference to set theme mode
   const theme = useTheme();
   //instantiate useNavigate object
   let navigate = useNavigate();
   let isCleint = false;
-  
 
   return (
     <React.Fragment>
+      {/* Box for UserDashboard header  feature */}
       <Box
         sx={{
           display: { xs: "flex", md: "none" },
@@ -29,31 +29,32 @@ const UserDashboardHeader = () => {
           <ArrowBack />
         </IconButton>
         <Link
-              noWrap
-              sx={{
-                flex: 1,
-                padding: "10px",
-                color: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.grey[900]
-                    : theme.palette.grey[500],
+          noWrap
+          sx={{
+            flex: 1,
+            padding: "10px",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.grey[900]
+                : theme.palette.grey[500],
 
-                fontSize: "1.05rem",
-                textDecoration: "none",
-                "&:hover": {
-                  color: (theme) =>
-                    theme.palette.mode === "light"
-                      ? theme.palette.grey[700]
-                      : theme.palette.grey[300],
-                },
-              ml:"85%"
-              }}
-              href={ isCleint  ? "/edit-client" : "/edit-freelancer"}
-            >
-              Edit
-            </Link>
+            fontSize: "1.05rem",
+            textDecoration: "none",
+            "&:hover": {
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.grey[700]
+                  : theme.palette.grey[300],
+            },
+            ml: "85%",
+          }}
+          href={isCleint ? "/edit-client" : "/edit-freelancer"}
+        >
+          Edit
+        </Link>
       </Box>
 
+      {/* Box for the Arrow back icon*/}
       <Box
         sx={{
           backgroundColor: theme.palette.mode,
@@ -107,17 +108,16 @@ const UserDashboardHeader = () => {
                       ? theme.palette.grey[700]
                       : theme.palette.grey[300],
                 },
-                ml:"85%"
+                ml: "85%",
               }}
-              href={ isCleint  ? "/edit-client" : "/edit-freelancer"}
+              href={isCleint ? "/edit-client" : "/edit-freelancer"}
             >
               Edit
             </Link>
           </Toolbar>
         </AppBar>
       </Box>
+      {/* Box End */}
     </React.Fragment>
   );
-};
-
-export default UserDashboardHeader;
+}

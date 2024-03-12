@@ -2,10 +2,12 @@ import React, { useState, useRef } from "react";
 import { TextField, Box, Button } from "@mui/material";
 import Container from "@mui/material/Container";
 
-// ValidatedTextField.js
+
 const ValidatedTextField = ({ label, validator, onChange }) => {
+  //Initialization of useState hooks
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
+  // Handler for change
   const handleChange = (e) => {
     const newValue = e.target.value;
     const errorMessage = validator(newValue);
@@ -13,6 +15,7 @@ const ValidatedTextField = ({ label, validator, onChange }) => {
     setError(errorMessage);
     onChange(!errorMessage);
   };
+  // Handle End
 
   return (
     <TextField
@@ -24,11 +27,11 @@ const ValidatedTextField = ({ label, validator, onChange }) => {
       multiline
       rows={18}
       placeholder="Please enter job description"
-      sx={{  }}
+
     />
   );
 };
-// validators.js
+// Description validator
 const descriptionValidator = (value) => {
   if (value.length < 100)
     return "Job description must be at least 100 characters long";
@@ -38,8 +41,9 @@ const descriptionValidator = (value) => {
     return "Job description must contain only letters and spaces";
   return false;
 };
+  // Validator End
 
-// FormValidation.js
+// Job Validation
 export default function JobDescriptionTextFields() {
   const formValid = useRef({ description: false });
 
@@ -51,9 +55,11 @@ export default function JobDescriptionTextFields() {
       alert("Form is invalid! Please check the fields...");
     }
   };
+  // Validation End
 
   return (
     <>
+    {/* Contaier for the validation */}
       <Container component="main" maxWidth="xs">
         <Box
           component="form"
@@ -77,6 +83,7 @@ export default function JobDescriptionTextFields() {
           </Button>
         </Box>
       </Container>
+      {/* Container End */}
     </>
   );
 }

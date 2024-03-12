@@ -9,6 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
+// Client data  to create project
 const clientCreateProjectData = [
   {
     id: 0,
@@ -43,10 +44,13 @@ const clientCreateProjectData = [
     url: "/description",
   },
 ];
+//Data End
 
 export default function ClientCreateProject() {
+  // Initialization of useNavigate Hook
   let navigate = useNavigate();
 
+  // Get list function
   const getList = () =>
     clientCreateProjectData.map((list, index) => (
       <>
@@ -67,6 +71,7 @@ export default function ClientCreateProject() {
         </Grid>
       </>
     ));
+  // Function End
 
   return <Container>{getList()}</Container>;
 }

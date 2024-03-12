@@ -3,10 +3,12 @@ import freelancerResumeData from "../data/freelancerResumeData";
 import { Grid } from "@mui/material";
 
 export const EditFreelancerEighthFeature = () => {
+  //Data mapping
   let cardContainer = freelancerResumeData.map((el) => {
     return <ClientResumeCard   key={el.id} {...el} />;
-  });
+  });//Mapping End
   return (
+    //Grid
     <Grid
       container
       spacing={4}
@@ -17,7 +19,7 @@ export const EditFreelancerEighthFeature = () => {
       }}
     >
       {cardContainer}
-    </Grid>
+    </Grid>//Grid End
 
     
   );

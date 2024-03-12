@@ -4,99 +4,141 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import { Box, Stack } from "@mui/material";
 
-export default function FooterSection() {
+const footerData = [
+  {
+    title: "Company",
+    description: [
+      { id: 0, name: "Team", url: "/team" },
+      { id: 1, name: "History", url: "/history" },
+      { id: 2, name: "Contact us", url: "/contact" },
+      { id: 3, name: "Location", url: "/location" },
+    ],
+  },
+  {
+    title: "Features",
+    description: [
+      { id: 0, name: "Cool stuff", url: "/cool-stuff" },
+      { id: 1, name: "Random feature", url: "/random-feature" },
+      { id: 2, name: "Team feature", url: "/team-feature" },
+      { id: 3, name: "Developer stuff", url: "/developer-stuff" },
+      { id: 4, name: "Another one", url: "/another-one" },
+    ],
+  },
+  {
+    title: "Resources",
+    description: [
+      { id: 0, name: "Resource", url: "/resource" },
+      { id: 1, name: "Resource name", url: "/resource-name" },
+      { id: 2, name: "Another resource", url: "/another-resource" },
+      { id: 3, name: "Final resource", url: "/final-resource" },
+    ],
+  },
+  {
+    title: "Legal",
+    description: [
+      { id: 0, name: "Privacy policy", url: "/privacy-policy" },
+      { id: 1, name: "Terms of use", url: "/terms-of-use" },
+    ],
+  },
+];
+
+function Copyright(props) {
   return (
-    <Box
-      component="footer"
+    // Copyrigh 
+    <Typography
+      variant="body2"
+      align="center"
+      {...props}
       sx={{
-        p: 3,
-        mt: 9,
-        position:"static"
-        
+        color: (theme) =>
+          theme.palette.mode === "light"
+            ? theme.palette.primary.lightModeTitleTextColor
+            : theme.palette.primary.darkModeTitleTextColor,
+        fontFamily: "Poppins",
+        textDecoration: "none",
+        fontWeight: "300",
+        fontSize: "10px",
+        lineHeight: "19.2px",
+        marginTop: "5px",
+        marginBottom: "5px",
       }}
     >
-      <Container maxWidth="lg">
-        <Grid container spacing={5}>
-          <Grid item  sx={{ alignContent: "center",textAlign:"center", mt: "50px" }}>
-           <Stack direction="row" className="footerLink">
-           <Link
-              href="/blog"
-              sx={{
-                color: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.grey[600]
-                    : theme.palette.grey[100],
-                textDecoration: "none",
-                "&:hover": {
+      {"Copyright © "} {new Date().getFullYear()} Appspot Digital Solutions
+      {"."}All Rights Reserved.
+    </Typography>
+    //End copyright
+  );
+}
+
+// 
+
+export default function FooterSection() {
+  return (
+    <>
+      {/* Footer */}
+      <Container
+        maxWidth="md"
+        component="footer"
+        sx={{
+          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+          mt: 8,
+          py: [3, 6],
+          backgroundColor: "background.default",
+        }}
+      >
+        <Grid container spacing={4} justifyContent="space-evenly">
+          {footerData.map((footer) => (
+            <Grid item xs={6} sm={3} key={footer.title}>
+              <Typography
+                gutterBottom
+                sx={{
                   color: (theme) =>
                     theme.palette.mode === "light"
-                      ? theme.palette.grey[700]
-                      : theme.palette.grey[500],
-                },
-              }}
-            >
-              Blog &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </Link>
+                      ? theme.palette.primary.lightModeTitleTextColor
+                      : theme.palette.primary.darkModeTitleTextColor,
+                  fontFamily: "Poppins",
+                  textDecoration: "none",
+                  fontWeight: "700",
+                  fontSize: "14px",
+                  lineHeight: "19.2px",
 
-            <Link
-              href="/blog"
-              sx={{
-                color: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.grey[600]
-                    : theme.palette.grey[100],
-                textDecoration: "none",
-                "&:hover": {
-                  color: (theme) =>
-                    theme.palette.mode === "light"
-                      ? theme.palette.grey[700]
-                      : theme.palette.grey[500],
-                },
-              }}
-            >
-              Company &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </Link>
-
-            <Link
-              href="/blog"
-              sx={{
-                color: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.grey[600]
-                    : theme.palette.grey[100],
-                textDecoration: "none",
-                "&:hover": {
-                  color: (theme) =>
-                    theme.palette.mode === "light"
-                      ? theme.palette.grey[700]
-                      : theme.palette.grey[500],
-                },
-              }}
-            >
-              Contact &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </Link>
-
-           </Stack>
-          </Grid>
+                  marginTop: "10px",
+                  marginBottom: "5px",
+                }}
+              >
+                {footer.title}
+              </Typography>
+              <Box>
+                {footer.description.map((item, index) => (
+                  <Box key={index}>
+                    <Link
+                      href={item.url}
+                      variant="body2"
+                      sx={{
+                        textDecoration: "none",
+                        color: (theme) =>
+                          theme.palette.mode === "light"
+                            ? theme.palette.primary.lightModeTitleTextColor
+                            : theme.palette.primary.darkModeTitleTextColor,
+                        fontFamily: "Poppins",
+                        fontWeight: "300",
+                        fontSize: "10px",
+                        lineHeight: "19.2px",
+                        marginTop: "5px",
+                        marginBottom: "5px",
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  </Box>
+                ))}
+              </Box>
+            </Grid>
+          ))}
         </Grid>
-        <Box mt={5}>
-          <Typography
-            variant="body2"
-            align="center"
-            sx={{
-              color: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.grey[600]
-                  : theme.palette.grey[100],
-            }}
-            className="footerCopyright"
-          >
-            {"Copyright © "}
-            {new Date().getFullYear()} Appspot Digital Solutions
-            {"."}All Rights Reserved.
-          </Typography>
-        </Box>
+        <Copyright sx={{ mt: 5 }} />
       </Container>
-    </Box>
+      {/* End footer */}
+    </>
   );
 }

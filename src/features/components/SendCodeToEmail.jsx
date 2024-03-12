@@ -1,32 +1,27 @@
 import React from "react";
-import { Button,  TextField, Box } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import {
-  EmailOutlined,
- 
-} from "@mui/icons-material";
+import { EmailOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 export const SendCodeToEmail = () => {
-
-    //Instatiate useNavigate
+  //Instatiate useNavigate
   let navigate = useNavigate();
 
-
+  // Handler for the submit event
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("email"),
     });
-    navigate('/');
-
+    navigate("/");
   };
 
-  
   return (
     <>
+      {/* Box for the registration form */}
       <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 12 }}>
         {/**Registration Form Control */}
         <FormControl fullWidth>
@@ -58,6 +53,7 @@ export const SendCodeToEmail = () => {
           Send code
         </Button>
       </Box>
+      {/* Box End */}
     </>
   );
 };

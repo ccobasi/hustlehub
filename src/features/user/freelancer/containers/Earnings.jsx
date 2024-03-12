@@ -5,6 +5,7 @@ import { Card, CardContent, Stack } from "@mui/material";
 export default function FreelancerEarning({ projectTitle, earning }) {
   return (
     <>
+    {/* Grid for freelancer earning */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Card
           sx={{
@@ -43,6 +44,7 @@ export default function FreelancerEarning({ projectTitle, earning }) {
           </CardContent>
         </Card>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

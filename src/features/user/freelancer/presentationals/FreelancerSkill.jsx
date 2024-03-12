@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 
 export const EditFreelancerFifthFeature = () => {
   return (
+    //Grid
     <Grid
       container
       spacing={4}
@@ -14,6 +15,6 @@ export const EditFreelancerFifthFeature = () => {
       }}
     >
       {<FreelancerSkillCard/>}
-    </Grid>
+    </Grid>//Grid End
   );
 };

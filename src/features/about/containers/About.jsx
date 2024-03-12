@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 export default function  AboutUs({title,description}) {
  
   return (
+    // Paper for the about us page container
     <Paper
       
       sx={{
@@ -79,5 +80,6 @@ export default function  AboutUs({title,description}) {
         </Grid>
       </Grid>
     </Paper>
+    //Paper End
   );
 }

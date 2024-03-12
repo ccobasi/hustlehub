@@ -11,14 +11,17 @@ import { Container } from "@mui/material";
 
 
 export default function EmploymentTypeRadioButtons() {
+  // Initialization of useState Hook
   const [value, setValue] = React.useState("");
-
+  // Handle for on change event
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  // Handle End
 
   return (
     <>
+    {/* Container for validation */}
       <Container component="main" maxWidth="xs">
         <FormControl>
           <FormLabel id="demo-form-control-label-placement" sx={{textAlign:"center", mt:"2%", mb:"7%"}}>
@@ -73,6 +76,7 @@ export default function EmploymentTypeRadioButtons() {
           </RadioGroup>
         </FormControl>
       </Container>
+      {/* Container End */}
     </>
   );
 }

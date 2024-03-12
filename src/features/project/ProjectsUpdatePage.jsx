@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { Link, Stack, Typography } from "@mui/material";
@@ -11,24 +10,22 @@ const ProjectsUpdatePage = () => {
   return (
     <>
       {/*First Projects Update First Feature*/}
-          <Typography
-            variant="h6"
-            sx={{
-              color: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.grey[600]
-                  : theme.palette.grey[300],
-              pt: "35px",
+      <Typography
+        variant="h6"
+        sx={{
+          color: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.grey[600]
+              : theme.palette.grey[300],
+          pt: "35px",
 
-              textAlign: "center",
-            }}
-          >
-            <b>Project Updates</b>
-          </Typography>
+          textAlign: "center",
+        }}
+      >
+        <b>Project Updates</b>
+      </Typography>
 
-          <Updates/>
-      
-  
+      <Updates />
     </>
   );
 };

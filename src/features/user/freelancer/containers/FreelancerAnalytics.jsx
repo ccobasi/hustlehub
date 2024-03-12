@@ -12,6 +12,7 @@ export default function FreelancerAnalyticsContainer({
 }) {
   return (
     <>
+    {/* Grid for freelancer analytics */}
       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
         <Stack direction="row" sx={{justifyContent:"space-between"}}>
           <Typography> &nbsp; &nbsp;  &nbsp; &nbsp;<b>{value1}</b></Typography>
@@ -24,6 +25,7 @@ export default function FreelancerAnalyticsContainer({
           <Typography >{heading3}</Typography>
         </Stack>
       </Grid>
+      {/* Grid End */}
     </>
   );
 }

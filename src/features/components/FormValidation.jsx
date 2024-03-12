@@ -1,9 +1,12 @@
 import React, { useState, useRef } from "react";
 import { TextField, Box, Button } from "@mui/material";
-// ValidatedTextField.js
+
+
 const ValidatedTextField = ({ label, validator, onChange }) => {
+  // Initialization of useState hook
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
+  //Handle for one change event
   const handleChange = e => {
     const newValue = e.target.value;
     const errorMessage = validator(newValue);
@@ -11,6 +14,7 @@ const ValidatedTextField = ({ label, validator, onChange }) => {
     setError(errorMessage);
     onChange(!errorMessage);
   };
+  //Handle End
   return (
     <TextField
       label={label}
@@ -21,7 +25,7 @@ const ValidatedTextField = ({ label, validator, onChange }) => {
     />
   );
 };
-// validators.js
+// Name validators
 const nameValidator = value => {
   if (value.length < 3) return "Name must be at least 3 characters long";
   if (value.length > 20) return "Name must be less than 20 characters long";
@@ -29,14 +33,21 @@ const nameValidator = value => {
     return "Name must contain only letters and spaces";
   return false;
 };
+//Name End
+
+//Email validator
 const emailValidator = value => {
   if (!/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/.test(value))
     return "Invalid email address";
   return false;
 };
-// FormValidation.js
+//Email End
+
+
 export default function FormValidation() {
+  //Initialization of useRef Hook
   const formValid = useRef({ name: false, email: false });
+  //Handler for submit event
   const handleSubmit = e => {
     e.preventDefault();
     if (Object.values(formValid.current).every(isValid => isValid)) {
@@ -45,7 +56,11 @@ export default function FormValidation() {
       alert("Form is invalid! Please check the fields...");
     }
   };
+  //Handle End
+
+
   return (
+    // Box for form validation
     <Box component="form" onSubmit={handleSubmit} noValidate>
       <ValidatedTextField
         label="Name"
@@ -61,5 +76,6 @@ export default function FormValidation() {
         Submit
       </Button>
     </Box>
+    // Box End
   );
 }
