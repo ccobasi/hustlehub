@@ -1,9 +1,12 @@
 // actions/signinActions.js
-export const updateSignInField = (field, value) => ({
-  type: 'SIGNIN_UPDATE_FIELD',
+export const SIGNIN_UPDATE_FIELD = 'SIGNIN_UPDATE_FIELD';
+export const SUBMIT_SIGNIN_FORM = 'SUBMIT_SIGNIN_FORM';
+
+export const updateSigninField = (field, value) => ({
+  type: SIGNIN_UPDATE_FIELD,
   payload: { field, value },
 });
 
-export const resetSignIn = () => ({
-  type: 'SIGNIN_RESET',
+export const submitSigninForm = () => ({
+  type: SUBMIT_SIGNIN_FORM,
 });

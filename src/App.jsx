@@ -13,6 +13,7 @@ import "./App.css";
 
 import Layout from "./Layout";
 import HomePage from "./app/home/HomePage";
+import ClientPage from "./features/user/client/ClientPage"
 
 function App() {
   //Using system preferences to set theme mode.
@@ -40,6 +41,7 @@ function App() {
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/client" element={<ClientPage />} />
           </Route>
 
     

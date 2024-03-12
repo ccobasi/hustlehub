@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { Button, ButtonGroup, Box } from "@mui/material";
 import { SendCodeToEmail } from "./SendCodeToEmail";
@@ -5,7 +6,7 @@ import { SendCodeToMobileNumber } from "./SendCodeToMobileNumber";
 
 
 
-export const ForgetPasswordGroupButton = ()=>{
+const ForgetPasswordGroupButton = ()=>{
     const [showUI, setShowUI] = useState("");
 
     return(<>
@@ -34,3 +35,5 @@ export const ForgetPasswordGroupButton = ()=>{
     
     </>);
 }
+
+export default ForgetPasswordGroupButton;

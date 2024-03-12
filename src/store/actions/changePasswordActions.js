@@ -1,9 +1,12 @@
 // actions/changePasswordActions.js
+export const CHANGE_PASSWORD_UPDATE_FIELD = 'CHANGE_PASSWORD_UPDATE_FIELD';
+export const SUBMIT_CHANGE_PASSWORD_FORM = 'SUBMIT_CHANGE_PASSWORD_FORM';
+
 export const updateChangePasswordField = (field, value) => ({
-  type: 'CHANGEPASSWORD_UPDATE_FIELD',
+  type: CHANGE_PASSWORD_UPDATE_FIELD,
   payload: { field, value },
 });
 
-export const resetChangePassword = () => ({
-  type: 'CHANGEPASSWORD_RESET',
+export const submitChangePasswordForm = () => ({
+  type: SUBMIT_CHANGE_PASSWORD_FORM,
 });

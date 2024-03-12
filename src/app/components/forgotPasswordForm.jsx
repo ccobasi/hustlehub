@@ -1,7 +1,7 @@
 // components/ForgotPasswordForm.js
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateForgotPasswordField, resetForgotPassword, submitForgotPassword } from '../actions/forgotPasswordActions';
+import { updateForgotPasswordField, resetForgotPassword, submitForgotPassword } from '../../store/actions/forgotPasswordActions'; 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -56,7 +56,7 @@ const ForgotPasswordForm = () => {
         />
         {/**Add other form fields as needed */}
         <Button
-          type="button" {/* Use "button" type to prevent form submission */}
+          type="button"
           fullWidth
           variant="contained"
           onClick={handleSubmit}
