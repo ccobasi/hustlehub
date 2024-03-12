@@ -23,10 +23,10 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateField, submitSignupForm } from '../../store/actions/signupActions';
-import { useNavigate } from 'react-router-dom';
+
 
 export default function SignUp() {
-  const history = useNavigate();
+  
     const dispatch = useDispatch();
   const signUpState = useSelector((state) => state.signUp);
 
@@ -54,7 +54,7 @@ export default function SignUp() {
 
     console.log(submitSignupForm());
 
-    history.push('/client');
+    window.location.href = "/client";
   };
 
   const {
