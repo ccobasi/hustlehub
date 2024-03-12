@@ -2,8 +2,8 @@ import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import { AppBar, Box, Button, Menu, MenuItem } from "@mui/material";
-import { ArrowBackIos, ArrowBack } from "@mui/icons-material";
+import { AppBar, Box, Button } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
@@ -68,7 +68,7 @@ const RegistrationHeader = () => {
 
             <Box>
               <Button
-                onClick={() => navigate("/sign-up")}
+                onClick={() => navigate("/sign-in")}
                 variant="contained"
                 sx={{
                   backgroundColor: "#87CEEB",
@@ -80,7 +80,7 @@ const RegistrationHeader = () => {
                   },
                 }}
               >
-                Sign Up
+                Sign In
               </Button>
             </Box>
           </Toolbar>

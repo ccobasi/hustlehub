@@ -14,6 +14,8 @@ import "./App.css";
 import Layout from "./Layout";
 import HomePage from "./app/home/HomePage";
 import ClientPage from "./features/user/client/ClientPage"
+import CreateProjectPage from "./features/user/client/CreateProjectPage"
+import JobPositionPage from "./features/user/client/JobPositionPage"
 
 function App() {
   //Using system preferences to set theme mode.
@@ -42,6 +44,8 @@ function App() {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/client" element={<ClientPage />} />
+            <Route path="/create-project" element={<CreateProjectPage />} />
+            <Route path="/job-position" element={<JobPositionPage />} />
           </Route>
 
     

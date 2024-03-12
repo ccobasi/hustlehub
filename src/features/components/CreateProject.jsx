@@ -1,6 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import Divider from "@mui/material/Divider";
-import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import { Grid } from "@mui/material";
@@ -45,8 +45,7 @@ const clientCreateProjectData = [
 ];
 
 export default function ClientCreateProject() {
-  let navigate = useNavigate();
-
+  
   const getList = () =>
     clientCreateProjectData.map((list, index) => (
       <>
