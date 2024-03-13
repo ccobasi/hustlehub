@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useRef } from "react";
-import { TextField, Box, Button, Container } from "@mui/material";
+import { TextField, Box, Button, Container, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
 const ValidatedTextField = ({ label, validator, onChange,rows,placeholder }) => {
   // Initialization of useState hook
@@ -81,11 +82,12 @@ const employmentTypeValidator = (value) => {
 
 // Description validators
 const descriptionValidator = (value) => {
-  if (value.length < 100) return "Description must be at least 100 characters long";
+  if (value.length < 50) return "Description must be at least 50 characters long";
   if (value.length > 1000) return "Description must be less than 1000 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
+  if (!/^[a-zA-Z .,:;]+$/.test(value))
     return "Description must contain only letters and spaces";
   return false;
+  
 };
 //Validator End
 
@@ -136,15 +138,29 @@ export default function CreateProjectFormValidation() {
             placeholder="Enter job position"
           />
 
-          <ValidatedTextField
-            label="Type of workplace"
-            validator={typeOfWorkplaceValidator}
-            rows={1}
-            placeholder="Enter type of workplace"
-            onChange={(isValid) =>
-              (formValid.current.typeOfWorkplace = isValid)
-            }
-          />
+     
+
+          <FormControl fullWidth>
+  <InputLabel id="demo-simple-select-label">Type of workplace</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    validator={typeOfWorkplaceValidator}
+    label="Type of workplace"
+    sx={{ width: "90%", mb:  2, ml:2, pl:2 }}
+    placeholder="Select job location"
+    onChange={(event) => {
+      formValid.current.typeOfWorkplace = event.target.value;
+      }}
+    
+  >
+    <MenuItem value="remote">Remote</MenuItem>
+            <MenuItem value="onsite">Onsite</MenuItem>
+            <MenuItem value="hybrid">Hybrid</MenuItem>
+  </Select>
+</FormControl>
+
+          
           <ValidatedTextField
             label="Job location"
             validator={jobLocationValidator}
@@ -159,13 +175,27 @@ export default function CreateProjectFormValidation() {
             placeholder="Enter industry"
             onChange={(isValid) => (formValid.current.industry = isValid)}
           />
-          <ValidatedTextField
-            label="Employment type"
-            validator={employmentTypeValidator}
-            rows={1}
-            placeholder="Enter employment type"
-            onChange={(isValid) => (formValid.current.employmentType = isValid)}
-          />
+
+          <FormControl fullWidth>
+  <InputLabel id="demo-simple-select-label">Employment type</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+     validator={employmentTypeValidator}
+    label="Type of workplace"
+    sx={{ width: "90%", mb:  2, ml:2, pl:2 }}
+    placeholder="Select employment type"
+    onChange={(event) => {
+      formValid.current.employmentType = event.target.value;
+            }}
+    
+  >
+    <MenuItem value="contract">Contract</MenuItem>
+            <MenuItem value="full-time">Full-Time</MenuItem>
+            <MenuItem value="part-time">Part-Time</MenuItem>
+  </Select>
+</FormControl>
+
 
           <ValidatedTextField
             label="Description"
@@ -174,7 +204,11 @@ export default function CreateProjectFormValidation() {
             placeholder="Enter job description"
             onChange={(isValid) => (formValid.current.description = isValid)}
           />
-          <Button type="submit" variant="contained">
+          <Button type="submit" variant="contained" sx={{
+            marginBottom: 6,
+            
+
+          }}>
             Submit
           </Button>
         </Box>

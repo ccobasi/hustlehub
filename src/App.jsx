@@ -29,6 +29,7 @@ import ProjectReviewPage from "./features/user/client/ProjectReviewPage";
 import FreelancerPage from "./features/user/freelancer/FreelancerPage";
 import FreelancerAnchorTemporaryDrawer from "./features/components/FreelancerDrawer";
 import EditFreelancerPage from "./features/user/freelancer/EditFreelancerPage";
+import SecondLayout from "./SecondLayout";
 import "./App.css";
 
 import Layout from "./Layout";

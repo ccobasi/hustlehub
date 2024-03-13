@@ -24,7 +24,7 @@ const CreateProjectPage = () => {
           mt: "5%",
         }}
       >
-        My Projects
+        Create a Project
       </Typography>
 
       <Link
@@ -35,7 +35,7 @@ const CreateProjectPage = () => {
           color: "#87CEEB",
         }}
       >
-        <Typography sx={{ textAlign: "end", mr: "5%" }}>Publish</Typography>
+        
       </Link>
 
       {/*Second Client Feature*/}
