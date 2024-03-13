@@ -5,6 +5,7 @@ import { SIGNUP_SUCCESS, SIGNIN_SUCCESS, SIGNOUT_SUCCESS, FORGOT_PASSWORD_SUCCES
 const initialState = {
   user: null,
   isAuthenticated: false,
+  forgotPasswordSuccess: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -25,10 +26,8 @@ const authReducer = (state = initialState, action) => {
       };
 
     case FORGOT_PASSWORD_SUCCESS:
-      // Handle successful forgot password request
       return {
         ...state,
-        // Don't modify user or isAuthenticated here (as these are not affected)
         forgotPasswordSuccess: true,
       };
 
