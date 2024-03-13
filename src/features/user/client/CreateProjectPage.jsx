@@ -2,6 +2,8 @@
 import { Typography, Link, Stack, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ClientCreateProject from "../../components/CreateProject";
+import CreateProjectFormValidation from "../../components/CreateProject";
+
 const CreateProjectPage = () => {
   //Instatiate useNavigate
   let navigate = useNavigate();
@@ -38,7 +40,8 @@ const CreateProjectPage = () => {
       </Link>
 
       {/*Second Client Feature*/}
-      <ClientCreateProject />
+      {/* <ClientCreateProject /> */}
+      <CreateProjectFormValidation/>
       {/*Second Heading*/}
 
       {/*Third Heading*/}
