@@ -138,41 +138,17 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/about/question/21334565" element={<AboutPage />} />
-            <Route
-              path="/client-drawer"
-              element={<ClientAnchorTemporaryDrawer />}
-            />
-            <Route
-              path="/freelancer-drawer"
-              element={<FreelancerAnchorTemporaryDrawer />}
-            />
           </Route>
-          <Route path="/" element={<RegistrationLayout />}>
+          <Route path="/" element={<SecondLayout />}>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
-            <Route path="/categories" element={<CategoriesPage />} />
-            <Route path="/notification" element={<NotificationPage />} />
-            <Route path="/message" element={<MessagePage />} />
-            <Route path="/project-update" element={<ProjectsUpdatePage />} />
-            <Route path="/browse-project" element={<BrowseProjectPage />} />
+            <Route path="/client" element={<ClientPage />} />
+            <Route path="/create-project" element={<CreateProjectPage />} />
+            <Route path="/job-position" element={<JobPositionPage />} />
           </Route>
 
-          <Route path="/" element={<UserLayout />}>
-            <Route path="/client" element={<ClientPage />} />
-            <Route path="/edit-client" element={<EditClientPage />} />
-            <Route path="/create-project" element={<CreateProjectPage />} />
-            <Route path="/company" element={<CompanyPage />} />
-            <Route path="/description" element={<DescriptionPage />} />
-            <Route path="/employment" element={<EmploymentPage />} />
-            <Route path="job-position" element={<JobPositionPage />} />
-            <Route path="/location" element={<LocationPage />} />
-            <Route path="/workplace" element={<WorkplacePage />} />
-            <Route path="/project-review" element={<ProjectReviewPage />} />
-            <Route path="/freelancer" element={<FreelancerPage />} />
-            <Route path="/edit-freelancer" element={<EditFreelancerPage />} />
-          </Route>
+    
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

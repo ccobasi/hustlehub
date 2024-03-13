@@ -5,8 +5,7 @@ import ClientCreateProject from "../../components/CreateProject";
 import CreateProjectFormValidation from "../../components/CreateProject";
 
 const CreateProjectPage = () => {
-  //Instatiate useNavigate
-  let navigate = useNavigate();
+ 
 
   return (
     <>
