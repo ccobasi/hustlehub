@@ -1,18 +1,21 @@
 // store/index.js
-import { createStore, combineReducers } from 'redux';
-import signUpReducer from '../store/reducers/signupReducer';
+import { configureStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import signupReducer from '../store/reducers/signupReducer';
 import signinReducer from '../store/reducers/signinReducer';
 import changePasswordReducer from '../store/reducers/changePasswordReducer';
-import forgotPasswordReducer from '../store/reducers/forgotPasswordActions'
+import forgotPasswordReducer from './reducers/forgotPasswordReducer'
+import authReducer from './reducers/authReducer';
 
 const rootReducer = combineReducers({
-  signUp: signUpReducer,
+  signup: signupReducer,
   signin: signinReducer,
   changePassword: changePasswordReducer,
   forgotPassword: forgotPasswordReducer, 
+  auth: authReducer,
 });
 
-const store = createStore(rootReducer);
+const store = configureStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
 
