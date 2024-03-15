@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import signupReducer from '../store/reducers/signupReducer';
 import signinReducer from '../store/reducers/signinReducer';
 import changePasswordReducer from '../store/reducers/changePasswordReducer';
-import forgotPasswordReducer from './reducers/forgotPasswordReducer'
+import forgotPasswordReducer from '../store/reducers/forgotPasswordReducer'
 import authReducer from './reducers/authReducer';
 
 const rootReducer = combineReducers({
