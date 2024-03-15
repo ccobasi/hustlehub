@@ -1,11 +1,12 @@
 // /src/store/reducers/authReducer.js
 
-import { SIGNUP_SUCCESS, SIGNIN_SUCCESS, SIGNOUT_SUCCESS, FORGOT_PASSWORD_SUCCESS } from '../actions/authActions';
+import { SIGNUP_SUCCESS, SIGNIN_SUCCESS, SIGNOUT_SUCCESS, FORGOT_PASSWORD_SUCCESS, CHANGE_PASSWORD_SUCCESS } from '../actions/authActions';
 
 const initialState = {
   user: null,
   isAuthenticated: false,
   forgotPasswordSuccess: false,
+  changePasswordSuccess: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -30,8 +31,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         forgotPasswordSuccess: true,
       };
-
     
+    case CHANGE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        changePasswordSuccess: true,
+      };
 
     default:
       return state;
