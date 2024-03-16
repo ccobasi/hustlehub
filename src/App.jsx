@@ -1,34 +1,14 @@
 import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./features/components/SignUp";
 import SignIn from "./features/components/SignIn";
 import ForgetPassword from "./features/components/ForgetPassword";
-import RegistrationLayout from "./RegistrationLayout";
-import UserLayout from "./UserLayout";
-import MessagePage from "./features/message/MessagePage";
-import NotificationPage from "./features/notification/NotificationPage";
-import CategoriesPage from "./features/project/CategoriesPage";
-import ProjectsUpdatePage from "./features/project/ProjectsUpdatePage";
-import BrowseProjectPage from "./features/project/BrowseProjectsPage";
-import { AboutPage } from "./features/about/AboutPage";
 import ClientPage from "./features/user/client/ClientPage";
-import EditClientPage from "./features/user/client/EditClientPage";
-import ClientAnchorTemporaryDrawer from "./features/components/ClientDrawer";
 import CreateProjectPage from "./features/user/client/CreateProjectPage";
-import CompanyPage from "./features/user/client/CompanyPage";
-import DescriptionPage from "./features/user/client/DescriptionPage";
-import EmploymentPage from "./features/user/client/EmploymentPage";
 import JobPositionPage from "./features/user/client/JobPositionPage";
-import LocationPage from "./features/user/client/LocationPage";
-import WorkplacePage from "./features/user/client/WorkplacePage";
-import ProjectReviewPage from "./features/user/client/ProjectReviewPage";
-import FreelancerPage from "./features/user/freelancer/FreelancerPage";
-import FreelancerAnchorTemporaryDrawer from "./features/components/FreelancerDrawer";
-import EditFreelancerPage from "./features/user/freelancer/EditFreelancerPage";
 import SecondLayout from "./SecondLayout";
 import "./App.css";
 
@@ -113,19 +93,6 @@ function App() {
             lineHeight: "20.8px",
             letterSpacing: "-1%",
           },
-          // modalLinkTextItems: {
-          //   textDecoration: "none",
-          //   fontWeight: "700",
-          //   fontSize: "16px",
-          //   lineHeight: "19.2px",
-          //   letter: "-1.5%",
-          // },
-          // modalLayout: {
-          //   width: "123px",
-          //   height: "28px",
-          //   top: "91px",
-          //   left: "175px",
-          // },
         },
       }),
     [prefersDarkMode]

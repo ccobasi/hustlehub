@@ -26,8 +26,7 @@ import { updateField, submitSignupForm } from '../../store/actions/signupActions
 
 
 export default function SignUp() {
-  
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const signUpState = useSelector((state) => state.signUp);
 
   const handleInputChange = (field, value) => {
@@ -41,7 +40,7 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    // Dispatch an action to update each form field in the store
+    //Dispatch an action to update each form field in the store
     dispatch(updateField('fullName', fullName));
     dispatch(updateField('email', email));
     dispatch(updateField('mobileNumber', mobileNumber));
@@ -89,7 +88,7 @@ export default function SignUp() {
           Let&apos;s Register. Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          {/* ... Other code ... */}
+          
           <FormControl fullWidth>
             <TextField
               required
@@ -110,7 +109,7 @@ export default function SignUp() {
               }}
                sx={{ pb: "5%" }}
             />
-            {/**Email Textfield */}
+            
              <TextField
                required
                fullWidth
@@ -149,7 +148,7 @@ export default function SignUp() {
               }}
               sx={{ pb: "5%" }}
             />
-             {/**Choose Role Textfield */}
+             
             <TextField
               required
               fullWidth
@@ -171,7 +170,7 @@ export default function SignUp() {
               <MenuItem value="Business Owner">Business Owner</MenuItem>
               <MenuItem value="Talent">Talent</MenuItem>
             </TextField>
-             {/**Password Textfield */}
+             
             <TextField
               required
               fullWidth
@@ -201,7 +200,7 @@ export default function SignUp() {
               }}
               sx={{ pb: "5%" }}
             />
-             {/**Confirm Password Textfield */}
+            
             <TextField
               required
               fullWidth
@@ -240,13 +239,14 @@ export default function SignUp() {
           >
             Register
           </Button>
-          {/**Divider */}
+          
            <Divider>Or continue with</Divider>
-           {/**Image Avatars */}
+           
                <Box className="imgAvatars">
                <ImageAvatars />
         </Box>
       </Box>
+      
       </Box>
     </Container>
   )
