@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 import { Link, Stack, Typography, Container, Box } from "@mui/material";
-import { PopularCategories } from "./presentationals/PopularCategories.jsx";
-import { TrendingCategories } from "./presentationals/TrendingCategories.jsx";
+import { PopularCategories } from "./PopularCategories.jsx";
+import { TrendingCategories } from "./TrendingCategories.jsx";
 
 const CategoriesPage = () => {
   //Instatiate useNavigate

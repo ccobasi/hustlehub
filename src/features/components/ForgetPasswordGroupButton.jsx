@@ -20,6 +20,13 @@ export const ForgetPasswordGroupButton = () => {
           onClick={() => {
             setShowUI(<SendCodeToEmail />);
           }}
+          sx={{
+            borderRadius: "16px",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+          }}
         >
           Email
         </Button>
@@ -27,6 +34,13 @@ export const ForgetPasswordGroupButton = () => {
           variant="contained"
           onClick={() => {
             setShowUI(<SendCodeToMobileNumber />);
+          }}
+          sx={{
+            borderRadius: "16px",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
           }}
         >
           Mobile Number

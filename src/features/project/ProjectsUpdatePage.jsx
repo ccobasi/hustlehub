@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { Link, Stack, Typography, Container } from "@mui/material";
-import { Updates } from "./presentationals/ProjectsUpdate";
+import { Updates } from "./ProjectsUpdate";
 
 const ProjectsUpdatePage = () => {
   //Instatiate useNavigate

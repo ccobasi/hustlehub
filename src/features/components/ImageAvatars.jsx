@@ -25,7 +25,11 @@ export default function ImageAvatars() {
     <Stack direction="row" spacing={4}>
       {imageAvatarData.map((item, index) => (
         <IconButton key={index}>
-          <Avatar alt={item.alt} src={item.src} />
+          <Avatar
+            alt={item.alt}
+            src={item.src}
+           
+          />
         </IconButton>
       ))}
     </Stack>

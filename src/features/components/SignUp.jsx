@@ -69,10 +69,40 @@ export default function SignUp() {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5" sx={{ mt: "5%" }}>
-          <b>Registration</b>
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{
+            mt: "10%",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "24px",
+            lineHeight: "33.6px",
+            letterSpacing: "-1.5%",
+          }}
+        >
+          Registration
         </Typography>
-        <Typography component="h1" variant="body2" sx={{ mt: "3%" }}>
+        <Typography
+          component="h1"
+          variant="body2"
+          sx={{
+            mt: "3%",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+            fontFamily: "Poppins",
+            fontWeight: "400",
+            fontSize: "14px",
+            lineHeight: "22.4px",
+            letterSpacing: "-1%",
+          }}
+        >
           Let's Register.Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -90,11 +120,22 @@ export default function SignUp() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment>
-                    <AccountCircleOutlined />
+                    <AccountCircleOutlined
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
               }}
-              sx={{ pb: "5%" }}
+              sx={{
+                color: "#AFB0B6",
+
+                pb: "5%",
+                mb: "2%",
+                mt: "25%",
+              }}
             />
             {/**Email Textfield */}
             <TextField
@@ -108,11 +149,21 @@ export default function SignUp() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment>
-                    <EmailOutlined />
+                    <EmailOutlined
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
               }}
-              sx={{ pb: "5%" }}
+              sx={{
+                color: "#AFB0B6",
+
+                pb: "5%",
+                mb: "2%",
+              }}
             />
             {/**Mobile Number Textfield */}
             <TextField
@@ -126,11 +177,21 @@ export default function SignUp() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment>
-                    <PhoneAndroidOutlined />
+                    <PhoneAndroidOutlined
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
               }}
-              sx={{ pb: "5%" }}
+              sx={{
+                color: "#AFB0B6",
+
+                pb: "5%",
+                mb: "2%",
+              }}
             />
             {/**Choose Role Textfield */}
             <TextField
@@ -143,14 +204,24 @@ export default function SignUp() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment>
-                    <ManageAccountsOutlined />
+                    <ManageAccountsOutlined
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
               }}
-              sx={{ pb: "5%" }}
+              sx={{
+                color: "#AFB0B6",
+
+                pb: "5%",
+                mb: "2%",
+              }}
             >
-              <MenuItem value="Business Owner">Business Owner</MenuItem>
-              <MenuItem value="Talent">Talent</MenuItem>
+              <MenuItem value="Business Owner">Client</MenuItem>
+              <MenuItem value="Talent">Freelancer</MenuItem>
             </TextField>
             {/**Password Textfield */}
             <TextField
@@ -165,7 +236,12 @@ export default function SignUp() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment>
-                    <VpnKey />
+                    <VpnKey
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
                 endAdornment: (
@@ -175,12 +251,31 @@ export default function SignUp() {
                       onMouseDown={handleHidePsw}
                       edge="end"
                     >
-                      {psw ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+                      {psw ? (
+                        <VisibilityOffOutlined
+                          sx={{
+                            ml: "-25%",
+                            color: "#AFB0B6",
+                          }}
+                        />
+                      ) : (
+                        <VisibilityOutlined
+                          sx={{
+                            ml: "-25%",
+                            color: "#AFB0B6",
+                          }}
+                        />
+                      )}
                     </IconButton>
                   </InputAdornment>
                 ),
               }}
-              sx={{ pb: "5%" }}
+              sx={{
+                color: "#AFB0B6",
+
+                pb: "5%",
+                mb: "2%",
+              }}
             />
             {/**Confirm Password Textfield */}
             <TextField
@@ -195,7 +290,12 @@ export default function SignUp() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment>
-                    <VpnKey />
+                    <VpnKey
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
                 endAdornment: (
@@ -206,13 +306,29 @@ export default function SignUp() {
                       edge="end"
                     >
                       {confirmPsw ? (
-                        <VisibilityOffOutlined />
+                        <VisibilityOffOutlined
+                          sx={{
+                            ml: "-25%",
+                            color: "#AFB0B6",
+                          }}
+                        />
                       ) : (
-                        <VisibilityOutlined />
+                        <VisibilityOutlined
+                          sx={{
+                            ml: "-25%",
+                            color: "#AFB0B6",
+                          }}
+                        />
                       )}
                     </IconButton>
                   </InputAdornment>
                 ),
+              }}
+              sx={{
+                color: "#AFB0B6",
+
+                pb: "5%",
+                mb: "2%",
               }}
             ></TextField>
           </FormControl>
@@ -222,22 +338,65 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, bgcolor: "#87CEEB" }}
+            sx={{
+              mt: 5,
+              mb: 7,
+              backgroundColor: "#87CEEB",
+              "&:hover": {
+                backgroundColor: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.grey[400]
+                    : theme.palette.grey[500],
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
+
+                fontFamily: "Poppins",
+                fontWeight: "500",
+                fontSize: "16px",
+                lineHeight: "24px",
+                letterSpacing: "-1%",
+              },
+            }}
           >
             Register
           </Button>
           {/**Divider */}
-          <Divider>Or continue with</Divider>
+          <Divider sx={{ mt: "10%", color: "#AFB0B6" }}>
+            Or continue with
+          </Divider>
           {/**Image Avatars */}
           <Box className="imgAvatars">
             <ImageAvatars />
           </Box>
 
-          <Grid container justifyContent="flex-end">
+          <Grid container justifyContent="center" sx={{ mt: "10%", }}>
             <Grid item>
-              <Typography>
+              <Typography
+                sx={{
+                  mb: "20%",
+                  fontFamily: "Poppins",
+                  fontWeight: "400",
+                  fontSize: "14px",
+                  lineHeight: "17.71px",
+                  color: "#AFB0B6",
+                  
+                }}
+              >
                 Have an account?{" "}
-                <a href="/sign-in" style={{ color: "#87CEEB", mb: "20%" }}>
+                <a
+                  href="/sign-in"
+                  style={{
+                    color: "#87CEEB",
+                    mb: "20%",
+                    textDecoration: "none",
+                    fontFamily: "Poppins",
+                    fontWeight: "400",
+                    fontSize: "14px",
+                    lineHeight: "17.71px",
+                  }}
+                >
                   Log in
                 </a>
               </Typography>

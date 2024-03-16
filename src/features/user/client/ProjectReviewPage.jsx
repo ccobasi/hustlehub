@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ClientProjectReviewFirstFeature } from "./presentationals/ClientProjectReview";
+import { ClientProjectReviewFirstFeature } from "./ClientProjectReview";
 
 
 export default function ProjectReviewPage() {

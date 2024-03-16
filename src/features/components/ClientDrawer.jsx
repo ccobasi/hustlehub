@@ -18,29 +18,41 @@ import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
-import { ClientFirstFeature } from "../user/client/presentationals/ClientCard";
+import { ClientFirstFeature } from "../user/client/Client";
 import Link from "@mui/material/Link";
 
 // Data for the client Temporary left drawer
 const clientTemporaryLeftDrawerData = [
   {
     name: "Personal Info",
-    icon: <InfoOutlinedIcon />,
+    icon: <InfoOutlinedIcon sx={{ color: "#95969D" }} />,
     url: "/",
   },
-  { name: "Portfolio", icon: <HomeRepairServiceOutlinedIcon />, url: "#Inbox" },
+  {
+    name: "Portfolio",
+    icon: <HomeRepairServiceOutlinedIcon sx={{ color: "#95969D" }} />,
+    url: "#Inbox",
+  },
   {
     name: "Projects",
-    icon: <AssignmentTurnedInOutlinedIcon />,
+    icon: <AssignmentTurnedInOutlinedIcon sx={{ color: "#95969D" }} />,
     url: "#Outbox",
   },
   {
     name: "Applications",
-    icon: <WorkspacePremiumOutlinedIcon />,
+    icon: <WorkspacePremiumOutlinedIcon sx={{ color: "#95969D" }} />,
     url: "#Home",
   },
-  { name: "Support", icon: <HelpCenterOutlinedIcon />, url: "#Home" },
-  { name: "Settings", icon: <SettingsOutlinedIcon />, url: "#Home" },
+  {
+    name: "Support",
+    icon: <HelpCenterOutlinedIcon sx={{ color: "#95969D" }} />,
+    url: "#Home",
+  },
+  {
+    name: "Settings",
+    icon: <SettingsOutlinedIcon sx={{ color: "#95969D" }} />,
+    url: "#Home",
+  },
   {
     name: "Logout",
     icon: <LogoutOutlinedIcon sx={{ color: "red" }} />,
@@ -82,7 +94,20 @@ export default function ClientAnchorTemporaryDrawer() {
         <ListItem key={index}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <a style={{ textDecoration: "none" }} href={item.url}>
-            <ListItemText primary={item.name} />{" "}
+            <ListItemText
+              primary={item.name}
+              sx={{
+                fontFamily: "Poppins",
+                fontWeight: "400",
+                fontSize: "15px",
+                lineHeight: "22.5px",
+                letterSpacing: "-1%",
+                color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeHeroTitle
+                  : theme.palette.primary.darkModeHeroTitle,
+              }}
+            />{" "}
           </a>
         </ListItem>
       ))}
@@ -116,7 +141,7 @@ export default function ClientAnchorTemporaryDrawer() {
                 */}
           <Box>
             <IconButton sx={{ mb: 2, ml: "80%" }}>
-              <CloseIcon onClick={toggleDrawer(false)} />
+              <CloseIcon onClick={toggleDrawer(false)} sx={{width:"20px", height:"20px"}}/>
             </IconButton>
           </Box>
           {/*Client Card*/}
@@ -124,8 +149,19 @@ export default function ClientAnchorTemporaryDrawer() {
             <ClientFirstFeature />
             <Link
               href="/client-profile"
-              className="drawerLink"
-              sx={{ textDecoration: "none" }}
+              
+              sx={{
+                textDecoration: "none",
+                color: "#87CEEB",
+                fontFamily: "Poppins",
+                fontWeight: "500",
+                fontSize: "14px",
+                lineHeight: "21px",
+                letterSpacing: "-1%",
+                position:"absolute",
+                mt:"-15%",
+                ml:"35%"
+              }}
             >
               View Profile
             </Link>
@@ -137,7 +173,7 @@ export default function ClientAnchorTemporaryDrawer() {
           {getList()}
           {/* Box for Go Premium button */}
           <Box sx={{ mt: "20%" }}>
-            <Button>
+            <Button sx={{backgroundColor:"#87CEEB", color:"#FFFFFF", ml:"25%"}}>
               <WorkspacePremiumOutlinedIcon /> Go Premium
             </Button>
           </Box>
@@ -150,96 +186,3 @@ export default function ClientAnchorTemporaryDrawer() {
     // Container End
   );
 }
-
-//   const list = (anchor) => (
-//     <Box
-//       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-//       role="presentation"
-//       onKeyDown={toggleDrawer(anchor, false)}
-//     >
-//       <IconButton
-//         onClick={toggleDrawer(anchor, false)}
-//         sx={{ alignContent: "end" }}
-//       >
-//         <Cancel />
-//       </IconButton>
-//       <List>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <InfoOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Personal Info" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <HomeRepairServiceOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Portfolio" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <AssignmentTurnedInOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Projects" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <WorkspacePremiumOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Applications" />
-//           </ListItemButton>
-//         </ListItem>
-
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <HelpCenterOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Support" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <SettingsOutlinedIcon />
-//             </ListItemIcon>
-//             <ListItemText primary="Settings" />
-//           </ListItemButton>
-//         </ListItem>
-//         <ListItem disablePadding>
-//           <ListItemButton>
-//             <ListItemIcon>
-//               <LogoutOutlinedIcon sx={{ color: "red" }} />
-//             </ListItemIcon>
-//             <ListItemText primary="Logout" />
-//           </ListItemButton>
-//         </ListItem>
-//       </List>
-
-//     </Box>
-//   );
-
-//   let anchor = "left";
-
-//   return (
-//     <div>
-//       <React.Fragment key={anchor}>
-//         <Button onClick={toggleDrawer(anchor, true)}>Profile</Button>
-//         <Drawer
-//           anchor={anchor}
-//           open={state[anchor]}
-//           onClose={toggleDrawer(anchor, false)}
-//         >
-//           {list(anchor)}
-//         </Drawer>
-//       </React.Fragment>
-//     </div>
-//   );
-// }

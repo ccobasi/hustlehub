@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
-import SecondHeader from "./app/layout/header/SecondHeader";
+import SecondHeader from "./app/layout/SecondHeader";
 
-import FooterSection from "./app/layout/footer/FooterSection";
+import FooterSection from "./app/layout/FooterSection";
 
 
 

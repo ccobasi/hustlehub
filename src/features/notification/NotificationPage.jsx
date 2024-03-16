@@ -1,27 +1,38 @@
-import { Typography, Link, Stack, Button } from "@mui/material";
-import Notification from "./presentationals/Notification";
+import { Typography,Container} from "@mui/material";
+import Notification from "./Notification";
 
 const NotificationPage = () => {
   return (
     <>
-      <Typography
-        variant="h5"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
+    <Container component="main" maxWidth="lg">
+    <Typography
+          component="h1"
+          variant="h5"
+          sx={{
+            mt: "-4%",
+            mb: "10%",
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "16px",
+            lineHeight: "20.8px",
+            textAlign: "center",
 
-          ml: "28%",
-        }}
-      >
-        <b>Notification</b>
-      </Typography>
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+          }}
+        >
+         Notification
+        </Typography>
+
+  
 
       {/*First Notification Feature*/}
 
       <Notification />
+      </Container>
+    
     </>
   );
 };

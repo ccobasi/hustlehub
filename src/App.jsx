@@ -1,7 +1,6 @@
 import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./features/components/SignUp";
@@ -19,16 +18,11 @@ import ClientPage from "./features/user/client/ClientPage";
 import EditClientPage from "./features/user/client/EditClientPage";
 import ClientAnchorTemporaryDrawer from "./features/components/ClientDrawer";
 import CreateProjectPage from "./features/user/client/CreateProjectPage";
-import CompanyPage from "./features/user/client/CompanyPage";
-import DescriptionPage from "./features/user/client/DescriptionPage";
-import EmploymentPage from "./features/user/client/EmploymentPage";
-import JobPositionPage from "./features/user/client/JobPositionPage";
-import LocationPage from "./features/user/client/LocationPage";
-import WorkplacePage from "./features/user/client/WorkplacePage";
 import ProjectReviewPage from "./features/user/client/ProjectReviewPage";
 import FreelancerPage from "./features/user/freelancer/FreelancerPage";
 import FreelancerAnchorTemporaryDrawer from "./features/components/FreelancerDrawer";
 import EditFreelancerPage from "./features/user/freelancer/EditFreelancerPage";
+import FreelancerSearchPage from "./features/user/freelancer/FreelancerSearchPage";
 import "./App.css";
 
 import Layout from "./Layout";
@@ -134,11 +128,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-      <Routes>
+        <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/about/question/21334565" element={<AboutPage />} />
+
             <Route
               path="/client-drawer"
               element={<ClientAnchorTemporaryDrawer />}
@@ -150,6 +144,7 @@ function App() {
           </Route>
           <Route path="/" element={<RegistrationLayout />}>
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/categories" element={<CategoriesPage />} />
@@ -157,26 +152,19 @@ function App() {
             <Route path="/message" element={<MessagePage />} />
             <Route path="/project-update" element={<ProjectsUpdatePage />} />
             <Route path="/browse-project" element={<BrowseProjectPage />} />
+            <Route path="/freelancer-search" element={<FreelancerSearchPage/>}/>
           </Route>
 
           <Route path="/" element={<UserLayout />}>
             <Route path="/client" element={<ClientPage />} />
             <Route path="/edit-client" element={<EditClientPage />} />
             <Route path="/create-project" element={<CreateProjectPage />} />
-            <Route path="/company" element={<CompanyPage />} />
-            <Route path="/description" element={<DescriptionPage />} />
-            <Route path="/employment" element={<EmploymentPage />} />
-            <Route path="job-position" element={<JobPositionPage />} />
-            <Route path="/location" element={<LocationPage />} />
-            <Route path="/workplace" element={<WorkplacePage />} />
+            
             <Route path="/project-review" element={<ProjectReviewPage />} />
             <Route path="/freelancer" element={<FreelancerPage />} />
             <Route path="/edit-freelancer" element={<EditFreelancerPage />} />
           </Route>
         </Routes>
-
-    
-        
       </BrowserRouter>
     </ThemeProvider>
   );

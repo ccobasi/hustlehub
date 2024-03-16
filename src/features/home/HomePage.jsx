@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { HomeHero } from "./presentationals/HomeHero";
-import { HomeCategories } from "./presentationals/HomeCategories";
-import { HomeTestimonials } from "./presentationals/HomeTestimonials";
-import { HomeTalents } from "./presentationals/HomeTalents";
-import { WhyBusinessesTurnToHustleHub } from "./presentationals/WhyHustleHub";
-import { HomeGreatWork } from "./presentationals/HomeGreatWork";
+import { HomeHero } from "./HomeHero";
+import { HomeCategories } from "./HomeCategories";
+import { HomeTestimonials } from "./HomeTestimonials";
+import { HomeTalents } from "./HomeTalents";
+import { WhyBusinessesTurnToHustleHub } from "./WhyHustleHubFeature";
+import { HomeGreatWork } from "./HomeGreatWork";
 import { Container } from "@mui/material";
 
 export default function HomePage() {

@@ -1,7 +1,7 @@
-import { Typography, Link, Stack, Button, Box } from "@mui/material";
+import { Typography, Link, Stack, Container, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ClientFirstFeature } from "./presentationals/ClientCard";
-import ClientSecondFeature from "./presentationals/ProjectContainer";
+import { ClientFirstFeature } from "./Client";
+import ClientSecondFeature from "./ProjectContainer";
 
 const ClientPage = () => {
   //Instatiate useNavigate
@@ -9,113 +9,156 @@ const ClientPage = () => {
 
   return (
     <>
-      {/*First Client Feature*/}
-      <ClientFirstFeature />
+      {/* Container for the Client page */}
+      <Container component="main" maxWidth="lg">
+        {/*First Client Feature*/}
+        <ClientFirstFeature />
 
-      {/*First Heading*/}
-      <Typography
-        variant="h6"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
-
-          ml: "23.5%",
-        }}
-      >
-        My Projects
-        <Link
-          href="/create-project"
-          sx={{
-            textDecoration: "none",
-            ml: "35%",
-            color: "#87CEEB",
-          }}
-        >
-          Create a Project
-        </Link>
-      </Typography>
-
-      {/*Second Client Feature*/}
-      <ClientSecondFeature />
-
-      {/*Second Heading*/}
-      <Box sx={{ mt: "5%" }}>
-        <Link
-          href="/categories"
-          sx={{
-            textDecoration: "none",
-            ml: "67%",
-            color: "#87CEEB",
-          }}
-        >
-          View All Project
-        </Link>
-      </Box>
-
-      {/*Third Heading*/}
-
-      <Stack direction="row">
+        {/*First Heading*/}
         <Typography
           variant="h6"
           sx={{
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "16px",
+            lineHeight: "20.8px",
+            textAlign: "start",
+
             color: (theme) =>
               theme.palette.mode === "light"
-                ? theme.palette.grey[600]
-                : theme.palette.grey[300],
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
 
-            ml: "24%",
-            mt: "2%",
+            pt: "20px",
+
+            ml: "15%",
           }}
         >
-          Payment History
+          My Projects
+          <Link
+            href="/create-project"
+            sx={{
+              fontFamily: "Poppins",
+              fontWeight: "400",
+              fontSize: "13px",
+              lineHeight: "20.8px",
+
+              textDecoration: "none",
+
+              color: "#87CEEB",
+              ml: "40%",
+            }}
+          >
+            Create a Project
+          </Link>
         </Typography>
 
-        <Link
-          href="/about/question/21334565"
-          sx={{
-            textDecoration: "none",
-            ml: "33%",
-            mt: "2%",
-            color: "#87CEEB",
-          }}
-        >
-          See all
-        </Link>
-      </Stack>
+        {/*Second Client Feature*/}
+        <ClientSecondFeature />
 
-      {/*Fourth Heading*/}
+        {/*Second Heading*/}
+        <Box sx={{ mt: "5%" }}>
+          <Link
+            href="/categories"
+            sx={{
+              textDecoration: "none",
+              ml: "67%",
+              color: "#87CEEB",
+              fontFamily: "Poppins",
+              fontWeight: "500",
+              fontSize: "12px",
+              lineHeight: "19.2px",
+              letterSpacing: "-1%",
+            }}
+          >
+            View All Project
+          </Link>
+        </Box>
 
-      <Stack direction="row" sx={{ mt: "20%" }}>
-        <Typography
-          variant="h6"
-          sx={{
-            color: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[600]
-                : theme.palette.grey[300],
+        {/*Third Heading*/}
 
-            ml: "24%",
-            mt: "2%",
-          }}
-        >
-          Messages
-        </Typography>
+        <Stack direction="row">
+          <Typography
+            variant="h6"
+            sx={{
+              fontFamily: "Poppins",
+              fontWeight: "600",
+              fontSize: "16px",
+              lineHeight: "20.8px",
+              
 
-        <Link
-          href="/about/question/21334565"
-          sx={{
-            textDecoration: "none",
-            ml: "39.5%",
-            mt: "2%",
-            color: "#87CEEB",
-          }}
-        >
-          See all
-        </Link>
-      </Stack>
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeHeroTitle
+                  : theme.palette.primary.darkModeHeroTitle,
+
+              ml: "15%",
+              mt: "2%",
+            }}
+          >
+            Payment History
+          </Typography>
+
+          <Link
+            href="/about/question/21334565"
+            sx={{
+              textDecoration: "none",
+              ml: "33%",
+              mt: "2%",
+              color: "#95969D",
+
+              fontFamily: "Poppins",
+              fontWeight: "400",
+              fontSize: "13px",
+              lineHeight: "20.8px",
+            }}
+          >
+            See all
+          </Link>
+        </Stack>
+
+        {/*Fourth Heading*/}
+
+        <Stack direction="row" sx={{ mt: "20%" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontFamily: "Poppins",
+              fontWeight: "600",
+              fontSize: "16px",
+              lineHeight: "20.8px",
+              
+
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeHeroTitle
+                  : theme.palette.primary.darkModeHeroTitle,
+
+              ml: "15%",
+              mt: "2%",
+            }}
+          >
+            Messages
+          </Typography>
+
+          <Link
+            href="/about/question/21334565"
+            sx={{
+              textDecoration: "none",
+              ml: "39.5%",
+              mt: "2%",
+              color: "#95969D",
+
+              fontFamily: "Poppins",
+              fontWeight: "400",
+              fontSize: "13px",
+              lineHeight: "20.8px",
+            }}
+          >
+            See all
+          </Link>
+        </Stack>
+      </Container>
     </>
   );
 };

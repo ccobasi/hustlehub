@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
-import UserDashboardHeader from "./features/layout/header/UserDashboardHeader";
+import UserDashboardHeader from "./features/layout/UserDashboardHeader";
 
-import FooterSection from "./features/layout/footer/FooterSection";
+import FooterSection from "./features/layout/FooterSection";
 
 const UserLayout = () => {
   return (

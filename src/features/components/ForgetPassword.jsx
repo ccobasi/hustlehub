@@ -6,11 +6,9 @@ import Container from "@mui/material/Container";
 import { ForgetPasswordGroupButton } from "./ForgetPasswordGroupButton";
 
 export default function ForgetPassword() {
-    
-
-  
- 
-{/**Handle submit */}
+  {
+    /**Handle submit */
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -32,16 +30,59 @@ export default function ForgetPassword() {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5" sx={{ mt: "5%" }}>
-          <b>Forget Password</b>
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{
+            mt: "5%",
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "24px",
+            lineHeight: "33.6px",
+            letterSpacing: "-1.5%",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+          }}
+        >
+          Forget Password
         </Typography>
-        <Typography component="h1" variant="body2" sx={{ mt: "3%" }}>
-          Enter your email or phone number, we will 
+        <Typography
+          component="h1"
+          sx={{
+            mt: "3%",
+            fontFamily: "Poppins",
+            fontWeight: "400",
+            fontSize: "14px",
+            lineHeight: "22.4px",
+            letterSpacing: "-1%",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+          }}
+        >
+          Select either your email or phone number, we will
         </Typography>
-        <Typography component="h1" variant="body2">
-        send you verification code.
+        <Typography
+          component="h1"
+          sx={{
+            mt: "3%",
+            fontFamily: "Poppins",
+            fontWeight: "400",
+            fontSize: "14px",
+            lineHeight: "22.4px",
+            letterSpacing: "-1%",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+          mb:"15%"}}
+        >
+          send you verification code.
         </Typography>
-        <ForgetPasswordGroupButton/>
+        <ForgetPasswordGroupButton />
       </Box>
     </Container>
     // Container End
