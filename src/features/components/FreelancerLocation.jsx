@@ -2,8 +2,13 @@ import { Box } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
 import Search from "@mui/icons-material/Search";
+import LocationOn from "@mui/icons-material/LocationOn";
 
-export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
+export const FreelancerLocationSearchBar = ({
+  queryData,
+  searchBox,
+  placeholder,
+}) => {
   // Initialization of the useState hook
   const [query, setQuery] = useState("");
   // Handler for onChange event
@@ -20,31 +25,33 @@ export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
     <>
       {/* Box for search input*/}
       <Box sx={{ mt: "2%" }}>
-        <Search
+        <LocationOn
           sx={{
             position: "absolute",
-            ml: "5%",
-            color: "#AFB0B6",
+            ml: "5.5%",
+            color: "#FF9228",
             width: "20.99px",
-            height: "19.92px",
-            top: "125.54px",
+            height: "29.92px",
+            top: "88.54px",
             opacity: "40%",
             display: { xs: "flex", md: "none" },
+            
           }}
         />
 
-        <Search
+        <LocationOn
           sx={{
             position: "absolute",
-            ml: "2.5%",
-            color: "#AFB0B6",
+            ml: "5.5%",
+            color: "#FF9228",
             width: "20.99px",
-            height: "19.92px",
-            top: "95.54px",
+            height: "29.92px",
+            top: "188.54px",
             opacity: "40%",
             display: { xs: "none", md: "flex" },
           }}
         />
+
         <input
           type="text"
           placeholder={placeholder}
@@ -59,7 +66,7 @@ export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
             paddingTop: "3px",
             paddingBottom: "3px",
             width: "90%",
-            marginLeft: "3%",
+            marginLeft: "5%",
 
             fontFamily: "Poppins",
             fontWeight: "400",

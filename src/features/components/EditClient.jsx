@@ -23,20 +23,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-//Data to browse loctation
-const locations = [
-  "Abia",
-  "Abuja",
-  "Akwa Ibom",
-  "Lagos",
-  "Asaba",
-  "Warri",
-  "Ikeja",
-  "Aba",
-  "Ajah",
-  "Oshodi",
-];
-//Data End
+//Data to browse skills
+const skills = ["Communication", "Leadership", "Team player"]; //Data End
+
+//Data to browse languages
+const languages = ["Igbo", "English", "Hausa", "Yoruba", "German", "Romania"]; //Data End
 
 const today = dayjs();
 const yesterday = dayjs().subtract(1, "day");
@@ -330,7 +321,7 @@ export default function FormValidation() {
         <Stack direction="row" justifyContent="space-between">
           <SubTitleText subtitle="Select skill sets" />
 
-          <CustomSelect name="select-location" data={locations} />
+          <CustomSelect name="select-skill" data={skills} />
         </Stack>
       </Box>
 
@@ -341,7 +332,7 @@ export default function FormValidation() {
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <SubTitleText subtitle="Select language" />
-          <CustomSelect name="select-location" data={locations} />
+          <CustomSelect name="select-language" data={languages} />
         </Stack>
       </Box>
       <Button type="submit" variant="contained">

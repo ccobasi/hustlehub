@@ -33,7 +33,7 @@ export default function RegistrationHeader() {
       {/* Box End */}
 
       {/* Box for app bar*/}
-      <Box
+      {/* <Box
         sx={{
           backgroundColor: theme.palette.mode,
           display: { xs: "none", md: "flex" },
@@ -88,7 +88,7 @@ export default function RegistrationHeader() {
           </Toolbar>
         </AppBar>
         {/* App bar End */}
-      </Box>
+      {/* </Box> */}
     </React.Fragment>
   );
 }

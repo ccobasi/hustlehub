@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Search from "@mui/icons-material/Search";
 
-export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
+export const FreelancerSearchBar = ({ queryData, placeholder }) => {
   // Initialization of the useState hook
   const [query, setQuery] = useState("");
   // Handler for onChange event
@@ -23,11 +23,11 @@ export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
         <Search
           sx={{
             position: "absolute",
-            ml: "5%",
+            ml: "5.5%",
             color: "#AFB0B6",
             width: "20.99px",
             height: "19.92px",
-            top: "125.54px",
+            top: "50.54px",
             opacity: "40%",
             display: { xs: "flex", md: "none" },
           }}
@@ -36,11 +36,11 @@ export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
         <Search
           sx={{
             position: "absolute",
-            ml: "2.5%",
+            ml: "5.5%",
             color: "#AFB0B6",
             width: "20.99px",
             height: "19.92px",
-            top: "95.54px",
+            top: "115.54px",
             opacity: "40%",
             display: { xs: "none", md: "flex" },
           }}
@@ -50,7 +50,7 @@ export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
           placeholder={placeholder}
           value={query}
           onChange={onChangeFunction}
-          onClick={searchBox}
+          
           style={{
             borderRadius: "8px",
             height: "40px",
@@ -59,7 +59,7 @@ export const MessageSearchBar = ({ queryData, searchBox, placeholder }) => {
             paddingTop: "3px",
             paddingBottom: "3px",
             width: "90%",
-            marginLeft: "3%",
+            marginLeft: "5%",
 
             fontFamily: "Poppins",
             fontWeight: "400",

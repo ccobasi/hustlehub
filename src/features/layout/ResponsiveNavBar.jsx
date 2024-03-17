@@ -262,7 +262,7 @@ const MobileUserAppTitle = () => {
   );
 };
 
-export const MobileNavSearch = ({ queryData, searchBox }) => {
+export const MobileNavSearch = ({ queryData, searchBox, placeholder }) => {
   //Initialization of useState hook
   const [query, setQuery] = useState("");
   //Handler for onChangeFunction
@@ -296,7 +296,7 @@ export const MobileNavSearch = ({ queryData, searchBox }) => {
         />
         <input
           type="text"
-          placeholder="Search"
+          placeholder={placeholder}
           value={query}
           onChange={onChangeFunction}
           onClick={searchBox}
@@ -442,7 +442,7 @@ const MenuSection = () => {
   );
 };
 
-export const NavBarSearch = ({ queryData, searchBox }) => {
+export const NavBarSearch = ({ queryData, searchBox, placeholder }) => {
   //Intialization of useState Hook
   const [query, setQuery] = useState("");
   //Handle for onChangeFunction
@@ -476,7 +476,7 @@ export const NavBarSearch = ({ queryData, searchBox }) => {
         />
         <input
           type="text"
-          placeholder="Search"
+          placeholder={placeholder}
           value={query}
           onChange={onChangeFunction}
           onClick={searchBox}
@@ -576,10 +576,11 @@ export default function ResponsiveNavBar() {
             <UserAppTitle />
 
             <MenuSection />
-            <NavBarSearch queryData={callFromNavbar} searchBox={searchPage} />
+            <NavBarSearch queryData={callFromNavbar} searchBox={searchPage} placeholder="Search"/>
             <MobileNavSearch
               queryData={callFromNavbar}
               searchBox={searchPage}
+              placeholder="Search"
             />
             <SignInButton />
             <MobileSignInButton />

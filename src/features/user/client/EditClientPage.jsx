@@ -23,24 +23,18 @@ import dayjs from "dayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import FormControl from "@mui/material/FormControl";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 
-//Data to browse loctation
-const locations = [
-  "Abia",
-  "Abuja",
-  "Akwa Ibom",
-  "Lagos",
-  "Asaba",
-  "Warri",
-  "Ikeja",
-  "Aba",
-  "Ajah",
-  "Oshodi",
-];
-//Data End
+
+
+//Data to browse skills
+const skills = ["Communication", "Leadership", "Team player"]; //Data End
+
+//Data to browse languages
+const languages = ["Igbo", "English", "Hausa", "Yoruba", "German", "Romania"]; //Data End
+
+
 
 const today = dayjs();
 
@@ -299,6 +293,7 @@ export default function EditClientPage() {
 
       {/*First Client Edit Feature*/}
       <EditClientFirstFeature />
+  
       <Container component="main" maxWidth="xs">
         <Box
           component="form"
@@ -311,7 +306,7 @@ export default function EditClientPage() {
             alignItems: "center",
           }}
         >
-          {/**Registration Form Control */}
+          {/**Edit Client Box */}
           <Box>
             <Stack direction="row">
               <AccountCircleOutlined
@@ -459,11 +454,11 @@ export default function EditClientPage() {
             <Stack direction="row">
               <SubTitleText subtitle="Select skill sets" />
 
-              <CustomSelect name="select-location" data={locations} />
+              <CustomSelect name="select-skill" data={skills} />
             </Stack>
           </Box>
 
-          {/* Box Client Skills */}
+          {/* Box Freelancer Languages */}
 
           <Box>
             <Stack direction="row">
@@ -481,7 +476,7 @@ export default function EditClientPage() {
             </Stack>
             <Stack direction="row" justifyContent="space-between">
               <SubTitleText subtitle="Select language" />
-              <CustomSelect name="select-location" data={locations} />
+              <CustomSelect name="select-language" data={languages} />
             </Stack>
           </Box>
 

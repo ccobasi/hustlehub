@@ -54,7 +54,7 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
-    navigate("/freelancer");
+    navigate("/freelancer-search");
   };
   //Submit Handle End
 

@@ -46,7 +46,7 @@ const MessagePage = () => {
           Messages
         </Typography>
 
-        <MessageSearchBar queryData={callFromNavbar} searchBox={searchPage} />
+        <MessageSearchBar queryData={callFromNavbar} searchBox={searchPage} placeholder="Search a chat or message"/>
 
         <Typography
           variant="h5"
