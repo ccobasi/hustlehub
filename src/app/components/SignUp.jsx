@@ -25,10 +25,10 @@ import {
   VisibilityOffOutlined,
   VisibilityOutlined,
 } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-    //When the user enters the password into the input field and 
-    //wants to see the password, the visibility icon in the button allows them to see the password, as it hides or unhides the text from the text field input.
+    const navigate = useNavigate();
     const [psw, setPsw] = useState(false);
     const handleShowPsw = () => setPsw((show) => !show);
     const handleHidePsw = (e) => {
@@ -52,6 +52,20 @@ export default function SignUp() {
     });
   };
 
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (handleSubmit) { 
+  //     navigate("/client"); 
+  //   }
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get("email"),
+  //     password: data.get("password"),
+  //   });
+
+  
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -66,7 +80,7 @@ export default function SignUp() {
           <b>Registration</b>
         </Typography>
         <Typography component="h1" variant="body2" sx={{ mt: "3%" }}>
-          Let's Register.Apply to jobs!
+          Let&apos;s Register.Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
          

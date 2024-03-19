@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -54,7 +55,13 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
-    navigate("/freelancer-search");
+    if(event.target.email.value && event.target.password.value){
+      if(!localStorage.getItem('user')){
+                localStorage.setItem('user',JSON.stringify([{email:event.target.email.value,passeord:event.target.password.value}]))
+                navigate('/client',{state:event.target.email.value })
+            }
+    }
+    
   };
   //Submit Handle End
 
@@ -103,7 +110,7 @@ export default function SignUp() {
             letterSpacing: "-1%",
           }}
         >
-          Let's Register.Apply to jobs!
+          Let&apos;s Register.Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           {/**Registration Form Control */}
@@ -119,7 +126,7 @@ export default function SignUp() {
               autoComplete="full-name"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <AccountCircleOutlined
                       sx={{
                         ml: "-25%",
@@ -148,7 +155,7 @@ export default function SignUp() {
               autoComplete="email"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <EmailOutlined
                       sx={{
                         ml: "-25%",
@@ -176,7 +183,7 @@ export default function SignUp() {
               placeholder="Enter your mobile number"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <PhoneAndroidOutlined
                       sx={{
                         ml: "-25%",
@@ -203,7 +210,7 @@ export default function SignUp() {
               select
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <ManageAccountsOutlined
                       sx={{
                         ml: "-25%",
@@ -235,7 +242,7 @@ export default function SignUp() {
               autoComplete="new-password"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <VpnKey
                       sx={{
                         ml: "-25%",
@@ -245,7 +252,7 @@ export default function SignUp() {
                   </InputAdornment>
                 ),
                 endAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="end">
                     <IconButton
                       onClick={handleShowPsw}
                       onMouseDown={handleHidePsw}
@@ -289,7 +296,7 @@ export default function SignUp() {
               autoComplete="new-password"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <VpnKey
                       sx={{
                         ml: "-25%",
@@ -299,7 +306,7 @@ export default function SignUp() {
                   </InputAdornment>
                 ),
                 endAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="end">
                     <IconButton
                       onClick={handleShowConfirmPsw}
                       onMouseDown={handleHideConfirmPsw}
