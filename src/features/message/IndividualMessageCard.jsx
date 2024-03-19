@@ -1,15 +1,25 @@
 import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 
-export default function First(props) {
+export default function IndividualMessageCard({
+  title,
+  description,
+  time,
+  count,
+  sourceSet,
+  image,
+  imageLabel,
+}) {
   return (
     <>
-      {/* Container  */}
+      {/* Container */}
       <Container maxWidth="md" sx={{ mt: 8 }}>
         <List
           sx={{
@@ -23,9 +33,9 @@ export default function First(props) {
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
               <Avatar
-                alt={props.imageLabel}
-                src={props.sourceSet}
-                style={{ width: "40px", height: "40px" }}
+                alt={imageLabel}
+                src={sourceSet}
+                tyle={{ width: "40px", height: "40px" }}
               />
             </ListItemAvatar>
             <ListItem sx={{ justifyContent: "flex-start" }}>
@@ -42,12 +52,11 @@ export default function First(props) {
                       : theme.palette.primary.darkModeHeroTitle,
                 }}
               >
-                {props.title}
+                {title}
               </Typography>
               <ListItem
                 sx={{
                   justifyContent: "flex-end",
-
                   fontFamily: "Poppins",
                   fontWeight: "500",
                   fontSize: "11px",
@@ -59,14 +68,14 @@ export default function First(props) {
                       : theme.palette.primary.darkModeHeroTitle,
                 }}
               >
-                {props.time}
+                {time}
               </ListItem>
             </ListItem>
           </ListItem>
           <ListItem>
             <Typography
               sx={{
-                ml: "10%",
+                ml: "12%",
                 mr: "4%",
                 width: "75%",
                 whiteSpace: "nowrap",
@@ -84,7 +93,7 @@ export default function First(props) {
                     : theme.palette.primary.darkModeHeroTitle,
               }}
             >
-              {props.description}
+              {description}
             </Typography>
             <Typography>
               <Avatar
@@ -105,7 +114,7 @@ export default function First(props) {
                       : theme.palette.primary.darkModeHeroTitle,
                 }}
               >
-                {props.count}
+                {count}
               </Avatar>
             </Typography>
           </ListItem>

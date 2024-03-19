@@ -1,7 +1,7 @@
-const  firstFeatureData = [
+const  individualFeatureData = [
     {
         id: 1,
-      title: "Google",
+      title: "Application sent",
       description:"Applications for Google companies have entered for company review.",
       time: "25 minutes ago",
       count:4,
@@ -14,7 +14,7 @@ const  firstFeatureData = [
   
     {
         id: 2,
-        title: "Hp",
+        title: "Application sent",
         description:"Applications for Google companies have entered for company review.",
         time: "25 minutes ago",
         count:3,
@@ -26,7 +26,7 @@ const  firstFeatureData = [
     },
     {
         id: 3,
-        title: "Facebook",
+        title: "Application sent",
         description:"Applications for Google companies have entered for company review.",
         time: "25 minutes ago",
         count:1,
@@ -40,4 +40,4 @@ const  firstFeatureData = [
 
   ];
 
-  export default firstFeatureData;
+  export default individualFeatureData;

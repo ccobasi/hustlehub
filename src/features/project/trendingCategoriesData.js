@@ -1,41 +1,41 @@
 const  trendingCategories = [
     {
         id: 1,
-      jobTitle: "Writing & Translation",
+      jobTitle: "Accountant",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "/assets/accountant.png, ",
+      image: "/assets/accountant.png",
   
-      imageLabel: "Business Analysis",
+      imageLabel: "Accountant",
     },
   
     {
         id: 2,
-      jobTitle: "Programming & Tech",
+      jobTitle: "Marketing",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "/assets/marketing.png,",
+      image: "/assets/marketing.png",
   
-      imageLabel: "Web Development Services",
+      imageLabel: "Marketing",
     },
     {
         id: 3,
-      jobTitle: "Software Engineering",
+      jobTitle: "App Developer",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "/assets/appDeveloper.png, ",
+      image: "/assets/appDeveloper.png",
   
-      imageLabel: "Mobile App Development Services",
+      imageLabel: "App Developer",
     },
   
     {
         id: 4,
-      jobTitle: "Business & Finance",
+      jobTitle: "Graphic Designer",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
-  
-      imageLabel: "Design Services",
+        "/assets/graphicDesigner.png, ",
+      image: "/assets/graphicDesigner.png",
+     
+      imageLabel: "Graphic Designer",
     },
   ];
 

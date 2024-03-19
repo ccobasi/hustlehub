@@ -78,8 +78,8 @@ export default function SignIn() {
           </Typography>
           <img
             alt="Waving Hand Emogi"
-            src="/assets/wavingHand.png"
-            style={{ height: "60px", width: "60px" }}
+            src="/assets/loginEmoji.png"
+            style={{ height: "34px", width: "34px" , paddingTop:"5px", marginTop:"14px", marginLeft:"10px"}}
           />
         </Stack>
 

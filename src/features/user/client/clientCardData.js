@@ -6,10 +6,10 @@ const clientCardData = [
       jobTitle: "Project Manager",
   
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+        "/assets/sebastineHaller.png,",
+      image: "/assets/sebastineHaller.png",
   
-      imageLabel: "Business Analysis",
+      imageLabel: "Sebastine Haller",
     },
   
    

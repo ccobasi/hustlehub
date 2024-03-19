@@ -112,16 +112,19 @@ const menuSectionData = [
     url: "#Home",
   },
 ];
-const AppLogo = () => {
+const AppLogo = ({src, alt}) => {
   return (
     <>
       {/* Box for App logo */}
       <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "flex" } }}>
         <Avatar
+          src={src}
+          alt={alt}
           sx={{
             position: "fixed",
             typography: (theme) => theme.typography.logo,
           }}
+        
         />
       </Box>
       {/* Box End */}
@@ -568,7 +571,7 @@ export default function ResponsiveNavBar() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AppLogo />
+            <AppLogo  src="/assets/hustlehub-transparent-logo250x100.png" alt="Logo"/>
 
             <MobileTransitionsModal />
             <MobileUserAppTitle />

@@ -1,5 +1,5 @@
 import { Typography,Container} from "@mui/material";
-import Notification from "./Notification";
+import NotificationCardPresentation from "./Notification";
 
 const NotificationPage = () => {
   return (
@@ -30,7 +30,7 @@ const NotificationPage = () => {
 
       {/*First Notification Feature*/}
 
-      <Notification />
+      <NotificationCardPresentation />
       </Container>
     
     </>

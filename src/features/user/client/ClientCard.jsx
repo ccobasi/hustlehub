@@ -24,7 +24,8 @@ export default function ClientCard({
           >
             <Avatar
               alt={imageLabel}
-              src={sourceSet}
+              sourceSet={sourceSet}
+              src={image}
               sx={{ height: "109px", width: "104px" }}
             />
 
@@ -63,7 +64,10 @@ export default function ClientCard({
               >
                 {jobTitle}
               </Typography>
-              <VerifiedOutlinedIcon sx={{width:"12px",color:"#5386E4", height:"12px"}} className="clientVerifiedIcon" />
+              <VerifiedOutlinedIcon
+                sx={{ width: "12px", color: "#5386E4", height: "12px" }}
+                className="clientVerifiedIcon"
+              />
             </Stack>
           </CardContent>
         </Card>

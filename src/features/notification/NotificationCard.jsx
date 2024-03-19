@@ -8,7 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { Button, Link, Grid } from "@mui/material";
 
-export default function Second(props) {
+export default function NotificationCardPresentation(props) {
   return (
     <>
       {/* Grid for Notification functionality  */}

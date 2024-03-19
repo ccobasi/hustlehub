@@ -1,50 +1,50 @@
 const homeTalentsData = [
   {
     id:0,
-    name: "Name #1",
+    name: "John Doe",
 
-    jobTitle: "Job Title #1",
+    jobTitle: "Backend Developer",
     rating: 5,
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
+      "/assets/johnDoe.png,",
+    image: "/assets/johnDoe.png",
 
-    imageLabel: "Business Analysis",
+    imageLabel: "John Doe",
   },
 
   {
     id:1,
-    name: "Name #2",
+    name: "John Doe",
 
-    jobTitle: "Job Title #2",
+    jobTitle: "Backend Developer",
     rating: 4,
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
-    imageLabel: "Business Analysis",
+      "/assets/johnDoe.png,",
+    image: "/assets/johnDoe.png",
+    imageLabel: "John Doe",
   },
   {
     id:2,
-    name: "Name #2",
+    name: "John Doe",
 
-    jobTitle: "Job Title #3",
+    jobTitle: "Backend Developer",
     rating: 4,
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
-    imageLabel: "Business Analysis",
+      "/assets/johnDoe.png,",
+    image: "/assets/johnDoe.png",
+    imageLabel: "John Doe",
   },
 
   {
     id:3,
-    name: "Name #2",
+    name: "John Doe",
 
-    jobTitle: "Job Title #3",
+    jobTitle: "Backend Developer",
     rating: 4,
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
-    imageLabel: "Business Analysis",
+      "/assets/johnDoe.png,",
+    image: "/assets/johnDoe.png",
+    imageLabel: "John Doe",
   },
   ];
   

@@ -1,50 +1,50 @@
 const homeTestimonialsData = [
     {
         id:0,
-        name: "Name #1",
+        name: "Emily Willis",
     
-        jobTitle: "Job Title #1",
+        jobTitle: "Outstanding Service",
         rating: 5,
         sourceSet:
-          "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-        image: "/assets/analyze-and-outperform-competition.png",
+          "/assets/emilyWillis.png, ",
+        image: "/assets/emilyWillis.png",
     
-        imageLabel: "Business Analysis",
+        imageLabel: "Emily Willis",
       },
     
       {
         id:1,
-        name: "Name #2",
+        name: "Joy Nelson",
     
-        jobTitle: "Job Title #2",
+        jobTitle: "Outstanding Service",
         rating: 4,
         sourceSet:
-          "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-        image: "/assets/analyze-and-outperform-competition.png",
+        "/assets/emilyWillis1.png, ",
+        image: "/assets/emilyWillis1.png",
         imageLabel: "Business Analysis",
       },
       {
         id:2,
-        name: "Name #2",
+        name: "Peterson Water",
     
-        jobTitle: "Job Title #3",
+        jobTitle: "Outstanding Service",
         rating: 4,
         sourceSet:
-          "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-        image: "/assets/analyze-and-outperform-competition.png",
-        imageLabel: "Business Analysis",
+        "/assets/emilyWillis2.png, ",
+        image: "/assets/emilyWillis2.png",
+        imageLabel: "Peterson Water",
       },
 
       {
         id:3,
-        name: "Name #2",
+        name: "Amanda Snow",
     
-        jobTitle: "Job Title #3",
+        jobTitle: "Outstanding Service",
         rating: 4,
         sourceSet:
-          "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-        image: "/assets/analyze-and-outperform-competition.png",
-        imageLabel: "Business Analysis",
+        "/assets/emilyWillis3.png, ",
+        image: "/assets/emilyWillis3.png",
+        imageLabel: "Amanda Snow",
       },
   ];
 

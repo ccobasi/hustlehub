@@ -1,6 +1,7 @@
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Card, CardContent, CardMedia, Rating, Box } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
 
 export default function Talents({
   sourceSet,
@@ -15,7 +16,7 @@ export default function Talents({
       {/* Grid for the Find Talents Feature */}
       <Grid item xs={6} md={4} sx={{ mb: "10px" }}>
         {/* Card for the feature */}
-        <Card sx={{ display: "flex" }}>
+        <Card sx={{ display: "flex" ,  borderRadius:"24px"}}>
           {/* Card Content for the feature */}
           <CardContent
             sx={{
@@ -39,10 +40,10 @@ export default function Talents({
                 maxWidth: { xs: 48, md: 250 },
                 margin: "auto",
                 display: { xs: "flex", md: "none" },
+               
               }}
             >
-              <source srcSet={sourceSet} />
-              <img src={image} alt={imageLabel} />
+              <Avatar src={image} alt={imageLabel} srcSet={sourceSet} style={{height:"48px", width:"48px"}}/>
             </CardMedia>
             {/* Card Media End */}
 
@@ -59,8 +60,9 @@ export default function Talents({
                 mr: "5%",
               }}
             >
-              <source srcSet={sourceSet} />
-              <img src={image} alt={imageLabel} />
+              
+              <Avatar src={image} alt={imageLabel} srcSet={sourceSet} style={{height:"48px", width:"48px"}}/>
+             
             </CardMedia>
             {/* Card Media End */}
             {/* Card media for large devices */}
@@ -76,8 +78,7 @@ export default function Talents({
                 mr: "14%",
               }}
             >
-              <source srcSet={sourceSet} />
-              <img src={image} alt={imageLabel} />
+              <Avatar src={image} alt={imageLabel} srcSet={sourceSet} style={{height:"48px", width:"48px"}}/>
             </CardMedia>
             {/* Card media End */}
 

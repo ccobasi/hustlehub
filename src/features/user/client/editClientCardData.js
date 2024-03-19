@@ -6,11 +6,11 @@ const editClientCardData = [
     location: "California, US",
     numberOfFollower: "120k",
     numberOfFollowing: "23k",
-    sourceSet: "/assets/bg.png, /assets/bg.jpg",
-    image: "/assets/bg.png",
+    sourceSet: "/assets/sebastineHaller.png",
+    image: "/assets/sebastineHaller.png",
+    bgImg: "/assets/background.png",
 
-    imageLabel: "Business Analysis",
-    imageText: "Edit Client Page ",
+    imageLabel: "Sebastine Haller",
   },
 ];
 

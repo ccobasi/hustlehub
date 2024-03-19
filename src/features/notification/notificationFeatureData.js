@@ -1,10 +1,9 @@
-const  secondFeatureData = [
+const  notificationFeatureData = [
     {
         id: 1,
       title: "Application sent",
       description:"Applications for Google companies have entered for company review.",
       time: "25 minutes ago",
-      count:4,
       sourceSet:
         "/assets/google-logo.png",
       image: "/assets/google-logo.png",
@@ -17,7 +16,6 @@ const  secondFeatureData = [
         title: "Application sent",
         description:"Applications for Google companies have entered for company review.",
         time: "25 minutes ago",
-        count:3,
       sourceSet:
         "/assets/facebook-logo.png",
       image: "/assets/facebook-logo.png",
@@ -29,7 +27,6 @@ const  secondFeatureData = [
         title: "Application sent",
         description:"Applications for Google companies have entered for company review.",
         time: "25 minutes ago",
-        count:1,
       sourceSet:
         "/assets/google-logo.png",
       image: "/assets/google-logo.png",
@@ -37,7 +34,17 @@ const  secondFeatureData = [
       imageLabel: "Mobile App Development Services",
     },
   
-
+    {
+        id: 4,
+        title: "Application sent",
+        description:"Applications for Google companies have entered for company review.",
+        time: "25 minutes ago",
+      sourceSet:
+        "/assets/apple-logo.png",
+      image: "/assets/apple-logo.png",
+  
+      imageLabel: "Design Services",
+    },
   ];
 
-  export default secondFeatureData;
+  export default notificationFeatureData;

@@ -46,7 +46,6 @@ export default function SearchHero({
           srcSet: `url(${sourceSet})`,
           alt: `url(${imageText})`,
           boxShadow: 0,
-         // height:"400px"
          
          
         }}
@@ -57,23 +56,13 @@ export default function SearchHero({
               position: "relative",
               p: { xs: 6, md: 6 },
               pr: { md: 0 },
+              
             
               
               
             }}
           >
-{/* <Box sx={{ mt: "3%" }}>
-              <FreelancerSearchBar
-                queryData={callFromNavbar}
-                searchBox={searchPage}
-                placeholder=""
-              />
-            </Box>
-            <Box>
-              <FreelancerLocationSearchBar queryData={callFromNavbar}
-                searchBox={searchPage}
-                placeholder="" />
-            </Box> */}
+
            </Box>
         </Grid>
         {/* Paper End */}

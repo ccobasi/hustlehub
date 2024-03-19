@@ -1,16 +1,16 @@
 const editFreelancerCardData = [
   {
     id: 1,
-    name: "Sebastine Haller",
+    name: "Haley Jessica",
 
     location: "California, US",
     numberOfFollower: "120k",
     numberOfFollowing: "23k",
-    sourceSet: "/assets/bg.png, /assets/bg.jpg",
-    image: "/assets/bg.png",
-
-    imageLabel: "Business Analysis",
-    imageText: "Edit Client Page ",
+    sourceSet: "/assets/haleyJessica.png",
+    image: "/assets/haleyJessica.png",
+    bgImg:"/assets/background.png",
+    imageLabel: "Haley Jessica",
+   
   },
 ];
 

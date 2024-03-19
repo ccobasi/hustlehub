@@ -3,6 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import Avatar  from "@mui/material/Avatar";
 
 export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
   return (
@@ -17,6 +18,7 @@ export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
               theme.palette.mode === "light"
                 ? theme.palette.grey[50]
                 : theme.palette.grey[900],
+                borderRadius:"16px"
           }}
         >
           {/* Card Content for the Feature*/}
@@ -46,8 +48,7 @@ export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
               }}
             >
               
-              <source srcSet={sourceSet} />
-              <img src={image} alt={imageLabel} />
+              <Avatar src={image} alt={imageLabel} srcSet={sourceSet} style={{width:"48px", height:"48px"}} />
             </CardMedia>
             {/* Card Media End */}
 

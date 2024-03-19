@@ -1,41 +1,43 @@
 const  popularCategories = [
     {
         id: 1,
-      jobTitle: "Job Title #1",
+      jobTitle: "Writing & Translation",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+      "/assets/rectangle-114-yQi.png, /assets/rectangle-114-yQ.png, /assets/rectangle-114-zCe.png",
+      image: "/assets/rectangle-114-zCe.png",
   
-      imageLabel: "Business Analysis",
+      imageLabel: "Writing & Translation",
     },
   
     {
         id: 2,
-      jobTitle: "Job Title #2",
+      jobTitle: "Programming & Tech",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+      "/assets/programmingAndTechSm.png, /assets/programmingAndTechLg.png",
+      image: "/assets/programmingAndTechSm.png",
   
-      imageLabel: "Web Development Services",
+      imageLabel: "Programming & Tech",
     },
     {
         id: 3,
-      jobTitle: "Job Title #3",
+      jobTitle: "Software Engineer",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+      "/assets/softwareEngineerSm.png, /assets/softwareEngineerLg.png",
+      image: "/assets/softwareEngineerLg.png",
   
-      imageLabel: "Mobile App Development Services",
+  
+      imageLabel: "Software Engineer",
     },
   
     {
         id: 4,
-      jobTitle: "Job Title #4",
+      jobTitle: "Business & Finance",
       sourceSet:
-        "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-      image: "/assets/analyze-and-outperform-competition.png",
+      "/assets/businessAndFinanceSm.png, /assets/businessAndFinanceLg.png",
+      image: "/assets/businessAndFinanceLg.png",
   
-      imageLabel: "Design Services",
+  
+      imageLabel: "Business & Finance",
     },
   ];
 

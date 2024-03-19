@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Link, Stack, Button } from "@mui/material";
-import { FirstMessageGroup } from "./FirstMessageGroup ";
-import { SecondMessageGroup } from "./SecondMessageGroup ";
+import CompaniesMessageGroup from "./CompaniesMessageGroup ";
+import { IndividualMessageGroup } from "./IndividualMessageGroupPresentation";
 import { MessageSearchBar } from "../components/MessageSearchBar";
 import Container from "@mui/material/Container";
+import MessagePresentation from "./MessagePresentation";
 
 const MessagePage = () => {
   //Initialization of useState hook
@@ -66,11 +67,11 @@ const MessagePage = () => {
             letterSpacing: "-1%",
           }}
         >
-          <b>Companies</b>
+          Companies
         </Typography>
 
         {/*First Message Feature*/}
-        <FirstMessageGroup />
+        {/* <CompaniesMessageGroup /> */}
 
         <Typography
           variant="h5"
@@ -90,10 +91,12 @@ const MessagePage = () => {
             letterSpacing: "-1%",
           }}
         >
-          <b>Individual Messages</b>
+         Individual Messages
         </Typography>
         {/*Second Message Feature*/}
-        <SecondMessageGroup />
+        {/* <IndividualMessageGroup /> */}
+
+        <MessagePresentation/>
       </Container>
     </>
   );

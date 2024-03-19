@@ -3,7 +3,10 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import { Rating, Box, Stack } from "@mui/material";
+import { Rating, Box, Stack,  } from "@mui/material";
+import Avartar from "@mui/material/Avatar";
+
+
 
 export default function Testimonials({
   sourceSet,
@@ -18,7 +21,7 @@ export default function Testimonials({
       {/* Grid for the Testimonials Feature */}
       <Grid item xs={6} md={3} sx={{ mb: "10px" }}>
         {/* Card */}
-        <Card sx={{ display: "flex" }}>
+        <Card sx={{ display: "flex",  borderRadius:"24px" }}>
           {/* Card content */}
           <CardContent
             sx={{
@@ -42,8 +45,8 @@ export default function Testimonials({
                 display: { xs: "flex", md: "none" },
               }}
             >
-              <source srcSet={sourceSet} />
-              <img src={image} alt={imageLabel} />
+              <Avartar src={image} alt={imageLabel} srcSet={sourceSet}  />
+             
             </CardMedia>
             {/*  Card media End*/}
             {/* Card media for  medium devices*/}
@@ -62,8 +65,7 @@ export default function Testimonials({
                 display: { xs: "none", md: "flex" },
               }}
             >
-              <source srcSet={sourceSet} />
-              <img src={image} alt={imageLabel} />
+              <Avartar src={image} alt={imageLabel} srcSet={sourceSet}  />
             </CardMedia>
             {/* Card Media End */}
             {/* Talent's name, job title and rating  */}

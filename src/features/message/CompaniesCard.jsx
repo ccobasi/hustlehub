@@ -1,17 +1,23 @@
 import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 
-export default function Second(props) {
+export default function CompaniesCard({
+  title,
+  description,
+  time,
+  count,
+  sourceSet,
+  
+  imageLabel,
+}) {
   return (
     <>
-      {/* Container */}
+      {/* Container  */}
       <Container maxWidth="md" sx={{ mt: 8 }}>
         <List
           sx={{
@@ -25,9 +31,9 @@ export default function Second(props) {
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
               <Avatar
-                alt={props.imageLabel}
-                src={props.sourceSet}
-                tyle={{ width: "40px", height: "40px" }}
+                alt={imageLabel}
+                src={sourceSet}
+                style={{ width: "40px", height: "40px" }}
               />
             </ListItemAvatar>
             <ListItem sx={{ justifyContent: "flex-start" }}>
@@ -44,26 +50,31 @@ export default function Second(props) {
                       : theme.palette.primary.darkModeHeroTitle,
                 }}
               >
-                {props.title}
+                {title}
               </Typography>
-              <ListItem sx={{ justifyContent: "flex-end",
-             fontFamily: "Poppins",
-             fontWeight: "500",
-             fontSize: "11px",
-             lineHeight: "17.6px",
-             letterSpacing: "-1%",
-             color: (theme) =>
-               theme.palette.mode === "light"
-                 ? theme.palette.primary.lightModeHeroTitle
-                 : theme.palette.primary.darkModeHeroTitle, }}>
-                {props.time}
+              <ListItem
+                sx={{
+                  justifyContent: "flex-end",
+
+                  fontFamily: "Poppins",
+                  fontWeight: "500",
+                  fontSize: "11px",
+                  lineHeight: "17.6px",
+                  letterSpacing: "-1%",
+                  color: (theme) =>
+                    theme.palette.mode === "light"
+                      ? theme.palette.primary.lightModeHeroTitle
+                      : theme.palette.primary.darkModeHeroTitle,
+                }}
+              >
+                {time}
               </ListItem>
             </ListItem>
           </ListItem>
           <ListItem>
             <Typography
               sx={{
-                ml: "12%",
+                ml: "10%",
                 mr: "4%",
                 width: "75%",
                 whiteSpace: "nowrap",
@@ -81,7 +92,7 @@ export default function Second(props) {
                     : theme.palette.primary.darkModeHeroTitle,
               }}
             >
-              {props.description}
+              {description}
             </Typography>
             <Typography>
               <Avatar
@@ -102,7 +113,7 @@ export default function Second(props) {
                       : theme.palette.primary.darkModeHeroTitle,
                 }}
               >
-                {props.count}
+                {count}
               </Avatar>
             </Typography>
           </ListItem>

@@ -8,7 +8,7 @@ export default function FreelancerCard({
   name,
   jobTitle,
   sourceSet,
-
+  image,
   imageLabel,
 }) {
   return (
@@ -25,7 +25,8 @@ export default function FreelancerCard({
           >
             <Avatar
               alt={imageLabel}
-              src={sourceSet}
+              sourceSet={sourceSet}
+              src={image}
               sx={{ height: "109px", width: "104px" }}
             />
 

@@ -8,10 +8,10 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
+      "/assets/greatProject.png, ",
+    image: "/assets/greatProject.png",
 
-    imageLabel: "Business Analysis",
+    imageLabel: "Product Design",
   },
 
   {
@@ -23,10 +23,10 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
+    "/assets/greatProject.png, ",
+    image: "/assets/greatProject.png",
 
-    imageLabel: "Web Development Services",
+    imageLabel: "Product Design",
   },
   {
     id: 2,
@@ -37,10 +37,10 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
+    "/assets/greatProject.png, ",
+    image: "/assets/greatProject.png",
 
-    imageLabel: "Mobile App Development Services",
+    imageLabel: "Product Design",
   },
 
   {
@@ -52,10 +52,9 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-      "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
-    image: "/assets/analyze-and-outperform-competition.png",
-
-    imageLabel: "Design Services",
+    "/assets/greatProject.png, ",
+    image: "/assets/greatProject.png",
+    imageLabel: "Product Design",
   },
 ];
 

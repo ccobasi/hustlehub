@@ -27,6 +27,7 @@ export default function GreatWork({
             display: "flex",
 
             backgroundColor: "#87CEEB",
+            borderRadius:"12px"
           }}
         >
           {/* Card Content for the feature */}
