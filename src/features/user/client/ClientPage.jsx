@@ -1,5 +1,5 @@
 import { Typography, Link, Stack, Container, Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { ClientFirstFeature } from "./Client";
 import ClientSecondFeature from "./ProjectContainer";
 import { useLocation } from "react-router-dom";
@@ -8,7 +8,7 @@ const ClientPage = () => {
   const data = useLocation();
   console.log(data);
   
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   return (
     <>

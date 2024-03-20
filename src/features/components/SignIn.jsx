@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -21,12 +22,10 @@ import {
 } from "@mui/icons-material";
 
 export default function SignIn() {
-  //Initialization of useState hook
   let navigate = useNavigate();
   const [psw, setPsw] = useState(false);
-  //Handler for user to see pw
   const handleShowPsw = () => setPsw((show) => !show);
-  //Handler for user to hide pw
+  
   const handleHidePsw = (e) => {
     e.preventDefault();
   };
@@ -37,13 +36,23 @@ export default function SignIn() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    navigate("/client");
+    const email = data.get("email");
+    const password = data.get("password");
+
+    const users = JSON.parse(localStorage.getItem('user')) || [];
+
+    const matchingUser = users.find(user => user.email === email && user.password === password);
+
+    if (matchingUser) {
+      navigate("/client", { state: email });
+    } else {
+      console.error("Invalid email or password");
+      alert("Invalid email or password")
+    }
   };
+ 
   //Submit Handler End
 
   return (
@@ -98,7 +107,7 @@ export default function SignIn() {
             letterSpacing: "-1%",
           }}
         >
-          Let's log in.Apply to jobs!
+          Let&apos;s log in.Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           {/**Registration Form Control */}
@@ -114,7 +123,7 @@ export default function SignIn() {
               autoComplete="email"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <EmailOutlined
                       sx={{
                         ml: "-25%",
@@ -149,7 +158,7 @@ export default function SignIn() {
               autoComplete="new-password"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <VpnKey
                       sx={{
                         ml: "-25%",
@@ -159,7 +168,7 @@ export default function SignIn() {
                   </InputAdornment>
                 ),
                 endAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="end">
                     <IconButton
                       onClick={handleShowPsw}
                       onMouseDown={handleHidePsw}
@@ -260,7 +269,7 @@ export default function SignIn() {
                   lineHeight: "17.71px",
                   color: "#AFB0B6" }}
               >
-                Haven't an account?{" "}
+                Haven&apos;t an account?{" "}
                 <a
                   href="/sign-up"
                   style={{
