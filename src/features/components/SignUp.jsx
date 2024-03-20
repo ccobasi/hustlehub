@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -10,11 +10,9 @@ import { InputAdornment } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import { useState } from "react";
 import Divider from "@mui/material/Divider";
 import ImageAvatars from "./ImageAvatars";
 import { useNavigate } from "react-router-dom";
-
 import {
   EmailOutlined,
   AccountCircleOutlined,
@@ -26,47 +24,85 @@ import {
 } from "@mui/icons-material";
 
 export default function SignUp() {
-  //Initialization of useState Hook
-  const [psw, setPsw] = useState(false);
-  //Handler for user to see pw
-  const handleShowPsw = () => setPsw((show) => !show);
-  //Handler for user to hide pw
-  const handleHidePsw = (e) => {
-    e.preventDefault();
-  };
-  //Handler End
-  {
-    /**Handle show or hide confirm psw */
-  }
-  const [confirmPsw, setConfirmPsw] = useState(false);
-  const handleShowConfirmPsw = () => setConfirmPsw((show) => !show);
-  const handleHideConfirmPsw = (e) => {
-    e.preventDefault();
-  };
-  // Handler End
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    mobileNumber: "",
+    role: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [data,setData] = useState([])
+   const [email,setEmail] = useState('')
+   const [,setSignIn] = useState(false)
 
-  //Initialization of useNavigate hook
-  let navigate = useNavigate();
-  //Handler for the submit event
+  useEffect(()=>{
+        setData(JSON.parse(localStorage.getItem('user')))
+    },[])
+
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword((prevShow) => !prevShow);
+  };
+
+  const handleShowConfirmPassword = () => {
+    setShowConfirmPassword((prevShow) => !prevShow);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    if(event.target.email.value && event.target.password.value){
-      if(!localStorage.getItem('user')){
-                localStorage.setItem('user',JSON.stringify([{email:event.target.email.value,passeord:event.target.password.value}]))
-                navigate('/client',{state:event.target.email.value })
-            }
+    // Handle form submission here
+    console.log(formData);
+    if (formData.email && formData.password) {
+      if (!localStorage.getItem("user")) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify([
+            { email: formData.email, password: formData.password },
+          ])
+        );
+        navigate("/client", { state: formData.email });
+      }else{
+        for(let val of data){
+                    setEmail(val.email)
+                    if(val.email.includes(event.target.email.value)){
+                        alert("User already Exist")
+                        setSignIn(true)
+                        }else{
+                            if(val.passeord == event.target.password.value){
+                                navigate('/client',{state:event.target.email.value })
+                            }else{
+                                alert('Password does not match')
+                            }
+                        }
+                        return true;
+                    }
+                }
+                if(email !==event.target.email.value){
+                    localStorage.setItem('user',JSON.stringify([...data,{email:event.target.email.value,password:event.target.password.value}]))
+                    navigate('/client',{state:event.target.email.value })
+                }else{
+                    alert('User does not exist')
+                    setSignIn(false)
+                }
+      }
     }
-    
-  };
-  //Submit Handle End
+  
 
   return (
-    // Container for Sign Up functionality
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
@@ -76,46 +112,14 @@ export default function SignUp() {
           alignItems: "center",
         }}
       >
-        <Typography
-          component="h1"
-          variant="h5"
-          sx={{
-            mt: "10%",
-            color: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.primary.lightModeHeroTitle
-                : theme.palette.primary.darkModeHeroTitle,
-            fontFamily: "Poppins",
-            fontWeight: "600",
-            fontSize: "24px",
-            lineHeight: "33.6px",
-            letterSpacing: "-1.5%",
-          }}
-        >
+        <Typography variant="h5" sx={{ mt: "10%" }}>
           Registration
         </Typography>
-        <Typography
-          component="h1"
-          variant="body2"
-          sx={{
-            mt: "3%",
-            color: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.primary.lightModeHeroTitle
-                : theme.palette.primary.darkModeHeroTitle,
-            fontFamily: "Poppins",
-            fontWeight: "400",
-            fontSize: "14px",
-            lineHeight: "22.4px",
-            letterSpacing: "-1%",
-          }}
-        >
-          Let&apos;s Register.Apply to jobs!
+        <Typography variant="body2" sx={{ mt: "3%" }}>
+          Let&apos;s Register. Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          {/**Registration Form Control */}
           <FormControl fullWidth>
-            {/**Full Name Textfield */}
             <TextField
               required
               fullWidth
@@ -124,286 +128,146 @@ export default function SignUp() {
               name="fullName"
               placeholder="Enter your full name"
               autoComplete="full-name"
+              value={formData.fullName}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircleOutlined
-                      sx={{
-                        ml: "-25%",
-                        color: "#AFB0B6",
-                      }}
-                    />
+                    <AccountCircleOutlined />
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                color: "#AFB0B6",
-
-                pb: "5%",
-                mb: "2%",
-                mt: "25%",
-              }}
+              sx={{ mt: "25%" }}
             />
-            {/**Email Textfield */}
             <TextField
               required
               fullWidth
               id="email"
-              label="E-mail"
+              label="Email"
               name="email"
               placeholder="Enter your email"
               autoComplete="email"
+              value={formData.email}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <EmailOutlined
-                      sx={{
-                        ml: "-25%",
-                        color: "#AFB0B6",
-                      }}
-                    />
+                    <EmailOutlined />
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                color: "#AFB0B6",
-
-                pb: "5%",
-                mb: "2%",
-              }}
+              sx={{ mt: "3%" }}
             />
-            {/**Mobile Number Textfield */}
             <TextField
               required
               fullWidth
               id="mobileNumber"
               label="Mobile Number"
               name="mobileNumber"
-              autoComplete="mobile-number"
               placeholder="Enter your mobile number"
+              autoComplete="mobile-number"
+              value={formData.mobileNumber}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PhoneAndroidOutlined
-                      sx={{
-                        ml: "-25%",
-                        color: "#AFB0B6",
-                      }}
-                    />
+                    <PhoneAndroidOutlined />
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                color: "#AFB0B6",
-
-                pb: "5%",
-                mb: "2%",
-              }}
+              sx={{ mt: "3%" }}
             />
-            {/**Choose Role Textfield */}
             <TextField
               required
               fullWidth
               name="role"
               label="Choose Role"
-              id="role"
               select
+              value={formData.role}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <ManageAccountsOutlined
-                      sx={{
-                        ml: "-25%",
-                        color: "#AFB0B6",
-                      }}
-                    />
+                    <ManageAccountsOutlined />
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                color: "#AFB0B6",
-
-                pb: "5%",
-                mb: "2%",
-              }}
+              sx={{ mt: "3%" }}
             >
-              <MenuItem value="Business Owner">Client</MenuItem>
-              <MenuItem value="Talent">Freelancer</MenuItem>
+              <MenuItem value="Client">Client</MenuItem>
+              <MenuItem value="Freelancer">Freelancer</MenuItem>
             </TextField>
-            {/**Password Textfield */}
             <TextField
               required
               fullWidth
-              name="password"
+              id="password"
               label="Password"
-              type={psw ? "text" : "password"}
-              id="password"
+              name="password"
               placeholder="Enter your password"
+              type={showPassword ? "text" : "password"}
               autoComplete="new-password"
+              value={formData.password}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <VpnKey
-                      sx={{
-                        ml: "-25%",
-                        color: "#AFB0B6",
-                      }}
-                    />
+                    <VpnKey />
                   </InputAdornment>
                 ),
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleShowPsw}
-                      onMouseDown={handleHidePsw}
-                      edge="end"
-                    >
-                      {psw ? (
-                        <VisibilityOffOutlined
-                          sx={{
-                            ml: "-25%",
-                            color: "#AFB0B6",
-                          }}
-                        />
-                      ) : (
-                        <VisibilityOutlined
-                          sx={{
-                            ml: "-25%",
-                            color: "#AFB0B6",
-                          }}
-                        />
-                      )}
+                    <IconButton onClick={handleShowPassword} edge="end">
+                      {showPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
                     </IconButton>
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                color: "#AFB0B6",
-
-                pb: "5%",
-                mb: "2%",
-              }}
+              sx={{ mt: "3%" }}
             />
-            {/**Confirm Password Textfield */}
             <TextField
               required
               fullWidth
-              name="password"
+              id="confirmPassword"
               label="Confirm Password"
+              name="confirmPassword"
               placeholder="Confirm your password"
-              type={confirmPsw ? "text" : "password"}
-              id="password"
+              type={showConfirmPassword ? "text" : "password"}
               autoComplete="new-password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <VpnKey
-                      sx={{
-                        ml: "-25%",
-                        color: "#AFB0B6",
-                      }}
-                    />
+                    <VpnKey />
                   </InputAdornment>
                 ),
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleShowConfirmPsw}
-                      onMouseDown={handleHideConfirmPsw}
-                      edge="end"
-                    >
-                      {confirmPsw ? (
-                        <VisibilityOffOutlined
-                          sx={{
-                            ml: "-25%",
-                            color: "#AFB0B6",
-                          }}
-                        />
-                      ) : (
-                        <VisibilityOutlined
-                          sx={{
-                            ml: "-25%",
-                            color: "#AFB0B6",
-                          }}
-                        />
-                      )}
+                    <IconButton onClick={handleShowConfirmPassword} edge="end">
+                      {showConfirmPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
                     </IconButton>
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                color: "#AFB0B6",
-
-                pb: "5%",
-                mb: "2%",
-              }}
-            ></TextField>
+              sx={{ mt: "3%" }}
+            />
           </FormControl>
 
-          {/**Submit button*/}
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{
-              mt: 5,
-              mb: 7,
-              backgroundColor: "#87CEEB",
-              "&:hover": {
-                backgroundColor: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.grey[400]
-                    : theme.palette.grey[500],
-                color: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.primary.lightModeHeroTitle
-                    : theme.palette.primary.darkModeHeroTitle,
-
-                fontFamily: "Poppins",
-                fontWeight: "500",
-                fontSize: "16px",
-                lineHeight: "24px",
-                letterSpacing: "-1%",
-              },
-            }}
-          >
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 5 }}>
             Register
           </Button>
-          {/**Divider */}
-          <Divider sx={{ mt: "10%", color: "#AFB0B6" }}>
-            Or continue with
-          </Divider>
-          {/**Image Avatars */}
+
+          <Divider sx={{ mt: "10%" }}>Or continue with</Divider>
+
           <Box className="imgAvatars">
             <ImageAvatars />
           </Box>
 
-          <Grid container justifyContent="center" sx={{ mt: "10%", }}>
+          <Grid container justifyContent="center" sx={{ mt: "10%" }}>
             <Grid item>
-              <Typography
-                sx={{
-                  mb: "20%",
-                  fontFamily: "Poppins",
-                  fontWeight: "400",
-                  fontSize: "14px",
-                  lineHeight: "17.71px",
-                  color: "#AFB0B6",
-                  
-                }}
-              >
+              <Typography sx={{ mb: "20%" }}>
                 Have an account?{" "}
-                <a
-                  href="/sign-in"
-                  style={{
-                    color: "#87CEEB",
-                    mb: "20%",
-                    textDecoration: "none",
-                    fontFamily: "Poppins",
-                    fontWeight: "400",
-                    fontSize: "14px",
-                    lineHeight: "17.71px",
-                  }}
-                >
+                <a href="/sign-in" style={{ color: "#87CEEB", textDecoration: "none" }}>
                   Log in
                 </a>
               </Typography>
@@ -412,6 +276,5 @@ export default function SignUp() {
         </Box>
       </Box>
     </Container>
-    //Container End
   );
 }

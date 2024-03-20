@@ -2,9 +2,12 @@ import { Typography, Link, Stack, Container, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ClientFirstFeature } from "./Client";
 import ClientSecondFeature from "./ProjectContainer";
+import { useLocation } from "react-router-dom";
 
 const ClientPage = () => {
-  //Instatiate useNavigate
+  const data = useLocation();
+  console.log(data);
+  
   let navigate = useNavigate();
 
   return (
@@ -34,7 +37,7 @@ const ClientPage = () => {
             ml: "15%",
           }}
         >
-          My Projects
+          My Projects{data.state}
           <Link
             href="/create-project"
             sx={{
