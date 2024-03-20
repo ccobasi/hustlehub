@@ -62,44 +62,46 @@ export default function SignUp() {
     setShowConfirmPassword((prevShow) => !prevShow);
   };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
   
-  //   console.log(formData);
-  //   if (formData.email && formData.password) {
-  //     if (!localStorage.getItem("user")) {
-  //       localStorage.setItem(
-  //         "user",
-  //         JSON.stringify([
-  //           { email: formData.email, password: formData.password },
-  //         ])
-  //       );
-  //       navigate("/client", { state: formData.email  });
-  //     }else{
-  //       for(let val of data){
-  //                   setEmail(val.email)
-  //                   if(val.email.includes(event.target.email.value)){
-  //                       alert("User already Exist")
-  //                       setSignIn(true)
-  //                       }else{
-  //                           if(val.password == event.target.password.value){
-  //                               navigate('/client',{state:event.target.email.value })
-  //                           }else{
-  //                               alert('Password does not match')
-  //                           }
-  //                       }
-  //                       return true;
-  //                   }
-  //               }
-  //               if(email !==event.target.email.value){
-  //                   localStorage.setItem('user',JSON.stringify([...data,{email:event.target.email.value,password:event.target.password.value}]))
-  //                   navigate('/client',{state:event.target.email.value })
-  //               }else{
-  //                   alert('User does not exist')
-  //                   setSignIn(false)
-  //               }
-  //     }
-  //   }
+
+//   const handleSubmit = (event) => {
+//   event.preventDefault();
+
+//   const formData = {
+//     email: event.target.email.value,
+//     password: event.target.password.value,
+//     fullName: event.target.fullName.value 
+//   };
+
+//   console.log(formData);
+
+//   if (formData.email && formData.password) {
+
+//     const userData = JSON.parse(localStorage.getItem("user")) || [];
+
+//     if (userData.length === 0) {
+   
+//       localStorage.setItem(
+//         "user",
+//         JSON.stringify([{ email: formData.email, password: formData.password, fullName: formData.fullName }])
+//       );
+//       navigate("/client", { state: formData.fullName }); 
+//     } else {
+//       for (let val of userData) {
+//         if (val.email === formData.email) {
+//           alert("User already exists");
+//           return;
+//         }
+//       }
+
+//       localStorage.setItem(
+//         "user",
+//         JSON.stringify([...userData, { email: formData.email, password: formData.password, fullName: formData.fullName }])
+//       );
+//       navigate("/client", { state: formData.fullName }); 
+//     }
+//   }
+// };
 
   const handleSubmit = (event) => {
   event.preventDefault();
@@ -107,12 +109,13 @@ export default function SignUp() {
   const formData = {
     email: event.target.email.value,
     password: event.target.password.value,
-    fullName: event.target.fullName.value 
+    fullName: event.target.fullName.value,
+    role: event.target.role.value, 
   };
 
   console.log(formData);
 
-  if (formData.email && formData.password) {
+  if (formData.email && formData.password && formData.role) {
 
     const userData = JSON.parse(localStorage.getItem("user")) || [];
 
@@ -120,9 +123,8 @@ export default function SignUp() {
    
       localStorage.setItem(
         "user",
-        JSON.stringify([{ email: formData.email, password: formData.password, fullName: formData.fullName }])
+        JSON.stringify([{ email: formData.email, password: formData.password, fullName: formData.fullName, role: formData.role }])
       );
-      navigate("/client", { state: formData.fullName }); 
     } else {
       for (let val of userData) {
         if (val.email === formData.email) {
@@ -133,14 +135,18 @@ export default function SignUp() {
 
       localStorage.setItem(
         "user",
-        JSON.stringify([...userData, { email: formData.email, password: formData.password, fullName: formData.fullName }])
+        JSON.stringify([...userData, { email: formData.email, password: formData.password, fullName: formData.fullName, role: formData.role }])
       );
+    }
+
+    if (formData.role === "Freelancer") {
+      navigate("/freelancer", { state: formData.fullName }); 
+    } else {
       navigate("/client", { state: formData.fullName }); 
     }
   }
 };
 
-  
 
   return (
     <Container component="main" maxWidth="xs">
