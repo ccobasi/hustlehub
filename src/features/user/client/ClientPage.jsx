@@ -37,7 +37,7 @@ const ClientPage = () => {
             ml: "15%",
           }}
         >
-          My Projects{data.state}
+          My Projects{data.state && data.state.email}
           <Link
             href="/create-project"
             sx={{

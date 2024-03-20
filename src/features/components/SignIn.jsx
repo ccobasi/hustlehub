@@ -35,24 +35,25 @@ export default function SignIn() {
     /**Handle submit */
   }
   const handleSubmit = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const data = new FormData(event.currentTarget);
-    const email = data.get("email");
-    const password = data.get("password");
+  const data = new FormData(event.currentTarget);
+  const email = data.get("email");
+  const password = data.get("password");
+  const fullName = data.get("fullName")
 
-    const users = JSON.parse(localStorage.getItem('user')) || [];
+  const users = JSON.parse(localStorage.getItem('user')) || [];
 
-    const matchingUser = users.find(user => user.email === email && user.password === password);
+  const matchingUser = users.find(user => user.email === email && user.password === password);
 
-    if (matchingUser) {
-      navigate("/client", { state: email });
-    } else {
-      console.error("Invalid email or password");
-      alert("Invalid email or password")
-    }
-  };
- 
+  if (matchingUser) {
+    navigate("/client", { state: { email, fullName } });
+  } else {
+    console.error("Invalid email or password");
+    alert("Invalid email or password")
+  }
+};
+
   //Submit Handler End
 
   return (
