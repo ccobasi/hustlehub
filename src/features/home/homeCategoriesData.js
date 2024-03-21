@@ -37,6 +37,26 @@ const  homeCategoriesData = [
   
       imageLabel: "Business & Finance",
     },
+
+    {
+        id: 5,
+      jobTitle: "Electrical Technician",
+      sourceSet:
+        "/assets/businessAndFinanceSm.png, /assets/businessAndFinanceLg.png",
+      image: "/assets/businessAndFinanceLg.png",
+  
+      imageLabel: "Electrical Technician",
+    },
+
+    {
+        id: 6,
+      jobTitle: "Civil Engineer",
+      sourceSet:
+        "/assets/businessAndFinanceSm.png, /assets/businessAndFinanceLg.png",
+      image: "/assets/businessAndFinanceLg.png",
+  
+      imageLabel: "Civil Engineer",
+    },
   ];
 
   export default homeCategoriesData;

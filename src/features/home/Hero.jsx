@@ -60,8 +60,8 @@ export default function Hero({ title, description, backgroundImage }) {
 
                   fontFamily: "Poppins",
                   fontWeight: "600",
-                  fontSize: "32px",
-                  lineHeight: "20.8px",
+                  fontSize:  { xs: 16, md: 24, lg: 32 },
+                  lineHeight: { xs: 1.5, md: 1, lg: 1 },
 
                   ml: "2%",
                   pb: "5%",
@@ -81,8 +81,8 @@ export default function Hero({ title, description, backgroundImage }) {
                   fontFamily: "Poppins",
                   fontWeight: "100",
 
-                  fontSize: "24px",
-                  lineHeight: "40.8px",
+                  fontSize: { xs: 14, md: 18, lg: 20 },
+                  lineHeight: { xs: 1, md: 1, lg: 1.5 },
                   pb: "8px",
                   ml: "2%",
 

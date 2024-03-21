@@ -1,7 +1,7 @@
 const whyHustleHub= {
     title: "Why Businesses Turn To Hustle Hub",
     description:
-      "Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus. ",
+      "Businesses choose Hustle Hub for its diverse talent pool, flexible workforce, and cost-efficiency. The platform enables efficient project management, rapid scaling, and quality assurance through ratings and reviews. With a global reach, Hustle Hub promotes innovation and specialization by connecting businesses with experts from various industries and geographic locations.. ",
   };
 
 export default whyHustleHub;
