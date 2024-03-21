@@ -4,7 +4,8 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 
-export default function Hero({ title, description }) {
+
+export default function Hero({ title, description, backgroundImage }) {
   return (
     <>
       {/* Paper for the Hero Feature */}
@@ -16,7 +17,7 @@ export default function Hero({ title, description }) {
             theme.palette.mode === "light"
               ? theme.palette.background.default
               : theme.palette.grey[400],
-
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
@@ -59,7 +60,7 @@ export default function Hero({ title, description }) {
 
                   fontFamily: "Poppins",
                   fontWeight: "600",
-                  fontSize: "16px",
+                  fontSize: "32px",
                   lineHeight: "20.8px",
 
                   ml: "2%",
@@ -67,7 +68,7 @@ export default function Hero({ title, description }) {
                   mt: "15%",
                 }}
               >
-                <b>{title}</b>
+                <b><h1>{title}</h1></b>
               </Typography>
               {/* Heading End */}
 
@@ -80,7 +81,7 @@ export default function Hero({ title, description }) {
                   fontFamily: "Poppins",
                   fontWeight: "100",
 
-                  fontSize: "16px",
+                  fontSize: "24px",
                   lineHeight: "40.8px",
                   pb: "8px",
                   ml: "2%",
@@ -103,6 +104,7 @@ export default function Hero({ title, description }) {
 
         {/* Button for Getting started */}
         <Button
+          href="/sign-up"
           variant="contained"
           sx={{
             ml: "7%",

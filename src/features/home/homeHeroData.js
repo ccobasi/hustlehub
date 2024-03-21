@@ -1,7 +1,11 @@
+import Img from "../../assets/banner.jpg"
 const homeHeroData= {
-    title: "How It Works",
+    title: "Seeking assistance? Get help!",
     description:
-      "Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus. ",
+      "Are you looking for reliable and efficient services? Discover service providers for your home needs or join as a provider to offer services to clients seeking assistance.. ",
+    backgroundImage: Img,
+    
   };
 
 export default homeHeroData;
+
