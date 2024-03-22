@@ -2,11 +2,11 @@ import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import { AppBar, Box, Button, Menu, MenuItem } from "@mui/material";
-import { ArrowBackIos, ArrowBack } from "@mui/icons-material";
+import { AppBar, Box, Button } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-
+import Logo from "../../assets/logo.png"
 export default function RegistrationHeader() {
   //Use system preference to set theme mode
   const theme = useTheme();
@@ -33,7 +33,7 @@ export default function RegistrationHeader() {
       {/* Box End */}
 
       {/* Box for app bar*/}
-      {/* <Box
+      <Box
         sx={{
           backgroundColor: theme.palette.mode,
           display: { xs: "none", md: "flex" },
@@ -65,15 +65,16 @@ export default function RegistrationHeader() {
               }}
               href={isCleint ? "/" : "/services"}
             >
-              HustleHub
+              <img src={Logo} alt="logo" style={{ width: '80px', height: '50px' }} />
             </Link>
 
             <Box>
               <Button
-                onClick={() => navigate("/sign-up")}
+                onClick={() => navigate("/sign-in")}
                 variant="contained"
                 sx={{
                   backgroundColor: "#87CEEB",
+                  color: "common.white",
                   "&:hover": {
                     backgroundColor: (theme) =>
                       theme.palette.mode === "light"
@@ -82,13 +83,13 @@ export default function RegistrationHeader() {
                   },
                 }}
               >
-                Sign Up
+                Sign In
               </Button>
             </Box>
           </Toolbar>
         </AppBar>
         {/* App bar End */}
-      {/* </Box> */}
+      </Box>
     </React.Fragment>
   );
 }
