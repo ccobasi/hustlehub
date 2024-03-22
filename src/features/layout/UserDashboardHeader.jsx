@@ -2,10 +2,11 @@ import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import { AppBar, Box, Button, Menu, MenuItem } from "@mui/material";
+import { AppBar, Box } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/logo.png"
 
 export default function UserDashboardHeader() {
   //Use system preference to set theme mode
@@ -85,9 +86,9 @@ export default function UserDashboardHeader() {
                       : theme.palette.grey[300],
                 },
               }}
-              href="/services"
+              href="/"
             >
-              HustleHub
+              <img src={Logo} alt="logo" style={{ width: '80px', height: '50px' }} />
             </Link>
 
             <Link
