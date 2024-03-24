@@ -1,11 +1,10 @@
 //
-import { Typography, Link, Stack, Button, Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Typography, Link } from "@mui/material";
+
 import ClientCreateProject from "../../components/CreateProject";
 import CreateProjectFormValidation from "../../components/CreateProject";
 
 const CreateProjectPage = () => {
- 
 
   return (
     <>
@@ -21,10 +20,10 @@ const CreateProjectPage = () => {
               : theme.palette.grey[300],
 
           textAlign: "center",
-          mt: "5%",
+          mt: "10%",
         }}
       >
-        My Projects
+        Create a Project
       </Typography>
 
       <Link
@@ -35,7 +34,7 @@ const CreateProjectPage = () => {
           color: "#87CEEB",
         }}
       >
-        <Typography sx={{ textAlign: "end", mr: "5%" }}>Publish</Typography>
+        
       </Link>
 
       {/*Second Client Feature*/}

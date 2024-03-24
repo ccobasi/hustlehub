@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
-import RegistrationHeader from "./features/layout/header/RegistrationHeader";
+import RegistrationHeader from "./features/layout/RegistrationHeader";
 
-import FooterSection from "./features/layout/footer/FooterSection";
+import FooterSection from "./features/layout/FooterSection";
 
 const RegistrationLayout = () => {
   return (

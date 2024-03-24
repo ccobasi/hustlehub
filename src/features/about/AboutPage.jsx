@@ -1,41 +1,80 @@
-import { Grid, Box, Typography } from "@mui/material";
-import { FirstFeature } from "./presentationals/FirstFeature";
-import { SecondFeature } from "./presentationals/SecondFeature";
-import { ThirdFeature } from "./presentationals/ThirdFeature";
-import { FourthFeature } from "./presentationals/FourthFeature";
+import { Container, Typography } from "@mui/material";
+
+import { AboutAppFeature } from "./AboutApp";
+import { FreelancerFeature } from "./Freelancer";
+import { ClientFeature } from "./Client";
+import { JoinAsFreelancerFeature } from "./JoinAsFreelancer";
+import { JionAsClientFeature } from "./JoinAsClient";
+
+const CustomeTypography = ({ title }) => {
+  return (
+    <Typography
+      sx={{
+        fontFamily: "Poppins",
+        fontWeight: "600",
+        fontSize: "16px",
+        lineHeight: "20.8px",
+        color: (theme) =>
+          theme.palette.mode === "light"
+            ? theme.palette.primary.lightModeHeroTitle
+            : theme.palette.primary.darkModeHeroTitle,
+        ml: "3%",
+        mb:"-3%"
+        
+      }}
+    >
+      {title}
+    </Typography>
+  );
+};
 
 export const AboutPage = () => {
   return (
     <>
-      {/* Box for the AboutUs page */}
-      <Box>
-        <Grid
-          container
-          spacing={1}
+      {/* Container for the AboutUs page */}
+      <Container component="main" maxWidth="lg">
+        <Typography
           sx={{
-            margin: "auto",
-            alignItems: "end",
-            maxWidth: "75%",
+            mt: "-4%",
+            mb: "10%",
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "16px",
+            lineHeight: "20.8px",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+            ml: "40%",
           }}
         >
-          <Typography sx={{ mt: "30%" }}>How It Works</Typography>
+          How It Work
+        </Typography>
 
-          {/**First Feature */}
-          <FirstFeature />
+        <CustomeTypography title=" About App" />
 
-          <Typography>User Roles</Typography>
+        {/**First Feature */}
+        <AboutAppFeature />
 
-          {/**Second Feature */}
-          <SecondFeature />
+        <CustomeTypography title="User Roles" />
 
-          {/**Third Feature */}
-          <ThirdFeature />
+        {/**Second Feature */}
+        <FreelancerFeature />
 
-          {/**Fourth Feature */}
-          <FourthFeature />
-        </Grid>
-      </Box>
-      {/* Box End */}
+        {/**Third Feature */}
+        <ClientFeature />
+
+        {/**Fourth Feature */}
+        <CustomeTypography title="Join As a Freelancer" />
+
+        <JoinAsFreelancerFeature />
+        <CustomeTypography title="Join As a Client" />
+
+        <JionAsClientFeature />
+      </Container>
+
+      {/* Container End */}
     </>
   );
 };
+export default CustomeTypography;

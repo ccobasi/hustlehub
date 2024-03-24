@@ -1,9 +1,8 @@
-
 import { useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
-import { Link, Stack, Typography } from "@mui/material";
-import { PopularCategories } from "./presentationals/PopularCategories.jsx";
-import { TrendingCategories } from "./presentationals/TrendingCategories.jsx";
+
+import { Link, Stack, Typography, Container, Box } from "@mui/material";
+import { PopularCategories } from "./PopularCategories.jsx";
+import { TrendingCategories } from "./TrendingCategories.jsx";
 
 const CategoriesPage = () => {
   //Instatiate useNavigate
@@ -11,89 +10,100 @@ const CategoriesPage = () => {
 
   return (
     <>
-      {/*First Home Feature*/}
+      <Container component="main" maxWidth="lg">
+        <Box>
+          {/*First Home Feature*/}
           <Typography
-            variant="h6"
+            component="h1"
+            variant="h5"
             sx={{
+              mt: "-7%",
+              mb: "40%",
+              fontFamily: "Poppins",
+              fontWeight: "600",
+              fontSize: "16px",
+              lineHeight: "20.8px",
+              textAlign: "center",
               color: (theme) =>
                 theme.palette.mode === "light"
-                  ? theme.palette.grey[600]
-                  : theme.palette.grey[300],
-              pt: "35px",
-
-              textAlign: "center",
+                  ? theme.palette.primary.lightModeHeroTitle
+                  : theme.palette.primary.darkModeHeroTitle,
             }}
           >
-            <b>Categories</b>
+            Categories
           </Typography>
 
-          <Stack direction="row">
+          <Stack direction="row" sx={{ justifyContent: "space-between" }}>
             <Typography
-              variant="body2"
               sx={{
+                fontFamily: "Poppins",
+                fontWeight: "600",
+                fontSize: "16px",
+                lineHeight: "20.8px",
+                letterSpacing: "-1%",
                 color: (theme) =>
                   theme.palette.mode === "light"
-                    ? theme.palette.grey[600]
-                    : theme.palette.grey[300],
-                pt: "20px",
-
-                ml: "28%",
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
               }}
             >
-              <b>Popular</b>
+              Popular
             </Typography>
-
             <Link
-              href="/testimonials"
+              href="/hello"
               sx={{
                 textDecoration: "none",
-                ml: "30%",
-                pt: "20px",
-                color: "#87CEEB",
+                fontFamily: "Poppins",
+                fontWeight: "400",
+                fontSize: "13px",
+                lineHeight: "20.8px",
+                letterSpacing: "-1%",
+                color: "#95969D",
               }}
             >
-              <Typography variant="body2">
-                <b>See all</b>
-              </Typography>
+              See all
             </Link>
           </Stack>
 
           <PopularCategories />
 
-          <Stack direction="row">
+          <Stack direction="row" sx={{ justifyContent: "space-between" }}>
             <Typography
-              variant="body2"
               sx={{
+                fontFamily: "Poppins",
+                fontWeight: "600",
+                fontSize: "16px",
+                lineHeight: "20.8px",
+                mt: "12%",
+                letterSpacing: "-1%",
                 color: (theme) =>
                   theme.palette.mode === "light"
-                    ? theme.palette.grey[600]
-                    : theme.palette.grey[300],
-                pt: "20px",
-
-                ml: "28%",
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
               }}
             >
-              <b>Trending</b>
+              Trending
             </Typography>
-
             <Link
-              href="/testimonials"
+              href="/hello"
               sx={{
                 textDecoration: "none",
-                ml: "30%",
-                pt: "20px",
-                color: "#87CEEB",
+                fontFamily: "Poppins",
+                mt: "12%",
+                fontWeight: "400",
+                fontSize: "13px",
+                lineHeight: "20.8px",
+                letterSpacing: "-1%",
+                color: "#95969D",
               }}
             >
-              <Typography variant="body2">
-                <b>See all</b>
-              </Typography>
+              See all
             </Link>
           </Stack>
 
-         <TrendingCategories/>
-      
-  
+          <TrendingCategories />
+        </Box>
+      </Container>
     </>
   );
 };

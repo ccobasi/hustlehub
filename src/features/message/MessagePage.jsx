@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Link, Stack, Button } from "@mui/material";
-import { FirstMessageGroup } from "./presentationals/FirstMessageGroup ";
-import { SecondMessageGroup } from "./presentationals/SecondMessageGroup ";
+import CompaniesMessageGroup from "./CompaniesMessageGroup ";
+import { IndividualMessageGroup } from "./IndividualMessageGroupPresentation";
 import { MessageSearchBar } from "../components/MessageSearchBar";
+import Container from "@mui/material/Container";
+import MessagePresentation from "./MessagePresentation";
 
 const MessagePage = () => {
   //Initialization of useState hook
@@ -23,57 +25,79 @@ const MessagePage = () => {
 
   return (
     <>
-      <Typography
-        variant="h5"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
-          ml: "28%",
-          mt: "5%",
-        }}
-      >
-        <b>Messages</b>
-      </Typography>
+      <Container component="main" maxWidth="lg">
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{
+            mt: "-4%",
+            mb: "10%",
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "16px",
+            lineHeight: "20.8px",
+            textAlign: "center",
 
-      <MessageSearchBar queryData={callFromNavbar} searchBox={searchPage} />
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+          }}
+        >
+          Messages
+        </Typography>
 
-      <Typography
-        variant="h5"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
+        <MessageSearchBar queryData={callFromNavbar} searchBox={searchPage} placeholder="Search a chat or message"/>
 
-          ml: "28%",
-        }}
-      >
-        <b>Companies</b>
-      </Typography>
+        <Typography
+          variant="h5"
+          sx={{
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
 
-      {/*First Message Feature*/}
-      <FirstMessageGroup />
+            pt: "50px",
+            textAlign: "start",
+            ml: "4%",
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "14px",
+            lineHeight: "18.2px",
+            letterSpacing: "-1%",
+          }}
+        >
+          Companies
+        </Typography>
 
-      <Typography
-        variant="h5"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "20px",
+        {/*First Message Feature*/}
+        {/* <CompaniesMessageGroup /> */}
 
-          ml: "28%",
-        }}
-      >
-        <b>Individual Messages</b>
-      </Typography>
-      {/*Second Message Feature*/}
-      <SecondMessageGroup />
+        <Typography
+          variant="h5"
+          sx={{
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+
+            pt: "50px",
+            textAlign: "start",
+            ml: "4%",
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "14px",
+            lineHeight: "18.2px",
+            letterSpacing: "-1%",
+          }}
+        >
+         Individual Messages
+        </Typography>
+        {/*Second Message Feature*/}
+        {/* <IndividualMessageGroup /> */}
+
+        <MessagePresentation/>
+      </Container>
     </>
   );
 };

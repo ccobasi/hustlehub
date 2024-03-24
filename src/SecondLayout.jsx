@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
-// import SecondHeader from "./app/layout/header/SecondHeader";
-import Navbar from './features/layout/header/Navbar'
+import SecondHeader from "./app/layout/header/SecondHeader";
+
 import FooterSection from "./app/layout/footer/FooterSection";
 
 
@@ -14,8 +14,7 @@ const SecondLayout = () => {
   return (
     <>
       
-    {/* <SecondHeader/> */}
-    <Navbar/>
+    <SecondHeader/>
       <Outlet />
   
 

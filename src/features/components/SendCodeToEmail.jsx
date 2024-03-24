@@ -37,9 +37,23 @@ export const SendCodeToEmail = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment>
-                  <EmailOutlined />
+                  <EmailOutlined
+                    sx={{
+                      ml: "-25%",
+                      color:"#AFB0B6"
+                     
+                    }}
+                  />
                 </InputAdornment>
               ),
+            }}
+            sx={{
+              color: "#AFB0B6",
+              fontFamily: "Poppins",
+              fontWeight: "400",
+              fontSize: "14px",
+              lineHeight: "21px",
+              letterSpacing: "-1%",
             }}
           />
         </FormControl>
@@ -48,7 +62,20 @@ export const SendCodeToEmail = () => {
           type="submit"
           fullWidth
           variant="contained"
-          sx={{ mt: 12, mb: 2, bgcolor: "#87CEEB" }}
+          sx={{
+            mt: 12,
+            mb: 2,
+            bgcolor: "#87CEEB",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+            fontFamily: "Poppins",
+            fontWeight: "500",
+            fontSize: "16px",
+            lineHeight: "24px",
+            letterSpacing: "-1%",
+          }}
         >
           Send code
         </Button>

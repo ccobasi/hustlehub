@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
-import { Link, Stack, Typography } from "@mui/material";
-import { Updates } from "./presentationals/ProjectsUpdate";
+import { Link, Stack, Typography, Container } from "@mui/material";
+import { Updates } from "./ProjectsUpdate";
 
 const ProjectsUpdatePage = () => {
   //Instatiate useNavigate
@@ -9,23 +9,30 @@ const ProjectsUpdatePage = () => {
 
   return (
     <>
-      {/*First Projects Update First Feature*/}
-      <Typography
-        variant="h6"
-        sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[600]
-              : theme.palette.grey[300],
-          pt: "35px",
+      <Container component="main" maxWidth="lg">
+        {/*First Projects Update First Feature*/}
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{
+            mt: "-7%",
+            mb: "20%",
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            fontSize: "16px",
+            lineHeight: "20.8px",
+            textAlign: "center",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+          }}
+        >
+          Project Updates
+        </Typography>
 
-          textAlign: "center",
-        }}
-      >
-        <b>Project Updates</b>
-      </Typography>
-
-      <Updates />
+        <Updates />
+      </Container>
     </>
   );
 };

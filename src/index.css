@@ -121,6 +121,8 @@ code {
 .imgAvatars {
   position: relative;
   left: 18%;
+  width: 56px;
+  height: 56px;
 }
 
 /* Select Component customization*/

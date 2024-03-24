@@ -21,7 +21,7 @@ import { useState } from "react";
 import { AssessmentOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
-import { ClientFirstFeature } from "../user/client/presentationals/ClientCard";
+import { ClientFirstFeature } from "../user/client/Client";
 import Link from "@mui/material/Link";
 
 //Freelancer data for the temporary drawer
@@ -92,7 +92,17 @@ export default function FreelancerAnchorTemporaryDrawer() {
         <ListItem key={index}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <a style={{ textDecoration: "none" }} href={item.url}>
-            <ListItemText primary={item.name} />{" "}
+            <ListItemText primary={item.name} sx={{
+               fontFamily: "Poppins",
+               fontWeight: "400",
+               fontSize: "15px",
+               lineHeight: "22.5px",
+               letterSpacing: "-1%",
+               color: (theme) =>
+               theme.palette.mode === "light"
+                 ? theme.palette.primary.lightModeHeroTitle
+                 : theme.palette.primary.darkModeHeroTitle,
+            }}/>{" "}
           </a>
         </ListItem>
       ))}
@@ -134,8 +144,17 @@ export default function FreelancerAnchorTemporaryDrawer() {
             <ClientFirstFeature />
             <Link
               href="/client-profile"
-              className="drawerLink"
-              sx={{ textDecoration: "none" }}
+              
+              sx={{  textDecoration: "none",
+              color: "#87CEEB",
+              fontFamily: "Poppins",
+              fontWeight: "500",
+              fontSize: "14px",
+              lineHeight: "21px",
+              letterSpacing: "-1%",
+              position:"absolute",
+              mt:"-15%",
+              ml:"35%" }}
             >
               View Profile
             </Link>
@@ -146,7 +165,7 @@ export default function FreelancerAnchorTemporaryDrawer() {
           {getList()}
 
           <Box sx={{ mt: "20%" }}>
-            <Button>
+            <Button sx={{backgroundColor:"#87CEEB", color:"#FFFFFF", ml:"25%"}}>
               <WorkspacePremiumOutlinedIcon /> Go Premium
             </Button>
           </Box>

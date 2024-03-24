@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -21,12 +22,10 @@ import {
 } from "@mui/icons-material";
 
 export default function SignIn() {
-  //Initialization of useState hook
   let navigate = useNavigate();
   const [psw, setPsw] = useState(false);
-  //Handler for user to see pw
   const handleShowPsw = () => setPsw((show) => !show);
-  //Handler for user to hide pw
+  
   const handleHidePsw = (e) => {
     e.preventDefault();
   };
@@ -36,14 +35,24 @@ export default function SignIn() {
     /**Handle submit */
   }
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    navigate("/client");
-  };
+  event.preventDefault();
+
+  const data = new FormData(event.currentTarget);
+  const email = data.get("email");
+  const password = data.get("password");
+
+  const users = JSON.parse(localStorage.getItem('user')) || [];
+
+  const matchingUser = users.find(user => user.email === email && user.password === password);
+
+  if (matchingUser) {
+    navigate("/client", { state: { email } });
+  } else {
+    console.error("Invalid email or password");
+    alert("Invalid email or password")
+  }
+};
+
   //Submit Handler End
 
   return (
@@ -58,18 +67,47 @@ export default function SignIn() {
         }}
       >
         <Stack direction="row">
-          <Typography component="h1" variant="h5" sx={{ mt: "10%" }}>
-            <b>Welcome Back</b>
+          <Typography
+            component="h1"
+            variant="h5"
+            sx={{
+              mt: "10%",
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeHeroTitle
+                  : theme.palette.primary.darkModeHeroTitle,
+              fontFamily: "Poppins",
+              fontWeight: "600",
+              fontSize: "24px",
+              lineHeight: "33.6px",
+              letterSpacing: "-1.5%",
+            }}
+          >
+            Welcome Back
           </Typography>
           <img
             alt="Waving Hand Emogi"
-            src="/assets/waving-hand-emoji.png"
-            style={{ height: "60px", width: "60px" }}
+            src="/assets/loginEmoji.png"
+            style={{ height: "34px", width: "34px" , paddingTop:"5px", marginTop:"14px", marginLeft:"10px"}}
           />
         </Stack>
 
-        <Typography component="h1" variant="body2" sx={{ mt: "3%" }}>
-          Let's log in.Apply to jobs!
+        <Typography
+          component="h1"
+          sx={{
+            mt: "3%",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.primary.lightModeHeroTitle
+                : theme.palette.primary.darkModeHeroTitle,
+            fontFamily: "Poppins",
+            fontWeight: "400",
+            fontSize: "14px",
+            lineHeight: "22.4px",
+            letterSpacing: "-1%",
+          }}
+        >
+          Let&apos;s log in.Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           {/**Registration Form Control */}
@@ -85,12 +123,27 @@ export default function SignIn() {
               autoComplete="email"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
-                    <EmailOutlined />
+                  <InputAdornment position="start">
+                    <EmailOutlined
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
               }}
-              sx={{ pb: "5%" }}
+              sx={{
+                color: "#AFB0B6",
+                fontFamily: "Poppins",
+                fontWeight: "400",
+                fontSize: "14px",
+                lineHeight: "21px",
+                letterSpacing: "-1%",
+                pb: "5%",
+                mb: "2%",
+                mt: "25%",
+              }}
             />
 
             {/**Password Textfield */}
@@ -105,23 +158,44 @@ export default function SignIn() {
               autoComplete="new-password"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
-                    <VpnKey />
+                  <InputAdornment position="start">
+                    <VpnKey
+                      sx={{
+                        ml: "-25%",
+                        color: "#AFB0B6",
+                      }}
+                    />
                   </InputAdornment>
                 ),
                 endAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="end">
                     <IconButton
                       onClick={handleShowPsw}
                       onMouseDown={handleHidePsw}
                       edge="end"
                     >
-                      {psw ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+                      {psw ? (
+                        <VisibilityOffOutlined
+                          sx={{
+                            color: "#AFB0B6",
+                          }}
+                        />
+                      ) : (
+                        <VisibilityOutlined />
+                      )}
                     </IconButton>
                   </InputAdornment>
                 ),
               }}
-              sx={{ pb: "5%" }}
+              sx={{
+                color: "#AFB0B6",
+                fontFamily: "Poppins",
+                fontWeight: "400",
+                fontSize: "14px",
+                lineHeight: "21px",
+                letterSpacing: "-1%",
+                pb: "5%",
+              }}
             />
           </FormControl>
 
@@ -130,7 +204,27 @@ export default function SignIn() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, bgcolor: "#87CEEB" }}
+            sx={{
+              mt: 10,
+              mb: 7,
+              backgroundColor: "#87CEEB",
+              "&:hover": {
+                backgroundColor: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.grey[400]
+                    : theme.palette.grey[500],
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
+
+                fontFamily: "Poppins",
+                fontWeight: "500",
+                fontSize: "16px",
+                lineHeight: "24px",
+                letterSpacing: "-1%",
+              },
+            }}
           >
             Log in
           </Button>
@@ -139,7 +233,15 @@ export default function SignIn() {
             <Grid item>
               <a
                 href="/forget-password"
-                style={{ color: "#87CEEB", mb: "20%", textDecoration: "none" }}
+                style={{
+                  color: "#87CEEB",
+                  mb: "20%",
+                  textDecoration: "none",
+                  fontFamily: "Poppins",
+                  fontWeight: "400",
+                  fontSize: "15px",
+                  lineHeight: "18.97px",
+                }}
               >
                 Forget Password ?
               </a>
@@ -147,22 +249,37 @@ export default function SignIn() {
           </Grid>
 
           {/**Divider */}
-          <Divider>Or continue with</Divider>
+          <Divider sx={{ mt: "20%", color: "#AFB0B6" }}>
+            Or continue with
+          </Divider>
           {/**Image Avatars */}
           <Box className="imgAvatars">
             <ImageAvatars />
           </Box>
 
-          <Grid container justifyContent="center">
+          <Grid container justifyContent="center" sx={{ mt: "10%" }}>
             <Grid item>
-              <Typography>
-                Haven't an account?{" "}
+              <Typography
+                sx={{
+                  mb: "20%",
+                  
+                  fontFamily: "Poppins",
+                  fontWeight: "400",
+                  fontSize: "14px",
+                  lineHeight: "17.71px",
+                  color: "#AFB0B6" }}
+              >
+                Haven&apos;t an account?{" "}
                 <a
                   href="/sign-up"
                   style={{
                     color: "#87CEEB",
                     mb: "20%",
                     textDecoration: "none",
+                    fontFamily: "Poppins",
+                    fontWeight: "400",
+                    fontSize: "14px",
+                    lineHeight: "17.71px",
                   }}
                 >
                   Register
