@@ -6,23 +6,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./features/components/SignUp";
 import SignIn from "./features/components/SignIn";
 import ForgetPassword from "./features/components/ForgetPassword";
-import RegistrationLayout from "./RegistrationLayout";
-import UserLayout from "./UserLayout";
-import MessagePage from "./features/message/MessagePage";
-import NotificationPage from "./features/notification/NotificationPage";
-import CategoriesPage from "./features/project/CategoriesPage";
-import ProjectsUpdatePage from "./features/project/ProjectsUpdatePage";
-import BrowseProjectPage from "./features/project/BrowseProjectsPage";
-import { AboutPage } from "./features/about/AboutPage";
 import ClientPage from "./features/user/client/ClientPage";
-import EditClientPage from "./features/user/client/EditClientPage";
-import ClientAnchorTemporaryDrawer from "./features/components/ClientDrawer";
 import CreateProjectPage from "./features/user/client/CreateProjectPage";
+<<<<<<< HEAD
 import ProjectReviewPage from "./features/user/client/ProjectReviewPage";
 import FreelancerPage from "./features/user/freelancer/FreelancerPage";
 import FreelancerAnchorTemporaryDrawer from "./features/components/FreelancerDrawer";
 import EditFreelancerPage from "./features/user/freelancer/EditFreelancerPage";
 import FreelancerSearchPage from "./features/user/freelancer/FreelancerSearchPage";
+=======
+import JobPositionPage from "./features/user/client/JobPositionPage";
+import SecondLayout from "./SecondLayout";
+>>>>>>> home-page
 import "./App.css";
 
 import Layout from "./Layout";
@@ -106,19 +101,6 @@ function App() {
             lineHeight: "20.8px",
             letterSpacing: "-1%",
           },
-          // modalLinkTextItems: {
-          //   textDecoration: "none",
-          //   fontWeight: "700",
-          //   fontSize: "16px",
-          //   lineHeight: "19.2px",
-          //   letter: "-1.5%",
-          // },
-          // modalLayout: {
-          //   width: "123px",
-          //   height: "28px",
-          //   top: "91px",
-          //   left: "175px",
-          // },
         },
       }),
     [prefersDarkMode]
@@ -132,6 +114,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
+<<<<<<< HEAD
 
             <Route
               path="/client-drawer"
@@ -141,12 +124,15 @@ function App() {
               path="/freelancer-drawer"
               element={<FreelancerAnchorTemporaryDrawer />}
             />
+=======
+>>>>>>> home-page
           </Route>
-          <Route path="/" element={<RegistrationLayout />}>
+          <Route path="/" element={<SecondLayout />}>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
+<<<<<<< HEAD
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/notification" element={<NotificationPage />} />
             <Route path="/message" element={<MessagePage />} />
@@ -164,6 +150,14 @@ function App() {
             <Route path="/freelancer" element={<FreelancerPage />} />
             <Route path="/edit-freelancer" element={<EditFreelancerPage />} />
           </Route>
+=======
+            <Route path="/client" element={<ClientPage />} />
+            <Route path="/create-project" element={<CreateProjectPage />} />
+            <Route path="/job-position" element={<JobPositionPage />} />
+          </Route>
+
+    
+>>>>>>> home-page
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

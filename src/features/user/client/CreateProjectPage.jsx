@@ -2,7 +2,13 @@
 import { Typography, Link } from "@mui/material";
 
 import ClientCreateProject from "../../components/CreateProject";
+import CreateProjectFormValidation from "../../components/CreateProject";
+
 const CreateProjectPage = () => {
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> home-page
 
   return (
     <>
@@ -21,7 +27,7 @@ const CreateProjectPage = () => {
           mt: "10%",
         }}
       >
-        My Projects
+        Create a Project
       </Typography>
 
       <Link
@@ -32,11 +38,12 @@ const CreateProjectPage = () => {
           color: "#87CEEB",
         }}
       >
-        <Typography sx={{ textAlign: "end", mr: "5%" }}>Publish</Typography>
+        
       </Link>
 
       {/*Second Client Feature*/}
-      <ClientCreateProject />
+      {/* <ClientCreateProject /> */}
+      <CreateProjectFormValidation/>
       {/*Second Heading*/}
 
       {/*Third Heading*/}

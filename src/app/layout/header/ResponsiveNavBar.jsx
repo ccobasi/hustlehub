@@ -323,6 +323,7 @@ const SignInButton = () => {
     </Box>
   );
 };
+<<<<<<< HEAD
 
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
@@ -373,3 +374,5 @@ const ResponsiveNavBar = () => {
   );
 };
 export default ResponsiveNavBar;
+=======
+>>>>>>> home-page
