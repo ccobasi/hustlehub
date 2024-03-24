@@ -258,7 +258,7 @@ const MobileUserAppTitle = () => {
           textAlign: "center",
         }}
       >
-        Hustle Hub
+        
       </Typography>
       {/* Mobile Title End */}
     </>
@@ -390,7 +390,7 @@ const UserAppTitle = () => {
           mr: "7%",
         }}
       >
-        Hustle Hub
+        
       </Typography>
       {/* Title End */}
     </>
