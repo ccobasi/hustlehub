@@ -8,16 +8,17 @@ import SignIn from "./features/components/SignIn";
 import ForgetPassword from "./features/components/ForgetPassword";
 import ClientPage from "./features/user/client/ClientPage";
 import CreateProjectPage from "./features/user/client/CreateProjectPage";
-<<<<<<< HEAD
 import ProjectReviewPage from "./features/user/client/ProjectReviewPage";
 import FreelancerPage from "./features/user/freelancer/FreelancerPage";
 import FreelancerAnchorTemporaryDrawer from "./features/components/FreelancerDrawer";
+import ClientAnchorTemporaryDrawer  from "./features/components/ClientDrawer";
 import EditFreelancerPage from "./features/user/freelancer/EditFreelancerPage";
 import FreelancerSearchPage from "./features/user/freelancer/FreelancerSearchPage";
-=======
-import JobPositionPage from "./features/user/client/JobPositionPage";
-import SecondLayout from "./SecondLayout";
->>>>>>> home-page
+import SecondLayout  from "./SecondLayout";
+import AboutPage  from "./features/about/AboutPage" ;
+import CategoriesPage from  './features/project/CategoriesPage';
+import UserLayout from  "./UserLayout";
+import EditClientPage from "./features/user/freelancer/EditFreelancerPage";
 import "./App.css";
 
 import Layout from "./Layout";
@@ -114,7 +115,6 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
-<<<<<<< HEAD
 
             <Route
               path="/client-drawer"
@@ -124,20 +124,17 @@ function App() {
               path="/freelancer-drawer"
               element={<FreelancerAnchorTemporaryDrawer />}
             />
-=======
->>>>>>> home-page
           </Route>
           <Route path="/" element={<SecondLayout />}>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
-<<<<<<< HEAD
             <Route path="/categories" element={<CategoriesPage />} />
-            <Route path="/notification" element={<NotificationPage />} />
+            {/* <Route path="/notification" element={<NotificationPage />} />
             <Route path="/message" element={<MessagePage />} />
             <Route path="/project-update" element={<ProjectsUpdatePage />} />
-            <Route path="/browse-project" element={<BrowseProjectPage />} />
+            <Route path="/browse-project" element={<BrowseProjectPage />} /> */}
             <Route path="/freelancer-search" element={<FreelancerSearchPage/>}/>
           </Route>
 
@@ -150,14 +147,6 @@ function App() {
             <Route path="/freelancer" element={<FreelancerPage />} />
             <Route path="/edit-freelancer" element={<EditFreelancerPage />} />
           </Route>
-=======
-            <Route path="/client" element={<ClientPage />} />
-            <Route path="/create-project" element={<CreateProjectPage />} />
-            <Route path="/job-position" element={<JobPositionPage />} />
-          </Route>
-
-    
->>>>>>> home-page
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

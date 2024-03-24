@@ -5,10 +5,6 @@ import ClientCreateProject from "../../components/CreateProject";
 import CreateProjectFormValidation from "../../components/CreateProject";
 
 const CreateProjectPage = () => {
-<<<<<<< HEAD
-=======
- 
->>>>>>> home-page
 
   return (
     <>

@@ -77,3 +77,4 @@ export const AboutPage = () => {
     </>
   );
 };
+export default CustomeTypography;

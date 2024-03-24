@@ -16,12 +16,8 @@
     "@mui/joy": "^5.0.0-beta.29",
     "@mui/material": "^5.15.10",
     "@mui/styled-engine-sc": "^6.0.0-alpha.16",
-<<<<<<< HEAD
     "@mui/x-date-pickers": "^6.19.6",
     "@mui/x-date-pickers-pro": "^6.19.6",
-=======
-    "@reduxjs/toolkit": "^2.2.1",
->>>>>>> home-page
     "components": "^0.1.0",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
