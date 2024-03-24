@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import { Card, CardContent, CardMedia, Stack } from "@mui/material";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import Avatar from "@mui/material/Avatar";
+import { useLocation } from "react-router-dom";
 
 export default function FreelancerCard({
   name,
@@ -11,6 +12,8 @@ export default function FreelancerCard({
   image,
   imageLabel,
 }) {
+  const data = useLocation();
+  console.log(data);
   return (
     <>
     {/* Grid for freelancer card */}
@@ -47,7 +50,7 @@ export default function FreelancerCard({
                 textAlign: "center",
               }}
             >
-              {name}
+              {data.state}
             </Typography>
             <Stack direction="row">
               <Typography

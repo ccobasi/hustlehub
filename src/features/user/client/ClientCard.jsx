@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { Card, CardContent, CardMedia, Stack } from "@mui/material";
+import { Card, CardContent, Stack } from "@mui/material";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import Avatar from "@mui/material/Avatar";
 export default function ClientCard({
