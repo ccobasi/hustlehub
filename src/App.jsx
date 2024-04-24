@@ -2,7 +2,7 @@ import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SignUp from "./features/components/SignUp";
 import SignIn from "./features/components/SignIn";
 import ForgetPassword from "./features/components/ForgetPassword";
@@ -24,6 +24,17 @@ import ProtectedRoute from "./features/components/ProtectedRoute";
 import Layout from "./Layout";
 import HomePage from "./features/home/HomePage";
 import { orange } from "@mui/material/colors";
+import PageNotFound from "./features/components/PageNotFound";
+
+function Logout() {
+  localStorage.clear()
+  return <Navigate to="/login" />
+}
+
+function RegisterAndLogout() {
+  localStorage.clear()
+  return <SignUp />
+}
 
 function App() {
   //Using system preferences to set theme mode.
@@ -139,14 +150,35 @@ function App() {
           </Route>
 
           <Route path="/" element={<UserLayout />}>
-            <Route path="/client" element={<ClientPage />} />
-            <Route path="/edit-client" element={<EditClientPage />} />
-            <Route path="/create-project" element={<CreateProjectPage />} />
+            <Route path="/client" element={
+              <ProtectedRoute>
+                <ClientPage />
+              </ProtectedRoute>} />
+            <Route path="/edit-client" element={
+              <ProtectedRoute>
+                <EditClientPage />
+              </ProtectedRoute>} />
+            <Route path="/create-project" element={
+             <ProtectedRoute>
+              <CreateProjectPage />
+              </ProtectedRoute>
+            } />
             
-            <Route path="/project-review" element={<ProjectReviewPage />} />
-            <Route path="/freelancer" element={<FreelancerPage />} />
-            <Route path="/edit-freelancer" element={<EditFreelancerPage />} />
+            <Route path="/project-review" element={
+              <ProtectedRoute>
+                <ProjectReviewPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/freelancer" element={
+              <ProtectedRoute>
+                <FreelancerPage />
+              </ProtectedRoute>} />
+            <Route path="/edit-freelancer" element={
+              <ProtectedRoute>
+                <EditFreelancerPage />
+              </ProtectedRoute>} />
           </Route>
+          <Route path="*" element={<PageNotFound/>}></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
