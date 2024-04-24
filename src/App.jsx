@@ -20,7 +20,7 @@ import CategoriesPage from  './features/project/CategoriesPage';
 import UserLayout from  "./UserLayout";
 import EditClientPage from "./features/user/freelancer/EditFreelancerPage";
 import "./App.css";
-
+import ProtectedRoute from "./features/components/ProtectedRoute";
 import Layout from "./Layout";
 import HomePage from "./features/home/HomePage";
 import { orange } from "@mui/material/colors";
