@@ -20,37 +20,43 @@ import {
   VisibilityOffOutlined,
   VisibilityOutlined,
 } from "@mui/icons-material";
+import api  from "../../api";
 
 export default function SignIn() {
   let navigate = useNavigate();
   const [psw, setPsw] = useState(false);
   const handleShowPsw = () => setPsw((show) => !show);
-  
   const handleHidePsw = (e) => {
     e.preventDefault();
   };
-  //Handler End
-
-  {
-    /**Handle submit */
-  }
-  const handleSubmit = (event) => {
+  
+  const handleSubmit = async (event) => {
   event.preventDefault();
 
   const data = new FormData(event.currentTarget);
   const email = data.get("email");
   const password = data.get("password");
 
-  const users = JSON.parse(localStorage.getItem('user')) || [];
+  try {
+      const res = await api.post("/sign-in", { email, password });
+      localStorage.setItem("access_token", res.data.access_token);
+      localStorage.setItem("refresh_token", res.data.refresh_token);
+      navigate("/client", { state: { email } });
+    } catch (error) {
+      console.error("Invalid email or password");
+      alert("Invalid email or password");
+    }
 
-  const matchingUser = users.find(user => user.email === email && user.password === password);
+  // const users = JSON.parse(localStorage.getItem('user')) || [];
 
-  if (matchingUser) {
-    navigate("/client", { state: { email } });
-  } else {
-    console.error("Invalid email or password");
-    alert("Invalid email or password")
-  }
+  // const matchingUser = users.find(user => user.email === email && user.password === password);
+
+  // if (matchingUser) {
+  //   navigate("/client", { state: { email } });
+  // } else {
+  //   console.error("Invalid email or password");
+  //   alert("Invalid email or password")
+  // }
 };
 
   //Submit Handler End

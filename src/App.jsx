@@ -138,6 +138,7 @@ function App() {
           </Route>
           <Route path="/" element={<SecondLayout />}>
             <Route path="/sign-up" element={<SignUp />} />
+            {/* <Route path="/sign-out" element={<SignOut />} /> */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
