@@ -1,6 +1,7 @@
 import random
 from django.core.mail import EmailMessage
 from .models import OneTimePassword, User
+from backend import settings
 
 def generateOtp():
     otp=""
