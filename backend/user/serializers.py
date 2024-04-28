@@ -1,38 +1,65 @@
 from rest_framework import serializers
 from .models import User
+from django.contrib.auth import get_user_model
 
-# ROLE_CHOICES = (
-#     ('talent', 'Talent'),
-#     ('client', 'Client'),
-# )
-
+User = get_user_model()
 
 class UserRegisterSerializer(serializers.ModelSerializer):
-    # role = serializers.CharField(required=False, choices=ROLE_CHOICES) 
-    password=serializers.CharField(max_length=68, min_length=6, write_only=True)
-    password2=serializers.CharField(max_length=68, min_length=6, write_only=True)
+    password = serializers.CharField(max_length=68, min_length=6, write_only=True)
+    password2 = serializers.CharField(max_length=68, min_length=6, write_only=True)
 
     class Meta:
-        model=User
+        model = User
         fields = ('email', 'first_name', 'last_name', 'role', 'mobile_number', 'password', 'password2')
 
     def validate(self, attrs):
-        pasword= attrs.get('password', '')
-        pasword2= attrs.get('password2', '')
+        pasword = attrs.get('password', '')
+        pasword2 = attrs.get('password2', '')
         if pasword != pasword2:
-            raise serializers.ValidationError({'error': "Password doesn't match"})
+            raise serializers.ValidationError({'error': "Passwords don't match"})
         return attrs
-    
+
     def create(self, validated_data):
-        user=User.objects.create_user(
+        user = User.objects.create_user(
             email=validated_data['email'],
             first_name=validated_data.get('first_name'),
             last_name=validated_data.get('last_name'),
             role=validated_data.get('role'),
             mobile_number=validated_data.get('mobile_number'),
-            password=validated_data['password']
+            password=validated_data['password'],
+            is_active=True,
+            is_staff=False,
+            is_superuser=False,
         )
         return user
+
+
+# class UserRegisterSerializer(serializers.ModelSerializer):
+#     password=serializers.CharField(max_length=68, min_length=6, write_only=True)
+#     password2=serializers.CharField(max_length=68, min_length=6, write_only=True)
+
+#     class Meta:
+#         model=User
+#         fields = ('email', 'first_name', 'last_name', 'role', 'mobile_number', 'password', 'password2')
+
+#     def validate(self, attrs):
+#         pasword= attrs.get('password', '')
+#         pasword2= attrs.get('password2', '')
+#         if pasword != pasword2:
+#             raise serializers.ValidationError({'error': "Password doesn't match"})
+#         return attrs
+    
+#     def create(self, validated_data):
+#         user=User.objects.create_user(
+#             email=validated_data['email'],
+#             first_name=validated_data.get('first_name'),
+#             last_name=validated_data.get('last_name'),
+#             role=validated_data.get('role'),
+#             mobile_number=validated_data.get('mobile_number'),
+#             password=validated_data['password']
+#         )
+#         return user
+
 # class UserSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = CustomUser
