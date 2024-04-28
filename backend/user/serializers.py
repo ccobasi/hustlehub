@@ -1,14 +1,20 @@
 from rest_framework import serializers
 from .models import User
 
+# ROLE_CHOICES = (
+#     ('talent', 'Talent'),
+#     ('client', 'Client'),
+# )
+
 
 class UserRegisterSerializer(serializers.ModelSerializer):
+    # role = serializers.CharField(required=False, choices=ROLE_CHOICES) 
     password=serializers.CharField(max_length=68, min_length=6, write_only=True)
     password2=serializers.CharField(max_length=68, min_length=6, write_only=True)
 
     class Meta:
         model=User
-        fields = ('email', 'first_name', 'last_name', 'role', 'phone', 'password', 'password2')
+        fields = ('email', 'first_name', 'last_name', 'role', 'mobile_number', 'password', 'password2')
 
     def validate(self, attrs):
         pasword= attrs.get('password', '')
@@ -23,7 +29,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             first_name=validated_data.get('first_name'),
             last_name=validated_data.get('last_name'),
             role=validated_data.get('role'),
-            phone=validated_data.get('phone'),
+            mobile_number=validated_data.get('mobile_number'),
             password=validated_data['password']
         )
         return user

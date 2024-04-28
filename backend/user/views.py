@@ -7,10 +7,11 @@ from .utils import send_code_to_user
 # from django.contrib.auth.models import User
 # from rest_framework import generics
 # from .serializers import UserSerializer
-# from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class RegisterUserView(GenericAPIView):
+    permission_classes = [AllowAny]
     serializer_class=UserRegisterSerializer
 
     def post(self, request):
