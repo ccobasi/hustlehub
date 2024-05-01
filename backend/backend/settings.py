@@ -160,3 +160,7 @@ EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', default='False').lower() == '
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
+
+
+GOOGLE_CLIENT_ID='356193407820-3cn0h8abbhbd6kuvrvvbtrujbtk79sge.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET='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'
