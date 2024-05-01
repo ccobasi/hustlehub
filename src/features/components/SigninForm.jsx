@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
-import "../styles/Form.css";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../constants";
 import LoadingIndicator from "./LoadingIndicator";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -25,7 +24,7 @@ import {
 } from "@mui/icons-material";
 
 function SigninForm() {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -41,7 +40,7 @@ function SigninForm() {
         e.preventDefault();
 
         try {
-            const res = await api.post("/sign-in", { email, password });
+            const res = await api.post("/sign-in", { username, password });
             localStorage.setItem(ACCESS_TOKEN, res.data.access);
             localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
             navigate("/");
@@ -133,13 +132,13 @@ function SigninForm() {
             <TextField
               required
               fullWidth
-              id="email"
-              label="E-mail"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+              autoComplete="username"
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">

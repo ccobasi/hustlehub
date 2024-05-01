@@ -1,9 +1,30 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
-import "../styles/Form.css";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../constants";
 import LoadingIndicator from "./LoadingIndicator";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { InputAdornment } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Divider from "@mui/material/Divider";
+import ImageAvatars from "./ImageAvatars";
+import {
+  EmailOutlined,
+  AccountCircleOutlined,
+  ManageAccountsOutlined,
+  VpnKey,
+  PhoneAndroidOutlined,
+  VisibilityOffOutlined,
+  VisibilityOutlined,
+} from "@mui/icons-material";
 
 function SignupForm() {
     const [username, setUsername] = useState("");
