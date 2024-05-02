@@ -22,23 +22,39 @@ import {
   VisibilityOffOutlined,
   VisibilityOutlined,
 } from "@mui/icons-material";
+import axios from "axios"
+
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    fullName: "",
     email: "",
-    mobileNumber: "",
-    role: "",
+    first_name: "",
+    last_name: "",
     password: "",
-    confirmPassword: "",
+    password2: "",
+    mobile_number: "",
+    role: "",
+    
   });
-  const [data,setData] = useState([])
-   const [email,setEmail] = useState('')
-   const [,setSignIn] = useState(false)
 
-  useEffect(()=>{
-        setData(JSON.parse(localStorage.getItem('user')))
-    },[])
+  const [error, setError]=useState("")
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
+  const {email, first_name, last_name, role, mobile_number, password, password2 } = formData;
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (!email || !first_name || !last_name || !role || !mobile_number || !password || !password2) {
+    setError("Please fill out all fields");
+  } else {
+    console.log(formData); 
+  }
+  console.log(error);
+};
+
 
 
   const [showPassword, setShowPassword] = useState(false);
@@ -46,13 +62,7 @@ export default function SignUp() {
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  
 
   const handleShowPassword = () => {
     setShowPassword((prevShow) => !prevShow);
@@ -61,52 +71,6 @@ export default function SignUp() {
   const handleShowConfirmPassword = () => {
     setShowConfirmPassword((prevShow) => !prevShow);
   };
-
-  const handleSubmit = (event) => {
-  event.preventDefault();
-
-  const formData = {
-    email: event.target.email.value,
-    password: event.target.password.value,
-    fullName: event.target.fullName.value,
-    role: event.target.role.value, 
-  };
-
-  console.log(formData);
-
-  if (formData.email && formData.password && formData.role) {
-
-    const userData = JSON.parse(localStorage.getItem("user")) || [];
-
-    if (userData.length === 0) {
-   
-      localStorage.setItem(
-        "user",
-        JSON.stringify([{ email: formData.email, password: formData.password, fullName: formData.fullName, role: formData.role }])
-      );
-    } else {
-      for (let val of userData) {
-        if (val.email === formData.email) {
-          alert("User already exists");
-          return;
-        }
-      }
-
-      localStorage.setItem(
-        "user",
-        JSON.stringify([...userData, { email: formData.email, password: formData.password, fullName: formData.fullName, role: formData.role }])
-      );
-    }
-
-    if (formData.role === "Freelancer") {
-      navigate("/freelancer", { state: formData.fullName }); 
-    } else {
-      navigate("/client", { state: formData.fullName }); 
-    }
-  }
-};
-
-
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -119,31 +83,14 @@ export default function SignUp() {
       >
         <Typography variant="h5" sx={{ mt: "10%" }}>
           Registration
+          <p style={{color:"red", padding:"1px"}}>{error ? error : ""}</p>
         </Typography>
         <Typography variant="body2" sx={{ mt: "3%" }}>
           Let&apos;s Register. Apply to jobs!
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <FormControl fullWidth>
-            <TextField
-              required
-              fullWidth
-              id="fullName"
-              label="Full Name"
-              name="fullName"
-              placeholder="Enter your full name"
-              autoComplete="full-name"
-              value={formData.fullName}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircleOutlined />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{ mt: "25%" }}
-            />
+            
             <TextField
               required
               fullWidth
@@ -152,7 +99,7 @@ export default function SignUp() {
               name="email"
               placeholder="Enter your email"
               autoComplete="email"
-              value={formData.email}
+              value={email}
               onChange={handleChange}
               InputProps={{
                 startAdornment: (
@@ -166,12 +113,50 @@ export default function SignUp() {
             <TextField
               required
               fullWidth
-              id="mobileNumber"
+              id="first_name"
+              label="First Name"
+              name="first_name"
+              placeholder="Enter your first name"
+              autoComplete="first-name"
+              value={first_name}
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircleOutlined />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{ mt: "25%" }}
+            />
+            <TextField
+              required
+              fullWidth
+              id="last_name"
+              label="Last Name"
+              name="last_name"
+              placeholder="Enter your last name"
+              autoComplete="last-name"
+              value={last_name}
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircleOutlined />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{ mt: "25%" }}
+            />
+            <TextField
+              required
+              fullWidth
+              id="mobile_number"
               label="Mobile Number"
-              name="mobileNumber"
+              name="mobile_number"
               placeholder="Enter your mobile number"
               autoComplete="mobile-number"
-              value={formData.mobileNumber}
+              value={mobile_number}
               onChange={handleChange}
               InputProps={{
                 startAdornment: (
@@ -188,7 +173,7 @@ export default function SignUp() {
               name="role"
               label="Choose Role"
               select
-              value={formData.role}
+              value={role}
               onChange={handleChange}
               InputProps={{
                 startAdornment: (
@@ -211,7 +196,7 @@ export default function SignUp() {
               placeholder="Enter your password"
               type={showPassword ? "text" : "password"}
               autoComplete="new-password"
-              value={formData.password}
+              value={password}
               onChange={handleChange}
               InputProps={{
                 startAdornment: (
@@ -234,11 +219,11 @@ export default function SignUp() {
               fullWidth
               id="confirmPassword"
               label="Confirm Password"
-              name="confirmPassword"
+              name="password2"
               placeholder="Confirm your password"
               type={showConfirmPassword ? "text" : "password"}
               autoComplete="new-password"
-              value={formData.confirmPassword}
+              value={password2}
               onChange={handleChange}
               InputProps={{
                 startAdornment: (
@@ -282,4 +267,9 @@ export default function SignUp() {
       </Box>
     </Container>
   );
-}
+  
+};
+
+
+  
+

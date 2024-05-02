@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SignUp from "./features/components/SignUp";
 import SignIn from "./features/components/SignIn";
+import VerifyEmail from "./features/components/VerifyEmail";
 import ForgetPassword from "./features/components/ForgetPassword";
 import ClientPage from "./features/user/client/ClientPage";
 import CreateProjectPage from "./features/user/client/CreateProjectPage";
@@ -141,6 +142,7 @@ function App() {
             {/* <Route path="/sign-out" element={<SignOut />} /> */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/otp/verify" element={<VerifyEmail />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/categories" element={<CategoriesPage />} />
             {/* <Route path="/notification" element={<NotificationPage />} />
