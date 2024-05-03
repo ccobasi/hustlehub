@@ -6,8 +6,24 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
+import axios from 'axios'
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const VerifyEmail = () => {
+    const [otp, setOtp]=useState("")
+    const navigate=useNavigate()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if(otp){
+            const response = await axios.post("http://localhost:8000/user/verify-email/", {'otp':otp})
+            if(response.status === 200){
+                navigate("/sign-in")
+                toast.success(response.data.message)
+            }
+        }
+    }
     return (
         <Container component="main" maxWidth="xs">
       <Box
@@ -28,8 +44,8 @@ const VerifyEmail = () => {
           label="OTP"
           name="otp"
           autoComplete="otp"
-        //   value={email}
-        //   onChange={handleChange}
+          value={otp}
+          onChange={(e)=>setOtp(e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -47,7 +63,7 @@ const VerifyEmail = () => {
           variant="contained"
           sx={{ mt: 3, mb: 2, backgroundColor: "#87ceeb", 
     color: "white",  }}
-        //   onClick={handleSubmit}
+          onClick={handleSubmit}
         >
           Send
         </Button>
