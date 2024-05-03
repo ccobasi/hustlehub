@@ -27,6 +27,7 @@ import HomePage from "./features/home/HomePage";
 import { orange } from "@mui/material/colors";
 import PageNotFound from "./features/components/PageNotFound";
 import { ToastContainer } from  'react-toastify'
+import  'react-toastify/dist/ReactToastify.css'
 
 function Logout() {
   localStorage.clear()
