@@ -1,76 +1,392 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+// import React, { useEffect, useState } from "react";
+// import Button from "@mui/material/Button";
+// import TextField from "@mui/material/TextField";
+// import Grid from "@mui/material/Grid";
+// import Box from "@mui/material/Box";
+// import Typography from "@mui/material/Typography";
+// import Container from "@mui/material/Container";
+// import { InputAdornment } from "@mui/material";
+// import IconButton from "@mui/material/IconButton";
+// import MenuItem from "@mui/material/MenuItem";
+// import FormControl from "@mui/material/FormControl";
+// import Divider from "@mui/material/Divider";
+// import ImageAvatars from "./ImageAvatars";
+// import { useNavigate } from "react-router-dom";
+// import {
+//   EmailOutlined,
+//   AccountCircleOutlined,
+//   ManageAccountsOutlined,
+//   VpnKey,
+//   PhoneAndroidOutlined,
+//   VisibilityOffOutlined,
+//   VisibilityOutlined,
+// } from "@mui/icons-material";
+// import axios from "axios"
+// import { toast } from "react-toastify";
+
+
+// export default function SignUp() {
+//   const navigate = useNavigate();
+//   const [formData, setFormData] = useState({
+//     email: "",
+//     first_name: "",
+//     last_name: "",
+//     password: "",
+//     password2: "",
+//     mobile_number: "",
+//     role: "",
+    
+//   });
+
+//   const [error, setError]=useState("")
+
+//   const handleChange = (e) => {
+//     setFormData({...formData, [e.target.name]: e.target.value});
+//     if (e.target.name === 'role') {
+//     setFormData({...formData, role: e.target.value});
+//   }
+//   };
+
+//   const {email, first_name, last_name, role, mobile_number, password, password2 } = formData;
+
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   if (!email || !first_name || !last_name || !role || !mobile_number || !password || !password2) {
+//     setError("Please fill out all fields");
+//   } else {
+//     console.log(formData); 
+//     try {
+//       const res = await axios.post("http://localhost:8000/user/register/", formData, {
+//         headers: {
+//           'Content-Type': 'application/json'
+//         }
+//       });
+         
+//       const response = res.data;
+//       console.log(response);
+//       if (res.status === 201) {
+//         navigate("/otp/verify");
+//         toast.success(response.message);
+//       }
+//     } catch (error) {
+//       if (error.response) {
+//         // Request made and server responded with a status code
+//         console.log(error.response.data);
+//         console.log(error.response.status);
+//         console.log(error.response.headers);
+//       } else if (error.request) {
+//         // The request was made but no response was received
+//         console.log(error.request);
+//       } else {
+//         // Something happened in setting up the request that triggered an Error
+//         console.log('Error', error.message);
+//       }
+//       console.log(error.config);
+//       toast.error("Failed to register. Please try again later.");
+//     }
+//   }
+//   console.log(error);
+// };
+
+
+
+
+//   const [showPassword, setShowPassword] = useState(false);
+//   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  
+
+  
+
+//   const handleShowPassword = () => {
+//     setShowPassword((prevShow) => !prevShow);
+//   };
+
+//   const handleShowConfirmPassword = () => {
+//     setShowConfirmPassword((prevShow) => !prevShow);
+//   };
+//   return (
+//     <Container component="main" maxWidth="xs">
+//       <Box
+//         sx={{
+//           marginTop: 8,
+//           display: "flex",
+//           flexDirection: "column",
+//           alignItems: "center",
+//         }}
+//       >
+//         <Typography variant="h5" sx={{ mt: "10%" }}>
+//           Registration
+//           <p style={{color:"red", padding:"1px"}}>{error ? error : ""}</p>
+//         </Typography>
+//         <Typography variant="body2" sx={{ mt: "3%" }}>
+//           Let&apos;s Register. Apply to jobs!
+//         </Typography>
+//         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+//           <FormControl fullWidth>
+            
+//             <TextField
+//               required
+//               fullWidth
+//               id="email"
+//               label="Email"
+//               name="email"
+//               placeholder="Enter your email"
+//               autoComplete="email"
+//               value={email}
+//               onChange={handleChange}
+//               InputProps={{
+//                 startAdornment: (
+//                   <InputAdornment position="start">
+//                     <EmailOutlined />
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               sx={{ mt: "3%" }}
+//             />
+//             <TextField
+//               required
+//               fullWidth
+//               id="first_name"
+//               label="First Name"
+//               name="first_name"
+//               placeholder="Enter your first name"
+//               autoComplete="first-name"
+//               value={first_name}
+//               onChange={handleChange}
+//               InputProps={{
+//                 startAdornment: (
+//                   <InputAdornment position="start">
+//                     <AccountCircleOutlined />
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               sx={{ mt: "25%" }}
+//             />
+//             <TextField
+//               required
+//               fullWidth
+//               id="last_name"
+//               label="Last Name"
+//               name="last_name"
+//               placeholder="Enter your last name"
+//               autoComplete="last-name"
+//               value={last_name}
+//               onChange={handleChange}
+//               InputProps={{
+//                 startAdornment: (
+//                   <InputAdornment position="start">
+//                     <AccountCircleOutlined />
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               sx={{ mt: "25%" }}
+//             />
+//             <TextField
+//               required
+//               fullWidth
+//               id="mobile_number"
+//               label="Mobile Number"
+//               name="mobile_number"
+//               placeholder="Enter your mobile number"
+//               autoComplete="mobile-number"
+//               value={mobile_number}
+//               onChange={handleChange}
+//               InputProps={{
+//                 startAdornment: (
+//                   <InputAdornment position="start">
+//                     <PhoneAndroidOutlined />
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               sx={{ mt: "3%" }}
+//             />
+//             <TextField
+//               required
+//               fullWidth
+//               name="role"
+//               label="Choose Role"
+//               select
+//               value={role}
+//               onChange={handleChange}
+//               InputProps={{
+//                 startAdornment: (
+//                   <InputAdornment position="start">
+//                     <ManageAccountsOutlined />
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               sx={{ mt: "3%" }}
+//             >
+//               <MenuItem value="Client">Client</MenuItem>
+//               <MenuItem value="Freelancer">Freelancer</MenuItem>
+//             </TextField>
+//             <TextField
+//               required
+//               fullWidth
+//               id="password"
+//               label="Password"
+//               name="password"
+//               placeholder="Enter your password"
+//               type={showPassword ? "text" : "password"}
+//               autoComplete="new-password"
+//               value={password}
+//               onChange={handleChange}
+//               InputProps={{
+//                 startAdornment: (
+//                   <InputAdornment position="start">
+//                     <VpnKey />
+//                   </InputAdornment>
+//                 ),
+//                 endAdornment: (
+//                   <InputAdornment position="end">
+//                     <IconButton onClick={handleShowPassword} edge="end">
+//                       {showPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+//                     </IconButton>
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               sx={{ mt: "3%" }}
+//             />
+//             <TextField
+//               required
+//               fullWidth
+//               id="confirmPassword"
+//               label="Confirm Password"
+//               name="password2"
+//               placeholder="Confirm your password"
+//               type={showConfirmPassword ? "text" : "password"}
+//               autoComplete="new-password"
+//               value={password2}
+//               onChange={handleChange}
+//               InputProps={{
+//                 startAdornment: (
+//                   <InputAdornment position="start">
+//                     <VpnKey />
+//                   </InputAdornment>
+//                 ),
+//                 endAdornment: (
+//                   <InputAdornment position="end">
+//                     <IconButton onClick={handleShowConfirmPassword} edge="end">
+//                       {showConfirmPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+//                     </IconButton>
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               sx={{ mt: "3%" }}
+//             />
+//           </FormControl>
+
+//           <Button type="submit" fullWidth variant="contained" sx={{ mt: 5 }}>
+//             Register
+//           </Button>
+
+//           <Divider sx={{ mt: "10%" }}>Or continue with</Divider>
+
+//           <Box className="imgAvatars">
+//             <ImageAvatars />
+//           </Box>
+
+//           <Grid container justifyContent="center" sx={{ mt: "10%" }}>
+//             <Grid item>
+//               <Typography sx={{ mb: "20%" }}>
+//                 Have an account?{" "}
+//                 <a href="/sign-in" style={{ color: "#87CEEB", textDecoration: "none" }}>
+//                   Log in
+//                 </a>
+//               </Typography>
+//             </Grid>
+//           </Grid>
+//         </Box>
+//       </Box>
+//     </Container>
+//   );
+  
+// };
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
-import { InputAdornment } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Input from "@mui/material/Input";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import VpnKey from "@mui/icons-material/VpnKey";
+import VisibilityOffOutlined from "@mui/icons-material/VisibilityOffOutlined";
+import VisibilityOutlined from "@mui/icons-material/VisibilityOutlined";
+import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
+import PhoneAndroidOutlined from "@mui/icons-material/PhoneAndroidOutlined";
+import ManageAccountsOutlined from "@mui/icons-material/ManageAccountsOutlined";
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import ImageAvatars from "./ImageAvatars";
-import { useNavigate } from "react-router-dom";
-import {
-  EmailOutlined,
-  AccountCircleOutlined,
-  ManageAccountsOutlined,
-  VpnKey,
-  PhoneAndroidOutlined,
-  VisibilityOffOutlined,
-  VisibilityOutlined,
-} from "@mui/icons-material";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import MenuItem from "@mui/material/MenuItem";
 import axios from "axios"
+import { toast } from "react-toastify";
 
-
-export default function SignUp() {
+const SignUp = () => {
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     email: "",
     first_name: "",
     last_name: "",
-    password: "",
-    password2: "",
     mobile_number: "",
     role: "",
-    
+    password: "",
+    password2: "",
   });
 
-  const [error, setError]=useState("")
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { first_name, last_name, email, mobile_number, role, password, password2 } = formData;
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const {email, first_name, last_name, role, mobile_number, password, password2 } = formData;
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
-const handleSubmit = (e) => {
+  const handleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  const handleSubmit = async (e) => {
   e.preventDefault();
   if (!email || !first_name || !last_name || !role || !mobile_number || !password || !password2) {
     setError("Please fill out all fields");
   } else {
     console.log(formData); 
+    try {
+      const res = await axios.post("http://localhost:8000/user/register/", formData);
+      const response = res.data;
+      console.log(response);
+      if (res.status === 201) {
+        navigate("/otp/verify");
+        toast.success(response.message);
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+      toast.error("Failed to register. Please try again later.");
+    }
   }
-  console.log(error);
-};
+}
 
-
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const navigate = useNavigate();
-
-  
-
-  const handleShowPassword = () => {
-    setShowPassword((prevShow) => !prevShow);
-  };
-
-  const handleShowConfirmPassword = () => {
-    setShowConfirmPassword((prevShow) => !prevShow);
-  };
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -80,94 +396,86 @@ const handleSubmit = (e) => {
           flexDirection: "column",
           alignItems: "center",
         }}
-      >
-        <Typography variant="h5" sx={{ mt: "10%" }}>
-          Registration
-          <p style={{color:"red", padding:"1px"}}>{error ? error : ""}</p>
-        </Typography>
-        <Typography variant="body2" sx={{ mt: "3%" }}>
-          Let&apos;s Register. Apply to jobs!
-        </Typography>
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <FormControl fullWidth>
-            
-            <TextField
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              placeholder="Enter your email"
-              autoComplete="email"
-              value={email}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <EmailOutlined />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{ mt: "3%" }}
-            />
-            <TextField
-              required
-              fullWidth
-              id="first_name"
-              label="First Name"
-              name="first_name"
-              placeholder="Enter your first name"
-              autoComplete="first-name"
-              value={first_name}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircleOutlined />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{ mt: "25%" }}
-            />
-            <TextField
-              required
-              fullWidth
-              id="last_name"
-              label="Last Name"
-              name="last_name"
-              placeholder="Enter your last name"
-              autoComplete="last-name"
-              value={last_name}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircleOutlined />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{ mt: "25%" }}
-            />
-            <TextField
-              required
-              fullWidth
-              id="mobile_number"
-              label="Mobile Number"
-              name="mobile_number"
-              placeholder="Enter your mobile number"
-              autoComplete="mobile-number"
-              value={mobile_number}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PhoneAndroidOutlined />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{ mt: "3%" }}
-            />
-            <TextField
+      >  <Typography variant="h5" sx={{ mt: "10%" }}>
+           Registration
+           <p style={{color:"red", padding:"1px"}}>{error ? error : ""}</p>
+         </Typography>
+         <Typography variant="body2" sx={{ mt: "3%" }}>
+           Let&apos;s Register. Apply to jobs!
+         </Typography>
+        <TextField
+          required
+          fullWidth
+          id="outlined-adornment-email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          value={email}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircleOutlined />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ mt: "3%" }}
+        />
+        <TextField
+          required
+          fullWidth
+          id="outlined-adornment-email"
+          label="First Name"
+          name="first_name"
+          autoComplete="first_name"
+          value={first_name}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircleOutlined />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ mt: "3%" }}
+        />
+        <TextField
+          required
+          fullWidth
+          id="outlined-adornment-email"
+          label="Last Name"
+          name="last_name"
+          autoComplete="last_name"
+          value={last_name}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircleOutlined />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ mt: "3%" }}
+        />
+        <TextField
+          required
+          fullWidth
+          id="outlined-adornment-mobile_number"
+          label="Mobile Number"
+          name="mobile_number"
+          autoComplete="mobile-number"
+          value={mobile_number}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PhoneAndroidOutlined />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ mt: "3%" }}
+        />
+        <TextField
               required
               fullWidth
               name="role"
@@ -184,10 +492,10 @@ const handleSubmit = (e) => {
               }}
               sx={{ mt: "3%" }}
             >
-              <MenuItem value="Client">Client</MenuItem>
-              <MenuItem value="Freelancer">Freelancer</MenuItem>
-            </TextField>
-            <TextField
+              <MenuItem value="client">client</MenuItem>
+              <MenuItem value="freelancer">freelancer</MenuItem>
+            </TextField>     
+          <TextField
               required
               fullWidth
               id="password"
@@ -241,35 +549,30 @@ const handleSubmit = (e) => {
               }}
               sx={{ mt: "3%" }}
             />
-          </FormControl>
-
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 5 }}>
-            Register
-          </Button>
-
-          <Divider sx={{ mt: "10%" }}>Or continue with</Divider>
-
-          <Box className="imgAvatars">
-            <ImageAvatars />
-          </Box>
-
-          <Grid container justifyContent="center" sx={{ mt: "10%" }}>
-            <Grid item>
-              <Typography sx={{ mb: "20%" }}>
-                Have an account?{" "}
-                <a href="/sign-in" style={{ color: "#87CEEB", textDecoration: "none" }}>
-                  Log in
-                </a>
-              </Typography>
-            </Grid>
+        
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          sx={{ mt: 3, mb: 2 }}
+          onClick={handleSubmit}
+        >
+          Sign Up
+        </Button>
+        <Grid container>
+          <Grid item xs>
+            <Link to="/login" variant="body2">
+              Already have an account? Sign in
+            </Link>
           </Grid>
-        </Box>
+        </Grid>
       </Box>
     </Container>
   );
-  
 };
 
+export default SignUp;
 
   
 

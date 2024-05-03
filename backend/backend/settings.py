@@ -160,6 +160,15 @@ EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', default='False').lower() == '
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5174",  
+]
+CSRF_TRUSTED_ORIGINS=[
+    "http://localhost:8080",
+    "http://127.0.0.1:5173/",
+    "http://127.0.0.1:5174/",
+    "http://127.0.0.1:5175/",
+]
 
 
 GOOGLE_CLIENT_ID=os.getenv('GOOGLE_CLIENT_ID')

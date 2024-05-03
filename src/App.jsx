@@ -26,6 +26,7 @@ import Layout from "./Layout";
 import HomePage from "./features/home/HomePage";
 import { orange } from "@mui/material/colors";
 import PageNotFound from "./features/components/PageNotFound";
+import { ToastContainer } from  'react-toastify'
 
 function Logout() {
   localStorage.clear()
@@ -123,6 +124,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
+        <ToastContainer/>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
