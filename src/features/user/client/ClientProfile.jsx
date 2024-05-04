@@ -36,6 +36,7 @@ import { useLocation } from "react-router-dom";
 import Img from "../../../assets/mask-group-8wG.png";
 
 const ClientProfile = ({ name, jobTitle, image, imageLabel }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
   const data = useLocation();
   console.log(data);
   jobTitle = "Project Manager";
@@ -45,7 +46,7 @@ const ClientProfile = ({ name, jobTitle, image, imageLabel }) => {
       <CardMedia component="img" height="120" image={Img} alt={imageLabel} />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
-          {name} {/* Provide the 'name' prop here */}
+          <h6>Hi, {user && user.names}</h6> {/* Provide the 'name' prop here */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {jobTitle}

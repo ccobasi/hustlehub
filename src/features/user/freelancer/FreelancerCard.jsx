@@ -21,6 +21,7 @@ export const FreelancerFirstFeature = () => {
       }}
     >
       {cardContainer}
+      <h6>Hi, {user && user.names}</h6>
     </Grid>//Grid End
   );
 };

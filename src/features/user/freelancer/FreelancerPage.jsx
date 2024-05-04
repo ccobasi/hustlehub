@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import { Typography, Link, Stack, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { FreelancerFirstFeature } from "./FreelancerCard";
@@ -7,8 +8,16 @@ import FreelancerFourthFeature from "./Earning";
 import FreelancerFifthFeature from "./ReviewsAndRatings";
 
 export default function FreelancerPage() {
-  //Instatiate useNavigate
   let navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const jwt_access=localStorage.getItem('access')
+
+  useEffect(()=>{
+    if(jwt_access===null && !user){
+      navigate("/sign-in")
+    }
+  }, []
+  )
 
   return (
     <>
