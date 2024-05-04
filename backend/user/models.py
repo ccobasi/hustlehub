@@ -39,6 +39,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
     
+    def get_role(self):
+        return f"{self.role}"
+    
     def token(self):
         refresh=RefreshToken.for_user(self)
         return {
