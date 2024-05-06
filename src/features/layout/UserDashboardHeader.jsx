@@ -7,6 +7,9 @@ import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png"
+import { CustomButton } from "../../app/layout/header/CustomButton";
+import axiosInstance from "../../utils/axiosInstance";
+import { toast } from "react-toastify";
 
 export default function UserDashboardHeader() {
   //Use system preference to set theme mode
@@ -14,6 +17,19 @@ export default function UserDashboardHeader() {
   //instantiate useNavigate object
   let navigate = useNavigate();
   let isCleint = false;
+
+  const refresh=JSON.parse(localStorage.getItem("refresh"))
+
+  const handleLogout =async ()=>{
+    const res=await axiosInstance.post("/logout/", {"refresh_token":refresh})
+    if(res.status === 200){
+      localStorage.removeItem('access')
+      localStorage.removeItem('refresh')
+      localStorage.removeItem('user');
+      navigate('/sign-in')
+      toast.success("logout successful")
+    }
+  }
 
   return (
     <React.Fragment>
@@ -47,12 +63,13 @@ export default function UserDashboardHeader() {
                   ? theme.palette.grey[700]
                   : theme.palette.grey[300],
             },
-            ml: "85%",
+            ml: "65%",
           }}
           href={isCleint ? "/edit-client" : "/edit-freelancer"}
         >
           Edit
         </Link>
+        <CustomButton onClick={handleLogout}>Sign Out</CustomButton>
       </Box>
 
       {/* Box for the Arrow back icon*/}
@@ -85,6 +102,7 @@ export default function UserDashboardHeader() {
                       ? theme.palette.grey[700]
                       : theme.palette.grey[300],
                 },
+               
               }}
               href="/"
             >
@@ -109,13 +127,15 @@ export default function UserDashboardHeader() {
                       ? theme.palette.grey[700]
                       : theme.palette.grey[300],
                 },
-                ml: "85%",
+                ml: "75%",
               }}
               href={isCleint ? "/edit-client" : "/edit-freelancer"}
             >
               Edit
             </Link>
+            <CustomButton onClick={handleLogout}>Sign Out</CustomButton>
           </Toolbar>
+          
         </AppBar>
       </Box>
       {/* Box End */}

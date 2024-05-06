@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, {useEffect} from "react";
 import { Typography, Link, Stack, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
