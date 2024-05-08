@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from user.models import User
+from django.db.models.signals import post_save
 
 
 class ClientProfile(models.Model):
@@ -14,6 +15,17 @@ class ClientProfile(models.Model):
     
     def __str__(self):
         return f"{self.user.get_full_name()}'s Profile"
+    
+
+def create_client_profile(sender, instance, created, **kwargs):
+    if created:
+        ClientProfile.objects.create(user=instance)
+
+def save_client_profile(sender, instance, **kwargs):
+    instance.client_profile.save()
+
+post_save.connect(create_client_profile, sender=User)
+post_save.connect(save_client_profile, sender=User)
 
 class FreelancerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='freelancer_profile')
