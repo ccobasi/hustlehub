@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -14,7 +12,6 @@ import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
 import PhoneAndroidOutlined from "@mui/icons-material/PhoneAndroidOutlined";
 import ManageAccountsOutlined from "@mui/icons-material/ManageAccountsOutlined";
 import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
@@ -35,6 +32,20 @@ const SignUp = () => {
     password: "",
     password2: "",
   });
+
+//   const handleSignInWithGoogle = async (response)=>{
+//     console.log(response);
+//   }
+
+//   useEffect(() => {
+//     google.accounts.id.initialize({
+//       client_id:import.meta.env.VITE_CLIENT_ID,
+//       callback:handleSignInWithGoogle
+//     });
+//     google.accounts.id.renderButton(document.getElementById("signInDiv"),
+//     {theme:"outline", size:"large", text:"continue_with", shape:"circle", width:"280"}
+//   )
+// }, [])
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -251,11 +262,27 @@ const SignUp = () => {
           fullWidth
           variant="contained"
           color="primary"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, backgroundColor: "#87CEEB", color: "white" }}
           onClick={handleSubmit}
         >
           Sign Up
         </Button>
+        <h3 className="text-option">Or</h3>
+        <div className="githubContainer">
+           <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          sx={{ mt: 3, mb: 2, backgroundColor: "#87CEEB", color:"white" }}
+          onClick={handleSubmit}
+        >
+          Sign up  with Github
+        </Button>
+        </div>
+        <div className="googleContainer" id="signinDiv">
+           
+        </div>
         <Grid container>
           <Grid item xs>
             <Link to="/login" variant="body2">

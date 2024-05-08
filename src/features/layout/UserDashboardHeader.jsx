@@ -12,12 +12,11 @@ import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
 
 export default function UserDashboardHeader() {
-  //Use system preference to set theme mode
   const theme = useTheme();
-  //instantiate useNavigate object
   let navigate = useNavigate();
-  let isCleint = false;
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  let isClient = user.role === "client";
+  const editLinkHref = isClient? "/edit-client" : "/edit-freelancer"; 
   const refresh=JSON.parse(localStorage.getItem("refresh"))
 
   const handleLogout =async ()=>{
@@ -65,7 +64,7 @@ export default function UserDashboardHeader() {
             },
             ml: "65%",
           }}
-          href={isCleint ? "/edit-client" : "/edit-freelancer"}
+          href={isClient ? "/edit-client" : "/edit-freelancer"}
         >
           Edit
         </Link>
@@ -129,7 +128,7 @@ export default function UserDashboardHeader() {
                 },
                 ml: "75%",
               }}
-              href={isCleint ? "/edit-client" : "/edit-freelancer"}
+              href={editLinkHref}
             >
               Edit
             </Link>
