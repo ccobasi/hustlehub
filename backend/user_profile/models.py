@@ -11,7 +11,7 @@ class ClientProfile(models.Model):
     job_role = models.CharField(verbose_name=_("Job Role"), max_length=100)
     company = models.CharField(verbose_name=_("Company"), max_length=100)
     location = models.CharField(verbose_name=_("Location"), max_length=100)
-    review = models.CharField(verbose_name=_("Review"), max_length=100)
+    # review = models.CharField(verbose_name=_("Review"), max_length=100)
     
     def __str__(self):
         return f"{self.user.get_full_name()}'s Profile"
@@ -41,7 +41,7 @@ class FreelancerProfile(models.Model):
     skills = models.TextField(blank=True)
     language = models.CharField(verbose_name=_("Language"), max_length=250)
     location = models.CharField(verbose_name=_("Location"), max_length=100)
-    review = models.CharField(verbose_name=_("Review"), max_length=100)
+    # review = models.CharField(verbose_name=_("Review"), max_length=100)
     
     def __str__(self):
         return f"{self.user.get_full_name()}'s Profile"

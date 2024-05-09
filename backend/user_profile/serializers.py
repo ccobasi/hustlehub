@@ -7,9 +7,9 @@ User = get_user_model()
 class ClientProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientProfile
-        fields = ['id', 'user', 'image', 'bio', 'job_role', 'company', 'location', 'review']
+        fields = ['id', 'user', 'image', 'bio', 'job_role', 'company', 'location']
 
 class FreelancerProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = FreelancerProfile
-        fields = ['id', 'user', 'image', 'bio', 'job_role', 'company', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language', 'location', 'review']
+        fields = ['id', 'user', 'image', 'bio', 'job_role', 'company', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language', 'location']
