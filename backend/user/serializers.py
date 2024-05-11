@@ -10,6 +10,7 @@ from django.utils.encoding import smart_str, smart_bytes, force_str
 from django.urls import reverse
 from .utils import send_normal_email
 from rest_framework_simplejwt.tokens  import RefreshToken, Token
+from user_profile.models import ClientProfile
 
 
 User = get_user_model()
@@ -20,7 +21,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'role', 'mobile_number', 'password', 'password2')
+        fields = ('id', 'email', 'first_name', 'last_name', 'role', 'mobile_number', 'password', 'password2')
 
     def validate(self, attrs):
         pasword = attrs.get('password', '')
@@ -55,7 +56,7 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'full_name', 'is_verified', 'access_token', 'refresh_token', 'role']
+        fields = ['id', 'email', 'password', 'full_name', 'is_verified', 'access_token', 'refresh_token', 'role']
 
     def validate(self, attrs):
         email = attrs.get("email")
@@ -70,7 +71,12 @@ class LoginSerializer(serializers.ModelSerializer):
         user_tokens = user.token()
         user_role = user.get_role()
 
+        # create ClientProfile object if it doesn't already exist
+        if not ClientProfile.objects.filter(user=user).exists():
+            ClientProfile.objects.create(user=user)
+
         return {
+            'id': user.id,
             'email': user.email, 
             'full_name': user.get_full_name,
             'access_token': str(user_tokens.get('access')),
@@ -78,6 +84,10 @@ class LoginSerializer(serializers.ModelSerializer):
             'role': user_role,
         }
     
+    def create_client_profile(self, user):
+        if not ClientProfile.objects.filter(user=user).exists():
+            ClientProfile.objects.create(user=user)
+
 
 class PasswordResetRequestSerializer(serializers.Serializer):
     email=serializers.EmailField(max_length=255)

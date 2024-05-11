@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
 from .models import *
+from rest_framework.exceptions import AuthenticationFailed
 
 User = get_user_model()
 
@@ -8,6 +9,8 @@ class ClientProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientProfile
         fields = ['id', 'user', 'image', 'bio', 'job_role', 'company', 'location']
+
+       
 
 class FreelancerProfileSerializer(serializers.ModelSerializer):
     class Meta:
