@@ -12,6 +12,8 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
+
 class ClientProfileView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication]
@@ -25,22 +27,6 @@ class ClientProfileView(APIView):
 
         serializer = ClientProfileSerializer(client_profile)
         return Response(serializer.data)
-
-    # def get(self, request):
-    #     try:
-    #         client = ClientProfile.objects.get(user=request.user)
-    #         serializer = ClientProfileSerializer(client)
-    #         return Response(serializer.data)
-    #     except ClientProfile.DoesNotExist:
-    #         return Response({'error': 'Client profile not found'}, status=status.HTTP_404_NOT_FOUND)
-        
-    # def get(self, request, pk):
-    #     try:
-    #         client_profile = ClientProfile.objects.get(pk=pk, user=request.user)
-    #         serializer = ClientProfileSerializer(client_profile)
-    #         return Response(serializer.data)
-    #     except  ClientProfile.DoesNotExist:
-    #         return Response({'error': 'Client profile not found'},status=status.HTTP_404_NOT_FOUND )
 
     
     def put(self, request, pk):
@@ -58,25 +44,6 @@ class ClientProfileView(APIView):
             serializer.save(user=request.user)
             return Response(serializer.data)
         return Response(serializer.errors)
-    
-        
-class CreateClientProfileView(APIView):
-    def get(self, request, id, created_str):
-        return create_client_profile(request, id, created_str)
-        
-    def create_client_profile(request, user):
-        created = False
-        client_profile, _ = ClientProfile.objects.get_or_create(user=user)
-        if not client_profile:
-            created = True
-        if created:
-            return HttpResponse(status=201)
-        else:
-            return HttpResponse(status=200)
-        
-    
-
-
         
 
 class FreelancerProfileView(APIView):

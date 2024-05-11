@@ -21,11 +21,7 @@ def create_client_profile(sender, instance, created, **kwargs):
     if created:
         ClientProfile.objects.create(user=instance)
 
-def save_client_profile(sender, instance, **kwargs):
-    instance.client_profile.save()
-
 post_save.connect(create_client_profile, sender=User)
-post_save.connect(save_client_profile, sender=User)
 
 class FreelancerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='freelancer_profile')
