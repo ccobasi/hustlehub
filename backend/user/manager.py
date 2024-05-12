@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext_lazy as _
 
+
 class UserManager(BaseUserManager):
     def email_validator(self, email):
         try:
@@ -10,7 +11,10 @@ class UserManager(BaseUserManager):
         except ValidationError:
             raise ValueError(_("Please enter a valid email address"))
 
-    def create_user(self, email, first_name, last_name, role, mobile_number, password, **extra_fields):
+    def create_user(self, email, first_name, last_name, role, password, mobile_number=None,  **extra_fields):
+        if mobile_number is None:
+            mobile_number = '+1234567890'
+            
         self.email_validator(email)
         if not first_name:
             raise ValueError(_("First name is required"))
