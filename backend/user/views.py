@@ -10,6 +10,8 @@ from .onetimepassword import OneTimePassword
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import  PasswordResetTokenGenerator
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 
 
 
@@ -113,3 +115,5 @@ class LogoutUserView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(status=status.HTTP_200_OK)
+    
+
