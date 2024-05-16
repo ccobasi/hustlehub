@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import ClientProfile from "./ClientProfile";
 
 export const ClientFirstFeature = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
   const data = useLocation();
   console.log(data);
   // Data mapping
@@ -22,7 +23,7 @@ export const ClientFirstFeature = () => {
         maxWidth: "100%",
       }}
     >
-      <ClientProfile/>
+      <ClientProfile name={user.names} />
       {/* {cardContainer} */}
     </Grid>//Grid End
 

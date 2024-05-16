@@ -3,50 +3,16 @@ import React, {useEffect} from "react";
 import { Typography, Link, Stack, Container, Box } from "@mui/material";
 import { ClientFirstFeature } from "./Client";
 import ClientSecondFeature from "./ProjectContainer";
-import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../../utils/axiosInstance";
-import { CustomButton } from "../../../app/layout/header/CustomButton";
-import { toast } from "react-toastify";
 
 
 const ClientPage = () => {
-  const navigate = useNavigate()
-  const user = JSON.parse(localStorage.getItem("user"));
-  const jwt_access=localStorage.getItem('access')
-
-  useEffect(()=>{
-    if(jwt_access===null && !user){
-      navigate("/sign-in")
-    }else{
-      getSomeData()
-    }
-  }, [jwt_access, navigate, user]
-  )
-
-  const refresh=JSON.parse(localStorage.getItem("refresh"))
-
-  const handleLogout =async ()=>{
-    const res=await axiosInstance.post("/logout/", {"refresh_token":refresh})
-    if(res.status === 200){
-      localStorage.removeItem('access')
-      localStorage.removeItem('refresh')
-      localStorage.removeItem('user');
-      navigate('/sign-in')
-      toast.success("logout successful")
-    }
-  }
-
-  const getSomeData = async ()=>{
-    const resp = await axiosInstance.get("/profile/")
-    if(resp.status === 200){
-      console.log(resp.data)
-    }
-  }
+  
+  
+ 
 
   return (
     <Container component="main" maxWidth="lg">
       <ClientFirstFeature />
-      <CustomButton onClick={handleLogout}>Sign Out</CustomButton>
        
 
       <div>

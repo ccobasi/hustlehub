@@ -53,7 +53,9 @@ export default function SignIn() {
     const user={
       "email":response.email,
       "names":response.full_name,
-      "role":response.role
+      "role":response.role,
+      "id":response.id,
+      "access":response.access
     }
     if(res.status === 200){
       localStorage.setItem("user", JSON.stringify(user));

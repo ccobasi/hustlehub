@@ -19,7 +19,8 @@ import SecondLayout  from "./SecondLayout";
 import AboutPage  from "./features/about/AboutPage" ;
 import CategoriesPage from  './features/project/CategoriesPage';
 import UserLayout from  "./UserLayout";
-import EditClientPage from "./features/user/freelancer/EditFreelancerPage";
+import EditClientPage from "./features/user/client/EditClientPage";
+// import EditFreelancerPage from "./features/user/freelancer/EditFreelancerPage";
 import "./App.css";
 import ProtectedRoute from "./features/components/ProtectedRoute";
 import Layout from "./Layout";
@@ -160,7 +161,7 @@ function App() {
               <ProtectedRoute>
                 <ClientPage />
               </ProtectedRoute>} />
-            <Route path="/edit-client" element={
+            <Route path="/edit-client/" element={
               <ProtectedRoute>
                 <EditClientPage />
               </ProtectedRoute>} />

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useEffect} from "react";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
@@ -10,26 +10,54 @@ import Logo from "../../assets/logo.png"
 import { CustomButton } from "../../app/layout/header/CustomButton";
 import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
+import Button from "@mui/material/Button";
 
 export default function UserDashboardHeader() {
   const theme = useTheme();
   let navigate = useNavigate();
+  const jwt_access=localStorage.getItem('access')
   const user = JSON.parse(localStorage.getItem("user"));
+
+
+  useEffect(()=>{
+    if(jwt_access===null && !user){
+      navigate("/sign-in")
+    }else{
+      getSomeData()
+    }
+  }, [jwt_access, navigate, user]
+  )
+  
   let isClient = user.role === "client";
   const editLinkHref = isClient? "/edit-client" : "/edit-freelancer"; 
   const refresh=JSON.parse(localStorage.getItem("refresh"))
 
-  const handleLogout =async ()=>{
-    const res=await axiosInstance.post("/logout/", {"refresh_token":refresh})
-    if(res.status === 200){
-      localStorage.removeItem('access')
-      localStorage.removeItem('refresh')
+ const handleLogout = async () => {
+  try {
+    const res = await axiosInstance.post("/logout/", { refresh_token: refresh });
+    if (res.status === 200) {
+      localStorage.removeItem('access');
+      localStorage.removeItem('refresh');
       localStorage.removeItem('user');
-      navigate('/sign-in')
-      toast.success("logout successful")
+      navigate('/sign-in');
+      toast.success("logout successful");
+    } else {
+      console.error("Logout failed:", res.data);
+      toast.error("Logout failed. Please try again.");
+    }
+  } catch (error) {
+    console.error("Logout error:", error);
+    toast.error("An error occurred during logout. Please try again.");
+  }
+};
+
+
+  const getSomeData = async ()=>{
+    const resp = await axiosInstance.get("/profile/")
+    if(resp.status === 200){
+      console.log('Successful')
     }
   }
-
   return (
     <React.Fragment>
       {/* Box for UserDashboard header  feature */}
@@ -65,10 +93,40 @@ export default function UserDashboardHeader() {
             ml: "65%",
           }}
           href={isClient ? "/edit-client" : "/edit-freelancer"}
+          
         >
           Edit
         </Link>
-        <CustomButton onClick={handleLogout}>Sign Out</CustomButton>
+         <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              mr:2,
+              backgroundColor: "#87CEEB",
+              color: "white",
+              "&:hover": {
+                backgroundColor: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.grey[400]
+                    : theme.palette.grey[500],
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
+
+                fontFamily: "Poppins",
+                fontWeight: "500",
+                fontSize: "16px",
+                lineHeight: "24px",
+                letterSpacing: "-1%",
+                
+              },
+            }}
+            onClick={handleLogout}
+          >
+            Sign Out
+          </Button>
+        
       </Box>
 
       {/* Box for the Arrow back icon*/}
