@@ -2,11 +2,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from user.models import User
 from django.db.models.signals import post_save
+import os
 
+def get_upload_path(instance, filename):
+    return os.path.join('images', 'avatars', str(instance.pk), filename)
 
 class ClientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='client_profile')
-    image = models.ImageField(upload_to='client_profiles/', blank=True, null=True)
+    image = models.ImageField(upload_to=get_upload_path, blank=True, null=True)
     bio = models.TextField(blank=True)
     job_role = models.CharField(verbose_name=_("Job Role"), max_length=100)
     company = models.CharField(verbose_name=_("Company"), max_length=100)

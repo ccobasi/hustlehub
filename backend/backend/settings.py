@@ -38,6 +38,8 @@ REST_FRAMEWORK = {
     # "DEFAULT_PERMISSION_CLASSES": [
     #     "rest_framework.permissions.IsAuthenticated",
     # ],
+    'DEFAULT_RENDERER_CLASSES':['rest_framework.renderers.JSONRenderer'],
+    'DEFAULT_PARSER_CLASSES': ['rest_framework.parsers.JSONParser']
 }
 
 SIMPLE_JWT = {
@@ -177,3 +179,6 @@ CSRF_TRUSTED_ORIGINS=[
 GOOGLE_CLIENT_ID=os.getenv('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET=os.getenv('GOOGLE_CLIENT_SECRET')
 SOCIAL_AUTH_PASSWORD=os.getenv("SOCIAL_AUTH_PASSWORD")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = (BASE_DIR, 'media')
