@@ -5,7 +5,11 @@ from django.db.models.signals import post_save
 import os
 
 def get_upload_path(instance, filename):
-    return os.path.join('images', 'avatars', str(instance.pk), filename)
+    return 'images/{filename}'.format(filename=filename)
+    # return os.path.join('images', 'avatars', str(instance.pk), filename)
+
+# def upload_to(instance, filename):
+#     return 'images/{filename}'.format(filename=filename)
 
 class ClientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='client_profile')

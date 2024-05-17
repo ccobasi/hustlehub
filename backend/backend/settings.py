@@ -180,5 +180,6 @@ GOOGLE_CLIENT_ID=os.getenv('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET=os.getenv('GOOGLE_CLIENT_SECRET')
 SOCIAL_AUTH_PASSWORD=os.getenv("SOCIAL_AUTH_PASSWORD")
 
+
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = (BASE_DIR, 'media')

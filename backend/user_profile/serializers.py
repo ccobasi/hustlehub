@@ -41,6 +41,16 @@ class ClientProfileSerializer(serializers.ModelSerializer):
 
         return attrs
 
+
+class AvatarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClientProfile
+        fields = ['image']
+
+    def update(self, instance, validated_data):
+        instance.image = validated_data.get('image', instance.image)
+        instance.save()
+        return instance
        
 
 class FreelancerProfileSerializer(serializers.ModelSerializer):

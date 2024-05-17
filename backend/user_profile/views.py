@@ -9,8 +9,8 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 from .serializers import ClientProfileSerializer
-
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.parsers import MultiPartParser, FormParser
 
 User = get_user_model()
 
@@ -37,6 +37,7 @@ class ClientProfileView(APIView):
     def put(self, request, pk):
         client_profile = get_object_or_404(ClientProfile, pk=pk, user=request.user)
         serializer = ClientProfileSerializer(client_profile, data=request.data)
+        parser_classes = (MultiPartParser, FormParser)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -45,6 +46,7 @@ class ClientProfileView(APIView):
 
     def post(self, request):
         serializer = ClientProfileSerializer(data=request.data)
+        parser_classes = (MultiPartParser, FormParser)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data)
@@ -78,6 +80,19 @@ class ClientProfileCreateView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+class ChangeImageAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    parser_classes = [FormParser, MultiPartParser]
+
+    def post(self, request, format=None):
+        user = request.user
+        serializer = AvatarSerializer(instance=user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
 class FreelancerProfileView(APIView):
