@@ -97,19 +97,37 @@ class ChangeImageAPIView(APIView):
 
 class FreelancerProfileView(APIView):
     permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
 
-    def get(self, request):
+    def get(self, request, pk):
+        
+        
         try:
-            client = FreelancerProfile.objects.get(user=request.user)
-            serializer = FreelancerProfileSerializer(client)
-            return Response(serializer.data)
+            freelancer_profile = FreelancerProfile.objects.get(pk=pk, user=request.user)
         except FreelancerProfile.DoesNotExist:
-            return Response({'error': 'Freelancer profile not found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = FreelancerProfileSerializer(freelancer_profile)
+        return Response(serializer.data)
+
+    
+    def put(self, request, pk):
+        freelancer_profile = get_object_or_404(FreelancerProfile, pk=pk, user=request.user)
+        serializer = FreelancerProfileSerializer(freelancer_profile, data=request.data)
+        parser_classes = (MultiPartParser, FormParser)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
     def post(self, request):
         serializer = FreelancerProfileSerializer(data=request.data)
+        parser_classes = (MultiPartParser, FormParser)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data)
         return Response(serializer.errors)
+    
+    
+    
