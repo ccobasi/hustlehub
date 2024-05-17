@@ -315,7 +315,7 @@ const SignUp = () => {
           
         <Grid container>
           <Grid item xs>
-            <Link to="/login" variant="body2">
+            <Link to="/sign-in" variant="body2">
               Already have an account? Sign in
             </Link>
           </Grid>

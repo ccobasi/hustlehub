@@ -47,4 +47,11 @@ class FreelancerProfile(models.Model):
     # review = models.CharField(verbose_name=_("Review"), max_length=100)
     
     def __str__(self):
-        return f"{self.user.get_full_name()}'s Profile"
+        return self.user.first_name  + "'s Profile"
+    
+
+def create_freelancer_profile(sender, instance, created, **kwargs):
+    if created:
+        FreelancerProfile.objects.create(user=instance)
+
+post_save.connect(create_freelancer_profile, sender=User)

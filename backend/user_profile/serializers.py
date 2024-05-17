@@ -54,6 +54,21 @@ class AvatarSerializer(serializers.ModelSerializer):
        
 
 class FreelancerProfileSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.email')  
+
+    bio = serializers.CharField(max_length=250, required=True)
+    job_role = serializers.CharField(max_length=35, required=True)
+    company = serializers.CharField(max_length=50, required=True)
+    location = serializers.CharField(max_length=50, required=True)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
+    institution = models.CharField(max_length=100)
+    qualification = models.CharField(max_length=100)
+    year_obtained = models.DateField()
+    skills = models.TextField(blank=True)
+    language = models.CharField(max_length=250)
+    image = serializers.ImageField(required=False) 
+
     class Meta:
         model = FreelancerProfile
         fields = ['id', 'user', 'image', 'bio', 'job_role', 'company', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language', 'location']

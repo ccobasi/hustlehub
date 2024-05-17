@@ -47,7 +47,7 @@ const ClientProfile = ({ name, jobTitle, image, imageLabel }) => {
   return (
     <Card sx={{ maxWidth: "345", mt: 12, ml: "42%" }}>
       {clientProfile?.image && (
-      <CardMedia component="img" height="120" image={clientProfile?.image} alt={imageLabel} />
+      <CardMedia component="img" height="120" /*image={clientProfile?.image}*/ image={Img} alt={imageLabel} />
       )}
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">

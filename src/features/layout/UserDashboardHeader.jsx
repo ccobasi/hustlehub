@@ -7,7 +7,6 @@ import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png"
-import { CustomButton } from "../../app/layout/header/CustomButton";
 import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
@@ -190,7 +189,35 @@ export default function UserDashboardHeader() {
             >
               Edit
             </Link>
-            <CustomButton onClick={handleLogout}>Sign Out</CustomButton>
+            <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              mr:2,
+              backgroundColor: "#87CEEB",
+              color: "white",
+              "&:hover": {
+                backgroundColor: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.grey[400]
+                    : theme.palette.grey[500],
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.primary.lightModeHeroTitle
+                    : theme.palette.primary.darkModeHeroTitle,
+
+                fontFamily: "Poppins",
+                fontWeight: "500",
+                fontSize: "16px",
+                lineHeight: "24px",
+                letterSpacing: "-1%",
+                
+              },
+            }}
+            onClick={handleLogout}
+          >
+            Sign Out
+          </Button>
           </Toolbar>
           
         </AppBar>
