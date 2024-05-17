@@ -6,6 +6,7 @@ import ClientProfile from "./ClientProfile";
 
 export const ClientFirstFeature = () => {
   const user = JSON.parse(localStorage.getItem("user"));
+  const client = JSON.parse(localStorage.getItem("clientProfile"));
   const data = useLocation();
   console.log(data);
   // Data mapping
@@ -23,7 +24,7 @@ export const ClientFirstFeature = () => {
         maxWidth: "100%",
       }}
     >
-      <ClientProfile name={user.names} />
+      <ClientProfile name={user.names} jobTitle={client.jobTitle} image={client.image} />
       {/* {cardContainer} */}
     </Grid>//Grid End
 

@@ -20,6 +20,7 @@ import axios from "axios"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+
 const SignUp = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -32,20 +33,49 @@ const SignUp = () => {
     password: "",
     password2: "",
   });
+  
 
-//   const handleSignInWithGoogle = async (response)=>{
-//     console.log(response);
-//   }
+  const handleSignInWithGoogle = async (response)=>{
+    const payload=response.credential
+    const server_res=await axios.post("http://localhost:8000/social_account/google/", {"access_token":payload})
+    console.log(server_res);
+    const user={
+      "email":server_res.data.email,
+      "names":server_res.data.full_name,
+      "role":server_res.data.role,
+      "id":server_res.data.id,
+      "access":server_res.data.access
+    }
+    if(server_res.status === 200){
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("access", JSON.stringify(server_res.access_token));
+      localStorage.setItem("refresh", JSON.stringify(server_res.refresh_token));
+      if (response.role === 'client') {
+        navigate("/client");
+      }else {
+        navigate("/freelancer");
+        }
+      toast.success("login successfull")
+    }
+  }
 
-//   useEffect(() => {
-//     google.accounts.id.initialize({
-//       client_id:import.meta.env.VITE_CLIENT_ID,
-//       callback:handleSignInWithGoogle
-//     });
-//     google.accounts.id.renderButton(document.getElementById("signInDiv"),
-//     {theme:"outline", size:"large", text:"continue_with", shape:"circle", width:"280"}
-//   )
-// }, [])
+  useEffect(() => {
+  try {
+    google.accounts.id.initialize({
+      client_id: import.meta.env.VITE_CLIENT_ID,
+      callback: handleSignInWithGoogle,
+    });
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+      text: "continue_with",
+      shape: "circle",
+      width: "280",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}, []);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -268,6 +298,7 @@ const SignUp = () => {
           Sign Up
         </Button>
         <h3 className="text-option">Or</h3>
+         
         <div className="githubContainer">
            <Button
           type="submit"
@@ -280,9 +311,8 @@ const SignUp = () => {
           Sign up  with Github
         </Button>
         </div>
-        <div className="googleContainer" id="signinDiv">
-           
-        </div>
+        <div id="signInDiv"></div>
+          
         <Grid container>
           <Grid item xs>
             <Link to="/login" variant="body2">
