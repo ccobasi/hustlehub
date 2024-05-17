@@ -9,7 +9,7 @@ AUTH_PROVIDERS = {'email':'email', 'google':'google', 'github':'github', 'facebo
 
 
 ROLE_CHOICES = (
-    ('talent', 'Talent'),
+    ('freelancer', 'Freelancer'),
     ('client', 'Client'),
 )
 

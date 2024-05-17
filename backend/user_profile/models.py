@@ -40,7 +40,7 @@ class FreelancerProfile(models.Model):
     end_date = models.DateField(blank=True, null=True)
     institution = models.CharField(verbose_name=_("Institution"), max_length=100)
     qualification = models.CharField(verbose_name=_("Qualification"), max_length=100)
-    year_obtained = models.DateField()
+    year_obtained = models.DateField(blank=True, null=True)
     skills = models.TextField(blank=True)
     language = models.CharField(verbose_name=_("Language"), max_length=250)
     location = models.CharField(verbose_name=_("Location"), max_length=100)

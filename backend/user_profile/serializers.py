@@ -64,7 +64,7 @@ class FreelancerProfileSerializer(serializers.ModelSerializer):
     end_date = models.DateField(blank=True, null=True)
     institution = models.CharField(max_length=100)
     qualification = models.CharField(max_length=100)
-    year_obtained = models.DateField()
+    year_obtained = models.DateField(blank=True, null=True)
     skills = models.TextField(blank=True)
     language = models.CharField(max_length=250)
     image = serializers.ImageField(required=False) 
