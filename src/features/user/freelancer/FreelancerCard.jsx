@@ -4,6 +4,7 @@ import freelancerCardData from "./freelancerCardData";
 import { Grid } from "@mui/material";
 
 export const FreelancerFirstFeature = () => {
+  
   //Data mapping
   let cardContainer = freelancerCardData.map((el) => {
     return <FreelancerCard key={el.id} {...el} />;
@@ -21,7 +22,7 @@ export const FreelancerFirstFeature = () => {
       }}
     >
       {cardContainer}
-      <h6>Hi, {user && user.names}</h6>
+      
     </Grid>//Grid End
   );
 };

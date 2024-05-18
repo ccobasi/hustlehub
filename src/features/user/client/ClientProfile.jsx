@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
 import Img from "../../../assets/mask-group-8wG.png";
 import axios from "axios";
 
@@ -10,9 +9,8 @@ const ClientProfile = ({ name, jobTitle, image, imageLabel }) => {
   const userId = user ? user.id : null;
   const [clientProfile, setClientProfile] = useState(null);
   imageLabel = "Profile Image"
-  // const client = JSON.parse(localStorage.getItem("clientProfile"));
-  // jobTitle = client ?  client.jobTitle : null;
-  // jobTitle = "Project Manager";
+  
+  
 
   axios.interceptors.request.use(
     (config) => {
@@ -54,7 +52,8 @@ const ClientProfile = ({ name, jobTitle, image, imageLabel }) => {
           <h6>Hi, {user && user.names}</h6> {/* Provide the 'name' prop here */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {clientProfile?.job_role}
+          {/* {clientProfile?.job_role} */}
+          {clientProfile ? clientProfile.job_role : jobTitle}
         </Typography>
       </CardContent>
     </Card>

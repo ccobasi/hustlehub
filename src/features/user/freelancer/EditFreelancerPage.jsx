@@ -1,37 +1,24 @@
 import { EditFreelancerFirstFeature } from "./EditFreelancerCard";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect} from "react";
 import {
   TextField,
   Box,
   Button,
   Stack,
-  Select,
-  Chip,
-  MenuItem,
   Typography,
-  OutlinedInput,
   Container,
 } from "@mui/material";
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
-import CancelIcon from "@mui/icons-material/Cancel";
-import AcUnitOutlined from "@mui/icons-material/AcUnitOutlined";
-import SchoolOutlined from "@mui/icons-material/SchoolOutlined";
-import HomeRepairServiceOutlined from "@mui/icons-material/HomeRepairServiceOutlined";
-import { WorkspacePremiumOutlined } from "@mui/icons-material";
 import dayjs from "dayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import axios from "axios";
+import { toast } from "react-toastify";
+import {useUserProfile} from "../../../store/UserProfileContext"
 
-
-
-//Data to browse skills
-const skills = ["Communication", "Leadership", "Team player"]; //Data End
-
-//Data to browse languages
-const languages = ["Igbo", "English", "Hausa", "Yoruba", "German", "Romania"]; //Data End
 
 
 const today = dayjs();
@@ -44,7 +31,7 @@ const CustomDatePicker = ({ width, ml }) => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer
         components={["DateRangePicker", "DatePicker"]}
-        sx={{ m: "5%", width: { width }, ml: { ml } }}
+        sx={{ m: "1%", width: { width }, ml: { ml } }}
       >
         <DemoItem label="">
           <DatePicker
@@ -60,6 +47,15 @@ const CustomDatePicker = ({ width, ml }) => {
   );
 };
 
+const SubTitleText = ({ subtitle }) => {
+  return (
+    <Typography variant="body2" color="text.secondary">
+      {subtitle}
+    </Typography>
+  );
+};
+
+
 const ValidatedTextField = ({
   validator,
   onChange,
@@ -67,19 +63,14 @@ const ValidatedTextField = ({
   placeholder,
   width,
   ml,
+  value,
+  error,
 }) => {
-  // Initialization of useState hook
-  const [value, setValue] = useState("");
-  const [error, setError] = useState(false);
-  //Handle for one change event
   const handleChange = (e) => {
     const newValue = e.target.value;
-    const errorMessage = validator(newValue);
-    setValue(newValue);
-    setError(errorMessage);
-    onChange(!errorMessage);
+    onChange(newValue);
   };
-  //Handle End
+
   return (
     <TextField
       value={value}
@@ -90,200 +81,339 @@ const ValidatedTextField = ({
       rows={rows}
       placeholder={placeholder}
       sx={{
-        m: "6%",
-        width: { width },
-        ml: { ml },
-        fontFamily: "Poppins",
-        fontWeight: "400",
-        fontSize: "14px",
-        lineHeight: "18.23px",
-        color: (theme) =>
-          theme.palette.mode === "light"
-            ? theme.palette.primary.lightModeHeroTitle
-            : theme.palette.primary.darkModeHeroTitle,
+        width: width,
+        ml: ml,
       }}
     />
   );
 };
 
-//Customized Title Text
-const TitleText = ({ title }) => {
-  return (
-    <Typography
-      sx={{
-        m: "6%",
-        fontFamily: "Poppins",
-        fontWeight: "700",
-        fontSize: "14px",
-        lineHeight: "18.23px",
-        color: (theme) =>
-          theme.palette.mode === "light"
-            ? theme.palette.primary.lightModeHeroTitle
-            : theme.palette.primary.darkModeHeroTitle,
-      }}
-    >
-      {title}
-    </Typography>
-  );
-}; //Text End
+const validateField = (value, maxLength) => {
+  if (value.length > maxLength) {
+    return `Field cannot be longer than ${maxLength} characters.`;
+  }
+  return "";
+};
 
-//Customized Subtile text
-const SubTitleText = ({ subtitle }) => {
-  return (
-    <Typography
-      sx={{
-        ml: "8%",
-        mt: "8%",
-        fontFamily: "Poppins",
-        fontWeight: "500",
-        fontSize: "12px",
-        lineHeight: "22.5px",
-        letterSpacing: "-1%",
-        color: (theme) =>
-          theme.palette.mode === "light"
-            ? theme.palette.primary.lightModeHeroTitle
-            : theme.palette.primary.darkModeHeroTitle,
-      }}
-    >
-      {subtitle}
-    </Typography>
-  );
-}; //Text End
 
-//Customized select
-const CustomSelect = ({ name, data }) => {
-  const [selectedValue, setSelectedValue] = useState([]);
+const validateBio = (value) => validateField(value, 250);
+const validateJobRole = (value) => validateField(value, 35);
+const validateCompany = (value) => validateField(value, 50);
+const validateLocation = (value) => validateField(value, 50);
+const validateInstitution = (value) => validateField(value, 250);
+const validateCertification = (value) => validateField(value, 250);
+const validateSkill = (value) => validateField(value, 250);
+const validateLanguage = (value) => validateField(value, 250);
+
+const BioField = ({ bio, onChange, bioError }) => {
   return (
-    <Select
-      name={name}
-      sx={{ width: "300px", height: "55px", m: "5%" }}
-      multiple
-      value={selectedValue}
-      onChange={(e) => setSelectedValue(e.target.value)}
-      input={<OutlinedInput />}
-      renderValue={(selected) => (
-        <Stack gap={1} direction="row" flexWrap="wrap">
-          {selected.map((value) => (
-            <Chip
-              sx={{
-                borderRadius: "97px",
-                backgroundColor: "#87CEEB",
-                border: "1px",
-                gap: "8px",
-                p: "8px,20px,8px,20px",
-                color: "#95969D",
-              }}
-              key={value}
-              label={value}
-              onDelete={() =>
-                setSelectedValue(selectedValue.filter((item) => item !== value))
-              }
-              deleteIcon={
-                <CancelIcon onMouseDown={(event) => event.stopPropagation()} />
-              }
-            />
-          ))}
-        </Stack>
-      )}
-    >
-      {data.map((d) => (
-        <MenuItem
-          key={d}
-          value={d}
-          sx={{
-            backgroundColor: "background.Default",
-            border: "1px",
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            fontSize: "12px",
-            lineHeight: "20.8px",
-            letterSpacing: "-1%",
-            color: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.primary.lightModeHeroTitle
-                : theme.palette.primary.darkModeHeroTitle,
-          }}
-        >
-          {d}
-        </MenuItem>
-      ))}
-    </Select>
+    <ValidatedTextField
+      validator={validateBio}
+      onChange={onChange}
+      rows={5}
+      placeholder="Bio"
+      width="100%"
+      ml={1}
+
+      value={bio}
+      error={bioError}
+    />
   );
 };
-//Select End
 
-// Bio validators
-const bioValidator = (value) => {
-  if (value.length < 15) return "Bio must be at least 15 characters long";
-  if (value.length > 1000) return "Bio must be less than 1000 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Bio must contain only letters and spaces";
-  return false;
-};
-//Bio End
-
-// Role validators
-const roleValidator = (value) => {
-  if (value.length < 10) return "Role must be at least 10 characters long";
-  if (value.length > 50) return "Role must be less than 50 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Role must contain only letters and spaces";
-  return false;
-};
-//Role End
-
-// Company validators
-const companyValidator = (value) => {
-  if (value.length < 10) return "Company must be at least 10 characters long";
-  if (value.length > 50) return "Company must be less than 50 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Company must contain only letters and spaces";
-  return false;
-};
-//Role End
-
-// university validators
-const universityValidator = (value) => {
-  if (value.length < 10)
-    return "University must be at least 10 characters long";
-  if (value.length > 50)
-    return "University must be less than 50 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "University must contain only letters and spaces";
-  return false;
+const JobRoleField = ({ job_role, onChange, jobRoleError }) => {
+  return (
+    <ValidatedTextField
+      validator={validateJobRole}
+      onChange={onChange}
+      rows={1}
+      placeholder="Job Role"
+      width="100%"
+      ml={1}
+      value={job_role}
+      error={jobRoleError}
+    />
+  );
 };
 
-//courseValidator
-const courseValidator = (value) => {
-  if (value.length < 5) return "Course must be at least 10 characters long";
-  if (value.length > 50) return "Course must be less than 50 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Course must contain only letters and spaces";
-  return false;
+const CompanyField = ({ company, onChange, companyError }) => {
+  return (
+    <ValidatedTextField
+      validator={validateCompany}
+      onChange={onChange}
+      rows={1}
+      placeholder="Company"
+      width="100%"
+      ml={1}
+      value={company}
+      error={companyError}
+    />
+  );
+};
+
+const LocationField = ({ location, onChange, locationError }) => {
+  return (
+    <ValidatedTextField
+      validator={validateLocation}
+      onChange={onChange}
+      rows={1}
+      placeholder="Location"
+      width="100%"
+      ml={1}
+      mb={2}
+      value={location}
+      error={locationError}
+    />
+  );
+};
+
+const ProfilePictureField = ({ value, onChange }) => {
+  const handleImageUpload = (e) => {
+    const selectedFile = e.target.files[0];
+    if (!selectedFile || !/\.(jpg|jpeg|png)$/i.test(selectedFile.name)) {
+      onChange("Invalid file format. Please select a JPG, JPEG, or PNG image.");
+      return;
+    }
+    if (selectedFile.size > 5242880) { // Adjust the file size limit as needed
+      onChange("File size exceeds the limit of 5MB.");
+      return;
+    }
+    onChange(selectedFile);
+  };
+
+  return (
+    <div>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(event) => handleImageUpload(event)} 
+      />
+    </div>
+  );
+};
+
+const InstitutionField = ({ institution, onChange, institutionError }) => {
+  return (
+    <ValidatedTextField
+      validator={validateInstitution}
+      onChange={onChange}
+      rows={1}
+      placeholder="Institution"
+      width="100%"
+      ml={1}
+      mb={2}
+      value={institution}
+      error={institutionError}
+    />
+  );
+};
+
+const CertificationField = ({ certification, onChange, certificationError }) => {
+  return (
+    <ValidatedTextField
+      validator={validateCertification}
+      onChange={onChange}
+      rows={1}
+      placeholder="Certification"
+      width="100%"
+      ml={1}
+      mb={2}
+      value={certification}
+      error={certificationError}
+    />
+  );
+};
+
+const SkillField = ({ skill, onChange, skillError }) => {
+  return (
+    <ValidatedTextField
+      validator={validateSkill}
+      onChange={onChange}
+      rows={1}
+      placeholder="Skill"
+      width="100%"
+      ml={1}
+      mb={2}
+      value={skill}
+      error={skillError}
+    />
+  );
+};
+
+const LanguageField = ({ language, onChange, languageError }) => {
+  return (
+    <ValidatedTextField
+      validator={validateLanguage}
+      onChange={onChange}
+      rows={1}
+      placeholder="Language"
+      width="100%"
+      ml={1}
+      mb={2}
+      value={language}
+      error={languageError}
+    />
+  );
 };
 
 export default function EditClientPage() {
-  //Instatiate useNavigate
   let navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user ? user.id : null;
+  const [freelancerProfile, setFreelancerProfile] = useState(null);
+  const { userProfile, setUserProfile } = useUserProfile();
 
-  //Initialization of useRef Hook
-  const formValid = useRef({
-    bio: false,
-    role: false,
-    company: false,
-    university: false,
-    course: false,
+   const [formData, setFormData] = useState({
+    bio: "",
+    job_role: "",
+    company: "",
+    location: "",
+    institution: "",
+    certification: "",
+    skill: "",
+    language: "",
+    image: null,
+    id: userProfile?.id || null,
+    // id: userId,
   });
-  //Handler for submit event
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (Object.values(formValid.current).every((isValid) => isValid)) {
-      alert("Form is valid! Submitting the form...");
-    } else {
-      alert("Form is invalid! Please check the fields...");
+  
+  axios.interceptors.request.use(
+  (config) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const access = JSON.parse(localStorage.getItem('access'));
+    if (user && access) {
+      config.headers.Authorization = `Bearer ${access}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+
+useEffect(() => {
+  const fetchFreelancerProfile = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8000/user_profile/freelancer-profile/2/`);
+      if (response.data) { // Check if data exists before setting formData
+        setFreelancerProfile(response.data);
+        setFormData({
+          ...formData,
+          id: response.data.id,
+          user: response.data.user,
+          bio: response.data.bio || "", 
+          job_role: response.data.job_role || "",
+          company: response.data.company || "",
+          location: response.data.location || "",
+          institution: response.data.institution || "",
+          certification: response.data.certification || "",
+          skill: response.data.skill || "",
+          language: response.data.language || "",
+          image: null, 
+        });
+      } else {
+        console.log('Data not available');
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
-  //Handle End
+
+  fetchFreelancerProfile();
+}, []);
+
+
+  const [bioError, setBioError] = useState("");
+  const [jobRoleError, setJobRoleError] = useState("");
+  const [companyError, setCompanyError] = useState("");
+  const [locationError, setLocationError] = useState("");
+  const [institutionError, setInstitutionError] = useState("");
+  const [certificationError, setCertificationError] = useState("");
+  const [skillError, setSkillError] = useState("");
+  const [languageError, setLanguageError] = useState("");
+
+  const handleChange = (name, value) => {
+    setFormData({ ...formData, [name]: value });
+    if (name === "bio") {
+      setBioError(validateBio(value));
+    } else if (name === "job_role") {
+      setJobRoleError(validateJobRole(value));
+    } else if (name === "company") {
+      setCompanyError(validateCompany(value));
+    } else if (name === "location") {
+      setLocationError(validateLocation(value));
+    }else if (name === "institution") {
+      setInstitutionError(validateInstitution(value));
+    }else if (name === "certification") {
+      setCertificationError(validateCertification(value));
+    }else if (name === "skill") {
+      setSkillError(validateSkill(value));
+    }else if (name === "language") {
+      setLanguageError(validateLanguage(value));
+    }
+  };
+  
+   const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Validate form data (unchanged)
+  if (bioError || jobRoleError || companyError || locationError) {
+    toast.error("Please fix the errors before submitting.");
+    return;
+  }
+
+  if (!formData.id) {
+    toast.error("User ID is not set. Please try again later.");
+    return;
+  }
+
+  try {
+    const response = await submitProfile(formData);
+    setUserProfile(response.data);
+    console.log('user profile');
+    setFreelancerProfile(response.data);
+    toast.success(freelancerProfile ? "Your profile has been updated successfully." : "Your profile has been created successfully.");
+    navigate('/freelancer')
+    setFormData({
+      bio: "",
+      job_role: "",
+      company: "",
+      location: "",
+      institution: "",
+      certification: "",
+      skill: "",
+      language: "",
+      id: userId,
+      image: null,
+    });
+  } catch (error) {
+    toast.error(freelancerProfile ? "Failed to update your profile. Please try again later." : "Failed to create your profile. Please try again later.");
+    console.log(error);
+  }
+};
+
+const submitProfile = async (formData) => {
+  const formDataCopy = { ...formData };
+
+  const form = new FormData();
+  for (const key in formDataCopy) {
+    if (key !== 'email' && key !== 'id') { 
+      form.append(key, formDataCopy[key]);
+    }
+  }
+  console.log('formData.id');
+  console.log(formData.id);
+  const url = freelancerProfile ? `http://localhost:8000/user_profile/freelancer-profile/${formData.id}/` : `http://localhost:8000/user_profile/freelancer-profile/${userId}/`;
+
+  const response = await axios({
+    method: 'put',
+    url,
+    data: form,
+  });
+
+
+  console.log(response.data);
+  return response.data;
+};
 
   return (
     <>
@@ -317,165 +447,83 @@ export default function EditClientPage() {
                   height: "28px",
                 }}
               />{" "}
-              <TitleText title="About me" />{" "}
+              
             </Stack>
 
-            <ValidatedTextField
-              validator={bioValidator}
-              rows={4}
-              onChange={(isValid) => (formValid.current.bio = isValid)}
-              placeholder="Enter your bio"
-              width="300px"
-            />
+            
           </Box>
           <Box>
-            {/* Box for client work experience */}
-
-            <Stack direction="row">
-              <HomeRepairServiceOutlined
-                sx={{
-                  m: "8%",
-                  mr: "4.5%",
-                  color: "#87CEEB",
-                  width: "28px",
-                  height: "28px",
-                }}
-              />{" "}
-              <TitleText title="Work experience" />{" "}
-            </Stack>
-            <Stack>
-              <Stack direction="row">
-                <SubTitleText subtitle="Job Role" />{" "}
-                <ValidatedTextField
-                  validator={roleValidator}
-                  rows={1}
-                  onChange={(isValid) => (formValid.current.role = isValid)}
-                  placeholder="Enter your job role"
-                  width="300px"
-                />
-              </Stack>
-
-              <Stack direction="row">
-                <SubTitleText subtitle="Company" />{" "}
-                <ValidatedTextField
-                  validator={companyValidator}
-                  rows={1}
-                  onChange={(isValid) => (formValid.current.company = isValid)}
-                  placeholder="Enter your company"
-                  width="300px"
-                />
-              </Stack>
-
-              <Stack direction="row">
-                <SubTitleText subtitle="Year started" />{" "}
-                <CustomDatePicker width="350px" />
-              </Stack>
-              <Stack direction="row">
-                <SubTitleText subtitle="Year completed" />{" "}
-                <CustomDatePicker width="350px" />
-              </Stack>
-            </Stack>
-
-            {/* Box End */}
+            <BioField
+            bio={formData.bio}
+            onChange={(value) => handleChange("bio", value)}
+            bioError={bioError}
+          />
+          <JobRoleField
+            job_role={formData.job_role}
+            onChange={(value) => handleChange("job_role", value)}
+            jobRoleError={jobRoleError}
+          />
+          <CompanyField
+            company={formData.company}
+            onChange={(value) => handleChange("company", value)}
+            companyError={companyError}
+          />
+          <LocationField
+            location={formData.location}
+            onChange={(value) => handleChange("location", value)}
+            locationError={locationError}
+          />
+          
           </Box>
 
           {/* Box for Client Education  */}
           <Box>
-            <Stack direction="row">
-              <SchoolOutlined
-                sx={{
-                  m: "6%",
-                  ml: "3%",
-                  mr: "7%",
-                  color: "#87CEEB",
-                  width: "28px",
-                  height: "28px",
-                }}
-              />{" "}
-              <TitleText title="Education" />{" "}
-            </Stack>
-            <Stack>
-              <Stack direction="row">
-                <SubTitleText subtitle="Name of your university" />
-                <ValidatedTextField
-                  validator={universityValidator}
-                  rows={2}
-                  onChange={(isValid) =>
-                    (formValid.current.university = isValid)
-                  }
-                  placeholder="Enter the name of your university "
-                  width="300px"
-                />
-              </Stack>
 
-              <Stack direction="row">
-                <SubTitleText subtitle="Course of study" />
-
-                <ValidatedTextField
-                  validator={courseValidator}
-                  rows={2}
-                  onChange={(isValid) => (formValid.current.course = isValid)}
-                  placeholder="Enter your course of study"
-                  width="300px"
-                />
-              </Stack>
-
-              <Stack direction="row">
+          <InstitutionField
+            institution={formData.institution}
+            onChange={(value) => handleChange("institution", value)}
+            institutionError={institutionError}
+          />
+          <CertificationField
+            certification={formData.certification}
+            onChange={(value) => handleChange("certification", value)}
+            certificationError={certificationError}
+          />
+            
+          </Box>
+          <Box>
+                          <Stack direction="column">
                 <SubTitleText subtitle="Year started" />
 
-                <CustomDatePicker width="300px" />
+                <CustomDatePicker width="400px" />
               </Stack>
-              <Stack direction="row">
+              <Stack direction="column">
                 <SubTitleText subtitle="Year graduated" />
 
-                <CustomDatePicker width="300px" />
+                <CustomDatePicker width="400px" />
               </Stack>
-            </Stack>
           </Box>
-          {/* Box End */}
-          {/* Box Client Skills */}
           <Box>
-            <Stack direction="row" sx={{ mt: "15%", mb: "10%" }}>
-              <AcUnitOutlined
-                sx={{
-                  m: "6%",
-                  mr: "11%",
-                  ml: "2%",
-                  color: "#87CEEB",
-                  width: "28px",
-                  height: "28px",
-                }}
-              />{" "}
-              <TitleText title="Skills" />
-            </Stack>
-
-            <Stack direction="row">
-              <SubTitleText subtitle="Select skill sets" />
-
-              <CustomSelect name="select-skill" data={skills} />
-            </Stack>
+            <SkillField
+            skill={formData.skill}
+            onChange={(value) => handleChange("skill", value)}
+            skillError={skillError}
+          />
+           <LanguageField
+            language={formData.language}
+            onChange={(value) => handleChange("language", value)}
+            languageError={languageError}
+          />
           </Box>
 
           {/* Box Freelancer Languages */}
 
           <Box>
-            <Stack direction="row">
-              <WorkspacePremiumOutlined
-                sx={{
-                  m: "6%",
-                  ml: "2%",
-                  mr: "10%",
-                  color: "#87CEEB",
-                  width: "28px",
-                  height: "28px",
-                }}
-              />{" "}
-              <TitleText title="Language" />{" "}
-            </Stack>
-            <Stack direction="row" justifyContent="space-between">
-              <SubTitleText subtitle="Select language" />
-              <CustomSelect name="select-language" data={languages} />
-            </Stack>
+           
+          <ProfilePictureField
+            value={formData.image}
+            onChange={(value) => handleChange("image", value)} 
+          />
           </Box>
 
           <Button

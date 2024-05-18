@@ -133,7 +133,9 @@ const SignUp = () => {
           flexDirection: "column",
           alignItems: "center",
         }}
-      >  <Typography variant="h5" sx={{ mt: "10%" }}>
+      >  
+      <form onSubmit={handleSubmit}>
+      <Typography variant="h5" sx={{ mt: "10%" }}>
            Registration
            <p style={{color:"red", padding:"1px"}}>{error ? error : ""}</p>
          </Typography>
@@ -293,10 +295,10 @@ const SignUp = () => {
           variant="contained"
           color="primary"
           sx={{ mt: 3, mb: 2, backgroundColor: "#87CEEB", color: "white" }}
-          onClick={handleSubmit}
         >
           Sign Up
         </Button>
+        </form>
         <h3 className="text-option">Or</h3>
          
         <div className="githubContainer">
@@ -306,7 +308,7 @@ const SignUp = () => {
           variant="contained"
           color="primary"
           sx={{ mt: 3, mb: 2, backgroundColor: "#87CEEB", color:"white" }}
-          onClick={handleSubmit}
+          
         >
           Sign up  with Github
         </Button>

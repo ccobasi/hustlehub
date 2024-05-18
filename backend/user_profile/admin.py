@@ -10,9 +10,9 @@ class ClientProfileAdmin(admin.ModelAdmin):
 
 
 class FreelancerProfileAdmin(admin.ModelAdmin):
-    list_editable = ['image', 'bio', 'job_role', 'company', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language', 'location', 'review']
-    list_display = ['user', 'image', 'bio', 'job_role', 'company', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language', 'location', 'review']
+    list_editable = ['image', 'bio', 'job_role', 'company', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language', 'location']
+    list_display = ['id', 'user', 'image', 'bio', 'job_role', 'company', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language', 'location']
 
 # admin.site.register(ClientProfile),
 admin.site.register(ClientProfile, ClientProfileAdmin),
-admin.site.register(FreelancerProfile)
+admin.site.register(FreelancerProfile, FreelancerProfileAdmin)

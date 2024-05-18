@@ -12,6 +12,9 @@ export default function FreelancerCard({
   image,
   imageLabel,
 }) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  // const userId = user ? user.id : null;
+  // const [clientProfile, setClientProfile] = useState(null);
   const data = useLocation();
   console.log(data);
   return (
@@ -50,7 +53,7 @@ export default function FreelancerCard({
                 textAlign: "center",
               }}
             >
-              {data.state}
+              <h6>Hi, {user && user.names}</h6>
             </Typography>
             <Stack direction="row">
               <Typography

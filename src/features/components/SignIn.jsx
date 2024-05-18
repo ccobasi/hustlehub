@@ -39,37 +39,55 @@ export default function SignIn() {
     setLoginData({...loginData, [e.target.name]: e.target.value})
   };
   
+
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  const {email, password}=loginData
-  if (!email || !password){
-    setError('email and password are required');
-  }else{
-    setIsLoading(true)
-    const res = await axios.post("http://localhost:8000/user/sign-in/", loginData)
-    const response=res.data
-    console.log(response)
-    setIsLoading(false)
-    const user={
-      "email":response.email,
-      "names":response.full_name,
-      "role":response.role,
-      "id":response.id,
-      "access":response.access
+    e.preventDefault();
+    const { email, password } = loginData;
+
+    if (!email || !password) {
+      setError("Email and password are required");
+      toast.error("Email and password are required");
+      return;
     }
-    if(res.status === 200){
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("access", JSON.stringify(response.access_token));
-      localStorage.setItem("refresh", JSON.stringify(response.refresh_token));
-      if (response.role === 'client') {
-        navigate("/client");
-      }else {
-        navigate("/freelancer");
+
+    try {
+      setIsLoading(true);
+      const res = await axios.post("http://localhost:8000/user/sign-in/", loginData);
+      const response = res.data;
+      setIsLoading(false);
+
+      if (res.status === 200) {
+        const user = {
+          email: response.email,
+          names: response.full_name,
+          role: response.role,
+          id: response.id,
+          access: response.access,
+        };
+        
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("access", JSON.stringify(response.access_token));
+        localStorage.setItem("refresh", JSON.stringify(response.refresh_token));
+
+        if (response.role === "client") {
+          navigate("/client");
+        } else {
+          navigate("/freelancer");
         }
-      toast.success("login successfull")
+        toast.success("Login successful");
+      }
+    } catch (error) {
+      setIsLoading(false);
+      if (error.response && error.response.status === 401) {
+        setError("Invalid email or password");
+        toast.error("Invalid email or password");
+      } else {
+        setError("An error occurred. Please try again later.");
+        toast.error("An error occurred. Please try again later.");
+      }
     }
-  }
-  }
+  };
+
     return (
     
     // Container Signin

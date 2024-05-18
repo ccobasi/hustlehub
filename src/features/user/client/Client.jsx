@@ -24,7 +24,7 @@ export const ClientFirstFeature = () => {
         maxWidth: "100%",
       }}
     >
-      <ClientProfile name={user.names} jobTitle={client.jobTitle} image={client.image} />
+      <ClientProfile name={user.names} />
       {/* {cardContainer} */}
     </Grid>//Grid End
 
