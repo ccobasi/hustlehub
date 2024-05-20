@@ -14,6 +14,35 @@ from rest_framework.parsers import MultiPartParser, FormParser
 
 User = get_user_model()
 
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    parser_classes = (MultiPartParser, FormParser)
+
+    def get(self, request, pk):
+        try:
+            user_profile = UserProfile.objects.get(pk=pk, user=request.user)
+        except UserProfile.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = UserProfileSerializer(user_profile)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        user_profile = get_object_or_404(UserProfile, pk=pk, user=request.user)
+        serializer = UserProfileSerializer(user_profile, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def post(self, request):
+        serializer = UserProfileSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class ClientProfileView(APIView):
     permission_classes = [IsAuthenticated]
@@ -43,43 +72,6 @@ class ClientProfileView(APIView):
             serializer.save(user=request.user)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# class ClientProfileView(APIView):
-#     permission_classes = [IsAuthenticated]
-#     #authentication_classes = [authentication.TokenAuthentication]
-#     authentication_classes = [JWTAuthentication]
-#     #permission_classes = [permissions.IsAuthenticated]
-
-#     def get(self, request, pk):
-        
-        
-#         try:
-#             client_profile = ClientProfile.objects.get(pk=pk, user=request.user)
-#         except ClientProfile.DoesNotExist:
-#             return Response(status=status.HTTP_404_NOT_FOUND)
-
-#         serializer = ClientProfileSerializer(client_profile)
-#         return Response(serializer.data)
-
-    
-#     def put(self, request, pk):
-#         client_profile = get_object_or_404(ClientProfile, pk=pk, user=request.user)
-#         serializer = ClientProfileSerializer(client_profile, data=request.data)
-#         # parser_classes = (MultiPartParser, FormParser)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-#     def post(self, request):
-#         serializer = ClientProfileSerializer(data=request.data)
-#         # parser_classes = (MultiPartParser, FormParser)
-#         if serializer.is_valid():
-#             serializer.save(user=request.user)
-#             return Response(serializer.data)
-#         return Response(serializer.errors)
     
 
 
