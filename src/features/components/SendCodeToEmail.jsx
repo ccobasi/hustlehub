@@ -1,24 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, TextField, Box } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import { EmailOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance"
 
 export const SendCodeToEmail = () => {
   //Instatiate useNavigate
   let navigate = useNavigate();
+  const [email, setEmail]=useState("")
 
   // Handler for the submit event
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-    });
-    navigate("/");
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(email){
+      const res = await axiosInstance.post("/password-reset/", {"email":email});
+      if(res.status === 200){
+        toast.success("Code sent to your email")
 
+      }
+      console.log(res);
+      setEmail("")
+  }
+  
+  }
   return (
     <>
       {/* Box for the registration form */}
@@ -32,6 +40,8 @@ export const SendCodeToEmail = () => {
             id="email"
             label="E-mail"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             autoComplete="email"
             InputProps={{

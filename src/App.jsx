@@ -7,6 +7,7 @@ import SignUp from "./features/components/SignUp";
 import SignIn from "./features/components/SignIn";
 import VerifyEmail from "./features/components/VerifyEmail";
 import ForgetPassword from "./features/components/ForgetPassword";
+import ConfirmPasswordReset from "./features/components/ConfirmPasswordReset";
 import ClientPage from "./features/user/client/ClientPage";
 import CreateProjectPage from "./features/user/client/CreateProjectPage";
 import ProjectReviewPage from "./features/user/client/ProjectReviewPage";
@@ -30,15 +31,7 @@ import PageNotFound from "./features/components/PageNotFound";
 import { ToastContainer } from  'react-toastify'
 import  'react-toastify/dist/ReactToastify.css'
 
-function Logout() {
-  localStorage.clear()
-  return <Navigate to="/login" />
-}
 
-function RegisterAndLogout() {
-  localStorage.clear()
-  return <SignUp />
-}
 
 function App() {
   //Using system preferences to set theme mode.
@@ -148,6 +141,7 @@ function App() {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/otp/verify" element={<VerifyEmail />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/password-reset-confirm/:uid/token" element={<ConfirmPasswordReset />} />
             <Route path="/categories" element={<CategoriesPage />} />
             {/* <Route path="/notification" element={<NotificationPage />} />
             <Route path="/message" element={<MessagePage />} />

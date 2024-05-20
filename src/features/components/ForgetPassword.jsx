@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -5,13 +6,14 @@ import Container from "@mui/material/Container";
 
 import { ForgetPasswordGroupButton } from "./ForgetPasswordGroupButton";
 
+
 export default function ForgetPassword() {
   {
     /**Handle submit */
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
