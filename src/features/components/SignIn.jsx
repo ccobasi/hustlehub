@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import * as React from "react";
+import {React, useRef, useState, useEffect} from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -9,7 +9,6 @@ import Container from "@mui/material/Container";
 import { InputAdornment } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import FormControl from "@mui/material/FormControl";
-import { useState } from "react";
 import Divider from "@mui/material/Divider";
 import ImageAvatars from "./ImageAvatars";
 import Stack from "@mui/material/Stack";
@@ -22,12 +21,31 @@ import {
 } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import axios from "axios";
+// import { useDispatch } from "react-redux";
+// import { setCredentials } from "../auth/authSlice"
+// import { useLoginMutation } from "../auth/authApiSlice";
 
 export default function SignIn() {
   let navigate = useNavigate();
+  // const userRef = useRef()
+  // const errRef = useRef()
+  // const [user, setUser] = useState('')
+  // const [pwd, setPwd] = useState('')
+  // const [errMsg, setErrMsg] = useState('')
+  // const [login, { isLoading}] = useLoginMutation()
+  // const dispatch = useDispatch()
   const[loginData, setLoginData]=useState({email:"", password: "", showPassword: false});
   const [error, setError]=useState("");
   const [isLoading, setIsLoading]=useState(false);
+
+
+  // useEffect(() => {
+  //       userRef.current.focus()
+  //   }, [])
+
+  //   useEffect(() => {
+  //       setErrMsg('')
+  //   }, [user, pwd])
   
   const [psw, setPsw] = useState(false);
   const handleShowPsw = () => setPsw((show) => !show);

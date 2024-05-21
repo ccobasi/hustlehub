@@ -27,7 +27,7 @@ const ClientProfile = ({ name, jobTitle, image, imageLabel }) => {
   useEffect(() => {
     const fetchClientProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/user_profile/client-profile/${userId}/`);
+        const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
         if (response.data) {
           setClientProfile(response.data);
         } else {

@@ -293,7 +293,7 @@ export default function EditClientPage() {
 useEffect(() => {
   const fetchFreelancerProfile = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/user_profile/freelancer-profile/2/`);
+      const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
       if (response.data) { // Check if data exists before setting formData
         setFreelancerProfile(response.data);
         setFormData({
@@ -402,7 +402,7 @@ const submitProfile = async (formData) => {
   }
   console.log('formData.id');
   console.log(formData.id);
-  const url = freelancerProfile ? `http://localhost:8000/user_profile/freelancer-profile/${formData.id}/` : `http://localhost:8000/user_profile/freelancer-profile/${userId}/`;
+  const url = freelancerProfile ? `http://localhost:8000/user_profile/user-profile/${formData.id}/` : `http://localhost:8000/user_profile/user-profile/${userId}/`;
 
   const response = await axios({
     method: 'put',

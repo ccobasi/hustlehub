@@ -2,7 +2,7 @@ import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./features/components/SignUp";
 import SignIn from "./features/components/SignIn";
 import VerifyEmail from "./features/components/VerifyEmail";
@@ -33,6 +33,7 @@ import  'react-toastify/dist/ReactToastify.css'
 
 
 
+ 
 function App() {
   //Using system preferences to set theme mode.
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
