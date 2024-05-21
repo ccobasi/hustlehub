@@ -393,7 +393,15 @@ const validateField = (value, maxLength) => {
 };
 
 const validateBio = (value) => validateField(value, 250);
-const validateJobRole = (value) => validateField(value, 35);
+const validateJobRole = (value) => {
+  const trimmedValue = value.trim(); // Trim spaces before counting
+  if (trimmedValue.length > 35) {
+    return `Field cannot be longer than ${35} characters.`;
+  }
+  return "";
+};
+
+// const validateJobRole = (value) => validateField(value, 35);
 const validateCompany = (value) => validateField(value, 50);
 const validateLocation = (value) => validateField(value, 50);
 
