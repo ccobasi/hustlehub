@@ -198,7 +198,7 @@ const InstitutionField = ({ institution, onChange, institutionError }) => {
       validator={validateInstitution}
       onChange={onChange}
       rows={1}
-      placeholder="Institution"
+      placeholder="Highest Institution Attended"
       width="100%"
       ml={1}
       mb={2}
@@ -214,7 +214,7 @@ const CertificationField = ({ certification, onChange, certificationError }) => 
       validator={validateCertification}
       onChange={onChange}
       rows={1}
-      placeholder="Certification"
+      placeholder="Certificate Obtained"
       width="100%"
       ml={1}
       mb={2}
@@ -404,11 +404,12 @@ const submitProfile = async (formData) => {
   console.log(formData.id);
   const url = freelancerProfile ? `http://localhost:8000/user_profile/user-profile/${formData.id}/` : `http://localhost:8000/user_profile/user-profile/${userId}/`;
 
-  const response = await axios({
-    method: 'put',
-    url,
-    data: form,
-  });
+
+  const response = await axios.put(url, form, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
 
 
   console.log(response.data);
@@ -453,7 +454,14 @@ const submitProfile = async (formData) => {
             
           </Box>
           <Box>
-            <BioField
+          <TextField
+            label="Email"
+            value={freelancerProfile?.user || ""}
+            disabled
+            fullWidth
+            sx={{ mb: 2 }}
+          />
+          <BioField
             bio={formData.bio}
             onChange={(value) => handleChange("bio", value)}
             bioError={bioError}
