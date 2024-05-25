@@ -1,3 +1,33 @@
+// // eslint-disable-next-line no-unused-vars
+// import React from "react";
+// import axios from "axios";
+
+// async function fetchProjects() {
+//   const response = await axios.get('http://localhost:8000/api/projects'); 
+//   if (!response.ok) {
+//     throw new Error('Failed to fetch projects');
+//   }
+//   const data = await response.json();
+//   return data;
+// }
+
+// export async function getStaticProps() {
+//   const projects = await fetchProjects(); // Replace with your fetching function
+
+//   return {
+//     props: {
+//       projects,
+//     },
+//   };
+// }
+
+// function ProjectList({ projects }) {
+//   // ... rest of the code remains the same, using projects data for rendering
+// }
+
+// export default ProjectList;
+
+
 const  popularCategories = [
     {
         id: 1,

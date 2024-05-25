@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import { Link, Stack, Typography, Container, Box } from "@mui/material";
 import { PopularCategories } from "./PopularCategories.jsx";
@@ -6,7 +6,7 @@ import { TrendingCategories } from "./TrendingCategories.jsx";
 
 const CategoriesPage = () => {
   //Instatiate useNavigate
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   return (
     <>
@@ -47,7 +47,7 @@ const CategoriesPage = () => {
                     : theme.palette.primary.darkModeHeroTitle,
               }}
             >
-              Popular
+              Active
             </Typography>
             <Link
               href="/hello"
@@ -82,7 +82,7 @@ const CategoriesPage = () => {
                     : theme.palette.primary.darkModeHeroTitle,
               }}
             >
-              Trending
+              Completed
             </Typography>
             <Link
               href="/hello"

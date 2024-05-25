@@ -54,3 +54,30 @@ class ProjectDetailView(APIView):
     project = self.get_object(pk)
     project.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+class UserProjectList(APIView):
+  permission_classes = [IsAuthenticated]
+  authentication_classes = [JWTAuthentication]
+
+  def get_object(self, pk):
+        try:
+            return Project.objects.get(pk=pk)
+        except Project.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    
+  def get(self, request, user_pk, project_pk=None):
+    if project_pk:
+        project = self.get_object(project_pk)
+        if project.client != request.user:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        serializer = ProjectSerializer(project)
+        return Response(serializer.data)
+    else:
+        projects = Project.objects.filter(client=user_pk)
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
+  
+
