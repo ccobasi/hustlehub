@@ -3,8 +3,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Project
 from .serializers import ProjectSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 class ProjectListCreateView(APIView):
+  permission_classes = [IsAuthenticated]
+  authentication_classes = [JWTAuthentication]
   """
   API endpoint for listing and creating projects
   """
@@ -17,8 +21,11 @@ class ProjectListCreateView(APIView):
     serializer = ProjectSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
+      print(serializer.errors)
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  
+  
 
 class ProjectDetailView(APIView):
   """

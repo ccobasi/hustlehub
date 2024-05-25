@@ -1,8 +1,10 @@
 from rest_framework import serializers
 from .models import Project
-from datetime import datetime
+from datetime import date
 
 class ProjectSerializer(serializers.ModelSerializer):
+    closing_date = serializers.DateField(format="%Y-%m-%d", input_formats=["%Y-%m-%d"])
+
     class Meta:
         model = Project
         fields = '__all__'
@@ -15,7 +17,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     def validate_closing_date(self, value):
         """Check that the closing date is in the future"""
-        if value <= datetime.now():
+        if value <= date.today():
             raise serializers.ValidationError("Closing date must be in the future.")
         return value
 
