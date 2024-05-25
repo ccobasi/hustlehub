@@ -1,206 +1,261 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useRef } from "react";
-import { TextField, Box, Button, Container } from "@mui/material";
+import React, { useState } from "react";
+import {
+  TextField,
+  Box,
+  Button,
+  Container,
+  Typography,
+  FormControlLabel,
+  Checkbox,
+  Stack
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import MenuItem from "@mui/material/MenuItem";
+import InputAdornment from "@mui/material/InputAdornment";
+import ManageAccountsOutlined from "@mui/icons-material/ManageAccountsOutlined";
+import utc from 'dayjs/plugin/utc'; // Import the UTC plugin
+import timezone from 'dayjs/plugin/timezone'; // Import the timezone plugin
 
-const ValidatedTextField = ({ name, label, validator, onChange,rows,placeholder }) => {
-  const [value, setValue] = useState("");
+dayjs.extend(utc); // Extend dayjs with the UTC plugin
+dayjs.extend(timezone); // Extend dayjs with the timezone plugin
 
-  const handleChange = (e) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-    onChange({ name, value: newValue, isValid: !validator(newValue) });
-  };
-  // const handleChange = (e) => {
-  //   const newValue = e.target.value;
-  //   const errorMessage = validator(newValue);
-  //   setValue(newValue);
-  //   setError(errorMessage);
-  //   onChange({ value: newValue, isValid: !errorMessage });
-  // };
+const today = dayjs().tz("UTC"); // Initialize today with UTC timezone
 
-  //Handle End
+// Custom DatePicker
+const CustomDatePicker = ({ value, onChange }) => {
   return (
-    <TextField
-      label={label}
-      value={value}
-      onChange={handleChange}
-      // error={!!error}
-      // helperText={error}
-      autoComplete="off"
-      multiline
-      rows={rows}
-      placeholder={placeholder}
-      sx={{ mb: "5%", width: "350px",}}
-    />
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DatePicker
+  defaultValue={today}
+  disablePast
+  value={value}
+  onChange={onChange}
+  textField={(params) => <TextField {...params} />} 
+/>
+
+    </LocalizationProvider>
   );
 };
-// Job position validators
-const jobPositionValidator = (value) => {
-  if (value.length < 3) return "Job position must be at least 3 characters long";
-  if (value.length > 20) return "Job position must be less than 20 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Job position must contain only letters and spaces";
-  return false;
-};
-//Validator End
 
-// Type of workplace validators
-const typeOfWorkplaceValidator = (value) => {
-  if (value.length < 3) return "Workplace type must be at least 3 characters long";
-  if (value.length > 20) return "Workplace type must be less than 20 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Workplace type must contain only letters and spaces";
-  return false;
+const SubTitleText = ({ subtitle }) => {
+  return (
+    <Typography variant="body2" color="text.secondary">
+      {subtitle}
+    </Typography>
+  );
 };
-//Validator End
 
-// Job location validators
-const jobLocationValidator = (value) => {
-  if (value.length < 3) return "Job location must be at least 3 characters long";
-  if (value.length > 20) return "Job location must be less than 20 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Job location must contain only letters and spaces";
-  return false;
-};
-//Validator End
+const IsOpenField = ({ isOpen, onChange }) => {
+  const handleChange = (e) => {
+    onChange(e.target.checked);
+  };
 
-// Industry validators
-const industryValidator = (value) => {
-  if (value.length < 3) return "Industry must be at least 3 characters long";
-  if (value.length > 20) return "Industry must be less than 20 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Industry must contain only letters and spaces";
-  return false;
+  return (
+    <div style={{ alignSelf: "flex-start" }}>
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={isOpen}
+            onChange={handleChange}
+            color="primary"
+          />
+        }
+        label="Is Open"
+      />
+    </div>
+  );
 };
-//validator End
-
-// Employment type validators
-const employmentTypeValidator = (value) => {
-  if (value.length < 3) return "Employment type must be at least 3 characters long";
-  if (value.length > 20) return "Employment type must be less than 20 characters long";
-  if (!/^[a-zA-Z ]+$/.test(value))
-    return "Employment type must contain only letters and spaces";
-  return false;
-};
-//Validator End
-
-// Description validators
-const descriptionValidator = (value) => {
-  if (value.length < 100) return "Description must be at least 100 characters long";
-  if (value.length > 1000) return "Description must be less than 1000 characters long";
-  if (!/^[a-zA-Z\s,.!?-]+$/.test(value))
-    return "Description must contain only letters and spaces";
-  return false;
-};
-//Validator End
 
 export default function CreateProjectFormValidation() {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
-    jobPosition: { value: "", isValid: false },
-    typeOfWorkplace: { value: "", isValid: false },
-    jobLocation: { value: "", isValid: false },
-    industry: { value: "", isValid: false },
-    employmentType: { value: "", isValid: false },
-    description: { value: "", isValid: false },
+    clientId: user?.id || "",
+    title: "",
+    description: "",
+    budget: "",
+    category: "",
+    skillsRequired: "",
+    closingDate: today,
+    isOpen: false,
   });
 
+  const { clientId, title, description, budget, category, skillsRequired, closingDate, isOpen } = formData;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const isFormValid = Object.values(formData).every((field) => field.isValid);
-    if (isFormValid) {
-      localStorage.setItem("formData", JSON.stringify(formData));
-      alert("Form data saved to localStorage!");
-      navigate("/client");
-    } else {
-      alert("Form is invalid! Please check the fields...");
-    }
-    console.log(formData);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
 
-  const handleFieldChange = ({ name, value, isValid }) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: { value, isValid },
-    }));
+const handleDateChange = (date) => {
+  if (date) {
+    const formattedDate = date.format("YYYY-MM-DD");
+    setFormData({ ...formData, closingDate: formattedDate });
+  }
+};
+
+
+  const handleIsOpenChange = (isOpen) => {
+    setFormData((prevData) => ({ ...prevData, isOpen }));
+  };
+
+  axios.interceptors.request.use(
+    (config) => {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const access = JSON.parse(localStorage.getItem("access"));
+      if (user && access) {
+        config.headers.Authorization = `Bearer ${access}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!clientId || !title || !description || !budget || !category || !skillsRequired || !closingDate || !isOpen) {
+      setError("Please fill out all fields");
+    } else {
+      const formData = {
+        client: clientId,
+        title: title,
+        description: description,
+        budget: budget,
+        category: category,
+        skillsRequired: skillsRequired,
+        closing_date: closingDate,  // Use snake_case for the field name
+        is_open: isOpen,            // Similarly, use snake_case if required by backend
+      };
+      console.log("Form data:", formData);
+      try {
+        const response = await axios.post("http://localhost:8000/project/projects/", formData);
+        const res = response.data || {};
+        console.log(res);
+        navigate("/client");
+        toast.success("Project created successfully");
+      } catch (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+        toast.error("Failed to register. Please try again later.");
+      }
+    }
   };
 
   return (
-  
-    <>
-      <Container component="main" maxWidth="xs">
-      {/*  Box for form validation */}
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          noValidate
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <ValidatedTextField
-          name="jobPosition"
-            label="Job Position"
-            validator={jobPositionValidator}
-            onChange={handleFieldChange}
-            rows={1}
-            placeholder="Enter job position"
+    <Container maxWidth="md">
+      <Box sx={{ marginTop: 8, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Typography component="h1" variant="h5">
+          Create a new project
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            id="client"
+            label="Client"
+            name="client"
+            value={user?.id || ""}
+            disabled
+            fullWidth
+            sx={{ mb: 2 }}
           />
-
-          <ValidatedTextField
-            name="typeOfWorkplace"
-            label="Type of workplace"
-            validator={typeOfWorkplaceValidator}
-            onChange={handleFieldChange}
-            rows={1}
-            placeholder="Enter type of workplace"
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="title"
+            label="Title"
+            name="title"
+            value={title}
+            onChange={handleChange}
           />
-          <ValidatedTextField
-            name="jobLocation"
-            label="Job location"
-            validator={jobLocationValidator}
-            onChange={handleFieldChange}
-            rows={1}
-            placeholder="Enter job location"
-            
-          />
-          <ValidatedTextField
-            name="industry"
-            label="Industry"
-            validator={industryValidator}
-            rows={1}
-            onChange={handleFieldChange}
-            placeholder="Enter industry"
-          />
-          <ValidatedTextField
-            name="employmentType"
-            label="Employment type"
-            validator={employmentTypeValidator}
-            rows={1}
-            onChange={handleFieldChange}
-            placeholder="Enter employment type"
-          />
-
-          <ValidatedTextField
-            name="description"
-            label="Description"
-            validator={descriptionValidator}
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            multiline
             rows={4}
-            onChange={handleFieldChange}
-            placeholder="Enter job description"
+            id="description"
+            label="Description"
+            name="description"
+            value={description}
+            onChange={handleChange}
           />
-          <Button type="submit" variant="contained">
-            Submit
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="budget"
+            label="Budget"
+            value={budget}
+            onChange={handleChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="category"
+            label="Category"
+            value={category}
+            select
+            onChange={handleChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <ManageAccountsOutlined />
+                </InputAdornment>
+              ),
+            }}
+            sx={{ mt: "3%" }}
+          >
+            <MenuItem value="agriculture">Agriculture</MenuItem>
+            <MenuItem value="construction">Construction</MenuItem>
+            <MenuItem value="education">Education</MenuItem>
+            <MenuItem value="electrical">Electrical</MenuItem>
+            <MenuItem value="it">IT</MenuItem>
+            <MenuItem value="other">Other</MenuItem>
+          </TextField>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="skillsRequired"
+            label="Skills Required"
+            value={skillsRequired}
+            onChange={handleChange}
+          />
+          <Stack direction="column">
+            <SubTitleText subtitle="Closing Date" />
+            <CustomDatePicker value={dayjs(closingDate)} onChange={handleDateChange} />
+          </Stack>
+          <IsOpenField isOpen={isOpen} onChange={handleIsOpenChange} />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2, backgroundColor: "#87CEEB", color: "white" }}
+          >
+            Create Project
           </Button>
         </Box>
-        {/* Box End */}
-      </Container>
-    </>
+        {error && <SubTitleText subtitle={error} />}
+      </Box>
+    </Container>
   );
 }

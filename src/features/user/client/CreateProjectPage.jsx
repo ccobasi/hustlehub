@@ -1,7 +1,7 @@
 //
 import { Typography, Link } from "@mui/material";
 
-import ClientCreateProject from "../../components/CreateProject";
+// import ClientCreateProject from "../../components/CreateProject";
 import CreateProjectFormValidation from "../../components/CreateProject";
 
 const CreateProjectPage = () => {
