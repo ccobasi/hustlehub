@@ -88,6 +88,24 @@ export default function CreateProjectFormValidation() {
     isOpen: false,
   });
 
+  const categories = [
+    { id: 1, name:"accounting & finance" },
+    { id: 2, name:"administrative & customer support"},
+    { id: 3, name:"agriculture"},
+    { id: 4, name:"art & design"},
+    { id: 5, name:"business & management"},
+    { id: 6, name:"cleaning services"},
+    { id: 7, name:"computer & it"},
+    { id: 8, name:"education"},
+    { id: 9, name:"engineering & architecture"},  
+    { id: 10,name:"food & hospitality"},
+    { id: 11,name:"healthcare"},
+    { id: 12,name:"human resources"},
+    { id: 13,name:"marketing & content creation"},
+    { id: 14,name:"media & entertainment"},
+    { id: 15,name:"other"},
+  ];
+
   const { clientId, title, description, budget, category, skillsRequired, closingDate, isOpen } = formData;
 
   const handleChange = (e) => {
@@ -224,12 +242,11 @@ const handleDateChange = (date) => {
             }}
             sx={{ mt: "3%" }}
           >
-            <MenuItem value="agriculture">Agriculture</MenuItem>
-            <MenuItem value="construction">Construction</MenuItem>
-            <MenuItem value="education">Education</MenuItem>
-            <MenuItem value="electrical">Electrical</MenuItem>
-            <MenuItem value="it">IT</MenuItem>
-            <MenuItem value="other">Other</MenuItem>
+            {categories.map((cat) => (
+              <MenuItem key={cat.id} value={cat.name}>
+                {cat.name}
+              </MenuItem>
+            ))}
           </TextField>
           <TextField
             margin="normal"

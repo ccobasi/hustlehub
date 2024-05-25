@@ -4,11 +4,20 @@ from django.utils.translation import gettext_lazy as _
 
 
 CATEGORY_CHOICES = (
+        ('accounting & finance', 'Accounting & Finance'),
+        ('administrative & customer support', 'Administrative & Customer Support'),
         ('agriculture', 'Agriculture'),
-        ('construction', 'Construction'),
+        ('art & design', 'Art & Design'),
+        ('business & management', 'Business & Management'),
+        ('cleaning services', 'Cleaning Services'),
+        ('computer & it', 'Computer & IT'),
         ('education', 'Education'),
-        ('electrical', 'Electrical'),
-        ('it', 'IT'),        
+        ('engineering & architecture', 'Engineering & Architecture'),  
+        ('food & hospitality', 'Food & Hospitality'),
+        ('healthcare', 'Healthcare'),
+        ('human resources', 'Human Resources'),
+        ('marketing & content creation', 'Marketing & Content Creation'),
+        ('media & entertainment', 'Media & Entertainment'),
         ('other', 'Other'),
     )
 
