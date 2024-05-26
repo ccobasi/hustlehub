@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from user.models import User
-from .models import Project
+from project.models import Project
 
 PROPOSAL_STATUS_CHOICES = (
     ('pending', 'Pending'),
