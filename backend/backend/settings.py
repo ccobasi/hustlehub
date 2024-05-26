@@ -69,6 +69,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,7 +77,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -163,7 +163,7 @@ EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', default='False').lower() == '
 
 
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",  
@@ -176,6 +176,10 @@ CSRF_TRUSTED_ORIGINS=[
     "http://127.0.0.1:5175/",
 ]
 
+print("CORS_ALLOWED_ORIGINS:", CORS_ALLOWED_ORIGINS)
+
+CORS_DEBUG = True
+CORS_LOGGER = "cors_logger"
 
 GOOGLE_CLIENT_ID=os.getenv('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET=os.getenv('GOOGLE_CLIENT_SECRET')

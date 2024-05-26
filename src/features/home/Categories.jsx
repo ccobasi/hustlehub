@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Avatar  from "@mui/material/Avatar";
 
-export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
+export default function Categories({title,description, image, imageLabel}) {
   return (
     <>
       {/* Grid for the Categories Feature*/}
@@ -39,7 +39,7 @@ export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
               component="picture"
               sx={{
                 height: "48px",
-                width: "48px",
+                width: "100px",
 
                 borderRadius: "116px",
                 maxHeight: { xs: 48, md: 167 },
@@ -48,7 +48,7 @@ export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
               }}
             >
               
-              <Avatar src={image} alt={imageLabel} srcSet={sourceSet} style={{width:"48px", height:"48px"}} />
+              {title}
             </CardMedia>
             {/* Card Media End */}
 
@@ -69,7 +69,7 @@ export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
                 textAlign: "center",
               }}
             >
-              {jobTitle}
+              {description}
             </Typography>
             {/* Heading End */}
           </CardContent>

@@ -1,7 +1,7 @@
 // import { useNavigate } from "react-router-dom";
 
 import { Link, Stack, Typography, Container, Box } from "@mui/material";
-import { PopularCategories } from "./PopularCategories.jsx";
+import PopularCategoriesComponent  from "./PopularCategories.jsx";
 import { TrendingCategories } from "./TrendingCategories.jsx";
 
 const CategoriesPage = () => {
@@ -65,7 +65,7 @@ const CategoriesPage = () => {
             </Link>
           </Stack>
 
-          <PopularCategories />
+          <PopularCategoriesComponent />
 
           <Stack direction="row" sx={{ justifyContent: "space-between" }}>
             <Typography
