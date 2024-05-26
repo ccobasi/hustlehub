@@ -1,18 +1,18 @@
+// eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import List from "@mui/material/List";
 
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+// import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
+// import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { Grid, Container, Link } from "@mui/material";
+import { Grid,  Link } from "@mui/material";
 
 export default function ProjectContainer({
   title,
-  imageLabel,
-  sourceSet,
-  company,
+  description,
+  closing_date
 }) {
   return (
     <>
@@ -29,11 +29,7 @@ export default function ProjectContainer({
         >
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar
-                alt={imageLabel}
-                src={sourceSet}
-                style={{ width: "50px", height: "50px" }}
-              />
+              {title}
             </ListItemAvatar>
             <ListItem sx={{ justifyContent: "flex-start" }}>
               <Typography
@@ -53,7 +49,7 @@ export default function ProjectContainer({
                       : theme.palette.primary.darkModeHeroTitle,
                 }}
               >
-                {title}
+                {description}
               </Typography>
             </ListItem>
           </ListItem>
@@ -61,7 +57,7 @@ export default function ProjectContainer({
             <Typography
               sx={{
                 ml: "12%",
-                mt: "-10%",
+                mt: "-7%",
 
                 width: "100%",
 
@@ -78,7 +74,7 @@ export default function ProjectContainer({
                     : theme.palette.primary.darkModeHeroTitle,
               }}
             >
-              {company}
+              {closing_date}
             </Typography>
             <ListItem>
               <Link
@@ -95,7 +91,7 @@ export default function ProjectContainer({
                   letterSpacing: "-1%",
                 }}
               >
-                View Project
+                {/* View Project */}
               </Link>
             </ListItem>
           </ListItem>

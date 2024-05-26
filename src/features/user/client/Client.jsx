@@ -1,12 +1,10 @@
-import ClientCard from "./ClientCard";
-import clientCardData from "./clientCardData";
 import { Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import ClientProfile from "./ClientProfile";
 
 export const ClientFirstFeature = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  const client = JSON.parse(localStorage.getItem("clientProfile"));
+  // const client = JSON.parse(localStorage.getItem("clientProfile"));
   const data = useLocation();
   console.log(data);
   // Data mapping
