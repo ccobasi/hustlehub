@@ -20,25 +20,25 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
 import ManageAccountsOutlined from "@mui/icons-material/ManageAccountsOutlined";
-import utc from 'dayjs/plugin/utc'; // Import the UTC plugin
-import timezone from 'dayjs/plugin/timezone'; // Import the timezone plugin
+import utc from 'dayjs/plugin/utc'; 
+import timezone from 'dayjs/plugin/timezone'; 
 
-dayjs.extend(utc); // Extend dayjs with the UTC plugin
-dayjs.extend(timezone); // Extend dayjs with the timezone plugin
+dayjs.extend(utc); 
+dayjs.extend(timezone); 
 
-const today = dayjs().tz("UTC"); // Initialize today with UTC timezone
+const today = dayjs().tz("UTC"); 
 
 // Custom DatePicker
 const CustomDatePicker = ({ value, onChange }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-  defaultValue={today}
-  disablePast
-  value={value}
-  onChange={onChange}
-  textField={(params) => <TextField {...params} />} 
-/>
+        defaultValue={today}
+        disablePast
+        value={value}
+        onChange={onChange}
+        textField={(params) => <TextField {...params} />} 
+      />
 
     </LocalizationProvider>
   );

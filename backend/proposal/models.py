@@ -21,6 +21,9 @@ class Proposal(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=50, choices=PROPOSAL_STATUS_CHOICES, default="pending", verbose_name=_("Proposal Status"))
 
+
     def __str__(self):
-        return f"{self.freelancer.get_full_name()} - {self.project.title}"
+        freelancer_name = self.freelancer.first_name + " " + self.freelancer.last_name  
+        return f"{freelancer_name} - {self.project.title}"
+
 

@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from "react";
 import { EditFreelancerFirstFeature } from "./EditFreelancerCard";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect} from "react";
 import {
   TextField,
   Box,
@@ -10,22 +11,25 @@ import {
   Container,
 } from "@mui/material";
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
-import dayjs from "dayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {useUserProfile} from "../../../store/UserProfileContext"
+import { useUserProfile } from "../../../store/UserProfileContext";
 
-
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const today = dayjs();
 
-//Custom DatePicker
+// Custom DatePicker
 const CustomDatePicker = ({ width, ml }) => {
-  const [value, setValue] = React.useState([dayjs(""), dayjs("")]);
+  const [value, setValue] = useState(dayjs());
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -270,6 +274,8 @@ export default function EditClientPage() {
     location: "",
     institution: "",
     certification: "",
+    start_date:today,
+    end_date:today,
     skill: "",
     language: "",
     image: null,
@@ -306,6 +312,8 @@ useEffect(() => {
           location: response.data.location || "",
           institution: response.data.institution || "",
           certification: response.data.certification || "",
+          start_date: response.data.start_date || today,
+          end_date: response.data.end_date || today,
           skill: response.data.skill || "",
           language: response.data.language || "",
           image: null, 
@@ -380,6 +388,8 @@ useEffect(() => {
       location: "",
       institution: "",
       certification: "",
+      start_date: today,
+      end_date: today,
       skill: "",
       language: "",
       id: userId,
