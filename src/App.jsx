@@ -30,6 +30,8 @@ import { orange } from "@mui/material/colors";
 import PageNotFound from "./features/components/PageNotFound";
 import { ToastContainer } from  'react-toastify'
 import  'react-toastify/dist/ReactToastify.css'
+import BrowseProjectPage from './features/project/BrowseProjectsPage'
+import ProjectsUpdatePage from './features/project/ProjectsUpdatePage'
 
 
 
@@ -145,9 +147,9 @@ function App() {
             <Route path="/password-reset-confirm/:uid/token" element={<ConfirmPasswordReset />} />
             <Route path="/categories" element={<CategoriesPage />} />
             {/* <Route path="/notification" element={<NotificationPage />} />
-            <Route path="/message" element={<MessagePage />} />
+            <Route path="/message" element={<MessagePage />} /> */}
             <Route path="/project-update" element={<ProjectsUpdatePage />} />
-            <Route path="/browse-project" element={<BrowseProjectPage />} /> */}
+            <Route path="/browse-project" element={<BrowseProjectPage />} />
             <Route path="/freelancer-search" element={<FreelancerSearchPage/>}/>
           </Route>
 

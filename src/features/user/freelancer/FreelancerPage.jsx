@@ -94,6 +94,24 @@ export default function FreelancerPage() {
           >
             See all
           </Link>
+          <Link
+            href="/browse-project"
+            sx={{
+              textDecoration: "none",
+              ml: "2%",
+              color: "#AFB0B6",
+              mt: "6%",
+
+              fontFamily:"Poppins",
+              fontWeight:"400",
+              fontSize:"13px",
+              lineHeight:"20.8px",
+              letterSpacing:"-1%"
+
+            }}
+          >
+            Search jobs
+          </Link>
         </Stack>
 
         {/*Third Freelancer Feature*/}
