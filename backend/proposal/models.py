@@ -20,7 +20,7 @@ class Proposal(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Submitted"))
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=50, choices=PROPOSAL_STATUS_CHOICES, default="pending", verbose_name=_("Proposal Status"))
-
+  
 
     def __str__(self):
         freelancer_name = self.freelancer.first_name + " " + self.freelancer.last_name  
