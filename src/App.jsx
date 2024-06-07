@@ -32,6 +32,7 @@ import { ToastContainer } from  'react-toastify'
 import  'react-toastify/dist/ReactToastify.css'
 import BrowseProjectPage from './features/project/BrowseProjectsPage'
 import ProjectsUpdatePage from './features/project/ProjectsUpdatePage'
+import Proposal from "./features/user/freelancer/Proposal";
 
 
 
@@ -151,6 +152,7 @@ function App() {
             <Route path="/project-update" element={<ProjectsUpdatePage />} />
             <Route path="/browse-project" element={<BrowseProjectPage />} />
             <Route path="/freelancer-search" element={<FreelancerSearchPage/>}/>
+            <Route path="/proposal" element={<Proposal/>}/>
           </Route>
 
           <Route path="/" element={<UserLayout />}>
