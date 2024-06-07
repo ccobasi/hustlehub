@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { Stack, Button, Typography, Box, Container, TextField } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function BrowseProjectPage() {
   const [projects, setProjects] = useState([]);
   const [loading, ] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   axios.interceptors.request.use(
     (config) => {
@@ -41,6 +43,11 @@ function BrowseProjectPage() {
     const category = project.category || ''; 
     return category.toLowerCase().includes(searchQuery.toLowerCase());
   });
+
+  const handleProjectClick = (project) => {
+    navigate('/proposal', { state: { project } }); 
+    console.log(project);
+  };
 
   return (
     <Container component="main" maxWidth="md">
@@ -101,6 +108,7 @@ function BrowseProjectPage() {
                     borderRadius: "8px",
                     backgroundColor: "#f9f9f9",
                   }}
+                  onClick={() => handleProjectClick(project)}
                 >
                   <Typography variant="h6">{project.title}</Typography>
                   <Typography>{project.description}</Typography>

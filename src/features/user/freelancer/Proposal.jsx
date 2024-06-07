@@ -10,10 +10,11 @@ import { InputAdornment } from "@mui/material";
 
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-// import { useState } from "react";
-
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import { toast } from "react-toastify";
 import {
   
   ManageAccountsOutlined,
@@ -21,25 +22,39 @@ import {
 } from "@mui/icons-material";
 
 export default function Proposal() {
-
-  
-
-  //Initialization of useNavigate hook
+  const location = useLocation();
+  const { project } = location.state;
   let navigate = useNavigate();
-  //Handler for the submit event
-  const handleSubmit = (event) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [status, setStatus] = useState('pending');
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    navigate("/freelancer-search");
+
+    const proposal = {
+      project: project.id,
+      freelancer: user.id,
+      proposed_rate: data.get("proposedRate"),
+      estimated_days: data.get("estimatedNumOfDays"),
+      cover_letter: data.get("coverLetter"),
+      status: data.get("status"),
+    };
+
+    try {
+      await axios.post('http://localhost:8000/proposal/proposals/', proposal, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+      });
+      navigate("/browse-project");
+      toast.success("Proposal submitted successfully");
+    } catch (error) {
+      console.error('Error submitting proposal:', error);
+    }
   };
-  //Submit Handle End
 
   return (
-    // Container for Sign Up functionality
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
@@ -65,7 +80,7 @@ export default function Proposal() {
             letterSpacing: "-1.5%",
           }}
         >
-          Proposal
+          Proposal 
         </Typography>
        
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -77,10 +92,11 @@ export default function Proposal() {
               fullWidth
               id="projectName"
               label="Name of the Project"
-              name="projectName"
-              placeholder="Enter the name of the project."
               autoComplete="project-name"
-              
+              value={project.title}
+              InputProps={{
+                    readOnly: true,
+                }}
               sx={{
                 color: "#AFB0B6",
 
@@ -96,9 +112,11 @@ export default function Proposal() {
               id="freelancerName"
               label="Name"
               name="freelancerName"
-              placeholder="Enter your name"
               autoComplete="name"
-              
+              value={user.names}
+              InputProps={{
+                    readOnly: true,
+                }}
               sx={{
                 color: "#AFB0B6",
 
@@ -185,6 +203,8 @@ export default function Proposal() {
                   </InputAdornment>
                 ),
               }}
+              value={status} 
+              onChange={(event) => setStatus(event.target.value)}
               sx={{
                 color: "#AFB0B6",
 
@@ -193,8 +213,8 @@ export default function Proposal() {
               }}
             >
                <MenuItem value="pending">Pending</MenuItem>
-              <MenuItem value="accepted">Accepted</MenuItem>
-              <MenuItem value="rejected">Rejected</MenuItem>
+              <MenuItem value="accepted" disabled>Accepted</MenuItem>
+              <MenuItem value="rejected" disabled>Rejected</MenuItem>
             </TextField>
           
           </FormControl>
