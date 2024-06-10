@@ -1,35 +1,9 @@
-// import ProjectContainer from "./ProjectCard";
-// import clientProjectData from "./clientProjectData";
-// import { Grid } from "@mui/material";
-
-// export const ClientSecondFeature  = () => {
-//   //Data mapping
-//   let projectContainer = clientProjectData.map((el) => {
-//     return <ProjectContainer key={el.id} {...el} />;
-//   });//Mapping End
-//   return (
-//     //Grid
-//     <Grid
-//       container
-//       spacing={4}
-//       sx={{
-//         margin: "auto",
-//         alignItems: "end",
-//         maxWidth: "100%",
-//       }}
-//     >
-//       {projectContainer}
-//     </Grid>//Grid End
-//   );
-// };
-
-// export default ClientSecondFeature ;
-
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProjectContainer from "./ProjectCard";
 import { Grid } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const ClientSecondFeature = () => {
   const [firstProject, setFirstProject] = useState(null);
@@ -65,7 +39,14 @@ const ClientSecondFeature = () => {
         maxWidth: "100%",
       }}
     >
-      {firstProject && <ProjectContainer key={firstProject.id} {...firstProject} />}
+      {firstProject && (
+        <Grid item xs={12}>
+          <Link to={`/project-details/${firstProject.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ProjectContainer key={firstProject.id} {...firstProject} />
+          </Link>
+        </Grid>
+      )}
+      {/* {firstProject && <ProjectContainer key={firstProject.id} {...firstProject} />} */}
     </Grid>
   );
 };
