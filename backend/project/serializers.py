@@ -1,8 +1,10 @@
 from rest_framework import serializers
 from .models import Project
 from datetime import date
+from proposal.serializers import ProposalSerializer
 
 class ProjectSerializer(serializers.ModelSerializer):
+    proposals = ProposalSerializer(many=True, read_only=True)
     closing_date = serializers.DateField(format="%Y-%m-%d", input_formats=["%Y-%m-%d"])
 
     class Meta:
