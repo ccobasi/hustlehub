@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Project
+from proposal.models import Proposal
 from .serializers import ProjectSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -25,6 +26,8 @@ class ProjectListCreateView(APIView):
   
 
 class ProjectDetailView(APIView):
+  permission_classes = [IsAuthenticated]
+  authentication_classes = [JWTAuthentication]
   
   def get_object(self, pk):
     try:
@@ -55,6 +58,39 @@ class ProjectDetailView(APIView):
             return project  
         project.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+  
+  def patch(self, request, pk):
+        project = self.get_object(pk)
+        if not isinstance(project, Project):
+            return project
+
+        proposal_id = request.data.get("selected_proposal")
+        if proposal_id:
+            try:
+                proposal = Proposal.objects.get(id=proposal_id, project=project)
+            except Proposal.DoesNotExist:
+                return Response({"detail": "Proposal not found."}, status=status.HTTP_404_NOT_FOUND)
+            
+            # Create a contract
+            contract_data = {
+                "project": project.id,
+                "proposal": proposal.id,
+                "freelancer": proposal.freelancer.id,
+                "client": project.client.id,
+                "contract_amount": proposal.proposed_rate,
+                "start_date": request.data.get("start_date"),
+                "end_date": request.data.get("end_date"),
+                "terms": request.data.get("terms"),
+            }
+            contract_serializer = ContractSerializer(data=contract_data)
+            if contract_serializer.is_valid():
+                contract_serializer.save()
+                project.selected_proposal = proposal
+                project.save()
+                return Response(ProjectSerializer(project).data)
+            return Response(contract_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response({"detail": "No proposal selected."}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserProjectList(APIView):

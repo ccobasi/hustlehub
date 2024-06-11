@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from user.models import User
-from project.models import Project
 
 PROPOSAL_STATUS_CHOICES = (
     ('pending', 'Pending'),
@@ -12,7 +11,7 @@ PROPOSAL_STATUS_CHOICES = (
 
 class Proposal(models.Model):
  
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="proposals")
+    project = models.ForeignKey('project.Project', on_delete=models.CASCADE, related_name="proposals")
     freelancer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="freelancer_proposals")
     proposed_rate = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("Proposed Rate"))
     estimated_days = models.IntegerField(verbose_name=_("Estimated Completion Days"))

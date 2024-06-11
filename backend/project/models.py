@@ -33,6 +33,9 @@ class Project(models.Model):
     is_open = models.BooleanField(default=True, verbose_name=_("Project Open Status"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Date Updated"))
+    selected_proposal = models.OneToOneField('proposal.Proposal', null=True, blank=True, on_delete=models.SET_NULL, related_name='selected_for_project')
+
+
 
     def __str__(self):
         return self.title
