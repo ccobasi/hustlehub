@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from .models import Project
 from proposal.models import Proposal
 from .serializers import ProjectSerializer
+from contract.serializers import ContractSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
