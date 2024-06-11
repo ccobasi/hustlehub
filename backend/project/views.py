@@ -9,9 +9,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 class ProjectListCreateView(APIView):
   permission_classes = [IsAuthenticated]
   authentication_classes = [JWTAuthentication]
-  """
-  API endpoint for listing and creating projects
-  """
+  
   def get(self, request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
@@ -25,7 +23,6 @@ class ProjectListCreateView(APIView):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
-  
 
 class ProjectDetailView(APIView):
   
@@ -34,11 +31,6 @@ class ProjectDetailView(APIView):
       return Project.objects.get(pk=pk)
     except Project.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
-
-  # def get(self, request, pk):
-  #   project = self.get_object(pk)
-  #   serializer = ProjectSerializer(project)
-  #   return Response(serializer.data)
   
   def get(self, request, pk):
         project = self.get_object(pk)
@@ -47,14 +39,6 @@ class ProjectDetailView(APIView):
         serializer = ProjectSerializer(project)
         return Response(serializer.data)
 
-  # def put(self, request, pk):
-  #   project = self.get_object(pk)
-  #   serializer = ProjectSerializer(project, data=request.data)
-  #   if serializer.is_valid():
-  #     serializer.save()
-  #     return Response(serializer.data)
-  #   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-  
   def put(self, request, pk):
         project = self.get_object(pk)
         if not isinstance(project, Project):
@@ -65,18 +49,12 @@ class ProjectDetailView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-  # def delete(self, request, pk):
-  #   project = self.get_object(pk)
-  #   project.delete()
-  #   return Response(status=status.HTTP_204_NO_CONTENT)
-  
   def delete(self, request, pk):
         project = self.get_object(pk)
         if not isinstance(project, Project):
             return project  
         project.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 
 class UserProjectList(APIView):
@@ -102,4 +80,4 @@ class UserProjectList(APIView):
         serializer = ProjectSerializer(projects, many=True)
         return Response(serializer.data)
   
-
+    

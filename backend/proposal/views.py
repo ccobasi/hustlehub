@@ -20,4 +20,18 @@ class ProjectProposalsListView(generics.ListAPIView):
     def get_queryset(self):
         project_id = self.kwargs['project_pk']
         return Proposal.objects.filter(project__id=project_id)
+    
 
+class ProposalDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Proposal.objects.all()
+    serializer_class = ProposalSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        project_pk = self.kwargs['project_pk']
+        proposal_pk = self.kwargs['proposal_pk']
+        return generics.get_object_or_404(self.queryset, pk=proposal_pk, project_id=project_pk)
+    
+    def perform_update(self, serializer):
+        instance = self.get_object()
+        serializer.save(freelancer=instance.freelancer)
