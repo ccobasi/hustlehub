@@ -2,6 +2,7 @@ from django.db import models
 from project.models import Project
 from proposal.models import Proposal
 from user.models import User
+from django.utils.translation import gettext_lazy as _
 
 class Contract(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="contracts")
