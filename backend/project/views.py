@@ -29,12 +29,19 @@ class ProjectListCreateView(APIView):
 class ProjectDetailView(APIView):
   permission_classes = [IsAuthenticated]
   authentication_classes = [JWTAuthentication]
+  queryset = Project.objects.all()
+  serializer_class = ProjectSerializer
   
   def get_object(self, pk):
     try:
       return Project.objects.get(pk=pk)
     except Project.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
+    
+  def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['include_proposals'] = True
+        return context
   
   def get(self, request, pk):
         project = self.get_object(pk)

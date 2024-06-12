@@ -2,13 +2,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Container, Typography, Box, CircularProgress, MenuItem, Select } from "@mui/material";
+import { Container, Typography, Box, Button, CircularProgress, MenuItem, Select } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
+
 
 const ProjectDetails = () => {
   const { id } = useParams(); 
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProjectDetails = async () => {
@@ -66,6 +70,23 @@ const ProjectDetails = () => {
   }
 };
 
+const createContract = async () => {
+    toast.success("Redirected to contract page");
+      navigate('/create-contract');
+    // try {
+    //   const response = await axios.post(`http://localhost:8000/contract/contracts/`, {
+    //     project_id: id
+    //   });
+    //   console.log('Contract created successfully:', response.data);
+    //   // Optionally, you can refresh the project details or navigate to the contract details page
+    // } catch (error) {
+    //   console.error("Failed to create contract:", error);
+    //   if (error.response) {
+    //     console.log('Error response data:', error.response.data);
+    //   }
+    // }
+  };
+
   if (loading) {
     return (
       <Container component="main" maxWidth="md">
@@ -89,11 +110,20 @@ const ProjectDetails = () => {
   return (
     <Container component="main" maxWidth="md">
       <Box sx={{ mt: 4, mb: 4 }}>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 12, mb: 2, backgroundColor: "#87CEEB", color: "white" }}
+            onClick={createContract}
+          >
+            Create Contract
+          </Button>
         <Typography variant="h4" sx={{ fontWeight: "600", mb: 2 }}>
           {project.title}
         </Typography>
         <Typography variant="h6" sx={{ mb: 1 }}>
-          Client: {project.client_name}
+          Client: {project.client.first_name} {project.client.last_name}
         </Typography>
         <Typography variant="body1" sx={{ mb: 2 }}>
           {project.description}

@@ -1,13 +1,19 @@
 from rest_framework import serializers
 from .models import Proposal
-from user.serializers import UserRegisterSerializer
+from user.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'first_name', 'last_name', 'email']
 
 
 class ProposalSerializer(serializers.ModelSerializer):
     freelancer_username = serializers.CharField(source="user.email", read_only=True)
     project_title = serializers.CharField(source="project.title", read_only=True)
-    freelancer = UserRegisterSerializer()
-    freelancer = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    freelancer = UserSerializer(read_only=True)
+    
 
 
     class Meta:

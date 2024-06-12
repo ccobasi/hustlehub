@@ -34,7 +34,7 @@ import BrowseProjectPage from './features/project/BrowseProjectsPage'
 import ProjectsUpdatePage from './features/project/ProjectsUpdatePage'
 import Proposal from "./features/user/freelancer/Proposal";
 import ProjectDetails from "./features/user/client/ProjectDetails";
-
+import CreateContract from "./features/user/client/CreateContract";
 
 
  
@@ -155,6 +155,7 @@ function App() {
             <Route path="/freelancer-search" element={<FreelancerSearchPage/>}/>
             <Route path="/proposal" element={<Proposal/>}/>
             <Route path="/project-details/:id" element={<ProjectDetails />} />
+            <Route path="/create-contract/" element={<CreateContract />} />
           </Route>
 
           <Route path="/" element={<UserLayout />}>
