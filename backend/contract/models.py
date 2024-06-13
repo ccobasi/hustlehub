@@ -16,5 +16,10 @@ class Contract(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Date Updated"))
 
+
+    # def __str__(self):
+    #     return f"Contract between {self.client.username} and {self.freelancer.username} for project {self.project.title}"
+
     def __str__(self):
-        return f"Contract for {self.project.title} between {self.client.username} and {self.freelancer.username}"
+        return f"Contract between {self.client.email} and {self.freelancer.email} for project {self.project.title}"
+

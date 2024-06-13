@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Container, Typography, Box, Button, CircularProgress, MenuItem, Select } from "@mui/material";
-import { useNavigate } from 'react-router-dom';
-import { toast } from "react-toastify";
+import CreateContract from './CreateContract';
 
 
 const ProjectDetails = () => {
@@ -12,7 +11,8 @@ const ProjectDetails = () => {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [selectedProposal, setSelectedProposal] = useState(null);
+  const [showCreateContract, setShowCreateContract] = useState(false);
 
   useEffect(() => {
     const fetchProjectDetails = async () => {
@@ -70,21 +70,9 @@ const ProjectDetails = () => {
   }
 };
 
-const createContract = async () => {
-    toast.success("Redirected to contract page");
-      navigate('/create-contract');
-    // try {
-    //   const response = await axios.post(`http://localhost:8000/contract/contracts/`, {
-    //     project_id: id
-    //   });
-    //   console.log('Contract created successfully:', response.data);
-    //   // Optionally, you can refresh the project details or navigate to the contract details page
-    // } catch (error) {
-    //   console.error("Failed to create contract:", error);
-    //   if (error.response) {
-    //     console.log('Error response data:', error.response.data);
-    //   }
-    // }
+  const handleCreateContractClick = (proposal) => {
+    setSelectedProposal(proposal);
+    setShowCreateContract(true);
   };
 
   if (loading) {
@@ -110,15 +98,6 @@ const createContract = async () => {
   return (
     <Container component="main" maxWidth="md">
       <Box sx={{ mt: 4, mb: 4 }}>
-        <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 12, mb: 2, backgroundColor: "#87CEEB", color: "white" }}
-            onClick={createContract}
-          >
-            Create Contract
-          </Button>
         <Typography variant="h4" sx={{ fontWeight: "600", mb: 2 }}>
           {project.title}
         </Typography>
@@ -172,12 +151,30 @@ const createContract = async () => {
                 <MenuItem value="accepted">Accepted</MenuItem>
                 <MenuItem value="rejected">Rejected</MenuItem>
               </Select>
+              <Typography variant="body2">
+                <Button
+                onClick={() => handleCreateContractClick(proposal)}
+                variant="contained"
+                color="primary"
+                sx={{ mt: 2, backgroundColor: "#87CEEB", color: "white" }}
+              >
+                Create Contract
+              </Button>
+              </Typography>
             </Box>
           ))
         ) : (
           <Typography>No proposals found for this project.</Typography>
         )}
       </Box>
+      {showCreateContract && selectedProposal && (
+        <CreateContract
+          projectId={project.id}
+          proposalId={selectedProposal.id}
+          freelancerId={selectedProposal.freelancer.id}
+          clientId={project.client.id}
+        />
+      )}
     </Container>
   );
 };

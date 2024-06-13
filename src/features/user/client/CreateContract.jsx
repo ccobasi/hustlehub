@@ -1,52 +1,52 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import {
   Container,
   Box,
   TextField,
   Button,
   Typography,
-  CircularProgress,
-  MenuItem,
-  Select
+  CircularProgress
 } from '@mui/material';
+import axios from 'axios';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const CreateContract = () => {
-  const { id } = useParams(); // Get project ID from URL
-  const [freelancerId, setFreelancerId] = useState('');
-  const [rate, setRate] = useState('');
-  const [duration, setDuration] = useState('');
-  const [details, setDetails] = useState('');
-  const [status, setStatus] = useState('pending');
+const CreateContract = ({ projectId, proposalId, freelancerId, clientId }) => {
+  const [contractAmount, setContractAmount] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [terms, setTerms] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleCreateContract = async () => {
     setLoading(true);
     setError(null);
 
     const contractData = {
-      project: id,
+      project: projectId,
+      proposal: proposalId,
       freelancer: freelancerId,
-      rate,
-      duration,
-      details,
-      status,
+      client: clientId,
+      contract_amount: contractAmount,
+      start_date: startDate,
+      end_date: endDate,
+      terms: terms,
     };
 
     try {
-      const response = await axios.post(`http://localhost:8000/contracts/`, contractData, {
+      const response = await axios.post(`http://localhost:8000/contract/contracts/`, contractData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
       if (response.status === 201) {
-        // Contract created successfully
         console.log('Contract created:', response.data);
-        // Redirect or show success message
+        toast.success("Contract created successfully.");
+        navigate('/client');
       } else {
         setError('Failed to create contract.');
       }
@@ -73,59 +73,104 @@ const CreateContract = () => {
 
         <TextField
           fullWidth
-          label="Freelancer ID"
-          value={freelancerId}
-          onChange={(e) => setFreelancerId(e.target.value)}
+          label="Contract Amount"
+          type="number"
+          value={contractAmount}
+          onChange={(e) => setContractAmount(e.target.value)}
           margin="normal"
           variant="outlined"
         />
 
         <TextField
           fullWidth
-          label="Rate"
-          value={rate}
-          onChange={(e) => setRate(e.target.value)}
+          label="Start Date"
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
           margin="normal"
           variant="outlined"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
 
         <TextField
           fullWidth
-          label="Duration (days)"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
+          label="End Date"
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
           margin="normal"
           variant="outlined"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
 
         <TextField
           fullWidth
-          label="Details"
-          value={details}
-          onChange={(e) => setDetails(e.target.value)}
+          label="Terms"
+          value={terms}
+          onChange={(e) => setTerms(e.target.value)}
           margin="normal"
           variant="outlined"
           multiline
           rows={4}
         />
 
-        <Select
+        {/* Hidden fields for IDs */}
+        <input type="hidden" name="projectId" value={projectId} />
+        <input type="hidden" name="proposalId" value={proposalId} />
+        <input type="hidden" name="freelancerId" value={freelancerId} />
+        <input type="hidden" name="clientId" value={clientId} />
+
+        {/* Displaying IDs */}
+        <TextField
           fullWidth
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          displayEmpty
+          label="Project ID"
+          value={projectId}
           margin="normal"
-        >
-          <MenuItem value="pending">Pending</MenuItem>
-          <MenuItem value="active">Active</MenuItem>
-          <MenuItem value="completed">Completed</MenuItem>
-        </Select>
+          variant="outlined"
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <TextField
+          fullWidth
+          label="Proposal ID"
+          value={proposalId}
+          margin="normal"
+          variant="outlined"
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <TextField
+          fullWidth
+          label="Freelancer ID"
+          value={freelancerId}
+          margin="normal"
+          variant="outlined"
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <TextField
+          fullWidth
+          label="Client ID"
+          value={clientId}
+          margin="normal"
+          variant="outlined"
+          InputProps={{
+            readOnly: true,
+          }}
+        />
 
         <Button
           fullWidth
           variant="contained"
           color="primary"
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, backgroundColor: "#87CEEB", color: "white" }}
           onClick={handleCreateContract}
           disabled={loading}
         >
