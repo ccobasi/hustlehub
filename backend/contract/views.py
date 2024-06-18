@@ -78,14 +78,6 @@ class UserContractsView(generics.ListAPIView):
         user_id = self.kwargs['user_id']
         return Contract.objects.filter(client_id=user_id)
     
-
-# class ClientContractsView(APIView):
-#     def get(self, request, user_id):
-#         contracts = Contract.objects.filter(client_id=user_id)
-#         if not contracts.exists():
-#             return Response({"detail": "No contracts found for the given user."}, status=status.HTTP_404_NOT_FOUND)
-#         serializer = ContractSerializer(contracts, many=True)
-#         return Response(serializer.data)
     
 
 class ClientContractsView(APIView):
@@ -98,3 +90,26 @@ class ClientContractsView(APIView):
             return Response({"error": "Contracts not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+
+        # Ensure the client is authorized to update this contract
+        if instance.client != request.user:
+            return Response({"detail": "You are not authorized to update this contract."}, status=status.HTTP_403_FORBIDDEN)
+        
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
+        return Response(serializer.data)
+
+
+
+
+
+
+
+
+
