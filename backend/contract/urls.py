@@ -8,4 +8,5 @@ urlpatterns = [
     path('contracts/<int:pk>/', ContractDetailView.as_view(), name='contract-detail'),
     # path('user/<int:user_id>/contracts/', UserContractsView.as_view(), name='user-contracts'),
     path('users/<int:user_id>/contracts/', ClientContractsView.as_view(), name='user-contracts'),
+    path('user/<int:user_id>/contracts/', FreelancerContractsView.as_view(), name='user-contracts'),
 ]

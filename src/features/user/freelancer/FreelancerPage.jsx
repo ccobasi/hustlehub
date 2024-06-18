@@ -7,10 +7,12 @@ import FreelancerSecondFeature from "./AnalyticsContainer";
 import FreelancerThirdFeature from "./ProjectContainer";
 import FreelancerFourthFeature from "./Earning";
 import FreelancerFifthFeature from "./ReviewsAndRatings";
+import FreelancerContract from "./FreelancerContract";
 
-export default function FreelancerPage() {
+export default function FreelancerPage({userId}) {
   let navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
+  userId = user ? user.id : null;
   const jwt_access=localStorage.getItem('access')
 
   useEffect(()=>{
@@ -53,67 +55,7 @@ export default function FreelancerPage() {
         {/*Second Freelancer Feature*/}
         <FreelancerSecondFeature />
         {/*Second Heading*/}
-        <Stack direction="row">
-          <Typography
-            variant="h6"
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: "600",
-              fontSize: "16px",
-              lineHeight: "20.8px",
-              textAlign: "start",
-  
-              color: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.primary.lightModeHeroTitle
-                  : theme.palette.primary.darkModeHeroTitle,
-  
-              pt: "50px",
-  
-              ml: "4%",
-             
-            }}
-          >
-            My Projects
-          </Typography>
-          <Link
-            href="/categories"
-            sx={{
-              textDecoration: "none",
-              ml: "62%",
-              color: "#AFB0B6",
-              mt: "6%",
-
-              fontFamily:"Poppins",
-              fontWeight:"400",
-              fontSize:"13px",
-              lineHeight:"20.8px",
-              letterSpacing:"-1%"
-
-            }}
-          >
-            See all
-          </Link>
-          <Link
-            href="/browse-project"
-            sx={{
-              textDecoration: "none",
-              ml: "2%",
-              color: "#AFB0B6",
-              mt: "6%",
-
-              fontFamily:"Poppins",
-              fontWeight:"400",
-              fontSize:"13px",
-              lineHeight:"20.8px",
-              letterSpacing:"-1%"
-
-            }}
-          >
-            Search jobs
-          </Link>
-        </Stack>
-
+       
         {/*Third Freelancer Feature*/}
 
         <FreelancerThirdFeature />
@@ -156,13 +98,13 @@ export default function FreelancerPage() {
               letterSpacing:"-1%"
             }}
           >
-            See all
+          
           </Link>
         </Stack>
 
         {/**Freelancer Fourth Feature */}
-        <FreelancerFourthFeature />
-
+        {/* <FreelancerFourthFeature /> */}
+        <FreelancerContract userId={userId}/>
         {/*Fourth Heading*/}
 
         <Stack direction="row" sx={{ mt: "20%" }}>
