@@ -2,7 +2,7 @@ import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import SignUp from "./features/components/SignUp";
 import SignIn from "./features/components/SignIn";
 import VerifyEmail from "./features/components/VerifyEmail";
@@ -35,6 +35,13 @@ import ProjectsUpdatePage from './features/project/ProjectsUpdatePage'
 import Proposal from "./features/user/freelancer/Proposal";
 import ProjectDetails from "./features/user/client/ProjectDetails";
 import CreateContract from "./features/user/client/CreateContract";
+
+
+const ClientPageWithUser = () => {
+  const { userId } = useParams();
+  console.log('ClientPageWithUser - userId:', userId);
+  return <ClientPage userId={userId} />;
+};
 
 
  
@@ -156,6 +163,7 @@ function App() {
             <Route path="/proposal" element={<Proposal/>}/>
             <Route path="/project-details/:id" element={<ProjectDetails />} />
             <Route path="/create-contract/" element={<CreateContract />} />
+            <Route path="/client/:userId" element={<ClientPageWithUser />} />
           </Route>
 
           <Route path="/" element={<UserLayout />}>

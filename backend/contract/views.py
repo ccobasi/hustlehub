@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .models import Contract
 from proposal.models import Proposal
 from .serializers import ContractSerializer
+from rest_framework.views import APIView
 
 class ContractListCreateView(generics.ListCreateAPIView):
     queryset = Contract.objects.all()
@@ -68,3 +69,20 @@ class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
         
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserContractsView(generics.ListAPIView):
+    serializer_class = ContractSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        return Contract.objects.filter(client_id=user_id)
+    
+
+class ClientContractsView(APIView):
+    def get(self, request, user_id):
+        contracts = Contract.objects.filter(client_id=user_id)
+        if not contracts.exists():
+            return Response({"detail": "No contracts found for the given user."}, status=status.HTTP_404_NOT_FOUND)
+        serializer = ContractSerializer(contracts, many=True)
+        return Response(serializer.data)

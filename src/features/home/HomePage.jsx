@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { HomeHero } from "./HomeHero";
+// import { HomeHero } from "./HomeHero";
 import { HomeCategories } from "./HomeCategories";
 import { HomeTestimonials } from "./HomeTestimonials";
 import { HomeTalents } from "./HomeTalents";
 import { WhyBusinessesTurnToHustleHub } from "./WhyHustleHubFeature";
 import { HomeGreatWork } from "./HomeGreatWork";
 import { Container } from "@mui/material";
+import { HeroSection } from "./HeroSection";
 
 export default function HomePage() {
   //Instatiate useNavigate
@@ -22,7 +23,7 @@ export default function HomePage() {
       <Container component="main" maxWidth="lg">
         {/*First Home Feature*/}
 
-        <HomeHero />
+        <HeroSection />
 
         {/*Second Home Feature*/}
         <HomeCategories />

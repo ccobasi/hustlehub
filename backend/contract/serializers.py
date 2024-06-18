@@ -4,9 +4,14 @@ from proposal.models import Proposal
 from django.utils.translation import gettext_lazy as _
 
 class ContractSerializer(serializers.ModelSerializer):
+    contract_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Contract
         fields = '__all__'
+
+    def get_contract_name(self, obj):
+        return str(obj)
 
     
     def validate(self, data):
