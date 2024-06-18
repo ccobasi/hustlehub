@@ -35,6 +35,7 @@ import ProjectsUpdatePage from './features/project/ProjectsUpdatePage'
 import Proposal from "./features/user/freelancer/Proposal";
 import ProjectDetails from "./features/user/client/ProjectDetails";
 import CreateContract from "./features/user/client/CreateContract";
+import ContractDetails from "./features/user/client/ContractDetails";
 
 
 const ClientPageWithUser = () => {
@@ -164,6 +165,7 @@ function App() {
             <Route path="/project-details/:id" element={<ProjectDetails />} />
             <Route path="/create-contract/" element={<CreateContract />} />
             <Route path="/client/:userId" element={<ClientPageWithUser />} />
+            <Route path="/contract/:id" element={<ContractDetails />} />
           </Route>
 
           <Route path="/" element={<UserLayout />}>

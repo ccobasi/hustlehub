@@ -4,6 +4,13 @@ from proposal.models import Proposal
 from user.models import User
 from django.utils.translation import gettext_lazy as _
 
+
+STATUS_CHOICES = [
+        ('pending', _('Pending')),
+        ('active', _('Active')),
+        ('completed', _('Completed')),
+    ]
+
 class Contract(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="contracts")
     proposal = models.OneToOneField(Proposal, on_delete=models.CASCADE, related_name="contract")
@@ -13,12 +20,10 @@ class Contract(models.Model):
     start_date = models.DateField(verbose_name=_("Start Date"))
     end_date = models.DateField(verbose_name=_("End Date"))
     terms = models.TextField(verbose_name=_("Contract Terms"))
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending', verbose_name=_("Status"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Date Updated"))
 
-
-    # def __str__(self):
-    #     return f"Contract between {self.client.username} and {self.freelancer.username} for project {self.project.title}"
 
     def __str__(self):
         return f"Contract between {self.client.email} and {self.freelancer.email} for project {self.project.title}"

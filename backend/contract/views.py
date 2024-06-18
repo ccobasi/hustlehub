@@ -79,10 +79,22 @@ class UserContractsView(generics.ListAPIView):
         return Contract.objects.filter(client_id=user_id)
     
 
+# class ClientContractsView(APIView):
+#     def get(self, request, user_id):
+#         contracts = Contract.objects.filter(client_id=user_id)
+#         if not contracts.exists():
+#             return Response({"detail": "No contracts found for the given user."}, status=status.HTTP_404_NOT_FOUND)
+#         serializer = ContractSerializer(contracts, many=True)
+#         return Response(serializer.data)
+    
+
 class ClientContractsView(APIView):
     def get(self, request, user_id):
-        contracts = Contract.objects.filter(client_id=user_id)
-        if not contracts.exists():
-            return Response({"detail": "No contracts found for the given user."}, status=status.HTTP_404_NOT_FOUND)
-        serializer = ContractSerializer(contracts, many=True)
-        return Response(serializer.data)
+        try:
+            contracts = Contract.objects.filter(client_id=user_id)
+            serializer = ContractSerializer(contracts, many=True)
+            return Response(serializer.data)
+        except Contract.DoesNotExist:
+            return Response({"error": "Contracts not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

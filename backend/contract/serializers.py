@@ -5,6 +5,9 @@ from django.utils.translation import gettext_lazy as _
 
 class ContractSerializer(serializers.ModelSerializer):
     contract_name = serializers.SerializerMethodField()
+    project_title = serializers.CharField(source='project.title', read_only=True)
+    client_name = serializers.SerializerMethodField()
+    freelancer_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Contract
@@ -12,7 +15,13 @@ class ContractSerializer(serializers.ModelSerializer):
 
     def get_contract_name(self, obj):
         return str(obj)
+    
+    def get_client_name(self, obj):
+        return f"{obj.client.first_name} {obj.client.last_name}"
 
+    def get_freelancer_name(self, obj):
+        return f"{obj.freelancer.first_name} {obj.freelancer.last_name}"
+    
     
     def validate(self, data):
         
