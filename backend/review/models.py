@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from .models import Contract
+from contract.models import Contract
 from user.models import User
 
 class Review(models.Model):

@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     "project",
     "proposal",
     "contract",
+    "review",
     "rest_framework",
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
