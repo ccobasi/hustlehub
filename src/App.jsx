@@ -36,6 +36,7 @@ import Proposal from "./features/user/freelancer/Proposal";
 import ProjectDetails from "./features/user/client/ProjectDetails";
 import CreateContract from "./features/user/client/CreateContract";
 import ContractDetails from "./features/user/client/ContractDetails";
+import ContractReviews from "./features/user/client/ContractReviews";
 
 
 const ClientPageWithUser = () => {
@@ -166,6 +167,7 @@ function App() {
             <Route path="/create-contract/" element={<CreateContract />} />
             <Route path="/client/:userId" element={<ClientPageWithUser />} />
             <Route path="/contract/:id" element={<ContractDetails />} />
+            <Route path="/contract/reviews/:contractId" element={<ContractReviews />} />
           </Route>
 
           <Route path="/" element={<UserLayout />}>

@@ -2,9 +2,13 @@ from rest_framework import serializers
 from .models import Review
 
 class ReviewSerializer(serializers.ModelSerializer):
-    reviewer_name = serializers.ReadOnlyField(source='reviewer.username')
+    reviewer_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Review
-        fields = ['id', 'contract', 'reviewer', 'reviewer_name', 'rating', 'comment', 'created_at']
-        read_only_fields = ['reviewer', 'created_at']
+        fields = ['contract', 'reviewer', 'reviewer_name', 'rating', 'comment']
+        read_only_fields = ['reviewer']
+        
+    
+    def get_reviewer_name(self, obj):
+        return f"{obj.reviewer.first_name} {obj.reviewer.last_name}"
