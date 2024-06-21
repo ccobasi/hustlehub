@@ -3,7 +3,7 @@ import freelancerCardData from "./freelancerCardData";
 
 import { Grid } from "@mui/material";
 
-export const FreelancerFirstFeature = () => {
+const FreelancerFirstFeature = () => {
   
   //Data mapping
   let cardContainer = freelancerCardData.map((el) => {
@@ -26,3 +26,5 @@ export const FreelancerFirstFeature = () => {
     </Grid>//Grid End
   );
 };
+
+export default FreelancerFirstFeature;
