@@ -17,3 +17,5 @@ class ReviewSerializer(serializers.ModelSerializer):
     
     def get_freelancer_name(self, obj):
         return f"{obj.freelancer.first_name} {obj.freelancer.last_name}"
+
+    
