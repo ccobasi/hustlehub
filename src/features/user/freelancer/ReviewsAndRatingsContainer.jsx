@@ -40,7 +40,7 @@ const FreelancerReviewsContainer = ({ freelancerId }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/review/freelancer/${freelancerId}/reviews/`);
+        const response = await axios.get(`http://localhost:8000/freelancer/${freelancerId}/reviews/`);
         setReviews(response.data);
       } catch (error) {
         if (error.response && error.response.status === 404) {
@@ -55,7 +55,7 @@ const FreelancerReviewsContainer = ({ freelancerId }) => {
 
     fetchReviews();
   }, [freelancerId]);
-
+  
   return (
     <FreelancerFifthFeature reviews={reviews} loading={loading} error={error} />
   );

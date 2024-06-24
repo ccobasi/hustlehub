@@ -4,6 +4,9 @@ from .models import Reviews
 from .serializers import ReviewSerializer
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 class ReviewCreateView(generics.CreateAPIView):
     queryset = Reviews.objects.all()
@@ -27,6 +30,13 @@ class ReviewListView(generics.ListAPIView):
     def get_queryset(self):
         contract_id = self.kwargs['contract_id']
         return Reviews.objects.filter(contract_id=contract_id)
+
+
+class FreelancerReviewList(APIView):
+    def get(self, request, freelancer_id, format=None):
+        reviews = Reviews.objects.filter(freelancer_id=freelancer_id)
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 
