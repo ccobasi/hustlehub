@@ -3,6 +3,8 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
+import django_heroku
+import dj_database_url
 import environ 
 
 env = environ.Env(
@@ -170,7 +172,8 @@ EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', default='False').lower() == '
 CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",  
-    "http://localhost:5173",  
+    "http://localhost:5173",
+    "https://husslinghub.com",  
 ]
 CSRF_TRUSTED_ORIGINS=[
     "http://localhost:8080",
@@ -191,3 +194,8 @@ SOCIAL_AUTH_PASSWORD=os.getenv("SOCIAL_AUTH_PASSWORD")
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+django_heroku.settings(locals())
