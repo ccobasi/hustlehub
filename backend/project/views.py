@@ -1,9 +1,10 @@
-from rest_framework import status
+from rest_framework import status, viewsets, permissions
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Project
+from .models import Project, Milestone, Transaction
 from proposal.models import Proposal
-from .serializers import ProjectSerializer
+from .serializers import ProjectSerializer, MilestoneSerializer, TransactionSerializer
 from contract.serializers import ContractSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -124,4 +125,84 @@ class UserProjectList(APIView):
         serializer = ProjectSerializer(projects, many=True)
         return Response(serializer.data)
   
-    
+
+# class MilestoneViewSet(viewsets.ModelViewSet):
+#     queryset = Milestone.objects.all()
+#     serializer_class = MilestoneSerializer
+
+#     @action(detail=True, methods=['post'])
+#     def complete(self, request, pk=None):
+#         milestone = self.get_object()
+#         milestone.is_completed = True
+#         milestone.save()
+#         return Response({'status': 'milestone completed'})
+
+# class TransactionViewSet(viewsets.ModelViewSet):
+#     queryset = Transaction.objects.all()
+#     serializer_class = TransactionSerializer
+
+#     @action(detail=True, methods=['post'])
+#     def release(self, request, pk=None):
+#         transaction = self.get_object()
+#         transaction.is_released = True
+#         transaction.save()
+#         return Response({'status': 'transaction released'})   
+class MilestoneViewSet(APIView):
+    permission_classes = [permissions.IsAuthenticated]  
+    authentication_classes = [JWTAuthentication]
+
+    def get_queryset(self):
+        return Milestone.objects.filter(user=self.request.user)  
+
+    def get_serializer_class(self):
+        return MilestoneSerializer
+
+    def get_object(self, pk):
+        try:
+            return Milestone.objects.get(pk=pk, user=self.request.user)  
+        except Milestone.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request):
+        milestones = self.get_queryset()
+        serializer = self.get_serializer_class()(milestones, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['post'])
+    def complete(self, request, pk=None):
+        milestone = self.get_object(pk)
+        if milestone:
+            milestone.is_completed = True
+            milestone.save()
+            return Response({'status': 'milestone completed'})
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+class TransactionViewSet(APIView):
+    permission_classes = [permissions.IsAuthenticated]  
+    authentication_classes = [JWTAuthentication]
+
+    def get_queryset(self):
+        return Transaction.objects.filter(user=self.request.user)  
+
+    def get_serializer_class(self):
+        return TransactionSerializer
+
+    def get_object(self, pk):
+        try:
+            return Transaction.objects.get(pk=pk, user=self.request.user)  
+        except Transaction.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request):
+        transactions = self.get_queryset()
+        serializer = self.get_serializer_class()(transactions, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['post'])
+    def release(self, request, pk=None):
+        transaction = self.get_object(pk)
+        if transaction:
+            transaction.is_released = True
+            transaction.save()
+            return Response({'status': 'transaction released'})
+        return Response(status=status.HTTP_404_NOT_FOUND)

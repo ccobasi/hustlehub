@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project
+from .models import Project, Milestone, Transaction
 from datetime import date
 from proposal.serializers import ProposalSerializer
 from user.serializers import UserRegisterSerializer
@@ -43,3 +43,12 @@ class ProjectSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"description": "Description is required."})
         return data
 
+class MilestoneSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Milestone
+        fields = ['id', 'project', 'title', 'description', 'amount', 'due_date', 'is_completed']
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = ['id', 'milestone', 'amount', 'transaction_date', 'is_released']
