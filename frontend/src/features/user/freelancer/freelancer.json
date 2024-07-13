@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "jobTitle": "UI/UX Designer",
+    "company": "Google Inc",
+    "location": "Maryland USA",
+    "task": "Design",
+    "jobType": "Part time",
+    "rank": "Junior designer",
+    "salary": "$15k/Mo",
+    "time":"25 minutes ago",
+    "sourceSet": "./frontend/dist/assets/analyze-and-outperform-competition.png, ./frontend/dist/assets/analyze-and-outperform-competition.jpg",
+    "imageLabel": "Haley Jessica",
+    "image":"./frontend/dist/assets/analyze-and-outperform-competition.png"
+  },
+  {
+    "id": 1,
+    "jobTitle": "Lead Designer",
+    "company": "Dribble Inc",
+    "location": "California, USA",
+    "task": "Graphics",
+    "jobType": "Full time",
+    "rank": "Trainee designer",
+    "salary": "$20k/Mo",
+    "time":"25 minutes ago",
+    "sourceSet": "./frontend/dist/assets/analyze-and-outperform-competition.png, ./frontend/dist/assets/analyze-and-outperform-competition.jpg",
+    "imageLabel": "Haley Jessica"
+  },
+  {
+    "id": 2,
+    "jobTitle": "Junior Designer",
+    "company": "Google Inc",
+    "location": "New York, USA",
+    "task": "Development",
+    "jobType": "Full time",
+    "rank": "Senior developer",
+    "salary": "$10k/Mo",
+    "time":"25 minutes ago",
+    "sourceSet": "./frontend/dist/assets/analyze-and-outperform-competition.png, ./frontend/dist/assets/analyze-and-outperform-competition.jpg",
+    "imageLabel": "Haley Jessica"
+  }
+]

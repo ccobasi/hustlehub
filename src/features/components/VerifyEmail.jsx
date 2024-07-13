@@ -17,7 +17,7 @@ const VerifyEmail = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(otp){
-            const response = await axios.post("http://localhost:8000/user/verify-email/", {'otp':otp})
+            const response = await axios.post("https://ccobasi.pythonanywhere.com/user/verify-email/", {'otp':otp})
             if(response.status === 200){
                 navigate("/sign-in")
                 toast.success(response.data.message)
