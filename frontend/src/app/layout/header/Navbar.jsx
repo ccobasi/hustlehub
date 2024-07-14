@@ -2,9 +2,9 @@ import { Stack, Typography } from "@mui/material";
 import { CustomButton } from "./CustomButton";
 import Link from "@mui/material/Link";
 import './headerfooter.css'
-import Logo from '../../../assets/hlogo.png'
+//import Logo from '../../../assets/hlogo.png'
 
-const Navbar = () => {
+const Navbar = ({logo}) => {
   
   return (
     <>
@@ -41,7 +41,7 @@ const Navbar = () => {
                       <CustomButton linkTo="/sign-up">Sign Up</CustomButton>
                     </li>
         </ul>
-        <Link to="/"><img src={Logo} className='logo' alt="logo" /></Link>
+        <Link to="/"><img src={logo} className='logo' alt="logo" /></Link>
       </div>
     </nav>
         </Stack>

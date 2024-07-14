@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { CustomButton } from "../../../app/layout/header/CustomButton";
 import Link from "@mui/material/Link";
 import './headerfooter.css'
-import Logo from './frontend/dist/assets/hlogo.png'
+//import Logo from './frontend/dist/assets/hlogo.png'
 
 const Navbar = () => {
   
@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="navbar-container container">
         <input type="checkbox" name="" id="" />
       
-        <Link to="/"><img src={Logo} className='logo' alt="logo" /></Link>
+        <Link to="/"><img src={logo} className='logo' alt="logo" /></Link>
         <CustomButton linkTo="/sign-in">Sign In</CustomButton>
       </div>
     </nav>

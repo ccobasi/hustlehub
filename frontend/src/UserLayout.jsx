@@ -8,7 +8,7 @@ const UserLayout = () => {
   return (
     <>
       {/* Call site for the user dashboard header */}
-      <UserDashboardHeader />
+      <UserDashboardHeader logo="./frontend/dist/assets/logo.png" />
       {/* Outlet for the layout of user dashboard header */}
       <Outlet />
       {/* Box for footer of medium and large devices  */}

@@ -7,7 +7,7 @@ const token=localStorage.getItem('access') ? JSON.parse(localStorage.getItem('ac
 
 const refresh_token=localStorage.getItem('refresh') ? JSON.parse(localStorage.getItem('refresh')): ""
 
-const baseURL="http://localhost:8000/user"
+const baseURL="https://ccobasi.pythonanywhere.com/user"
 const axiosInstance=axios.create({
     baseURL:baseURL,
     'Content-type':'application/json',

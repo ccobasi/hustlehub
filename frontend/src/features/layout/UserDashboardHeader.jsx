@@ -11,7 +11,8 @@ import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
 
-export default function UserDashboardHeader() {
+
+export default function UserDashboardHeader({logo}) {
   const theme = useTheme();
   let navigate = useNavigate();
   const jwt_access=localStorage.getItem('access')
@@ -162,7 +163,7 @@ export default function UserDashboardHeader() {
               }}
               href="/"
             >
-              <img src={Logo} alt="logo" style={{ width: '80px', height: '50px' }} />
+              <img src={logo} alt="logo" style={{ width: '80px', height: '50px' }} />
             </Link>
 
             <Link
