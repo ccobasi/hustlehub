@@ -25,7 +25,7 @@ function BrowseProjectPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/project/projects');
+        const response = await axios.get('https://ccobasi.pythonanywhere.com/project/projects');
         setProjects(response.data);
       } catch (error) {
         console.error('Error fetching projects:', error);
