@@ -16,6 +16,7 @@ import { Avatar, Stack } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { ArrowForwardIos } from "@mui/icons-material";
 import Search from "@mui/icons-material/Search";
+import Logo from "../../assets/hustlehub-transparent-logo250x100.png"
 
 
 // Data for mobile modal
@@ -571,7 +572,7 @@ export default function ResponsiveNavBar() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AppLogo  src="/assets/hustlehub-transparent-logo250x100.png" alt="Logo"/>
+            <AppLogo  src={Logo} alt="Logo"/>
 
             <MobileTransitionsModal />
             <MobileUserAppTitle />

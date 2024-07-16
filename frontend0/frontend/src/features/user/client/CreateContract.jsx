@@ -37,7 +37,7 @@ const CreateContract = ({ projectId, proposalId, freelancerId, clientId }) => {
     };
 
     try {
-      const response = await axios.post(`http://localhost:8000/contract/contracts/`, contractData, {
+      const response = await axios.post(`https://ccobasi.pythonanywhere.com/contract/contracts/`, contractData, {
         headers: {
           'Content-Type': 'application/json',
         },

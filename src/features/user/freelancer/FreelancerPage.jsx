@@ -66,6 +66,67 @@ function FreelancerPage({ userId }) {
 
         {/* Second Freelancer Feature */}
         <FreelancerSecondFeature />
+        <Stack direction="row">
+          <Typography
+            variant="h6"
+            sx={{
+              fontFamily: "Poppins",
+              fontWeight: "600",
+              fontSize: "16px",
+              lineHeight: "20.8px",
+              textAlign: "start",
+  
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeHeroTitle
+                  : theme.palette.primary.darkModeHeroTitle,
+  
+              pt: "50px",
+  
+              ml: "4%",
+             
+            }}
+          >
+            My Projects
+          </Typography>
+          <Link
+            href="/categories"
+            sx={{
+              textDecoration: "none",
+              ml: "62%",
+              color: "#AFB0B6",
+              mt: "6%",
+
+              fontFamily:"Poppins",
+              fontWeight:"400",
+              fontSize:"13px",
+              lineHeight:"20.8px",
+              letterSpacing:"-1%"
+
+            }}
+          >
+            See all
+          </Link>
+          <Link
+            href="/browse-project"
+            sx={{
+              textDecoration: "none",
+              ml: "2%",
+              color: "#AFB0B6",
+              mt: "6%",
+
+              fontFamily:"Poppins",
+              fontWeight:"400",
+              fontSize:"13px",
+              lineHeight:"20.8px",
+              letterSpacing:"-1%"
+
+            }}
+          >
+            Search jobs
+          </Link>
+        </Stack>
+
         {/* Second Heading */}
         {/* Third Freelancer Feature */}
         <FreelancerThirdFeature />
