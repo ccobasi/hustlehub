@@ -3,10 +3,11 @@ import React, {useEffect} from "react";
 import { Typography, Link, Stack, Container, Box } from "@mui/material";
 import { ClientFirstFeature } from "./Client";
 import ClientSecondFeature from "./ProjectContainer";
+import ClientThirdFeature from './ClientThirdFeature';
 
-
-const ClientPage = () => {
-  
+const ClientPage = ({userId}) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  userId = user ? user.id : null;
   
  
 
@@ -69,6 +70,10 @@ const ClientPage = () => {
           View All Project
         </Link>
       </Box>
+
+      <ClientThirdFeature userId={userId} />
+
+   
 
       <Stack direction="row">
         <Typography
