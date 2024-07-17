@@ -58,7 +58,7 @@ const ProjectDetails = () => {
 
   return (
     <Container component="main" maxWidth="md">
-      <Box sx={{ mt: 4, mb: 4 }}>
+      <Box sx={{ mt: 14, mb: 4 }}>
         <Typography variant="h4" sx={{ fontWeight: "600", mb: 2 }}>
           {project.title}
         </Typography>

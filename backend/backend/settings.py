@@ -168,7 +168,8 @@ EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', default='False').lower() == '
 CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",  
-    "http://localhost:5173",  
+    "http://localhost:5173",
+    "http://localhost:5176",  
 ]
 CSRF_TRUSTED_ORIGINS=[
     "http://localhost:8080",

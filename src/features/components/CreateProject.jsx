@@ -188,7 +188,7 @@ const handleDateChange = (date) => {
             id="client"
             label="Client"
             name="client"
-            value={user?.id || ""}
+            value={user?.names || ""}
             disabled
             fullWidth
             sx={{ mb: 2 }}
