@@ -90,20 +90,23 @@ class ClientContractsView(APIView):
             return Response({"error": "Contracts not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-    def update(self, request, *args, **kwargs):
-        partial = kwargs.pop('partial', False)
-        instance = self.get_object()
+    
+    
+    def patch(self, request, user_id, pk):
+        try:
+            contract = Contract.objects.get(pk=pk)
+            if contract.client.id != user_id:
+                return Response({"detail": "You are not authorized to update this contract."}, status=status.HTTP_403_FORBIDDEN)
+            
+            serializer = ContractSerializer(contract, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
 
-        # Ensure the client is authorized to update this contract
-        if instance.client != request.user:
-            return Response({"detail": "You are not authorized to update this contract."}, status=status.HTTP_403_FORBIDDEN)
-        
-        serializer = self.get_serializer(instance, data=request.data, partial=partial)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-
-        return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Contract.DoesNotExist:
+            return Response({"error": "Contract not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
 class FreelancerContractsView(APIView):

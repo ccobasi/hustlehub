@@ -1,14 +1,15 @@
-// eslint-disable-next-line no-unused-vars
+// // eslint-disable-next-line no-unused-vars
 // import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
+// import { useParams, useNavigate } from 'react-router-dom';
 // import axios from 'axios';
-// import { Container, Box, CircularProgress, Typography, Select, MenuItem } from '@mui/material';
+// import { Container, Box, CircularProgress, Typography, Select, MenuItem, Button } from '@mui/material';
 
 // const ContractDetails = () => {
 //   const { id } = useParams();
 //   const [contract, setContract] = useState(null);
 //   const [loading, setLoading] = useState(true);
 //   const [error, setError] = useState(null);
+//   const navigate = useNavigate();
 
 //   useEffect(() => {
 //     const fetchContractDetails = async () => {
@@ -31,31 +32,35 @@
 //   }, [id]);
 
 //   const handleContractStatusChange = async (status) => {
-//   try {
-//     const contractResponse = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
-//     const currentContractData = contractResponse.data;
+//     try {
+//       const contractResponse = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
+//       const currentContractData = contractResponse.data;
 
-//     const updatedData = {
-//       ...currentContractData,
-//       status: status
-//     };
+//       const updatedData = {
+//         ...currentContractData,
+//         status: status
+//       };
 
-//     const response = await axios.put(`http://localhost:8000/contract/contracts/${id}/`, updatedData, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
+//       const response = await axios.put(`http://localhost:8000/contract/contracts/${id}/`, updatedData, {
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//       });
 
-//     setContract(response.data);
-//   } catch (error) {
-//     console.error("Failed to update contract status:", error);
+//       setContract(response.data);
+//     } catch (error) {
+//       console.error("Failed to update contract status:", error);
 
-//     if (error.response) {
-//       console.log('Error response data:', error.response.data);
+//       if (error.response) {
+//         console.log('Error response data:', error.response.data);
+//       }
 //     }
-//   }
-// };
+//   };
 
+//   const handleReviewClick = () => {
+//     // navigate(`/contract/reviews/`);
+//     navigate(`/contract/reviews/${id}`);
+//   };
 
 //   if (loading) {
 //     return (
@@ -115,6 +120,23 @@
 //               <MenuItem value="active">Active</MenuItem>
 //               <MenuItem value="completed">Completed</MenuItem>
 //             </Select>
+//             {contract.status === "completed" && (
+//               <Button
+//                 variant="contained"
+//                 color="primary"
+//                 onClick={handleReviewClick}
+//                 sx={{
+//                   mt: 1,
+//                   ml: 2,
+//                   backgroundColor: "#87CEEB",
+//                   color: "#fff",
+//                   p: 2,
+//                   fontSize: 17
+//                 }}
+//               >
+//                 Leave a Review
+//               </Button>
+//             )}
 //           </>
 //         )}
 //       </Box>
@@ -123,7 +145,6 @@
 // };
 
 // export default ContractDetails;
-// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -158,17 +179,16 @@ const ContractDetails = () => {
 
   const handleContractStatusChange = async (status) => {
     try {
-      const contractResponse = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
-      const currentContractData = contractResponse.data;
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user) {
+        setError("User not authenticated.");
+        return;
+      }
 
-      const updatedData = {
-        ...currentContractData,
-        status: status
-      };
-
-      const response = await axios.put(`http://localhost:8000/contract/contracts/${id}/`, updatedData, {
+      const response = await axios.patch(`http://localhost:8000/contract/contracts/${id}/`, { status }, {
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
         },
       });
 
@@ -178,12 +198,12 @@ const ContractDetails = () => {
 
       if (error.response) {
         console.log('Error response data:', error.response.data);
+        setError(error.response.data.detail || "Failed to update contract status.");
       }
     }
   };
 
   const handleReviewClick = () => {
-    // navigate(`/contract/reviews/`);
     navigate(`/contract/reviews/${id}`);
   };
 
@@ -270,4 +290,3 @@ const ContractDetails = () => {
 };
 
 export default ContractDetails;
-

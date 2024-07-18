@@ -66,12 +66,12 @@ from django.utils.translation import gettext_lazy as _
 #         if not value.id:
 #             raise serializers.ValidationError(_("The specified client does not exist."))
 #         return value
+
 class ContractSerializer(serializers.ModelSerializer):
     contract_name = serializers.SerializerMethodField()
     project_title = serializers.CharField(source='project.title', read_only=True)
     client_name = serializers.SerializerMethodField()
     freelancer_name = serializers.SerializerMethodField()
-    # freelancer_name = serializers.CharField(source="freelancer.get_full_name", read_only=True)
 
     class Meta:
         model = Contract
@@ -87,25 +87,26 @@ class ContractSerializer(serializers.ModelSerializer):
         return f"{obj.freelancer.first_name} {obj.freelancer.last_name}"
 
     def validate(self, data):
-        if data['start_date'] >= data['end_date']:
-            raise serializers.ValidationError(_("The start date must be before the end date."))
+        if 'start_date' in data and 'end_date' in data:
+            if data['start_date'] >= data['end_date']:
+                raise serializers.ValidationError(_("The start date must be before the end date."))
 
-        if data['contract_amount'] <= 0:
+        if 'contract_amount' in data and data['contract_amount'] <= 0:
             raise serializers.ValidationError(_("The contract amount must be positive."))
 
-        if not data.get('terms'):
+        if 'terms' in data and not data.get('terms'):
             raise serializers.ValidationError(_("Contract terms must be provided."))
 
-        if data['freelancer'] == data['client']:
+        if 'freelancer' in data and 'client' in data and data['freelancer'] == data['client']:
             raise serializers.ValidationError(_("The freelancer and client must be different users."))
 
-        # Ensure the contract is unique for the given project and proposal, excluding the current instance
-        if self.instance:
-            if Contract.objects.filter(project=data['project'], proposal=data['proposal']).exclude(id=self.instance.id).exists():
-                raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
-        else:
-            if Contract.objects.filter(project=data['project'], proposal=data['proposal']).exists():
-                raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
+        if 'project' in data and 'proposal' in data:
+            if self.instance:
+                if Contract.objects.filter(project=data['project'], proposal=data['proposal']).exclude(id=self.instance.id).exists():
+                    raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
+            else:
+                if Contract.objects.filter(project=data['project'], proposal=data['proposal']).exists():
+                    raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
 
         return data
 
