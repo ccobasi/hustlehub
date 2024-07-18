@@ -37,7 +37,7 @@ const SignUp = () => {
 
   const handleSignInWithGoogle = async (response)=>{
     const payload=response.credential
-    const server_res=await axios.post("http://localhost:8000/social_account/google/", {"access_token":payload})
+    const server_res=await axios.post("https://ccobasi.pythonanywhere.com/social_account/google/", {"access_token":payload})
     console.log(server_res);
     const user={
       "email":server_res.data.email,
@@ -101,7 +101,7 @@ const SignUp = () => {
   } else {
     console.log(formData); 
     try {
-      const res = await axios.post("http://localhost:8000/user/register/", formData);
+      const res = await axios.post("https://ccobasi.pythonanywhere.com/user/register/", formData);
       const response = res.data;
       console.log(response);
       if (res.status === 201) {

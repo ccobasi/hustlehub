@@ -10,7 +10,7 @@
 //   useEffect(() => {
 //     const fetchReviews = async () => {
 //       try {
-//         const response = await axios.get(`http://localhost:8000/review/contract/${contractId}/reviews/`);
+//         const response = await axios.get(`https://ccobasi.pythonanywhere.com/review/contract/${contractId}/reviews/`);
 //         setReviews(response.data);
 //       } catch (error) {
 //         setError('Error fetching reviews');
@@ -40,7 +40,7 @@ const FreelancerReviewsContainer = ({ freelancerId }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/freelancer/${freelancerId}/reviews/`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/freelancer/${freelancerId}/reviews/`);
         setReviews(response.data);
       } catch (error) {
         if (error.response && error.response.status === 404) {

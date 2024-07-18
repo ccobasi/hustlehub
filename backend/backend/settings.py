@@ -35,7 +35,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', default=False) == 'True'
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://ccobasi.pythonanywhere.com"]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -183,7 +183,7 @@ CSRF_TRUSTED_ORIGINS=[
     "http://localhost:8080",
     "http://127.0.0.1:5173/",
     "http://127.0.0.1:5174/",
-    "http://127.0.0.1:5175/",
+    "https://ccobasi.pythonanywhere.com",
 ]
 
 print("CORS_ALLOWED_ORIGINS:", CORS_ALLOWED_ORIGINS)

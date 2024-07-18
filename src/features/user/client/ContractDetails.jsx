@@ -14,7 +14,7 @@
 //   useEffect(() => {
 //     const fetchContractDetails = async () => {
 //       try {
-//         const response = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
+//         const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`);
 //         if (response.status === 200) {
 //           setContract(response.data);
 //         } else {
@@ -33,7 +33,7 @@
 
 //   const handleContractStatusChange = async (status) => {
 //     try {
-//       const contractResponse = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
+//       const contractResponse = await axios.get(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`);
 //       const currentContractData = contractResponse.data;
 
 //       const updatedData = {
@@ -41,7 +41,7 @@
 //         status: status
 //       };
 
-//       const response = await axios.put(`http://localhost:8000/contract/contracts/${id}/`, updatedData, {
+//       const response = await axios.put(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`, updatedData, {
 //         headers: {
 //           'Content-Type': 'application/json',
 //         },
@@ -160,7 +160,7 @@ const ContractDetails = () => {
   useEffect(() => {
     const fetchContractDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`);
         if (response.status === 200) {
           setContract(response.data);
         } else {
@@ -185,7 +185,7 @@ const ContractDetails = () => {
         return;
       }
 
-      const response = await axios.patch(`http://localhost:8000/contract/contracts/${id}/`, { status }, {
+      const response = await axios.patch(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`, { status }, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`

@@ -31,7 +31,7 @@ const ContractReviews = () => {
     console.log("Submitting review with data: ", reviewData);
 
     try {
-      const response = await axios.post(`http://localhost:8000/review/contract/reviews/`, reviewData, {
+      const response = await axios.post(`https://ccobasi.pythonanywhere.com/review/contract/reviews/`, reviewData, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }

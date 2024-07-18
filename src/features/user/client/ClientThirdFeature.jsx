@@ -14,7 +14,7 @@ const ClientThirdFeature = ({ userId }) => {
   useEffect(() => {
     const fetchContracts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/contract/users/${userId}/contracts/`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/users/${userId}/contracts/`);
         setContracts(response.data);
       } catch (error) {
         console.error("Error fetching contracts: ", error);
