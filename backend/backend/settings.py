@@ -3,13 +3,13 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
-import django_heroku
-import dj_database_url
+# import django_heroku
+# import dj_database_url
 import environ 
 
-env = environ.Env(
-    DEBUG=(bool, False),
-)
+# env = environ.Env(
+#     DEBUG=(bool, False),
+# )
 
 env_path = Path('.') / '.env'
 load_dotenv(env_path)
@@ -28,8 +28,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', default=False)
+# DEBUG = os.getenv('DEBUG', default=False)
 # DEBUG = env('DEBUG')
+
+# Quick-start development settings - unsuitable for production
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', default=False) == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
@@ -160,11 +164,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', default='False').lower() == 'true' else False
+EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true' else False
 
 
 
@@ -198,4 +202,3 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-django_heroku.settings(locals())

@@ -12,6 +12,15 @@ from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import  PasswordResetTokenGenerator
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.utils import timezone
+from .models import User
+from .otp_models import EmailOTP
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 
@@ -117,3 +126,38 @@ class LogoutUserView(GenericAPIView):
         return Response(status=status.HTTP_200_OK)
     
 
+def generate_otp(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        user, created = User.objects.get_or_create(email=email)
+        if created:
+            user.username = email
+            user.is_active = False
+            user.set_unusable_password()
+            user.save()
+        otp = EmailOTP.objects.create(user=user)
+        send_mail(
+            'Your OTP',
+            f'Your OTP is {otp.otp}',
+            'from@example.com',
+            [email],
+            fail_silently=False,
+        )
+        logger.info(f'OTP generated for {email}')
+        return JsonResponse({'message': 'OTP sent to your email.'}, status=200)
+
+def verify_otp(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        otp_input = request.POST.get('otp')
+        user = get_object_or_404(User, email=email)
+        otp = EmailOTP.objects.filter(user=user).order_by('-created_at').first()
+        if otp and otp.is_valid() and otp.otp == otp_input:
+            user.is_active = True
+            user.save()
+            otp.delete()
+            logger.info(f'OTP verified for {email}')
+            return JsonResponse({'message': 'OTP verified successfully.'}, status=200)
+        else:
+            logger.warning(f'OTP verification failed for {email}')
+            return JsonResponse({'message': 'Invalid or expired OTP.'}, status=400)

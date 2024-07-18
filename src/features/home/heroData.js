@@ -9,7 +9,7 @@ const  heroData = [
       subtitle3:"",
       paragraph3:"",
       cardBg: "/assets/hero450x250.png",
-      cardBgSourceSet:"/assets/hero450x250.png,/assets/hero450x250.png ",
+      //cardBgSourceSet:"/assets/hero450x250.png,/assets/hero450x250.png ",
       
     },
   
