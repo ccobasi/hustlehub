@@ -3,7 +3,7 @@ import freelancerEarningData from "./earningData";
 
 import { Grid } from "@mui/material";
 
-export default function FreelancerFourthFeature() {
+function FreelancerFourthFeature() {
   //Data mapping
   let projectContainer = freelancerEarningData.map((el) => {
     return <FreelancerEarning key={el.id} {...el} />;
@@ -23,3 +23,5 @@ export default function FreelancerFourthFeature() {
     </Grid>//Grid End
   );
 }
+
+export default FreelancerFourthFeature;

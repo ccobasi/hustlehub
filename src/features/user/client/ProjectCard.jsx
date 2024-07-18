@@ -35,7 +35,7 @@ export default function ProjectContainer({
               <Typography
                 variant="h6"
                 sx={{
-                  ml: "30%",
+                  ml: "20%",
                   mb: "0%",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -57,7 +57,7 @@ export default function ProjectContainer({
           <ListItem>
             <Typography
               sx={{
-                ml: "80%",
+                ml: "72%",
                 mt: "-7%",
 
                 width: "100%",

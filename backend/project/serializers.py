@@ -1,13 +1,28 @@
 from rest_framework import serializers
-from .models import Project
+from .models import Project, Milestone, Transaction
 from datetime import date
+from proposal.serializers import ProposalSerializer
+from user.models import User
+
 
 class ProjectSerializer(serializers.ModelSerializer):
+    proposals = ProposalSerializer(many=True, read_only=True)
     closing_date = serializers.DateField(format="%Y-%m-%d", input_formats=["%Y-%m-%d"])
+    client = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    proposals = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
         fields = '__all__'
+
+    def get_client_name(self, obj):
+        return f"{obj.client.first_name} {obj.client.last_name}"
+    
+    def get_proposals(self, obj):
+        proposals = obj.proposals.all()
+        serializer = ProposalSerializer(proposals, many=True)
+        return serializer.data
+
 
     def validate_budget(self, value):
         """Check that the budget is a positive value"""
@@ -29,3 +44,12 @@ class ProjectSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"description": "Description is required."})
         return data
 
+class MilestoneSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Milestone
+        fields = ['id', 'project', 'title', 'description', 'amount', 'due_date', 'is_completed']
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = ['id', 'milestone', 'amount', 'transaction_date', 'is_released']

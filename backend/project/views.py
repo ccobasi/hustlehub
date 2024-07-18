@@ -1,17 +1,18 @@
-from rest_framework import status
+from rest_framework import status, viewsets, permissions
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Project
-from .serializers import ProjectSerializer
+from .models import Project, Milestone, Transaction
+from proposal.models import Proposal
+from .serializers import ProjectSerializer, MilestoneSerializer, TransactionSerializer
+from contract.serializers import ContractSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 class ProjectListCreateView(APIView):
   permission_classes = [IsAuthenticated]
   authentication_classes = [JWTAuthentication]
-  """
-  API endpoint for listing and creating projects
-  """
+  
   def get(self, request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
@@ -25,36 +26,80 @@ class ProjectListCreateView(APIView):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
-  
 
 class ProjectDetailView(APIView):
-  """
-  API endpoint for retrieving, updating, and deleting projects
-  """
+  permission_classes = [IsAuthenticated]
+  authentication_classes = [JWTAuthentication]
+  queryset = Project.objects.all()
+  serializer_class = ProjectSerializer
+  
   def get_object(self, pk):
     try:
       return Project.objects.get(pk=pk)
     except Project.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
-
+    
+  def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['include_proposals'] = True
+        return context
+  
   def get(self, request, pk):
-    project = self.get_object(pk)
-    serializer = ProjectSerializer(project)
-    return Response(serializer.data)
+        project = self.get_object(pk)
+        if not isinstance(project, Project):
+            return project  # If project is a Response, it means 404 error
+        serializer = ProjectSerializer(project)
+        return Response(serializer.data)
 
   def put(self, request, pk):
-    project = self.get_object(pk)
-    serializer = ProjectSerializer(project, data=request.data)
-    if serializer.is_valid():
-      serializer.save()
-      return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        project = self.get_object(pk)
+        if not isinstance(project, Project):
+            return project  
+        serializer = ProjectSerializer(project, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
   def delete(self, request, pk):
-    project = self.get_object(pk)
-    project.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+        project = self.get_object(pk)
+        if not isinstance(project, Project):
+            return project  
+        project.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+  
+  def patch(self, request, pk):
+        project = self.get_object(pk)
+        if not isinstance(project, Project):
+            return project
 
+        proposal_id = request.data.get("selected_proposal")
+        if proposal_id:
+            try:
+                proposal = Proposal.objects.get(id=proposal_id, project=project)
+            except Proposal.DoesNotExist:
+                return Response({"detail": "Proposal not found."}, status=status.HTTP_404_NOT_FOUND)
+            
+            # Create a contract
+            contract_data = {
+                "project": project.id,
+                "proposal": proposal.id,
+                "freelancer": proposal.freelancer.id,
+                "client": project.client.id,
+                "contract_amount": proposal.proposed_rate,
+                "start_date": request.data.get("start_date"),
+                "end_date": request.data.get("end_date"),
+                "terms": request.data.get("terms"),
+            }
+            contract_serializer = ContractSerializer(data=contract_data)
+            if contract_serializer.is_valid():
+                contract_serializer.save()
+                project.selected_proposal = proposal
+                project.save()
+                return Response(ProjectSerializer(project).data)
+            return Response(contract_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response({"detail": "No proposal selected."}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserProjectList(APIView):
@@ -81,3 +126,83 @@ class UserProjectList(APIView):
         return Response(serializer.data)
   
 
+# class MilestoneViewSet(viewsets.ModelViewSet):
+#     queryset = Milestone.objects.all()
+#     serializer_class = MilestoneSerializer
+
+#     @action(detail=True, methods=['post'])
+#     def complete(self, request, pk=None):
+#         milestone = self.get_object()
+#         milestone.is_completed = True
+#         milestone.save()
+#         return Response({'status': 'milestone completed'})
+
+# class TransactionViewSet(viewsets.ModelViewSet):
+#     queryset = Transaction.objects.all()
+#     serializer_class = TransactionSerializer
+
+#     @action(detail=True, methods=['post'])
+#     def release(self, request, pk=None):
+#         transaction = self.get_object()
+#         transaction.is_released = True
+#         transaction.save()
+#         return Response({'status': 'transaction released'})   
+class MilestoneViewSet(APIView):
+    permission_classes = [permissions.IsAuthenticated]  
+    authentication_classes = [JWTAuthentication]
+
+    def get_queryset(self):
+        return Milestone.objects.filter(user=self.request.user)  
+
+    def get_serializer_class(self):
+        return MilestoneSerializer
+
+    def get_object(self, pk):
+        try:
+            return Milestone.objects.get(pk=pk, user=self.request.user)  
+        except Milestone.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request):
+        milestones = self.get_queryset()
+        serializer = self.get_serializer_class()(milestones, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['post'])
+    def complete(self, request, pk=None):
+        milestone = self.get_object(pk)
+        if milestone:
+            milestone.is_completed = True
+            milestone.save()
+            return Response({'status': 'milestone completed'})
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+class TransactionViewSet(APIView):
+    permission_classes = [permissions.IsAuthenticated]  
+    authentication_classes = [JWTAuthentication]
+
+    def get_queryset(self):
+        return Transaction.objects.filter(user=self.request.user)  
+
+    def get_serializer_class(self):
+        return TransactionSerializer
+
+    def get_object(self, pk):
+        try:
+            return Transaction.objects.get(pk=pk, user=self.request.user)  
+        except Transaction.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request):
+        transactions = self.get_queryset()
+        serializer = self.get_serializer_class()(transactions, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['post'])
+    def release(self, request, pk=None):
+        transaction = self.get_object(pk)
+        if transaction:
+            transaction.is_released = True
+            transaction.save()
+            return Response({'status': 'transaction released'})
+        return Response(status=status.HTTP_404_NOT_FOUND)

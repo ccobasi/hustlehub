@@ -71,7 +71,7 @@ const SecondHeader = () => {
 
             <Box>
               <Button
-                onClick={() => navigate("/sign-up")}
+                onClick={() => navigate("/sign-in")}
                 variant="contained"
                 sx={{
                   backgroundColor: "#87CEEB",
@@ -83,7 +83,7 @@ const SecondHeader = () => {
                   },
                 }}
               >
-                Sign Up
+                Sign Out
               </Button>
             </Box>
           </Toolbar>

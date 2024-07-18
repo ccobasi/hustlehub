@@ -1,4 +1,4 @@
-import Categories from "./Categories";
+import Categories from "./Categorys";
 import homeCategoriesData from "./homeCategoriesData";
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";

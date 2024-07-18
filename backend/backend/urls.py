@@ -9,5 +9,6 @@ urlpatterns = [
     path('user_profile/', include('user_profile.urls', namespace='user_profile')),
     path('project/', include('project.urls', namespace='project')),
     path('proposal/', include('proposal.urls', namespace='proposal')),
-    path('contract/', include('contract.urls', namespace='contract'))
+    path('contract/', include('contract.urls', namespace='contract')),
+    path('review/', include('review.urls', namespace='review')),
 ]

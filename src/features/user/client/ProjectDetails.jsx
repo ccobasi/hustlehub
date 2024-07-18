@@ -1,4 +1,4 @@
-// // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -97,7 +97,7 @@ const ProjectDetails = () => {
 
   return (
     <Container component="main" maxWidth="md">
-      <Box sx={{ mt: 4, mb: 4 }}>
+      <Box sx={{ mt: 13, mb: 4 }}>
         <Typography variant="h4" sx={{ fontWeight: "600", mb: 2 }}>
           {project.title}
         </Typography>
