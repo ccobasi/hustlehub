@@ -71,6 +71,7 @@ class ContractSerializer(serializers.ModelSerializer):
     project_title = serializers.CharField(source='project.title', read_only=True)
     client_name = serializers.SerializerMethodField()
     freelancer_name = serializers.SerializerMethodField()
+    # freelancer_name = serializers.CharField(source="freelancer.get_full_name", read_only=True)
 
     class Meta:
         model = Contract

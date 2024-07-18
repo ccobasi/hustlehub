@@ -149,7 +149,7 @@ function FreelancerPage({ userId }) {
               ml: "4%",
             }}
           >
-            Earnings
+            Contracts
           </Typography>
           <Link
             href="/about/question/21334565"

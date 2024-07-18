@@ -1,14 +1,14 @@
-// ClientThirdFeature.jsx
+// export default FreelancerContract;
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Typography, Box, List, ListItem, ListItemText, Card, CardContent, Stack } from "@mui/material";
+import { Typography, Box, List, ListItem, Card, CardContent, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const FreelancerContract = ({ userId }) => {
+const FreelancerContract = () => {
   const [contracts, setContracts] = useState([]);
   const [error, setError] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
-  userId = user ? user.id : null;
+  const userId = user ? user.id : null;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,28 +31,24 @@ const FreelancerContract = ({ userId }) => {
     navigate(`/contract/${id}`);
   };
 
-
   return (
     <Box>
-      {/* <Typography variant="h6" sx={{ fontFamily: "Poppins", fontWeight: "600", fontSize: "16px", lineHeight: "20.8px", textAlign: "start" }}>
-        Earnings
-      </Typography> */}
       {error && <Typography color="error">Error loading contracts</Typography>}
       <List>
-        <Card
-          sx={{
-            borderRadius: "20px",
-            boxShadow: 2,
-            backgroundColor: "#87CEEB",
-          }}
-        >
-         <CardContent>
-            <Stack direction="row" sx={{ justifyContent: "space-between" }}>
-              
-        {contracts.map(contract => (
-          <ListItem button key={contract.id} onClick={() => handleContractClick(contract.id)}>
-            
-            <Stack direction="row" sx={{ justifyContent: "space-between", width: "100%" }}>
+        {contracts.map((contract) => (
+          <ListItem key={contract.id} disablePadding>
+            <Card
+              sx={{
+                borderRadius: "20px",
+                boxShadow: 2,
+                backgroundColor: "#87CEEB",
+                width: "100%",
+                mb: 2, // Add some margin between cards
+              }}
+              onClick={() => handleContractClick(contract.id)}
+            >
+              <CardContent>
+                <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center" }}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -77,14 +73,26 @@ const FreelancerContract = ({ userId }) => {
                       letterSpacing: "-1%",
                     }}
                   >
-                    #{contract.contract_amount}
+                    ${contract.contract_amount}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#FFFFFF",
+                      fontFamily: "Poppins",
+                      fontWeight: "600",
+                      fontSize: "16px",
+                      lineHeight: "20.8px",
+                      letterSpacing: "-1%",
+                    }}
+                  >
+                    {contract.status}
                   </Typography>
                 </Stack>
+              </CardContent>
+            </Card>
           </ListItem>
         ))}
-        </Stack>
-        </CardContent>
-        </Card>
       </List>
     </Box>
   );

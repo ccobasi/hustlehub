@@ -13,6 +13,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const CreateContract = ({ projectId, proposalId, freelancerId, clientId }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  clientId = user ? user.id : null;
   const [contractAmount, setContractAmount] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');

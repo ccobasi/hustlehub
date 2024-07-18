@@ -117,7 +117,13 @@ class FreelancerContractsView(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class FreelancerContractsListView(generics.ListAPIView):
+    serializer_class = ContractSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        freelancer_id = self.request.user.id
+        return Contract.objects.filter(freelancer_id=freelancer_id)
 
 
 
