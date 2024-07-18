@@ -125,10 +125,17 @@ class FreelancerContractsListView(generics.ListAPIView):
         freelancer_id = self.request.user.id
         return Contract.objects.filter(freelancer_id=freelancer_id)
 
+class UserContractsCountView(APIView):
+    permission_classes = [IsAuthenticated]
 
-
-
-
-
-
+    def get(self, request, user_id):
+        completed = Contract.objects.filter(freelancer_id=user_id, status='completed').count()
+        active = Contract.objects.filter(freelancer_id=user_id, status='active').count()
+        pending = Contract.objects.filter(freelancer_id=user_id, status='pending').count()
+        return Response({
+            'completed': completed,
+            'active': active,
+            'pending': pending
+        })
+    
 

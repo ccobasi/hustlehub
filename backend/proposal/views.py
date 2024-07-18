@@ -1,3 +1,4 @@
+from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404, render
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
@@ -5,6 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Proposal
 from .serializers import ProposalSerializer
 from project.models import Project
+from contract.models import Contract
+from django.db.models import Count
 
 
 class ProposalCreateView(generics.CreateAPIView):
@@ -60,3 +63,11 @@ class ProposalDetailView(generics.RetrieveUpdateDestroyAPIView):
     def perform_update(self, serializer):
         instance = self.get_object()
         serializer.save(freelancer=instance.freelancer)
+
+
+class UserProposalsCountView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, user_id):
+        count = Proposal.objects.filter(freelancer_id=user_id).count()
+        return Response({'count': count})

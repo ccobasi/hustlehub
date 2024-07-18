@@ -73,7 +73,7 @@ const FreelancerContract = () => {
                       letterSpacing: "-1%",
                     }}
                   >
-                    ${contract.contract_amount}
+                    #{contract.contract_amount}
                   </Typography>
                   <Typography
                     variant="h5"
