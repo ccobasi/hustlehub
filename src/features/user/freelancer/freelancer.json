@@ -9,9 +9,9 @@
     "rank": "Junior designer",
     "salary": "$15k/Mo",
     "time":"25 minutes ago",
-    "sourceSet": "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
+    "sourceSet": "./frontend/dist/assets/analyze-and-outperform-competition.png, ./frontend/dist/assets/analyze-and-outperform-competition.jpg",
     "imageLabel": "Haley Jessica",
-    "image":"/assets/analyze-and-outperform-competition.png"
+    "image":"./frontend/dist/assets/analyze-and-outperform-competition.png"
   },
   {
     "id": 1,
@@ -23,7 +23,7 @@
     "rank": "Trainee designer",
     "salary": "$20k/Mo",
     "time":"25 minutes ago",
-    "sourceSet": "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
+    "sourceSet": "./frontend/dist/assets/analyze-and-outperform-competition.png, ./frontend/dist/assets/analyze-and-outperform-competition.jpg",
     "imageLabel": "Haley Jessica"
   },
   {
@@ -36,7 +36,7 @@
     "rank": "Senior developer",
     "salary": "$10k/Mo",
     "time":"25 minutes ago",
-    "sourceSet": "/assets/analyze-and-outperform-competition.png, /assets/analyze-and-outperform-competition.jpg",
+    "sourceSet": "./frontend/dist/assets/analyze-and-outperform-competition.png, ./frontend/dist/assets/analyze-and-outperform-competition.jpg",
     "imageLabel": "Haley Jessica"
   }
 ]

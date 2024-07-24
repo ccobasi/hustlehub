@@ -571,7 +571,7 @@ export default function ResponsiveNavBar() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AppLogo  src="/assets/hustlehub-transparent-logo250x100.png" alt="Logo"/>
+            <AppLogo  src="./frontend/dist/assets/hustlehub-transparent-logo250x100.png" alt="Logo"/>
 
             <MobileTransitionsModal />
             <MobileUserAppTitle />

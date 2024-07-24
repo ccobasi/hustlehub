@@ -2,6 +2,7 @@ from django.contrib.auth.models import BaseUserManager
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext_lazy as _
+import uuid
 
 
 class UserManager(BaseUserManager):
@@ -10,6 +11,7 @@ class UserManager(BaseUserManager):
             validate_email(email)
         except ValidationError:
             raise ValueError(_("Please enter a valid email address"))
+    
 
     def create_user(self, email, first_name, last_name, role, password, mobile_number=None,  **extra_fields):
         if mobile_number is None:
@@ -20,8 +22,11 @@ class UserManager(BaseUserManager):
             raise ValueError(_("First name is required"))
         if not last_name:
             raise ValueError(_("Last name is required"))
+        
+        verification_token = str(uuid.uuid4())
 
-        user = self.model(email=email, first_name=first_name, last_name=last_name, role=role, mobile_number=mobile_number, **extra_fields)
+        user = self.model(email=email, first_name=first_name, last_name=last_name, role=role, mobile_number=mobile_number,
+        verification_token=verification_token, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user

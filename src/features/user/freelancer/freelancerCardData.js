@@ -5,8 +5,8 @@ const freelancerCardData = [
 
     jobTitle: "UX Designer",
 
-    sourceSet: "/assets/haleyJessica.png,",
-    image: "/assets/haleyJessica.png",
+    sourceSet: "./frontend/dist/assets/haleyJessica.png,",
+    image: "./frontend/dist/assets/haleyJessica.png",
 
     imageLabel: "Haley Jessica",
   },

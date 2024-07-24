@@ -162,7 +162,7 @@ function App() {
             {/* <Route path="/sign-out" element={<SignOut />} /> */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/sign-in" element={ <SignIn />} />
-            <Route path="/otp/verify" element={ <VerifyEmail />} />
+            <Route path="/verify-email/:token" element={ <VerifyEmail />} />
             <Route path="/forget-password" element={<ForgetPassword /> } />
             <Route path="/password-reset-confirm/:uid/token" element={<ConfirmPasswordReset />} />
             <Route path="/categories" element={ <CategoriesPage />} />

@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid } from "@mui/material";
+import { Grid, Link } from "@mui/material";
 import ProjectContainer from "./ProjectCard";
 
 export default function FreelancerThirdFeature   ()  {
@@ -12,7 +12,7 @@ export default function FreelancerThirdFeature   ()  {
   useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects/`, {
+        const response = await axios.get(`http://localhost:8000/project/user/${user.id}/projects/`, {
           headers: {
             Authorization: `Bearer ${access}`,
           },
@@ -48,5 +48,5 @@ export default function FreelancerThirdFeature   ()  {
       )}
     </Grid>//Grid End
   );
-};
+}
 

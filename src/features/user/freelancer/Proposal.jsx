@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -35,7 +36,7 @@ export default function Proposal() {
     };
 
     try {
-      await axios.post('https://ccobasi.pythonanywhere.com/proposal/proposals/', proposal, {
+      await axios.post('http://localhost:8000/proposal/proposals/', proposal, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access")}`,
         },

@@ -13,7 +13,7 @@
 //   useEffect(() => {
 //     const fetchProjectData = async () => {
 //       try {
-//         const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects/`, {
+//         const response = await axios.get(`http://localhost:8000/project/user/${user.id}/projects/`, {
 //           headers: {
 //             Authorization: `Bearer ${access}`,
 //           },
@@ -69,7 +69,7 @@ const ClientSecondFeature = () => {
   useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects/`, {
+        const response = await axios.get(`http://localhost:8000/project/user/${user.id}/projects/`, {
           headers: {
             Authorization: `Bearer ${access}`,
           },

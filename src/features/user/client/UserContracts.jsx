@@ -26,7 +26,7 @@
 //       setError(null);
 //       try {
 //         console.log('UserContracts - userId:', userId); 
-//         const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/user/${userId}/contracts/`);
+//         const response = await axios.get(`http://localhost:8000/contract/user/${userId}/contracts/`);
 //         setContracts(response.data);
 //       } catch (error) {
 //         console.error('Error fetching contracts:', error);
@@ -86,7 +86,7 @@ const UserContracts = ({ userId }) => {
   useEffect(() => {
     const fetchContracts = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/user/${userId}/contracts/`);
+        const response = await axios.get(`http://localhost:8000/contract/user/${userId}/contracts/`);
         const data = await response.json();
         setContracts(data.contracts);
       } catch (error) {

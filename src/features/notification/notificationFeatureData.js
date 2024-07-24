@@ -5,8 +5,8 @@ const  notificationFeatureData = [
       description:"Applications for Google companies have entered for company review.",
       time: "25 minutes ago",
       sourceSet:
-        "/assets/google-logo.png",
-      image: "/assets/google-logo.png",
+        "./frontend/dist/assets/google-logo.png",
+      image: "./frontend/dist/assets/google-logo.png",
   
       imageLabel: "Application sent",
     },
@@ -17,8 +17,8 @@ const  notificationFeatureData = [
         description:"Applications for Google companies have entered for company review.",
         time: "25 minutes ago",
       sourceSet:
-        "/assets/facebook-logo.png",
-      image: "/assets/facebook-logo.png",
+        "./frontend/dist/assets/facebook-logo.png",
+      image: "./frontend/dist/assets/facebook-logo.png",
   
       imageLabel: "Web Development Services",
     },
@@ -28,8 +28,8 @@ const  notificationFeatureData = [
         description:"Applications for Google companies have entered for company review.",
         time: "25 minutes ago",
       sourceSet:
-        "/assets/google-logo.png",
-      image: "/assets/google-logo.png",
+        "./frontend/dist/assets/google-logo.png",
+      image: "./frontend/dist/assets/google-logo.png",
   
       imageLabel: "Mobile App Development Services",
     },
@@ -40,8 +40,8 @@ const  notificationFeatureData = [
         description:"Applications for Google companies have entered for company review.",
         time: "25 minutes ago",
       sourceSet:
-        "/assets/apple-logo.png",
-      image: "/assets/apple-logo.png",
+        "./frontend/dist/assets/apple-logo.png",
+      image: "./frontend/dist/assets/apple-logo.png",
   
       imageLabel: "Design Services",
     },

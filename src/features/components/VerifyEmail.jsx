@@ -1,75 +1,50 @@
-import React, {useState} from 'react'
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
-import axios from 'axios'
-import { useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from 'react';
+import { Container, Box, Button, Typography } from '@mui/material';
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const VerifyEmail = () => {
-    const [otp, setOtp]=useState("")
-    const navigate=useNavigate()
+    const [isVerifying, setIsVerifying] = useState(true);
+    const navigate = useNavigate();
+    const { token } = useParams();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if(otp){
-            const response = await axios.post("https://ccobasi.pythonanywhere.com/user/verify-email/", {'otp':otp})
-            if(response.status === 200){
-                navigate("/sign-in")
-                toast.success(response.data.message)
+    useEffect(() => {
+        const verifyEmail = async () => {
+            try {
+                const response = await axios.post("http://localhost:8000/user/verify-email/", { token });
+                if (response.status === 200) {
+                    navigate("/sign-in");
+                    toast.success(response.data.message);
+                }
+            } catch (error) {
+                toast.error(error.response?.data?.error || "Failed to verify email. Please try again later.");
+                setIsVerifying(false);
             }
-        }
-    }
+        };
+        verifyEmail();
+    }, [token, navigate]);
+
     return (
         <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >  
-         <Typography variant="body2" sx={{ mt: "3%" }}>
-           Enter your Otp code:
-         </Typography>
-        <TextField
-          required
-          fullWidth
-          id="otp"
-          label="OTP"
-          name="otp"
-          autoComplete="otp"
-          value={otp}
-          onChange={(e)=>setOtp(e.target.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircleOutlined />
-              </InputAdornment>
-            ),
-          }}
-          sx={{ mt: "10%" }}
-        />
-                       
-                    
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2, backgroundColor: "#87ceeb", 
-    color: "white",  }}
-          onClick={handleSubmit}
-        >
-          Send
-        </Button>
-                </Box>
-    </Container>
-    )
+            <Box sx={{ marginTop: 8, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Typography variant="body2" sx={{ mt: "3%" }}>
+                    {isVerifying ? "Verifying your email..." : "Email verification failed. Please try again."}
+                </Typography>
+                {!isVerifying && (
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2, backgroundColor: "#87ceeb", color: "white" }}
+                        onClick={() => navigate("/sign-up")}
+                    >
+                        Go to Sign Up
+                    </Button>
+                )}
+            </Box>
+        </Container>
+    );
 };
 
 export default VerifyEmail;

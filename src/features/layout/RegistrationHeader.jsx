@@ -6,7 +6,7 @@ import { AppBar, Box, Button } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/logo.png"
+//import Logo from "../../assets/logo.png"
 export default function RegistrationHeader() {
   //Use system preference to set theme mode
   const theme = useTheme();
@@ -65,7 +65,7 @@ export default function RegistrationHeader() {
               }}
               href={isCleint ? "/" : "/services"}
             >
-              <img src={Logo} alt="logo" style={{ width: '80px', height: '50px' }} />
+              <img src='./frontend/dist/assets/logo.png' alt="logo" style={{ width: '80px', height: '50px' }} />
             </Link>
 
             <Box>

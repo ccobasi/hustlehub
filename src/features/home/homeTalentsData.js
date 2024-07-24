@@ -6,8 +6,8 @@ const homeTalentsData = [
     jobTitle: "Backend Developer",
     rating: 5,
     sourceSet:
-      "/assets/johnDoe.png,",
-    image: "/assets/johnDoe.png",
+      "./frontend/dist/assets/johnDoe.png,",
+    image: "./frontend/dist/assets/johnDoe.png",
 
     imageLabel: "John Doe",
   },
@@ -19,8 +19,8 @@ const homeTalentsData = [
     jobTitle: "Backend Developer",
     rating: 4,
     sourceSet:
-      "/assets/johnDoe.png,",
-    image: "/assets/johnDoe.png",
+      "./frontend/dist/assets/johnDoe.png,",
+    image: "./frontend/dist/assets/johnDoe.png",
     imageLabel: "John Doe",
   },
   {
@@ -30,8 +30,8 @@ const homeTalentsData = [
     jobTitle: "Backend Developer",
     rating: 4,
     sourceSet:
-      "/assets/johnDoe.png,",
-    image: "/assets/johnDoe.png",
+      "./frontend/dist/assets/johnDoe.png,",
+    image: "./frontend/dist/assets/johnDoe.png",
     imageLabel: "John Doe",
   },
 
@@ -42,8 +42,8 @@ const homeTalentsData = [
     jobTitle: "Backend Developer",
     rating: 4,
     sourceSet:
-      "/assets/johnDoe.png,",
-    image: "/assets/johnDoe.png",
+      "./frontend/dist/assets/johnDoe.png,",
+    image: "./frontend/dist/assets/johnDoe.png",
     imageLabel: "John Doe",
   },
   ];

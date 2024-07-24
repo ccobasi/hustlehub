@@ -8,8 +8,8 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-      "/assets/greatProject.png, ",
-    image: "/assets/greatProject.png",
+      "./frontend/dist/assets/greatProject.png, ",
+    image: "./frontend/dist/assets/greatProject.png",
 
     imageLabel: "Product Design",
   },
@@ -23,8 +23,8 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-    "/assets/greatProject.png, ",
-    image: "/assets/greatProject.png",
+    "./frontend/dist/assets/greatProject.png, ",
+    image: "./frontend/dist/assets/greatProject.png",
 
     imageLabel: "Product Design",
   },
@@ -37,8 +37,8 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-    "/assets/greatProject.png, ",
-    image: "/assets/greatProject.png",
+    "./frontend/dist/assets/greatProject.png, ",
+    image: "./frontend/dist/assets/greatProject.png",
 
     imageLabel: "Product Design",
   },
@@ -52,8 +52,8 @@ const greatWorkData = [
     rank: "Junior",
     jobType: "UI Design Job",
     sourceSet:
-    "/assets/greatProject.png, ",
-    image: "/assets/greatProject.png",
+    "./frontend/dist/assets/greatProject.png, ",
+    image: "./frontend/dist/assets/greatProject.png",
     imageLabel: "Product Design",
   },
 ];

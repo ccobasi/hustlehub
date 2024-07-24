@@ -6,8 +6,8 @@ const clientCardData = [
       jobTitle: "Project Manager",
   
       sourceSet:
-        "/assets/sebastineHaller.png,",
-      image: "/assets/sebastineHaller.png",
+        "./frontend/dist/assets/sebastineHaller.png,",
+      image: "./frontend/dist/assets/sebastineHaller.png",
   
       imageLabel: "Sebastine Haller",
     },

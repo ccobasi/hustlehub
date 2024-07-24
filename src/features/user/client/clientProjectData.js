@@ -5,8 +5,8 @@ const  clientProjectData = [
       company:"Spotify",
       
       sourceSet:
-        "/assets/google-logo.png",
-      image: "/assets/google-logo.png",
+        "./frontend/dist/assets/google-logo.png",
+      image: "./frontend/dist/assets/google-logo.png",
   
       imageLabel: "Application sent",
     },

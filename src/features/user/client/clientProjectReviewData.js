@@ -10,7 +10,7 @@ const clientProjectReviewData = [
     url: "/description",
     urlTitle: "View job description",
     sourceSet:
-    "/assets/google-logo.png",
+    "./frontend/dist/assets/google-logo.png",
 
     imageLabel: "Apple company",
   },

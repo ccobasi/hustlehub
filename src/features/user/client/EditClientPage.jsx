@@ -168,7 +168,7 @@ const EditClientPage = () => {
   useEffect(() => {
     const fetchClientProfile = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/user_profile/user-profile/${userId}/`);
+        const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
         if (response.data) {
           setClientProfile(response.data);
           setFormData({
@@ -251,8 +251,8 @@ const EditClientPage = () => {
     }
 
     const url = clientProfile
-      ? `https://ccobasi.pythonanywhere.com/user_profile/user-profile/${formData.id}/`
-      : `https://ccobasi.pythonanywhere.com/user_profile/user-profile/${userId}/`;
+      ? `http://localhost:8000/user_profile/user-profile/${formData.id}/`
+      : `http://localhost:8000/user_profile/user-profile/${userId}/`;
 
     const response = await axios.put(url, form, {
       headers: {

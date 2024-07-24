@@ -4,7 +4,7 @@ const freelancerProjectData = [
     title: "UX Designer",
     company: "Spotify",
 
-    sourceSet: "/assets/google-logo.png",
+    sourceSet: "./frontend/dist/assets/google-logo.png",
     location: "San Fransico, US",
     timeframe: "Dec 20 - Feb 21",
 

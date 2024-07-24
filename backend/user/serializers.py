@@ -1,6 +1,7 @@
 from tokenize import TokenError
 from rest_framework import serializers
 from .models import User
+# from .onetimepassword import OneTimePassword
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework.exceptions import AuthenticationFailed
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -11,6 +12,8 @@ from django.urls import reverse
 from .utils import send_normal_email
 from rest_framework_simplejwt.tokens  import RefreshToken, Token
 from user_profile.models import ClientProfile
+# from django.core.mail import send_mail
+# import random
 
 
 User = get_user_model()
@@ -42,6 +45,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             is_staff=False,
             is_superuser=False,
         )
+
         return user
 
 

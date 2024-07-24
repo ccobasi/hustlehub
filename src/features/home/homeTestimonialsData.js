@@ -6,8 +6,8 @@ const homeTestimonialsData = [
         jobTitle: "Outstanding Service",
         rating: 5,
         sourceSet:
-          "/assets/emilyWillis.png, ",
-        image: "/assets/emilyWillis.png",
+          "./frontend/dist/assets/emilyWillis.png, ",
+        image: "./frontend/dist/assets/emilyWillis.png",
     
         imageLabel: "Emily Willis",
       },
@@ -19,8 +19,8 @@ const homeTestimonialsData = [
         jobTitle: "Outstanding Service",
         rating: 4,
         sourceSet:
-        "/assets/emilyWillis1.png, ",
-        image: "/assets/emilyWillis1.png",
+        "./frontend/dist/assets/emilyWillis1.png, ",
+        image: "./frontend/dist/assets/emilyWillis1.png",
         imageLabel: "Business Analysis",
       },
       {
@@ -30,8 +30,8 @@ const homeTestimonialsData = [
         jobTitle: "Outstanding Service",
         rating: 4,
         sourceSet:
-        "/assets/emilyWillis2.png, ",
-        image: "/assets/emilyWillis2.png",
+        "./frontend/dist/assets/emilyWillis2.png, ",
+        image: "./frontend/dist/assets/emilyWillis2.png",
         imageLabel: "Peterson Water",
       },
 
@@ -42,8 +42,8 @@ const homeTestimonialsData = [
         jobTitle: "Outstanding Service",
         rating: 4,
         sourceSet:
-        "/assets/emilyWillis3.png, ",
-        image: "/assets/emilyWillis3.png",
+        "./frontend/dist/assets/emilyWillis3.png, ",
+        image: "./frontend/dist/assets/emilyWillis3.png",
         imageLabel: "Amanda Snow",
       },
   ];

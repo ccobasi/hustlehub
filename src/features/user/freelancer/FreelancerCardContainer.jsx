@@ -36,7 +36,7 @@ export default function FreelancerCard({
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/user_profile/user-profile/${userId}/`);
+        const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
         if (response.data) {
           setUserProfile(response.data);
         } else {

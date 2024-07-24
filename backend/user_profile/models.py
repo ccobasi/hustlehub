@@ -4,16 +4,12 @@ from user.models import User
 from django.db.models.signals import post_save
 import os
 
-def get_upload_path(instance, filename):
-    return 'images/{filename}'.format(filename=filename)
-    # return os.path.join('images', 'avatars', str(instance.pk), filename)
 
-# def upload_to(instance, filename):
-#     return 'images/{filename}'.format(filename=filename)
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='user_profile') 
-    image = models.ImageField(upload_to=get_upload_path, blank=True, null=True)
+    image = models.ImageField(default='user.png', blank=True, null=True)
     bio = models.TextField(blank=True)
     job_role = models.CharField(verbose_name=_("Job Role"), max_length=100)
     company = models.CharField(verbose_name=_("Company"), max_length=100)
@@ -40,7 +36,7 @@ post_save.connect(create_user_profile, sender=User)
 
 class ClientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='client_profile')
-    image = models.ImageField(upload_to=get_upload_path, blank=True, null=True)
+    image = models.ImageField(default='user.png', blank=True, null=True)
     bio = models.TextField(blank=True)
     job_role = models.CharField(verbose_name=_("Job Role"), max_length=100)
     company = models.CharField(verbose_name=_("Company"), max_length=100)
@@ -60,7 +56,7 @@ post_save.connect(create_client_profile, sender=User)
 
 class FreelancerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='freelancer_profile')
-    image = models.ImageField(upload_to='freelancer_profiles/', null=True, blank=True)
+    image = models.ImageField(default='user.png', null=True, blank=True)
     bio = models.TextField(blank=True)
     job_role = models.CharField(verbose_name=_("Job Role"), max_length=100)
     company = models.CharField(verbose_name=_("Company"), max_length=100, blank=True, null=True)

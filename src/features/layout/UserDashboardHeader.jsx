@@ -6,7 +6,7 @@ import { AppBar, Box } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/logo.png"
+//import Logo from "../../assets/logo.png"
 import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
@@ -162,7 +162,7 @@ export default function UserDashboardHeader() {
               }}
               href="/"
             >
-              <img src={Logo} alt="logo" style={{ width: '80px', height: '50px' }} />
+              <img src="./frontend/dist/assets/logo.png" alt="logo" style={{ width: '80px', height: '50px' }} />
             </Link>
 
             <Link

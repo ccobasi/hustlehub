@@ -6,8 +6,8 @@ const  individualFeatureData = [
       time: "25 minutes ago",
       count:4,
       sourceSet:
-        "/assets/google-logo.png",
-      image: "/assets/google-logo.png",
+        "./frontend/dist/assets/google-logo.png",
+      image: "./frontend/dist/assets/google-logo.png",
   
       imageLabel: "Application sent",
     },
@@ -19,8 +19,8 @@ const  individualFeatureData = [
         time: "25 minutes ago",
         count:3,
       sourceSet:
-        "/assets/facebook-logo.png",
-      image: "/assets/facebook-logo.png",
+        "./frontend/dist/assets/facebook-logo.png",
+      image: "./frontend/dist/assets/facebook-logo.png",
   
       imageLabel: "Web Development Services",
     },
@@ -31,8 +31,8 @@ const  individualFeatureData = [
         time: "25 minutes ago",
         count:1,
       sourceSet:
-        "/assets/google-logo.png",
-      image: "/assets/google-logo.png",
+        "./frontend/dist/assets/google-logo.png",
+      image: "./frontend/dist/assets/google-logo.png",
   
       imageLabel: "Mobile App Development Services",
     },

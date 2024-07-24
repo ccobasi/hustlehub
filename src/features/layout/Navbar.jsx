@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { CustomButton } from "../../../app/layout/header/CustomButton";
 import Link from "@mui/material/Link";
 import './headerfooter.css'
-import Logo from '../../../assets/hlogo.png'
+import Logo from '../../../../../assets/hlogo.png'
 
 const Navbar = () => {
   

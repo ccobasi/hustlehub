@@ -35,7 +35,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', default=False) == 'True'
 
-ALLOWED_HOSTS = ["https://ccobasi.pythonanywhere.com"]
+ALLOWED_HOSTS = ["*"]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -156,34 +156,55 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [
+	os.path.join(BASE_DIR, 'static')
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true' else False
+# EMAIL_HOST = os.getenv('EMAIL_HOST')
+# EMAIL_PORT = os.getenv('EMAIL_PORT')
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+# EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true' else False
+# DEFAULT_FROM_EMAIL = f'HusslingHub {os.getenv("EMAIL_HOST_USER")}'  
+# FRONTEND_URL = 'http://localhost:5173'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'  # Update with your SMTP server
+# EMAIL_PORT = 587  
+# EMAIL_USE_TLS = True  
+# EMAIL_HOST_USER = 'ccobasi8@gmail.com'
+# EMAIL_HOST_PASSWORD ='ichhpspneutltdza'  
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_FROM = 'pythonlessons0@gmail.com'
+# EMAIL_HOST_USER = 'pythonlessons0@gmail.com'
+# EMAIL_HOST_PASSWORD = 'bsvdctbnvaqlszhd'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
-
+# PASSWORD_RESET_TIMEOUT = 14400
 
 # CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5174",  
-    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5173",    
+    "http://localhost:8000",
+    "http://localhost:5175",
     "https://husslinghub.com",  
 ]
 CSRF_TRUSTED_ORIGINS=[
     "http://localhost:8080",
     "http://127.0.0.1:5173/",
     "http://127.0.0.1:5174/",
-    "https://ccobasi.pythonanywhere.com",
+    "http://localhost:5175",
+    "http://localhost:8000",
 ]
 
 print("CORS_ALLOWED_ORIGINS:", CORS_ALLOWED_ORIGINS)
@@ -196,8 +217,8 @@ GOOGLE_CLIENT_SECRET=os.getenv('GOOGLE_CLIENT_SECRET')
 SOCIAL_AUTH_PASSWORD=os.getenv("SOCIAL_AUTH_PASSWORD")
 
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

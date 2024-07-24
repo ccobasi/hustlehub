@@ -3,8 +3,8 @@ const  trendingCategories = [
         id: 1,
       jobTitle: "Accountant",
       sourceSet:
-        "/assets/accountant.png, ",
-      image: "/assets/accountant.png",
+        "./frontend/dist/assets/accountant.png, ",
+      image: "./frontend/dist/assets/accountant.png",
   
       imageLabel: "Accountant",
     },
@@ -13,8 +13,8 @@ const  trendingCategories = [
         id: 2,
       jobTitle: "Marketing",
       sourceSet:
-        "/assets/marketing.png,",
-      image: "/assets/marketing.png",
+        "./frontend/dist/assets/marketing.png,",
+      image: "./frontend/dist/assets/marketing.png",
   
       imageLabel: "Marketing",
     },
@@ -22,8 +22,8 @@ const  trendingCategories = [
         id: 3,
       jobTitle: "App Developer",
       sourceSet:
-        "/assets/appDeveloper.png, ",
-      image: "/assets/appDeveloper.png",
+        "./frontend/dist/assets/appDeveloper.png, ",
+      image: "./frontend/dist/assets/appDeveloper.png",
   
       imageLabel: "App Developer",
     },
@@ -32,8 +32,8 @@ const  trendingCategories = [
         id: 4,
       jobTitle: "Graphic Designer",
       sourceSet:
-        "/assets/graphicDesigner.png, ",
-      image: "/assets/graphicDesigner.png",
+        "./frontend/dist/assets/graphicDesigner.png, ",
+      image: "./frontend/dist/assets/graphicDesigner.png",
      
       imageLabel: "Graphic Designer",
     },

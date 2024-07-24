@@ -8,7 +8,7 @@ const  heroData = [
       paragraph2:"",
       subtitle3:"",
       paragraph3:"",
-      cardBg: "/assets/hero450x250.png",
+      cardBg: "./frontend/dist/assets/hero450x250.png",
       //cardBgSourceSet:"/assets/hero450x250.png,/assets/hero450x250.png ",
       
     },

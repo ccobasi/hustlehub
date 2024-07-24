@@ -6,9 +6,9 @@ const editFreelancerCardData = [
     location: "California, US",
     numberOfFollower: "120k",
     numberOfFollowing: "23k",
-    sourceSet: "/assets/haleyJessica.png",
-    image: "/assets/haleyJessica.png",
-    bgImg:"/assets/background.png",
+    sourceSet: "./frontend/dist/assets/haleyJessica.png",
+    image: "./frontend/dist/assets/haleyJessica.png",
+    bgImg:"./frontend/dist/assets/background.png",
     imageLabel: "Haley Jessica",
    
   },
