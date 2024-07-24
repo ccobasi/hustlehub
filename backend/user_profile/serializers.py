@@ -27,11 +27,15 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'bio', 'job_role', 'company', 'location', 'image', 'start_date', 'end_date', 'institution', 'qualification', 'year_obtained', 'skills', 'language']
 
     def validate(self, attrs):
-        # Custom validation logic
-        bio = attrs['bio']
-        job_role = attrs['job_role']
-        company = attrs['company']
-        location = attrs['location']
+        bio = attrs.get('bio', '')
+        job_role = attrs.get('job_role', '')
+        company = attrs.get('company', '')
+        location = attrs.get('location', '')
+
+        print(f"Validating bio: {bio}")
+        print(f"Validating job_role: {job_role}")
+        print(f"Validating company: {company}")
+        print(f"Validating location: {location}")
 
         if len(bio) < 10:
             raise serializers.ValidationError('Bio must be at least 10 characters long.')
@@ -46,7 +50,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Location cannot be empty.')
 
         return attrs
-    
 
 class ClientProfileSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.email')  

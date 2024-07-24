@@ -1,11 +1,11 @@
-// // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, no-unused-vars
 import React, { useEffect, useState } from "react";
 import { Typography, Link, Stack, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import FreelancerFirstFeature from "./FreelancerCard";
 import FreelancerSecondFeature from "./AnalyticsContainer";
 import FreelancerThirdFeature from "./ProjectContainer";
-import FreelancerFourthFeature from "./Earning";
+// import FreelancerFourthFeature from "./Earning";
 import FreelancerFifthFeature from "./ReviewsAndRatings";
 import FreelancerContract from "./FreelancerContract";
 import axios from "axios";

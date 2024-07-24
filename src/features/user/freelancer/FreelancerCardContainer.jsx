@@ -8,18 +8,120 @@ import Avatar from "@mui/material/Avatar";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-export default function FreelancerCard({
-  name,
-  jobTitle,
-  sourceSet,
-  image,
-  imageLabel,
-}) {
+// export default function FreelancerCard({
+//   name,
+//   jobTitle,
+//   sourceSet,
+//   image,
+//   imageLabel,
+// }) {
+//   const user = JSON.parse(localStorage.getItem("user"));
+//   const userId = user ? user.id : null;
+//   const [userProfile, setUserProfile] = useState(null);
+//   const data = useLocation();
+//   console.log(data);
+
+//   axios.interceptors.request.use(
+//     (config) => {
+//       const user = JSON.parse(localStorage.getItem("user"));
+//       const access = JSON.parse(localStorage.getItem("access"));
+//       if (user && access) {
+//         config.headers.Authorization = `Bearer ${access}`;
+//       }
+//       return config;
+//     },
+//     (error) => Promise.reject(error)
+//   );
+
+//   useEffect(() => {
+//     const fetchUserProfile = async () => {
+//       try {
+//         const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
+//         if (response.data) {
+//           setUserProfile(response.data);
+//         } else {
+//           console.log("Data not available");
+//         }
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     };
+
+//     fetchUserProfile();
+//   }, []);
+
+//   return (
+//     <>
+//     {/* Grid for freelancer card */}
+//       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
+//         <Card sx={{ boxShadow: 0 }}>
+//           <CardContent
+//             sx={{
+//               display: "flex",
+//               flexDirection: "column",
+//               alignItems: "center",
+//             }}
+//           >
+//             <Avatar
+//               alt={imageLabel}
+//               sourceSet={sourceSet}
+//               src={image}
+//               sx={{ height: "109px", width: "104px" }}
+//             />
+
+//             <Typography
+//               variant="h4"
+//               sx={{
+//                 fontFamily: "Poppins",
+//                 fontWeight: "600",
+//                 fontSize: "20px",
+//                 lineHeight: "24px",
+//                 letterSpacing: "-1.5%",
+//                 color: (theme) =>
+//                   theme.palette.mode === "light"
+//                     ? theme.palette.primary.lightModeHeroTitle
+//                     : theme.palette.primary.darkModeHeroTitle,
+
+//                 pt: "20px",
+//                 textAlign: "center",
+//               }}
+//             >
+//               <h6>Hi, {user && user.names}</h6>
+//             </Typography>
+//             <Stack direction="row">
+//               <Typography
+//                 variant="body2"
+//                 sx={{
+//                   fontFamily: "Poppins",
+//                   fontWeight: "400",
+//                   fontSize: "12px",
+//                   lineHeight: "19.2px",
+
+//                   color: "#95969D",
+//                   pb: "20px",
+//                   pt: "5px",
+//                 }}
+//               >
+//                 {userProfile ? userProfile.job_role : jobTitle}
+//               </Typography>
+//               <VerifiedOutlinedIcon sx={{width:"12px",color:"#5386E4", height:"12px"}} className="clientVerifiedIcon" />
+//             </Stack>
+//           </CardContent>
+//         </Card>
+//       </Grid>
+//       {/* Grid End */}
+//     </>
+//   );
+// }
+// eslint-disable-next-line no-unused-vars
+
+
+export default function FreelancerCard({ name, jobTitle, imageLabel }) {
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user ? user.id : null;
   const [userProfile, setUserProfile] = useState(null);
-  const data = useLocation();
-  console.log(data);
+  const location = useLocation();
+  console.log(location);
 
   axios.interceptors.request.use(
     (config) => {
@@ -48,68 +150,63 @@ export default function FreelancerCard({
     };
 
     fetchUserProfile();
-  }, []);
+  }, [userId]);
 
   return (
-    <>
-    {/* Grid for freelancer card */}
-      <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
-        <Card sx={{ boxShadow: 0 }}>
-          <CardContent
+    <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
+      <Card sx={{ boxShadow: 0 }}>
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar
+            alt={imageLabel}
+            src={userProfile ? userProfile.image : "user"}
+            sx={{ height: "109px", width: "104px" }}
+          />
+
+          <Typography
+            variant="h4"
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              fontFamily: "Poppins",
+              fontWeight: "600",
+              fontSize: "20px",
+              lineHeight: "24px",
+              letterSpacing: "-1.5%",
+              color: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.primary.lightModeHeroTitle
+                  : theme.palette.primary.darkModeHeroTitle,
+
+              pt: "20px",
+              textAlign: "center",
             }}
           >
-            <Avatar
-              alt={imageLabel}
-              sourceSet={sourceSet}
-              src={image}
-              sx={{ height: "109px", width: "104px" }}
-            />
-
+            <h6>Hi, {user && user.names}</h6>
+          </Typography>
+          <Stack direction="row">
             <Typography
-              variant="h4"
+              variant="body2"
               sx={{
                 fontFamily: "Poppins",
-                fontWeight: "600",
-                fontSize: "20px",
-                lineHeight: "24px",
-                letterSpacing: "-1.5%",
-                color: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.primary.lightModeHeroTitle
-                    : theme.palette.primary.darkModeHeroTitle,
+                fontWeight: "400",
+                fontSize: "12px",
+                lineHeight: "19.2px",
 
-                pt: "20px",
-                textAlign: "center",
+                color: "#95969D",
+                pb: "20px",
+                pt: "5px",
               }}
             >
-              <h6>Hi, {user && user.names}</h6>
+              {userProfile ? userProfile.job_role : jobTitle}
             </Typography>
-            <Stack direction="row">
-              <Typography
-                variant="body2"
-                sx={{
-                  fontFamily: "Poppins",
-                  fontWeight: "400",
-                  fontSize: "12px",
-                  lineHeight: "19.2px",
-
-                  color: "#95969D",
-                  pb: "20px",
-                  pt: "5px",
-                }}
-              >
-                {userProfile ? userProfile.job_role : jobTitle}
-              </Typography>
-              <VerifiedOutlinedIcon sx={{width:"12px",color:"#5386E4", height:"12px"}} className="clientVerifiedIcon" />
-            </Stack>
-          </CardContent>
-        </Card>
-      </Grid>
-      {/* Grid End */}
-    </>
+            <VerifiedOutlinedIcon sx={{ width: "12px", color: "#5386E4", height: "12px" }} className="clientVerifiedIcon" />
+          </Stack>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 }
