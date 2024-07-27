@@ -280,7 +280,7 @@ const EditClientPage = () => {
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             label="Email"
-            value={clientProfile?.user || ""}
+            value={user?.email || ""}
             disabled
             fullWidth
             sx={{ mb: 2 }}

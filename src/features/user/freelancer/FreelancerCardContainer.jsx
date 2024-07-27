@@ -2,132 +2,20 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { Card, CardContent, CardMedia, Stack } from "@mui/material";
+import { Card, CardContent, Avatar, Stack } from "@mui/material";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
-import Avatar from "@mui/material/Avatar";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
-
-// export default function FreelancerCard({
-//   name,
-//   jobTitle,
-//   sourceSet,
-//   image,
-//   imageLabel,
-// }) {
-//   const user = JSON.parse(localStorage.getItem("user"));
-//   const userId = user ? user.id : null;
-//   const [userProfile, setUserProfile] = useState(null);
-//   const data = useLocation();
-//   console.log(data);
-
-//   axios.interceptors.request.use(
-//     (config) => {
-//       const user = JSON.parse(localStorage.getItem("user"));
-//       const access = JSON.parse(localStorage.getItem("access"));
-//       if (user && access) {
-//         config.headers.Authorization = `Bearer ${access}`;
-//       }
-//       return config;
-//     },
-//     (error) => Promise.reject(error)
-//   );
-
-//   useEffect(() => {
-//     const fetchUserProfile = async () => {
-//       try {
-//         const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
-//         if (response.data) {
-//           setUserProfile(response.data);
-//         } else {
-//           console.log("Data not available");
-//         }
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-
-//     fetchUserProfile();
-//   }, []);
-
-//   return (
-//     <>
-//     {/* Grid for freelancer card */}
-//       <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
-//         <Card sx={{ boxShadow: 0 }}>
-//           <CardContent
-//             sx={{
-//               display: "flex",
-//               flexDirection: "column",
-//               alignItems: "center",
-//             }}
-//           >
-//             <Avatar
-//               alt={imageLabel}
-//               sourceSet={sourceSet}
-//               src={image}
-//               sx={{ height: "109px", width: "104px" }}
-//             />
-
-//             <Typography
-//               variant="h4"
-//               sx={{
-//                 fontFamily: "Poppins",
-//                 fontWeight: "600",
-//                 fontSize: "20px",
-//                 lineHeight: "24px",
-//                 letterSpacing: "-1.5%",
-//                 color: (theme) =>
-//                   theme.palette.mode === "light"
-//                     ? theme.palette.primary.lightModeHeroTitle
-//                     : theme.palette.primary.darkModeHeroTitle,
-
-//                 pt: "20px",
-//                 textAlign: "center",
-//               }}
-//             >
-//               <h6>Hi, {user && user.names}</h6>
-//             </Typography>
-//             <Stack direction="row">
-//               <Typography
-//                 variant="body2"
-//                 sx={{
-//                   fontFamily: "Poppins",
-//                   fontWeight: "400",
-//                   fontSize: "12px",
-//                   lineHeight: "19.2px",
-
-//                   color: "#95969D",
-//                   pb: "20px",
-//                   pt: "5px",
-//                 }}
-//               >
-//                 {userProfile ? userProfile.job_role : jobTitle}
-//               </Typography>
-//               <VerifiedOutlinedIcon sx={{width:"12px",color:"#5386E4", height:"12px"}} className="clientVerifiedIcon" />
-//             </Stack>
-//           </CardContent>
-//         </Card>
-//       </Grid>
-//       {/* Grid End */}
-//     </>
-//   );
-// }
-// eslint-disable-next-line no-unused-vars
-
 
 export default function FreelancerCard({ name, jobTitle, imageLabel }) {
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user ? user.id : null;
   const [userProfile, setUserProfile] = useState(null);
-  const location = useLocation();
-  console.log(location);
 
+  // Axios interceptor to include Authorization header
   axios.interceptors.request.use(
     (config) => {
-      const user = JSON.parse(localStorage.getItem("user"));
       const access = JSON.parse(localStorage.getItem("access"));
-      if (user && access) {
+      if (access) {
         config.headers.Authorization = `Bearer ${access}`;
       }
       return config;
@@ -139,18 +27,19 @@ export default function FreelancerCard({ name, jobTitle, imageLabel }) {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
-        if (response.data) {
-          setUserProfile(response.data);
-        } else {
-          console.log("Data not available");
-        }
+        setUserProfile(response.data);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching user profile:", error);
       }
     };
 
-    fetchUserProfile();
+    if (userId) {
+      fetchUserProfile();
+    }
   }, [userId]);
+
+  // Handle image URL
+  const imageUrl = userProfile && userProfile.image ? `http://localhost:8000${userProfile.image}` : "default_avatar.png";
 
   return (
     <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
@@ -163,8 +52,8 @@ export default function FreelancerCard({ name, jobTitle, imageLabel }) {
           }}
         >
           <Avatar
-            alt={imageLabel}
-            src={userProfile ? userProfile.image : "user"}
+            alt={imageLabel || "User Avatar"}
+            src={imageUrl}
             sx={{ height: "109px", width: "104px" }}
           />
 
@@ -180,14 +69,13 @@ export default function FreelancerCard({ name, jobTitle, imageLabel }) {
                 theme.palette.mode === "light"
                   ? theme.palette.primary.lightModeHeroTitle
                   : theme.palette.primary.darkModeHeroTitle,
-
               pt: "20px",
               textAlign: "center",
             }}
           >
             <h6>Hi, {user && user.names}</h6>
           </Typography>
-          <Stack direction="row">
+          <Stack direction="row" alignItems="center">
             <Typography
               variant="body2"
               sx={{
@@ -195,7 +83,6 @@ export default function FreelancerCard({ name, jobTitle, imageLabel }) {
                 fontWeight: "400",
                 fontSize: "12px",
                 lineHeight: "19.2px",
-
                 color: "#95969D",
                 pb: "20px",
                 pt: "5px",

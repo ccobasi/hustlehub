@@ -51,7 +51,7 @@ const ClientPage = ({ userId }) => {
 
       <Box sx={{ mt: '5%' }}>
         <Link
-          href="/categories"
+          // href="/categories"
           sx={{
             textDecoration: 'none',
             ml: '67%',
@@ -63,7 +63,7 @@ const ClientPage = ({ userId }) => {
             letterSpacing: '-1%',
           }}
         >
-          View All Project
+          
         </Link>
       </Box>
 
