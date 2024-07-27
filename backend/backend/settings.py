@@ -59,6 +59,7 @@ SIMPLE_JWT = {
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,20 +74,18 @@ INSTALLED_APPS = [
     "contract",
     "review",
     "notification",
-    "channels",
+    # "channels",
     "rest_framework",
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
 ]
 
-# Channels
 ASGI_APPLICATION = 'backend.asgi.application'
+
+# Set up the channel layers configuration (using in-memory layer for development)
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
     },
 }
 
