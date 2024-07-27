@@ -12,6 +12,7 @@ urlpatterns = [
     path('proposal/', include('proposal.urls', namespace='proposal')),
     path('contract/', include('contract.urls', namespace='contract')),
     path('review/', include('review.urls', namespace='review')),
+    path('notification/', include('notification.urls', namespace='notification')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

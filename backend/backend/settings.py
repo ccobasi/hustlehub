@@ -73,10 +73,22 @@ INSTALLED_APPS = [
     "contract",
     "review",
     "notification",
+    "channels",
     "rest_framework",
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
 ]
+
+# Channels
+ASGI_APPLICATION = 'backend.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
