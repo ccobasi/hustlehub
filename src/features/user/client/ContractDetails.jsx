@@ -14,7 +14,7 @@ const ContractDetails = () => {
   useEffect(() => {
     const fetchContractDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`);
         if (response.status === 200) {
           setContract(response.data);
         } else {
@@ -39,7 +39,7 @@ const ContractDetails = () => {
         return;
       }
 
-      const response = await axios.patch(`http://localhost:8000/contract/contracts/${id}/`, { status }, {
+      const response = await axios.patch(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`, { status }, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`

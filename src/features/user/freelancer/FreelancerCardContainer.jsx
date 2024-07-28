@@ -26,7 +26,7 @@ export default function FreelancerCard({ name, jobTitle, imageLabel }) {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/user_profile/user-profile/${userId}/`);
         setUserProfile(response.data);
       } catch (error) {
         console.error("Error fetching user profile:", error);
@@ -39,7 +39,7 @@ export default function FreelancerCard({ name, jobTitle, imageLabel }) {
   }, [userId]);
 
   // Handle image URL
-  const imageUrl = userProfile && userProfile.image ? `http://localhost:8000${userProfile.image}` : "default_avatar.png";
+  const imageUrl = userProfile && userProfile.image ? `https://ccobasi.pythonanywhere.com${userProfile.image}` : "default_avatar.png";
 
   return (
     <Grid item xs={12} md={12} sx={{ mb: "10px" }}>

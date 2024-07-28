@@ -36,7 +36,7 @@ export default function Proposal() {
     };
 
     try {
-      await axios.post('http://localhost:8000/proposal/proposals/', proposal, {
+      await axios.post('https://ccobasi.pythonanywhere.com/proposal/proposals/', proposal, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access")}`,
         },
