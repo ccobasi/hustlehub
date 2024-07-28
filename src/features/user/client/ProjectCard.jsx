@@ -1,89 +1,45 @@
 // eslint-disable-next-line no-unused-vars
 import * as React from "react";
-import List from "@mui/material/List";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Link } from "@mui/material";
 
-import ListItem from "@mui/material/ListItem";
-// import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-// import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import { Grid,  Link } from "@mui/material";
-
-export default function ProjectContainer({
-  title,
-  description,
-  closing_date
-}) {
+export default function ProjectContainer({ title, description, closing_date }) {
   return (
-    <>
-      {/* Grid for client project */}
-      <Grid item xs={12} md={12} sx={{ mb: "10px" }}>
-        <List
-          sx={{
-            width: "100%",
-
-            bgcolor: "background.paper",
-            textAlign: "center",
-            boxShadow: 1,
-          }}
-        >
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              {title}
-            </ListItemAvatar>
-            <ListItem sx={{ justifyContent: "flex-start" }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  ml: "20%",
-                  mb: "0%",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  fontFamily: "Poppins",
-                  fontWeight: "600",
-                  fontSize: "14px",
-                  lineHeight: "18.2px",
-                  letterSpacing: "-1%",
-                  color: (theme) =>
-                    theme.palette.mode === "light"
-                      ? theme.palette.primary.lightModeHeroTitle
-                      : theme.palette.primary.darkModeHeroTitle,
-                }}
-              >
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow sx={{backgroundColor: "#87CEEB", color: "white"}}>
+            <TableCell align="center" sx={{ backgroundColor: "#87CEEB", color: "white" }}>
+              <Typography variant="h6" sx={{ color: "white" }}>Title</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: "#87CEEB", color: "white" }}>
+              <Typography variant="h6" sx={{ color: "white" }}>Description</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: "#87CEEB", color: "white" }}>
+              <Typography variant="h6" sx={{ color: "white" }}>Closing Date</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: "#87CEEB", color: "white" }}>
+              <Typography variant="h6" sx={{ color: "white" }}>Link</Typography>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell component="th" scope="row" align="center">
+              <Typography variant="body1">{title}</Typography>
+            </TableCell>
+            <TableCell align="center">
+              <Typography variant="body1" sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                 {description}
               </Typography>
-            </ListItem>
-          </ListItem>
-          <ListItem>
-            <Typography
-              sx={{
-                ml: "72%",
-                mt: "-7%",
-
-                width: "100%",
-
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                fontFamily: "Poppins",
-                fontWeight: "400",
-                fontSize: "13px",
-                lineHeight: "20.8px",
-                letterSpacing: "-1%",
-                color: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.primary.lightModeHeroTitle
-                    : theme.palette.primary.darkModeHeroTitle,
-              }}
-            >
-              {closing_date}
-            </Typography>
-            <ListItem>
+            </TableCell>
+            <TableCell align="center">
+              <Typography variant="body1">{closing_date}</Typography>
+            </TableCell>
+            <TableCell align="center">
               <Link
                 href="/categories"
                 sx={{
                   textDecoration: "none",
-                  mt: "-10%",
-                  ml: "35%",
                   color: "#87CEEB",
                   fontFamily: "Poppins",
                   fontWeight: "500",
@@ -92,13 +48,12 @@ export default function ProjectContainer({
                   letterSpacing: "-1%",
                 }}
               >
-                {/* View Project */}
+                View Project
               </Link>
-            </ListItem>
-          </ListItem>
-        </List>
-      </Grid>
-      {/* Grid End */}
-    </>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }

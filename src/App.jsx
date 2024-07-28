@@ -10,6 +10,7 @@ const SignIn = lazy(() => import('./features/components/SignIn'));
 const VerifyEmail = lazy(() => import('./features/components/VerifyEmail'));
 const ForgetPassword = lazy(() => import('./features/components/ForgetPassword'));
 const ConfirmPasswordReset = lazy(() => import('./features/components/ConfirmPasswordReset'));
+const Notifications = lazy(() => import('./features/notification/Notifications'));
 const ClientPage = lazy(() => import('./features/user/client/ClientPage'));
 const CreateProjectPage = lazy(() => import('./features/user/client/CreateProjectPage'));
 const ProjectReviewPage = lazy(() => import('./features/user/client/ProjectReviewPage'));
@@ -165,6 +166,7 @@ function App() {
             <Route path="/verify-email/:token" element={ <VerifyEmail />} />
             <Route path="/forget-password" element={<ForgetPassword /> } />
             <Route path="/password-reset-confirm/:uid/token" element={<ConfirmPasswordReset />} />
+            <Route path="/notifications/" element={<Notifications />} />
             <Route path="/categories" element={ <CategoriesPage />} />
             {/* <Route path="/notification" element={<NotificationPage />} />
             <Route path="/message" element={<MessagePage />} /> */}

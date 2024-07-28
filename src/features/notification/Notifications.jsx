@@ -5,15 +5,16 @@ const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
-        const socket = new WebSocket(`ws://${window.location.host}/ws/notifications/`);
+        // const socket = new WebSocket(`ws://${window.location.host}/ws/notification/`);
+        const ws = new WebSocket('ws://localhost:8080/ws/notification/');
 
-        socket.onmessage = function(event) {
+        ws.onmessage = function(event) {
             const data = JSON.parse(event.data);
             setNotifications((prevNotifications) => [data.message, ...prevNotifications]);
         };
 
         return () => {
-            socket.close();
+            ws.close();
         };
     }, []);
 
