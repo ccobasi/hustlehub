@@ -643,7 +643,7 @@ const handleSubmit = async (e) => {
           </Button>
         </form>
         <h3 className="text-option">Or</h3>
-        <div className="githubContainer">
+        {/* <div className="githubContainer">
           <Button
             type="submit"
             fullWidth
@@ -653,8 +653,8 @@ const handleSubmit = async (e) => {
           >
             Sign up with Github
           </Button>
-        </div>
-        <div id="signInDiv"></div>
+        </div> */}
+        {/* <div id="signInDiv"></div> */}
         <Grid container>
           <Grid item xs>
             <Link to="/sign-in" variant="body2">

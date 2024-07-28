@@ -306,13 +306,13 @@ export default function SignIn() {
           </Grid>
 
           {/**Divider */}
-          <Divider sx={{ mt: "20%", color: "#AFB0B6" }}>
+          {/* <Divider sx={{ mt: "20%", color: "#AFB0B6" }}>
             Or continue with
-          </Divider>
+          </Divider> */}
           {/**Image Avatars */}
-          <Box className="imgAvatars">
+          {/* <Box className="imgAvatars">
             <ImageAvatars />
-          </Box>
+          </Box> */}
 
           <Grid container justifyContent="center" sx={{ mt: "10%" }}>
             <Grid item>

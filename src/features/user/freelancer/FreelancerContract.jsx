@@ -1,7 +1,7 @@
-// export default FreelancerContract;
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Typography, Box, List, ListItem, Card, CardContent, Stack } from "@mui/material";
+import { Typography, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const FreelancerContract = () => {
@@ -32,68 +32,37 @@ const FreelancerContract = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ mt: 4 }}>
       {error && <Typography color="error">Error loading contracts</Typography>}
-      <List>
-        {contracts.map((contract) => (
-          <ListItem key={contract.id} disablePadding>
-            <Card
-              sx={{
-                borderRadius: "20px",
-                boxShadow: 2,
-                backgroundColor: "#87CEEB",
-                width: "100%",
-                mb: 2, // Add some margin between cards
-              }}
-              onClick={() => handleContractClick(contract.id)}
-            >
-              <CardContent>
-                <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center" }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: "#FFFFFF",
-                      fontFamily: "Poppins",
-                      fontWeight: "600",
-                      fontSize: "16px",
-                      lineHeight: "20.8px",
-                      letterSpacing: "-1%",
-                    }}
-                  >
-                    {contract.project_title}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: "#FFFFFF",
-                      fontFamily: "Poppins",
-                      fontWeight: "600",
-                      fontSize: "16px",
-                      lineHeight: "20.8px",
-                      letterSpacing: "-1%",
-                    }}
-                  >
-                    #{contract.contract_amount}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: "#FFFFFF",
-                      fontFamily: "Poppins",
-                      fontWeight: "600",
-                      fontSize: "16px",
-                      lineHeight: "20.8px",
-                      letterSpacing: "-1%",
-                    }}
-                  >
-                    {contract.status}
-                  </Typography>
-                </Stack>
-              </CardContent>
-            </Card>
-          </ListItem>
-        ))}
-      </List>
+      <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="contracts table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Project Title</TableCell>
+              <TableCell align="center">Contract Amount</TableCell>
+              <TableCell align="center">Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {contracts.map((contract) => (
+              <TableRow
+                key={contract.id}
+                hover
+                onClick={() => handleContractClick(contract.id)}
+                sx={{ cursor: 'pointer' }}
+              >
+                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>
+                  {contract.project_title}
+                </TableCell>
+                <TableCell align="center">{contract.contract_amount}</TableCell>
+                <TableCell align="center" sx={{ color: '#87CEEB', fontWeight: 'bold' }}>
+                  {contract.status}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 };

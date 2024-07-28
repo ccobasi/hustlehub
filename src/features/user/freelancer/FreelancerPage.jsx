@@ -87,10 +87,10 @@ function FreelancerPage({ userId }) {
              
             }}
           >
-            My Projects
+            Jobs
           </Typography>
           <Link
-            href="/categories"
+            // href="/categories"
             sx={{
               textDecoration: "none",
               ml: "62%",
@@ -152,7 +152,7 @@ function FreelancerPage({ userId }) {
             Contracts
           </Typography>
           <Link
-            href="/about/question/21334565"
+            // href="/about/question/21334565"
             sx={{
               textDecoration: "none",
               ml: "62%",
@@ -172,7 +172,7 @@ function FreelancerPage({ userId }) {
         {/* <FreelancerFourthFeature /> */}
         <FreelancerContract userId={userId} />
         {/* Fourth Heading */}
-        <Stack direction="row" sx={{ mt: "20%" }}>
+        {/* <Stack direction="row" sx={{ mt: "20%" }}>
           <Typography
             variant="h6"
             sx={{
@@ -193,7 +193,7 @@ function FreelancerPage({ userId }) {
           </Typography>
 
           <Link
-            href="/about/question/21334565"
+            // href="/about/question/21334565"
             sx={{
               textDecoration: "none",
               ml: "42%",
@@ -208,7 +208,7 @@ function FreelancerPage({ userId }) {
           >
             View more
           </Link>
-        </Stack>
+        </Stack> */}
 
         <FreelancerFifthFeature reviews={reviews} loading={loading} error={error} />
       </Container>

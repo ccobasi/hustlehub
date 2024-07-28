@@ -69,7 +69,7 @@ const ClientPage = ({ userId }) => {
 
       <ClientThirdFeature userId={userId} />
 
-      <Stack direction="row" sx={{ mt: '20%' }}>
+      <Stack direction="row" sx={{ mt: '1%' }}>
         <Typography
           variant="h6"
           sx={{
@@ -88,7 +88,7 @@ const ClientPage = ({ userId }) => {
           Messages
         </Typography>
         <Link
-          href="/about/question/21334565"
+          // href="/about/question/21334565"
           sx={{
             textDecoration: 'none',
             ml: '39.5%',
