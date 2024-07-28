@@ -27,7 +27,7 @@
 //   useEffect(() => {
 //     const fetchClientProfile = async () => {
 //       try {
-//         const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
+//         const response = await axios.get(`https://ccobasi.pythonanywhere.com/user_profile/user-profile/${userId}/`);
 //         if (response.data) {
 //           setClientProfile(response.data);
 //         } else {
@@ -88,7 +88,7 @@ const ClientProfile = ({ name, jobTitle, imageLabel }) => {
   useEffect(() => {
     const fetchClientProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/user_profile/user-profile/${userId}/`);
         setClientProfile(response.data);
       } catch (error) {
         console.error("Error fetching client profile:", error);
@@ -101,7 +101,7 @@ const ClientProfile = ({ name, jobTitle, imageLabel }) => {
   }, [userId]);
 
   // Handle image URL
-  const imageUrl = clientProfile && clientProfile.image ? `http://localhost:8000${clientProfile.image}` : Img;
+  const imageUrl = clientProfile && clientProfile.image ? `https://ccobasi.pythonanywhere.com${clientProfile.image}` : Img;
 
   return (
     <Card sx={{ maxWidth: "345px", mt: 12, ml: "42%" }}>

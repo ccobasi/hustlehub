@@ -37,7 +37,7 @@
 
 //   const handleSignInWithGoogle = async (response)=>{
 //     const payload=response.credential
-//     const server_res=await axios.post("http://localhost:8000/social_account/google/", {"access_token":payload})
+//     const server_res=await axios.post("https://ccobasi.pythonanywhere.com/social_account/google/", {"access_token":payload})
 //     console.log(server_res);
 //     const user={
 //       "email":server_res.data.email,
@@ -101,8 +101,8 @@
 //   } else {
 //     console.log(formData); 
 //     try {
-//       const res = await axios.post("http://localhost:8000/user/register/", formData);
-//       // const res = await axios.post("http://localhost:8000/user/register/", formData);
+//       const res = await axios.post("https://ccobasi.pythonanywhere.com/user/register/", formData);
+//       // const res = await axios.post("https://ccobasi.pythonanywhere.com/user/register/", formData);
 //       const response = res.data;
 //       console.log(response);
 //       if (res.status === 201) {
@@ -366,7 +366,7 @@ const SignUp = () => {
 
   const handleSignInWithGoogle = async (response) => {
     const payload = response.credential;
-    const server_res = await axios.post("http://localhost:8000/social_account/google/", {
+    const server_res = await axios.post("https://ccobasi.pythonanywhere.com/social_account/google/", {
       access_token: payload,
     });
     console.log(server_res);
@@ -442,13 +442,13 @@ const handleSubmit = async (e) => {
     }
 
     try {
-        const res = await axios.post("http://localhost:8000/user/register/", formData);
+        const res = await axios.post("https://ccobasi.pythonanywhere.com/user/register/", formData);
         const response = res.data;
         
         if (res.status === 201) {
           console.log("User created");
           console.log(response);
-            const res = await axios.post("http://localhost:8000/user/register/", formData);
+            const res = await axios.post("https://ccobasi.pythonanywhere.com/user/register/", formData);
             const response = res.data;
             if (res.status === 201) {
                 toast.success("Registration successful! Please check your email to verify your account.");
