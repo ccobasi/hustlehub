@@ -1,7 +1,7 @@
-// ClientThirdFeature.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Typography, Box, List, ListItem, ListItemText } from "@mui/material";
+import { Typography, Box, List, ListItem, ListItemText, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const ClientThirdFeature = ({ userId }) => {
@@ -31,20 +31,35 @@ const ClientThirdFeature = ({ userId }) => {
     navigate(`/contract/${id}`);
   };
 
-
   return (
-    <Box>
-      <Typography variant="h6" sx={{ fontFamily: "Poppins", fontWeight: "600", fontSize: "16px", lineHeight: "20.8px", textAlign: "start" }}>
+    <Box sx={{ p: 3, bgcolor: 'background.default', minHeight: '100vh' }}>
+      <Typography variant="h4" sx={{ fontFamily: "Poppins", fontWeight: "600", mb: 3, color: 'text.primary' }}>
         My Contracts
       </Typography>
       {error && <Typography color="error">Error loading contracts</Typography>}
-      <List>
-        {contracts.map(contract => (
-          <ListItem button key={contract.id} onClick={() => handleContractClick(contract.id)}>
-            <ListItemText primary={contract.contract_name} secondary={`Status: ${contract.status}`} />
-          </ListItem>
-        ))}
-      </List>
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <List>
+          {contracts.map(contract => (
+            <ListItem 
+              button 
+              key={contract.id} 
+              onClick={() => handleContractClick(contract.id)}
+              sx={{ mb: 2, borderRadius: 1, '&:hover': { bgcolor: 'action.hover' } }}
+            >
+              <ListItemText 
+                primary={contract.contract_name} 
+                secondary={
+                  <Typography component="span" variant="body2" sx={{ color: '#87CEEB' }}>
+                    Status: {contract.status}
+                  </Typography>
+                }
+                primaryTypographyProps={{ fontFamily: 'Poppins', fontWeight: '500', color: 'text.primary' }}
+                secondaryTypographyProps={{ fontFamily: 'Poppins', fontWeight: '400' }}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
     </Box>
   );
 };
