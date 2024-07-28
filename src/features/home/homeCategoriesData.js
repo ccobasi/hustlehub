@@ -3,7 +3,7 @@ const  homeCategoriesData = [
         id: 1,
       jobTitle: "Accounting & Finance",
       sourceSet:
-        "./frontend/dist/assets/accountingAndFinance.png, ./frontend/dist/assets/accountingAndFinance.png, ./frontend/dist/assets/accountingAndFinance.png",
+        "./frontend/dist/assets/accountingAndFinance.png, ./frontend/dist/assets/accountingAndFinance.png, /assets/accountingAndFinance.png",
       image: "./frontend/dist/assets/accountingAndFinance.png",
   
       imageLabel: "Accounting & Finance",

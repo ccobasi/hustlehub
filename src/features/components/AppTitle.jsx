@@ -26,7 +26,7 @@ export default function AppTitle ()  {
 
           }}
         >
-          Hustling Hub
+          Hussling Hub
         </Typography>
         {/*  Title End */}
       </>

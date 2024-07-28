@@ -1,4 +1,4 @@
-import Img from "../../assets/banner.jpg"
+import Img from "./frontend/dist/assets/banner.jpg"
 const homeHeroData= {
     title: "Seeking assistance? Get help!",
     description:

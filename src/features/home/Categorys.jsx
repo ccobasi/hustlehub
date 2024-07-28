@@ -27,10 +27,8 @@ export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
             sx={{
               flex: 1,
               overflow: "hidden",
-
               width: "155px",
               height: "122px",
-
               borderRadius: "16px",
               boxShadow: "0px 4px 20px -10px #00000005",
             }}
@@ -41,20 +39,18 @@ export default function Categories({jobTitle,sourceSet, image, imageLabel}) {
               sx={{
                 height: "48px",
                 width: "48px",
-
                 borderRadius: "116px",
-                maxHeight: { xs: 48, md: 167 },
-                maxWidth: { xs: 48, md: 250 },
-                margin: "auto",
+                maxHeight: { xs: 48,sm:50, md: 167, lg:200 },
+                maxWidth: { xs: 48,sm:50,  md: 167, lg:200 },
+                ml:{lg:'40%',md:"40%",sm:'40%',xs:'35%'},
+               mb: {lg:'-5%',md:"-5%",sm:'-5%',xs:'-5%'},
               }}
             >
               
               <Avatar src={image} alt={imageLabel} srcSet={sourceSet} style={{width:"48px", height:"48px"}} />
             </CardMedia>
             {/* Card Media End */}
-
             {/* Heading for Job Title */}
-
             <Typography
               variant="body2"
               sx={{

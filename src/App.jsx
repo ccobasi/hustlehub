@@ -19,6 +19,7 @@ const FreelancerAnchorTemporaryDrawer = lazy(() => import('./features/components
 const ClientAnchorTemporaryDrawer = lazy(() => import('./features/components/ClientDrawer'));
 const EditFreelancerPage = lazy(() => import('./features/user/freelancer/EditFreelancerPage'));
 const FreelancerSearchPage = lazy(() => import('./features/user/freelancer/FreelancerSearchPage'));
+//const RegistrationLayout = lazy(()=> import('./RegistrationLayout'));
 const SecondLayout = lazy(() => import('./SecondLayout'));
 const AboutPage = lazy(() => import('./features/about/AboutPage'));
 const CategoriesPage  = lazy(() => import('./features/project/CategoriesPage'));
@@ -158,6 +159,9 @@ function App() {
               }
             />
           </Route>
+          {/* <Route path='/' element={RegistrationLayout}>
+            <Route path="/about" element={<AboutPage />} />
+          </Route> */}
           <Route path="/" element={ <SecondLayout />}>
             <Route path="/sign-up" element={ <SignUp />} />
             {/* <Route path="/sign-out" element={<SignOut />} /> */}

@@ -597,15 +597,13 @@
 // eslint-disable-next-line no-unused-vars
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+
 import Toolbar from "@mui/material/Toolbar";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
-import Search from "@mui/icons-material/Search";
+//import Search from "@mui/icons-material/Search";
 import AppLogo from "../components/AppLogo";
 import MobileTransitionsModal from "../components/MobileTransitionsModal";
-import MenuSection from "../components/MenuSection";
+//import MenuSection from "../components/MenuSection";
 import AppTitle from "../components/AppTitle";
 
 export default function ResponsiveNavBar() {
@@ -623,7 +621,7 @@ export default function ResponsiveNavBar() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AppLogo  src="/assets/logo.png" alt="Logo"/>
+            <AppLogo  src="./frontend/dist/assets/logo.png" alt="Logo"/>
            <AppTitle/>
             <MobileTransitionsModal />
           </Toolbar>

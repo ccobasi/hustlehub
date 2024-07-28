@@ -19,16 +19,15 @@ export const HomeTestimonials = () => {
               theme.palette.mode === "light"
                 ? theme.palette.primary.lightModeHeroTitle
                 : theme.palette.primary.darkModeHeroTitle,
-
-            pt: "20px",
-            ml: "10%",
+            pb: {lg:'15%',md:"8%",sm:'1%',xs:'1%'},
+            ml:{lg:'10%',md:"10%",sm:'10%',xs:'10%'},
             width: "99px",
             height: "21px",
             fontFamily: "Poppins",
-            fontWeight: "400",
+            fontWeight: "700",
             fontSize: "16px",
-            lineHeight: "20.8px",
-            letterSpacing: "-1%",
+            lineHeight: "40.8px",
+            letterSpacing: "5%",
           }}
         >
           Testimonials
@@ -44,10 +43,9 @@ export const HomeTestimonials = () => {
             fontSize: "12px",
             lineHeight: "20.8px",
             letterSpacing: "-1%",
-
             textDecoration: "none",
-            ml: "45%",
-            pt: "27px",
+            pt: {lg:'1%',md:"1%",sm:'1%',xs:'1%'},
+            ml:{lg:'70%',md:"70%",sm:'60%',xs:'50%'},
             color: "#95969D",
           }}
         >
@@ -61,10 +59,9 @@ export const HomeTestimonials = () => {
         container
         spacing={4}
         sx={{
-          margin: "auto",
-
-          maxWidth: "100%",
-          mb: "3%",
+          ml:{lg:'-1%',md:"2%",sm:'3%',xs:'-1%'},
+          mt: {lg:'-7%',md:"0%",sm:'5%',xs:'5%'},
+          maxWidth: "100%",   
         }}
       >
         {fourthContainer}
@@ -83,8 +80,10 @@ export const HomeTestimonials = () => {
                 ? theme.palette.grey[400]
                 : theme.palette.grey[500],
           },
-          ml: "19%",
-          mb: "25px",
+          //ml: "19%",
+          //mb: "25px",
+          ml:{lg:'5%',md:"10%",sm:'15%',xs:'15%'},
+          mt: {lg:'5%',md:"5%",sm:'5%',xs:'10%'},
           width: "108.59px",
           height: "24px",
           borderRadius: "5px",

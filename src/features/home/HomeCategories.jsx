@@ -18,15 +18,13 @@ export const HomeCategories = () => {
             theme.palette.mode === "light"
               ? theme.palette.primary.lightModeHeroTitle
               : theme.palette.primary.darkModeHeroTitle,
-
           fontFamily: "Poppins",
           fontWeight: "600",
           fontSize: "16px",
           lineHeight: "20.8px",
-
-          ml: "8%",
-          pb: "15px",
-          mt: "12%",
+          pb: {lg:'1%',md:"1%",sm:'1%',xs:'1%'},
+          mt: {lg:'5%',md:"5%",sm:'5%',xs:'5%'},
+          ml:{lg:'10%',md:"8%",sm:'10%',xs:'10%'},
         }}
       >
         Categories
@@ -39,9 +37,9 @@ export const HomeCategories = () => {
         container
         spacing={4}
         sx={{
-          margin: "auto",
-
-          maxWidth: "100%",
+          pb: {lg:'5%',md:"5%",sm:'5%',xs:'5%'},
+          mt: {lg:'0%',md:"0%",sm:'10%',xs:'10%'},
+          ml:{lg:'-1%',md:"-1%",sm:'3%',xs:'-2%'},
         }}
       >
         {secondContainer}
@@ -53,7 +51,7 @@ export const HomeCategories = () => {
         href="/categories"
         sx={{
           typography: (theme) => theme.typography.categoriesSeeAllLink,
-          ml: "67%",
+          ml:{lg:'10%',md:"10%",sm:'10%',xs:'10%'},
         }}
       >
         See all

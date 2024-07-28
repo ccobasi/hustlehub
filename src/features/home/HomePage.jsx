@@ -7,6 +7,7 @@ import { WhyBusinessesTurnToHustleHub } from "./WhyHustleHubFeature";
 import { HomeGreatWork } from "./HomeGreatWork";
 import { Container } from "@mui/material";
 import { HeroSection } from "./HeroSection";
+import Logo from '../../assets/logo.png'
 
 export default function HomePage() {
   //Instatiate useNavigate
@@ -19,20 +20,14 @@ export default function HomePage() {
         <meta name="viewport" content="width=device-width, intial-scale=1" />
         <title>Hustle Hub Home</title>
       </head>
-
       <Container component="main" maxWidth="lg">
         {/*First Home Feature*/}
-
         <HeroSection />
-
         {/*Second Home Feature*/}
         <HomeCategories />
-
         {/*Third Home Feature*/}
         <HomeTalents />
-
         <WhyBusinessesTurnToHustleHub />
-
         {/*FOurth Home Feature*/}
         <HomeTestimonials />
         {/* Fifth Home Feature */}

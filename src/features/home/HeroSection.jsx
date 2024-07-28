@@ -20,9 +20,11 @@ export const HeroSection = () => {
         container
         spacing={6}
         sx={{
-          margin: "auto",
+          pb: {lg:'5%',md:"5%",sm:'1%',xs:'1%'},
+          mt: {lg:'0%',md:"0%",sm:'0%',xs:'10%'},
+          ml:{lg:'-1%',md:"-1%",sm:'10%',xs:'0%'},
+          
 
-          maxWidth: "90%",
         }}
       >
         {secondContainer}

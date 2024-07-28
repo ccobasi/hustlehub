@@ -16,10 +16,6 @@ export const HomeGreatWork = () => {
             theme.palette.mode === "light"
               ? theme.palette.primary.lightModeHeroTitle
               : theme.palette.primary.darkModeHeroTitle,
-
-          pt: "20px",
-          ml: "10%",
-
           width: "200px",
           height: "21px",
           fontFamily: "Poppins",
@@ -27,10 +23,12 @@ export const HomeGreatWork = () => {
           fontSize: "16px",
           lineHeight: "20.8px",
           letterSpacing: "-1%",
-          mb: "2%",
+          ml:{lg:'10%',md:"10%",sm:'10%',xs:'10%'},
+          mb: {lg:'2%',md:"5%",sm:'5%',xs:'5%'},
+          pt: {lg:'8%',md:"10%",sm:'20%',xs:'20%'},
         }}
       >
-        <b>Find Great Work</b>
+        Find Great Work
       </Typography>
 
       {/* Heading End*/}
@@ -43,9 +41,8 @@ export const HomeGreatWork = () => {
               theme.palette.mode === "light"
                 ? theme.palette.primary.lightModeHeroTitle
                 : theme.palette.primary.darkModeHeroTitle,
-
-            pt: "30px",
-            ml: "10%",
+            pt: {lg:'3%',md:"1%",sm:'2%',xs:'4%'},
+            ml:{lg:'10%',md:"10%",sm:'10%',xs:'10%'},
             width: "299px",
             height: "21px",
             fontFamily: "Poppins",
@@ -68,10 +65,9 @@ export const HomeGreatWork = () => {
             fontSize: "12px",
             lineHeight: "20.8px",
             letterSpacing: "-1%",
-
             textDecoration: "none",
-            ml: "10%",
-            pt: "27px",
+            pt: {lg:'3%',md:"1%",sm:'2%',xs:'4%'},
+            ml:{lg:'40%',md:"40%",sm:'30%',xs:'10%'},
             color: "#95969D",
           }}
         >
@@ -87,10 +83,10 @@ export const HomeGreatWork = () => {
         container
         spacing={4}
         sx={{
-          margin: "auto",
-
           maxWidth: "100%",
-          mb: "5%",
+          ml:{lg:'0%',md:"0%",sm:'5%',xs:'1%'},
+          mb: {lg:'5%',md:"5%",sm:'5%',xs:'5%'},
+          pt: {lg:'3%',md:"3%",sm:'10%',xs:'10%'},
         }}
       >
         {updatesContainer}
@@ -111,8 +107,8 @@ export const HomeGreatWork = () => {
                 ? theme.palette.grey[400]
                 : theme.palette.grey[500],
           },
-          ml: "19%",
-          mb: "25px",
+          ml:{lg:'10%',md:"15%",sm:'15%',xs:'10%'},
+          mb: {lg:'5%',md:"5%",sm:'5%',xs:'5%'},
           width: "128.59px",
           height: "24px",
           borderRadius: "5px",

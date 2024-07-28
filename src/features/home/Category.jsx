@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 // import Avatar  from "@mui/material/Avatar";
 
-export default function Category({title,description, closing_date}) {
+export default function Category({jobTitle,description, closing_date}) {
   return (
     <>
       {/* Grid for the Categories Feature*/}

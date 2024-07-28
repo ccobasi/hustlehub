@@ -2,11 +2,11 @@ import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import { AppBar, Box, Button } from "@mui/material";
+import { AppBar, Box,  } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import Logo from '../../../assets/hlogo.png'
+//import Logo from '../../../assets/hlogo.png'
 
 const SecondHeader = () => {
   //Use system preference to set theme mode
@@ -36,7 +36,7 @@ const SecondHeader = () => {
         }}
       >
         <AppBar
-          sx={{ backgroundColor: "background.default", mb: "60px" }}
+          sx={{ backgroundColor: "background.default", mb: "10px" }}
           className="appspotAppBar"
         >
           <Toolbar className="appspotToolbar">
@@ -61,7 +61,10 @@ const SecondHeader = () => {
               }}
               href="/"
             >
-              <Link to="/"><img src={Logo} className='logo' alt="logo" style={{
+              <Link to="/"><img 
+              //src={Logo}
+              src="./frontend/dist/assets/logo.png"
+              className='logo' alt="logo" style={{
                     order: 1,
                     fontSize: "2.3rem",
                     width: "150px",
@@ -70,7 +73,7 @@ const SecondHeader = () => {
             </Link>
 
             <Box>
-              <Button
+              {/* <Button
                 onClick={() => navigate("/sign-in")}
                 variant="contained"
                 sx={{
@@ -84,7 +87,7 @@ const SecondHeader = () => {
                 }}
               >
                 Sign Out
-              </Button>
+              </Button> */}
             </Box>
           </Toolbar>
         </AppBar>

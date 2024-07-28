@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-// import Avatar  from "@mui/material/Avatar";
+
 
 export default function Categories({title,description, closing_date}) {
   return (
