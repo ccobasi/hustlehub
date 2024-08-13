@@ -12,11 +12,43 @@ from django.urls import reverse
 from .utils import send_normal_email
 from rest_framework_simplejwt.tokens  import RefreshToken, Token
 from user_profile.models import ClientProfile
-# from django.core.mail import send_mail
-# import random
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.template.loader import render_to_string
+from django.utils.crypto import get_random_string
 
 
 User = get_user_model()
+
+# class UserRegisterSerializer(serializers.ModelSerializer):
+#     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
+#     password2 = serializers.CharField(max_length=68, min_length=6, write_only=True)
+
+#     class Meta:
+#         model = User
+#         fields = ('id', 'email', 'first_name', 'last_name', 'role', 'mobile_number', 'password', 'password2')
+
+#     def validate(self, attrs):
+#         pasword = attrs.get('password', '')
+#         pasword2 = attrs.get('password2', '')
+#         if pasword != pasword2:
+#             raise serializers.ValidationError({'error': "Passwords don't match"})
+#         return attrs
+
+#     def create(self, validated_data):
+#         user = User.objects.create_user(
+#             email=validated_data['email'],
+#             first_name=validated_data.get('first_name'),
+#             last_name=validated_data.get('last_name'),
+#             role=validated_data.get('role'),
+#             mobile_number=validated_data.get('mobile_number'),
+#             password=validated_data['password'],
+#             is_active=True,
+#             is_staff=False,
+#             is_superuser=False,
+#         )
+
+#         return user
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
@@ -27,13 +59,15 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         fields = ('id', 'email', 'first_name', 'last_name', 'role', 'mobile_number', 'password', 'password2')
 
     def validate(self, attrs):
-        pasword = attrs.get('password', '')
-        pasword2 = attrs.get('password2', '')
-        if pasword != pasword2:
+        password = attrs.get('password', '')
+        password2 = attrs.get('password2', '')
+        if password != password2:
             raise serializers.ValidationError({'error': "Passwords don't match"})
         return attrs
 
     def create(self, validated_data):
+        validated_data.pop('password2', None)
+
         user = User.objects.create_user(
             email=validated_data['email'],
             first_name=validated_data.get('first_name'),
@@ -41,9 +75,6 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             role=validated_data.get('role'),
             mobile_number=validated_data.get('mobile_number'),
             password=validated_data['password'],
-            is_active=True,
-            is_staff=False,
-            is_superuser=False,
         )
 
         return user

@@ -29,13 +29,14 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv('DEBUG', default=False)
-# DEBUG = env('DEBUG')
+DEBUG = os.getenv('DEBUG')
 
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', default=False) == 'True'
+# DEBUG = os.getenv('DEBUG', default=False) == 'True'
 
-ALLOWED_HOSTS = ["ccobasi.pythonanywhere.com"]
+
+ALLOWED_HOSTS = ["*"]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -183,31 +184,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 # DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 # EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true' else False
-# DEFAULT_FROM_EMAIL = f'HusslingHub {os.getenv("EMAIL_HOST_USER")}'  
-# FRONTEND_URL = 'http://localhost:5173'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'  # Update with your SMTP server
-# EMAIL_PORT = 587  
-# EMAIL_USE_TLS = True  
-# EMAIL_HOST_USER = 'ccobasi8@gmail.com'
-# EMAIL_HOST_PASSWORD ='ichhpspneutltdza'  
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_FROM = 'pythonlessons0@gmail.com'
-# EMAIL_HOST_USER = 'pythonlessons0@gmail.com'
-# EMAIL_HOST_PASSWORD = 'bsvdctbnvaqlszhd'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-
-# PASSWORD_RESET_TIMEOUT = 14400
+# DEFAULT_FROM_EMAIL = f'HusslingHub {os.getenv("EMAIL_HOST_USER")}' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'ccobasi8@gmail.com'
+EMAIL_HOST_PASSWORD ='ichhpspneutltdza'  
+DEFAULT_FROM_EMAIL='ccobasi8@gmail.com' 
+FRONTEND_URL = 'http://localhost:5173'
 
 # CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",
     "http://localhost:5173",    
-    "https://ccobasi.pythonanywhere.com",
+    "http://localhost:8000",
     "http://localhost:5175",
     "http://localhost:5176",
     "https://husslinghub.com",  
@@ -218,10 +210,10 @@ CSRF_TRUSTED_ORIGINS=[
     "http://127.0.0.1:5174/",
     "http://localhost:5175",
     "http://localhost:5176",
-    "https://ccobasi.pythonanywhere.com",
+    "http://localhost:8000",
 ]
 
-print("CORS_ALLOWED_ORIGINS:", CORS_ALLOWED_ORIGINS)
+# print("CORS_ALLOWED_ORIGINS:", CORS_ALLOWED_ORIGINS)
 
 CORS_DEBUG = True
 CORS_LOGGER = "cors_logger"

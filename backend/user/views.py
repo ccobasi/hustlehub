@@ -3,25 +3,27 @@ from rest_framework.generics import GenericAPIView
 from .serializers import *
 from rest_framework.response import Response
 from rest_framework import status
-from django.db import IntegrityError
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import  PasswordResetTokenGenerator
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
-from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
 from django.core.mail import send_mail
-from django.utils import timezone
 from .models import User
-from .otp_models import EmailOTP
-from .utils import send_verification_email
 import logging
 from .serializers import UserRegisterSerializer
 from django.core.mail import send_mail
 logger = logging.getLogger(__name__)
 from django.contrib import messages
+from django.conf import settings
+from django.http import HttpResponse
+from .utils import send_verification_email
+import os
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+django.setup()
+
 
 
 def activateEmail(request, user, to_email):
@@ -38,16 +40,16 @@ def activateEmail(request, user, to_email):
 #         serializer = self.serializer_class(data=user_data)
 
 #         if serializer.is_valid(raise_exception=True):
-#             serializer.save()
+#             user = serializer.save()
+#             verification_token = user.verification_token  
+#             send_verification_email(user.email, verification_token)
 
-#             user = serializer.data
-#             send_code_to_user(user['email'])
-#             #send email function user['email']
-#             print(user)
 #             return Response({
-#                 'data': user,
-#                 'message': f"Hi, thanks for registering!"
+#                 'data': serializer.data,
+#                 'verification_token': verification_token,  
+#                 'message': "Hi, thanks for registering! Please check your email to verify your account."
 #             }, status=status.HTTP_201_CREATED)
+        
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class RegisterUserView(GenericAPIView):
@@ -60,35 +62,35 @@ class RegisterUserView(GenericAPIView):
 
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
-            verification_token = user.verification_token  
-            send_verification_email(user.email, verification_token)
 
-            return Response({
-                'data': serializer.data,
-                'verification_token': verification_token,  
-                'message': "Hi, thanks for registering! Please check your email to verify your account."
-            }, status=status.HTTP_201_CREATED)
-        
+            try:
+                # Send verification email
+                send_verification_email(user.email, user.verification_token)
+                return Response({
+                    'data': serializer.data,
+                    'verification_token': user.verification_token,
+                    'message': "Hi, thanks for registering! Please check your email to verify your account."
+                }, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                return Response({
+                    'data': serializer.data,
+                    'message': "User registered, but failed to send verification email.",
+                    'error': str(e)
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def send_verification_email(self, email, token):
+        verification_link = f"{settings.FRONTEND_URL}/verify-email/{token}/"
+        email_subject = 'Verify your email'
+        email_body = f'Hi,\n\nPlease use the following link to verify your email:\n{verification_link}\n\nThank you!'
 
-
-# class VerifyUserEmail(APIView):
-#     permission_classes = [AllowAny]
-
-#     def get(self, request, token):
-#         try:
-#             user = User.objects.get(verification_token=token)
-#             if user.is_verified:
-#                 return Response({'message': 'Email is already verified.'}, status=status.HTTP_200_OK)
-
-#             user.is_verified = True
-#             user.verification_token = None
-#             user.save()
-
-#             return Response({'message': 'Email verified successfully!'}, status=status.HTTP_200_OK)
-#         except User.DoesNotExist:
-#             return Response({'error': 'Invalid verification token'}, status=status.HTTP_400_BAD_REQUEST)
+        send_mail(
+            subject=email_subject,
+            message=email_body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[email],
+        )
         
 class VerifyUserEmail(APIView):
     def post(self, request):
@@ -103,24 +105,7 @@ class VerifyUserEmail(APIView):
             return Response({'message': 'Email verified successfully!'}, status=status.HTTP_200_OK)
         except User.DoesNotExist:
             return Response({'error': 'Invalid verification token'}, status=status.HTTP_400_BAD_REQUEST)
-# class VerifyUserEmail(GenericAPIView):
-#     permission_classes = [AllowAny]
-#     def post(self, request):
-#         otpcode=request.data.get('otp')
-#         try:
-#             user_code_obj=OneTimePassword.objects.get(code=otpcode)
-#             user=user_code_obj.user
-#             if not user.is_verified:
-#                 user.is_verified=True
-#                 user.save()
-#                 return Response({
-#                     "message":'Your email account has been verified successfully!'
-#                 }, status=status.HTTP_200_OK)
-#             return Response({
-#                 'message': 'Code is invalid user already verified.'
-#             }, status=status.HTTP_204_NO_CONTENT)
-#         except  OneTimePassword.DoesNotExist:
-#             return Response({'message': 'passcode not provided'}, status=status.HTTP_404_NOT_FOUND)
+
 
 class LoginUserView(GenericAPIView):
     serializer_class=LoginSerializer
@@ -182,3 +167,14 @@ class LogoutUserView(GenericAPIView):
         return Response(status=status.HTTP_200_OK)
     
 
+def send_test_email(request):
+    subject = 'Test Email'
+    message = 'This is a test email sent from Django using Gmail SMTP.'
+    email_from = 'ccobasi8@gmail.com'
+    recipient_list = ['obasichuma@gmail.com']
+    
+    try:
+        send_mail(subject, message, email_from, recipient_list)
+        return HttpResponse("Test email sent successfully!")
+    except Exception as e:
+        return HttpResponse(f"Failed to send test email: {e}")
