@@ -9,7 +9,6 @@ app_name = 'user'
 urlpatterns = [
     path('register/', RegisterUserView.as_view(), name='register'),
     path('verify-email/<str:token>/', VerifyUserEmail.as_view(), name='verify-email'),
-    # path('verify-email/', VerifyUserEmail.as_view(), name='verify'),
     path('sign-in/', LoginUserView.as_view(), name='sign-in'),
     path('profile/', TestAuthenticationView.as_view(), name='granted'),
     path('password-reset/', PasswordResetRequestView.as_view(), name='password_reset'),

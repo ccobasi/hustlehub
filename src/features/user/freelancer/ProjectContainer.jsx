@@ -12,7 +12,7 @@ export default function FreelancerThirdFeature   ()  {
   useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects/`, {
+        const response = await axios.get(`http://localhost:5173/project/user/${user.id}/projects/`, {
           headers: {
             Authorization: `Bearer ${access}`,
           },
@@ -49,4 +49,3 @@ export default function FreelancerThirdFeature   ()  {
     </Grid>//Grid End
   );
 }
-

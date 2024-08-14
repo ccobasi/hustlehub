@@ -18,8 +18,11 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponse
 from .utils import send_verification_email
+from django.views import View
 import os
 import django
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 django.setup()
@@ -30,27 +33,6 @@ def activateEmail(request, user, to_email):
     messages.success(request, f'Dear <b>{user}</b>, please go to you email <b>{to_email}</b> inbox and click on \
         received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
 
-
-# class RegisterUserView(GenericAPIView):
-#     permission_classes = [AllowAny]
-#     serializer_class = UserRegisterSerializer
-
-#     def post(self, request):
-#         user_data = request.data
-#         serializer = self.serializer_class(data=user_data)
-
-#         if serializer.is_valid(raise_exception=True):
-#             user = serializer.save()
-#             verification_token = user.verification_token  
-#             send_verification_email(user.email, verification_token)
-
-#             return Response({
-#                 'data': serializer.data,
-#                 'verification_token': verification_token,  
-#                 'message': "Hi, thanks for registering! Please check your email to verify your account."
-#             }, status=status.HTTP_201_CREATED)
-        
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class RegisterUserView(GenericAPIView):
     permission_classes = [AllowAny]
@@ -92,19 +74,37 @@ class RegisterUserView(GenericAPIView):
             recipient_list=[email],
         )
         
-class VerifyUserEmail(APIView):
-    def post(self, request):
-        token = request.data.get('token')
+# class VerifyUserEmail(APIView):
+#     def post(self, request):
+#         token = request.data.get('token')
+#         try:
+#             user = User.objects.get(verification_token=token)
+#             if user.is_verified:
+#                 return Response({'message': 'Email is already verified.'}, status=status.HTTP_200_OK)
+#             user.is_verified = True
+#             user.verification_token = None
+#             user.save()
+#             return Response({'message': 'Email verified successfully!'}, status=status.HTTP_200_OK)
+#         except User.DoesNotExist:
+#             return Response({'error': 'Invalid verification token'}, status=status.HTTP_400_BAD_REQUEST)
+
+class VerifyUserEmail(View):
+    def get(self, request, token):
         try:
             user = User.objects.get(verification_token=token)
             if user.is_verified:
-                return Response({'message': 'Email is already verified.'}, status=status.HTTP_200_OK)
+                return JsonResponse({'message': 'Email is already verified.'}, status=200)
+
             user.is_verified = True
-            user.verification_token = None
+            user.verification_token = ""  # Clear the token after successful verification
             user.save()
-            return Response({'message': 'Email verified successfully!'}, status=status.HTTP_200_OK)
+            return JsonResponse({'message': 'Email successfully verified!'}, status=200)
         except User.DoesNotExist:
-            return Response({'error': 'Invalid verification token'}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'error': 'Invalid or expired token.'}, status=400)
+        except Exception as e:
+            # Log the error message for debugging
+            print(f"Error verifying email: {e}")
+            return JsonResponse({'error': 'An unexpected error occurred. Please try again later.'}, status=500)
 
 
 class LoginUserView(GenericAPIView):

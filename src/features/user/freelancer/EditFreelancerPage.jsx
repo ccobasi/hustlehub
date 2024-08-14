@@ -297,7 +297,7 @@ export default function EditClientPage() {
   useEffect(() => {
     const fetchFreelancerProfile = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/user_profile/user-profile/${userId}/`);
+        const response = await axios.get(`http://localhost:8000/user_profile/user-profile/${userId}/`);
         if (response.data) {
           setFreelancerProfile(response.data);
           setStartDate(response.data.start_date);
@@ -350,7 +350,7 @@ export default function EditClientPage() {
 
   try {
     const response = await axios.put(
-      `https://ccobasi.pythonanywhere.com/user_profile/user-profile/${formData.id}/`,
+      `http://localhost:8000/user_profile/user-profile/${formData.id}/`,
       form,
       {
         headers: {

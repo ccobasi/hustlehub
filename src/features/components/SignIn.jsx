@@ -70,7 +70,7 @@ export default function SignIn() {
 
     try {
       setIsLoading(true);
-      const res = await axios.post("https://ccobasi.pythonanywhere.com/user/sign-in/", loginData);
+      const res = await axios.post("http://localhost:8000/user/sign-in/", loginData);
       const response = res.data;
       setIsLoading(false);
 
