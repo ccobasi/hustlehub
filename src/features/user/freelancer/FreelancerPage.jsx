@@ -4,7 +4,7 @@ import { Typography, Link, Stack, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import FreelancerFirstFeature from "./FreelancerCard";
 import FreelancerSecondFeature from "./AnalyticsContainer";
-import FreelancerThirdFeature from "./ProjectContainer";
+// import FreelancerThirdFeature from "./ProjectContainer";
 // import FreelancerFourthFeature from "./Earning";
 import FreelancerFifthFeature from "./ReviewsAndRatings";
 import FreelancerContract from "./FreelancerContract";
@@ -25,7 +25,7 @@ function FreelancerPage({ userId }) {
     }
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:5173/review/freelancer/${userId}/reviews/`);
+        const response = await axios.get(`http://localhost:8000/review/freelancer/${userId}/reviews/`);
         setReviews(response.data);
       } catch (error) {
         setError(error.message);
@@ -129,7 +129,7 @@ function FreelancerPage({ userId }) {
 
         {/* Second Heading */}
         {/* Third Freelancer Feature */}
-        <FreelancerThirdFeature />
+        {/* <FreelancerThirdFeature /> */}
 
         {/* Third Heading */}
         <Stack direction="row">
