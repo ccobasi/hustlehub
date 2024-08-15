@@ -61,7 +61,17 @@ const SecondHeader = () => {
               }}
               href="/"
             >
-              <Link to="/"><img 
+              {/* <Link to="/"><img 
+              //src={Logo}
+              src="./frontend/dist/assets/logo.png"
+              className='logo' alt="logo" style={{
+                    order: 1,
+                    fontSize: "2.3rem",
+                    width: "150px",
+                    height: "70px",
+                  }}/></Link> */}
+            </Link>
+            <Link to="/"><img 
               //src={Logo}
               src="./frontend/dist/assets/logo.png"
               className='logo' alt="logo" style={{
@@ -70,7 +80,6 @@ const SecondHeader = () => {
                     width: "150px",
                     height: "70px",
                   }}/></Link>
-            </Link>
 
             <Box>
               {/* <Button

@@ -11,12 +11,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function FixedBottomNavigation() {
   // Initialization of useNavigate Hook
-  let navigate = useNavigate();
+  //let navigate = useNavigate();
   // Initialization of  useState Hook
   const [value, setValue] = React.useState(0);
   // Initialization of useRef Hook
   const ref = React.useRef(null);
-
+  
   return (
     <>
       {/* Box  for the modile device fixed bottom navigation feature*/}
@@ -55,7 +55,7 @@ export default function FixedBottomNavigation() {
               }
             />
 
-            <BottomNavigationAction
+            {/* <BottomNavigationAction
               onClick={() => navigate("/message")}
               icon={
                 <Message
@@ -68,9 +68,9 @@ export default function FixedBottomNavigation() {
                   }}
                 />
               }
-            />
+            /> */}
 
-            <BottomNavigationAction
+            {/* <BottomNavigationAction
               onClick={() => navigate("/notification")}
               icon={
                 <Search
@@ -83,9 +83,9 @@ export default function FixedBottomNavigation() {
                   }}
                 />
               }
-            />
+            /> */}
 
-            <BottomNavigationAction
+            {/* <BottomNavigationAction
               onClick={() => navigate("/project-review")}
               icon={
                 <Dashboard
@@ -98,7 +98,7 @@ export default function FixedBottomNavigation() {
                   }}
                 />
               }
-            />
+            /> */}
             {/*  End Actions*/}
           </BottomNavigation>
           {/* Bottom Navigation End */}

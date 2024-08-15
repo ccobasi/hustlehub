@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import { PhoneAndroidOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
-export const SendCodeToMobileNumber = () => {
+ const SendCodeToMobileNumber = () => {
   //Instatiate useNavigate
   let navigate = useNavigate();
   //Handler for the submit event
@@ -35,7 +35,7 @@ export const SendCodeToMobileNumber = () => {
             placeholder="Enter your mobile number"
             InputProps={{
               startAdornment: (
-                <InputAdornment>
+                <InputAdornment position="start">
                   <PhoneAndroidOutlined
                     sx={{
                       ml: "-25%",
@@ -84,3 +84,5 @@ export const SendCodeToMobileNumber = () => {
     </>
   );
 };
+
+export default React.memo(SendCodeToMobileNumber);

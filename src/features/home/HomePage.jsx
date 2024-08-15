@@ -14,12 +14,9 @@ export default function HomePage() {
   let navigate = useNavigate();
 
   return (
+    
     <>
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, intial-scale=1" />
-        <title>Hustle Hub Home</title>
-      </head>
+      
       <Container component="main" maxWidth="lg">
         {/*First Home Feature*/}
         <HeroSection />

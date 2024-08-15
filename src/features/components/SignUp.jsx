@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
+import { Divider } from "@mui/material";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -20,24 +21,31 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
+  console.log("==Sign up  rendering====");
+
+  const [role, setRole] = useState("");
+  const onRoleChange = (e) => {
+    const value = e.target.value;
+    setRole(value);
+  };
+
+  let password = "";
+  let confirmPassword = "";
+
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [formData, setFormData] = useState({
-    email: "",
-    first_name: "",
-    last_name: "",
-    mobile_number: "",
-    role: "",
-    password: "",
-    password2: "",
-  });
+  const [errors, setErrors] = useState({});
+
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleSignInWithGoogle = async (response) => {
     const payload = response.credential;
-    const server_res = await axios.post("http://localhost:8000/social_account/google/", {
-      access_token: payload,
-    });
+    const server_res = await axios.post(
+      "http://localhost:8000/social_account/google/",
+      {
+        access_token: payload,
+      }
+    );
     console.log(server_res);
     const user = {
       email: server_res.data.email,
@@ -79,57 +87,167 @@ const SignUp = () => {
     }
   }, []);
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const { first_name, last_name, email, mobile_number, role, password, password2 } = formData;
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleShowConfirmPassword = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
-
+  //submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    console.log(formData);
+    let validationErrors = {};
 
-    if (!email || !first_name || !last_name || !role || !mobile_number || !password || !password2) {
-        setError("Please fill out all fields");
-        return;
+    const email = formData.get("email");
+    console.log(!email.trim());
+    if (!email.trim()) {
+      validationErrors.email = "Email is required";
+    } else if (!/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/.test(email)) {
+      validationErrors.email = "Invalid email address";
+    } else {
+      validationErrors.email = "";
     }
 
-    if (password !== password2) {
-        setError("Passwords do not match");
-        return;
+    const first_name = formData.get("first_name");
+    console.log(!first_name.trim());
+
+    if (!first_name.trim()) {
+      validationErrors.first_name = "First name is required";
+    } else if (first_name.length < 3) {
+      validationErrors.first_name =
+        "First name must be at least 3 characters long";
+    } else if (first_name.length > 20) {
+      validationErrors.first_name =
+        "First name must be less than 20 characters long";
+    } else if (!/^[a-zA-Z ]+$/.test(first_name)) {
+      validationErrors.first_name =
+        "First name must contain only letters and spaces";
+    } else {
+      validationErrors.first_name = "";
     }
 
-    try {
-        const res = await axios.post("http://localhost:8000/user/register/", formData);
+    const last_name = formData.get("last_name");
+
+    if (!last_name.trim()) {
+      validationErrors.last_name = "Last name is required";
+    } else if (last_name.length < 3) {
+      validationErrors.last_name =
+        "Last name must be at least 3 characters long";
+    } else if (last_name.length > 20) {
+      validationErrors.last_name =
+        "Last name must be less than 20 characters long";
+    } else if (!/^[a-zA-Z ]+$/.test(last_name)) {
+      validationErrors.last_name =
+        "Last name must contain only letters and spaces";
+    } else {
+      validationErrors.last_name = "";
+    }
+
+    const role = formData.get("role");
+    if (!role.trim()) {
+      validationErrors.role = "Role is required";
+    } else {
+      validationErrors.role = "";
+    }
+
+    const password = formData.get("password");
+    if (!password.trim()) {
+      validationErrors.password = "Password is required";
+    } else if (password.length < 8) {
+      validationErrors.password = "Password must be at least 8 characters long";
+    } else if (password.length > 50) {
+      validationErrors.password =
+        "Password must be less than 50 characters long";
+    } else if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password)) {
+      validationErrors.password =
+        "Password must combine upper and lower case letters, numbers, and special characters, and having a minimum length of at least 8 characters";
+    } else {
+      validationErrors.password = "";
+    }
+
+    const mobile_number = formData.get("mobile_number");
+    if (!mobile_number.trim()) {
+      validationErrors.mobile_number = "Mobile number is required";
+    } else if (!/^[+]+[0-9]+$/.test(mobile_number)) {
+      validationErrors.mobile_number = "Mobile number is invalid";
+    } else {
+      validationErrors.mobile_number = "";
+    }
+
+    const password2 = formData.get("password2");
+    if (!password2.trim()) {
+      validationErrors.password2 = "Confirm password is required";
+    } else if (password !== password2) {
+      validationErrors.password2 = "Passwords do not match";
+    } else {
+      validationErrors.password2 = "";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      try {
+        const res = await axios.post(
+          "http://localhost:8000/user/register/",
+          formData
+        );
         const response = res.data;
 
         if (res.status === 201) {
-            console.log("User created");
-            console.log(response);
-            toast.success("Registration successful! Please check your email to verify your account.");
-            setIsRegistered(true); // Set state to hide form and show success message
+          console.log("User created");
+          console.log(response);
+          toast.success(
+            "Registration successful! Please check your email to verify your account."
+          );
+          //Clear any previous errors
+          setErrors({});
+          setIsRegistered(true); // Set state to hide form and show success message
         } else {
-            setError("Unexpected error: User registration failed.");
+          setError("Unexpected error: User registration failed.");
         }
-    } catch (error) {
+      } catch (error) {
         if (error.response) {
-            setError(error.response?.data?.error || "Failed to register. Please try again later.");
+          setError(
+            error.response?.data?.error ||
+              "Failed to register. Please try again later."
+          );
         } else if (error.request) {
-            setError("No response from server. Please try again later.");
+          setError("No response from server. Please try again later.");
         } else {
-            setError("An unexpected error occurred. Please try again later.");
+          setError("An unexpected error occurred. Please try again later.");
         }
+      }
     }
+  };
+
+  //Initialization of useState Hook
+  const [showPwVisibility, setPwVisibility] = useState(false);
+  const [showConfirmPwVisibility, setConfirmPwVisibility] = useState(false);
+
+  const handleShowPwVisibility = (e) => {
+    e.preventDefault();
+    let pwTxtField = document.getElementById("password");
+    setPwVisibility(true);
+    if (pwTxtField.type === "password") {
+      pwTxtField.type = "text";
+    } else {
+      pwTxtField.type = "password";
+      setPwVisibility(false);
+    }
+  };
+  const handleHidePwVisibility = (e) => {
+    e.preventDefault();
+  };
+
+  const handleShowConfirmPwVisibility = (e) => {
+    e.preventDefault();
+    let confirmPwTxtField = document.getElementById("confirmPassword");
+    setConfirmPwVisibility(true);
+    if (confirmPwTxtField.type === "password") {
+      confirmPwTxtField.type = "text";
+    } else {
+      confirmPwTxtField.type = "password";
+      setConfirmPwVisibility(false);
+    }
+  };
+  const handleHideConfirmPwVisibility = (e) => {
+    e.preventDefault();
   };
 
   if (isRegistered) {
@@ -147,7 +265,8 @@ const SignUp = () => {
             Registration Successful
           </Typography>
           <Typography variant="body2" sx={{ mt: "3%" }}>
-            Please check your email to verify your account. A confirmation link has been sent to your email address.
+            Please check your email to verify your account. A confirmation link
+            has been sent to your email address.
           </Typography>
           <Button
             fullWidth
@@ -163,20 +282,23 @@ const SignUp = () => {
     );
   }
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <form onSubmit={handleSubmit}>
+  else{
+    return (
+      <Container component="main" maxWidth="xs">
+        <Box
+          component="form"
+          noValidate
+          onSubmit={handleSubmit}
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Typography variant="h5" sx={{ mt: "10%" }}>
             Registration
-            <p style={{ color: "red", padding: "1px" }}>{error ? error : ""}</p>
+            <p className="error">{error ? error : ""}</p>
           </Typography>
           <Typography variant="body2" sx={{ mt: "3%" }}>
             Let&apos;s Register. Apply to jobs!
@@ -188,8 +310,6 @@ const SignUp = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            value={email}
-            onChange={handleChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -199,6 +319,7 @@ const SignUp = () => {
             }}
             sx={{ mt: "3%" }}
           />
+          {errors.email && <span className="error">{errors.email}</span>}
           <TextField
             required
             fullWidth
@@ -206,8 +327,6 @@ const SignUp = () => {
             label="First Name"
             name="first_name"
             autoComplete="first_name"
-            value={first_name}
-            onChange={handleChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -217,6 +336,9 @@ const SignUp = () => {
             }}
             sx={{ mt: "3%" }}
           />
+          {errors.first_name && (
+            <span className="error">{errors.first_name}</span>
+          )}
           <TextField
             required
             fullWidth
@@ -224,8 +346,6 @@ const SignUp = () => {
             label="Last Name"
             name="last_name"
             autoComplete="last_name"
-            value={last_name}
-            onChange={handleChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -235,6 +355,7 @@ const SignUp = () => {
             }}
             sx={{ mt: "3%" }}
           />
+          {errors.last_name && <span className="error">{errors.last_name}</span>}
           <TextField
             required
             fullWidth
@@ -242,8 +363,7 @@ const SignUp = () => {
             label="Mobile Number"
             name="mobile_number"
             autoComplete="mobile-number"
-            value={mobile_number}
-            onChange={handleChange}
+            placeholder="+123"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -253,6 +373,9 @@ const SignUp = () => {
             }}
             sx={{ mt: "3%" }}
           />
+          {errors.mobile_number && (
+            <span className="error">{errors.mobile_number}</span>
+          )}
           <TextField
             required
             fullWidth
@@ -260,7 +383,7 @@ const SignUp = () => {
             label="Choose Role"
             select
             value={role}
-            onChange={handleChange}
+            onChange={onRoleChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -273,6 +396,7 @@ const SignUp = () => {
             <MenuItem value="client">Client</MenuItem>
             <MenuItem value="freelancer">Freelancer</MenuItem>
           </TextField>
+          {errors.role && <span className="error">{errors.role}</span>}
           <TextField
             required
             fullWidth
@@ -280,10 +404,8 @@ const SignUp = () => {
             label="Password"
             name="password"
             placeholder="Enter your password"
-            type={showPassword ? "text" : "password"}
+            type={password ? "text" : "password"}
             autoComplete="new-password"
-            value={password}
-            onChange={handleChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -292,14 +414,23 @@ const SignUp = () => {
               ),
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={handleShowPassword} edge="end">
-                    {showPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+                  <IconButton
+                    onClick={handleShowPwVisibility}
+                    onMouseDown={handleHidePwVisibility}
+                    edge="end"
+                  >
+                    {showPwVisibility ? (
+                      <VisibilityOffOutlined />
+                    ) : (
+                      <VisibilityOutlined />
+                    )}
                   </IconButton>
                 </InputAdornment>
               ),
             }}
             sx={{ mt: "3%" }}
           />
+          {errors.password && <span className="error">{errors.password}</span>}
           <TextField
             required
             fullWidth
@@ -307,10 +438,8 @@ const SignUp = () => {
             label="Confirm Password"
             name="password2"
             placeholder="Confirm your password"
-            type={showConfirmPassword ? "text" : "password"}
+            type={confirmPassword ? "text" : "password"}
             autoComplete="new-password"
-            value={password2}
-            onChange={handleChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -319,14 +448,23 @@ const SignUp = () => {
               ),
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={handleShowConfirmPassword} edge="end">
-                    {showConfirmPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+                  <IconButton
+                    onClick={handleShowConfirmPwVisibility}
+                    onMouseDown={handleHideConfirmPwVisibility}
+                    edge="end"
+                  >
+                    {showConfirmPwVisibility ? (
+                      <VisibilityOffOutlined />
+                    ) : (
+                      <VisibilityOutlined />
+                    )}
                   </IconButton>
                 </InputAdornment>
               ),
             }}
             sx={{ mt: "3%" }}
           />
+          {errors.password2 && <span className="error">{errors.password2}</span>}
           <Button
             type="submit"
             fullWidth
@@ -336,18 +474,32 @@ const SignUp = () => {
           >
             Sign Up
           </Button>
-        </form>
-        <h3 className="text-option">Or</h3>
-        <Grid container>
-          <Grid item xs>
-            <Link to="/sign-in" variant="body2">
-              Already have an account? Sign in
-            </Link>
+          <Typography sx={{ mt: "10%", color: "#AFB0B6", width: "2px" }}>
+            Or
+          </Typography>
+          <Grid container>
+            <Grid item xs>
+              <Link
+                to="/sign-in"
+                variant="body2"
+                style={{
+                  color: "#87CEEB",
+                  mb: "20%",
+                  textDecoration: "none",
+                  fontFamily: "Poppins",
+                  fontWeight: "400",
+                  fontSize: "14px",
+                  lineHeight: "17.71px",
+                }}
+              >
+                Already have an account? Sign in
+              </Link>
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
-    </Container>
-  );
+        </Box>
+      </Container>
+    );
+  }
 };
 
-export default SignUp;
+export default React.memo(SignUp);

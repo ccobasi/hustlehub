@@ -148,3 +148,12 @@ code {
 .clientSkillsButton {
   border-radius: 2px;
 }
+
+
+.error{
+  font-family: Verdana, Geneva, Tahoma, sans-serif, Poppins;
+  color: red;
+  margin: 4%;
+  font-size: small;
+  position: relative;
+}

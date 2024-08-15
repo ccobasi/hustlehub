@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import {React, useRef, useState, useEffect} from "react";
+import React from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -24,8 +25,9 @@ import axios from "axios";
 // import { useDispatch } from "react-redux";
 // import { setCredentials } from "../auth/authSlice"
 // import { useLoginMutation } from "../auth/authApiSlice";
+const  SignIn =()=> {
+  console.log(" ===Controlled Signin form (child) rendering====");
 
-export default function SignIn() {
   let navigate = useNavigate();
   // const userRef = useRef()
   // const errRef = useRef()
@@ -34,7 +36,7 @@ export default function SignIn() {
   // const [errMsg, setErrMsg] = useState('')
   // const [login, { isLoading}] = useLoginMutation()
   // const dispatch = useDispatch()
-  const[loginData, setLoginData]=useState({email:"", password: "", showPassword: false});
+//  const[loginData, setLoginData]=useState({email:"", password: "", showPassword: false});
   const [error, setError]=useState("");
   const [isLoading, setIsLoading]=useState(false);
 
@@ -53,14 +55,18 @@ export default function SignIn() {
     e.preventDefault();
   };
 
-   const handleChange= (e)=>{
-    setLoginData({...loginData, [e.target.name]: e.target.value})
-  };
+  // const handleChange= (e)=>{
+    //setLoginData({...loginData, [e.target.name]: e.target.value})
+  //};
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password } = loginData;
+    const formData = new FormData(e.target);
+    const email = formData.get('email');
+    const password = formData.get('password');
+
+    //const { email, password } = loginData;
 
     if (!email || !password) {
       setError("Email and password are required");
@@ -173,8 +179,8 @@ export default function SignIn() {
               name="email"
               placeholder="Enter your email"
               autoComplete="email"
-              value={loginData.email}
-              onChange={handleChange}
+              //value={loginData.email}
+              //onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -210,8 +216,8 @@ export default function SignIn() {
               id="password"
               placeholder="Enter your password"
               autoComplete="new-password"
-              value={loginData.password}
-              onChange={handleChange}
+              //value={loginData.password}
+              //onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -352,7 +358,7 @@ export default function SignIn() {
 
   
 }
-
+export default React.memo(SignIn);
 
 
 

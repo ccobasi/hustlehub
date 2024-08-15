@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 export default function GreatWork({
@@ -20,13 +20,14 @@ export default function GreatWork({
   return (
     <>
       {/* Grid for the Great Work Feature */}
-      <Grid item xs={12} md={6} sx={{ mb: "10px" }}>
+      <Grid item xs={12} md={6} sx={{ mb: "10px", margin: "auto" }}>
         {/* Card for the Feature */}
         <Card
           sx={{
             display: "flex",
+
             backgroundColor: "#87CEEB",
-            borderRadius: "12px",
+            borderRadius:"12px"
           }}
         >
           {/* Card Content for the feature */}
@@ -38,15 +39,11 @@ export default function GreatWork({
               component="picture"
               sx={{
                 height: "70px",
+                maxHeight: { xs: 233, md: 167 },
               }}
             >
               <source srcSet={sourceSet} />
-              <Stack
-                direction="row"
-                sx={{
-                  ml: { lg: "15%", md: "15%", sm: "15%", xs: "15%" },
-                }}
-              >
+              <Stack direction="row" sx={{ ml: "12%", mt:"4%" }}>
                 <img
                   src={image}
                   alt={imageLabel}
@@ -66,11 +63,12 @@ export default function GreatWork({
                     fontSize: "16px",
                     lineHeight: "20.8px",
                     letterSpacing: "-1%",
-                    pt: { lg: "1%", md: "1%", sm: "1%", xs: "1%" },
-                    ml: { lg: "5%", md: "5%", sm: "5%", xs: "5%" },
+                    pt: "10px",
+                    ml: "5%",
                   }}
                 >
                   {jobTitle}
+                  </Typography>
                   <Stack direction="column">
                     {/* Heading for company */}
                     <Typography
@@ -81,19 +79,21 @@ export default function GreatWork({
                         fontSize: "14px",
                         lineHeight: "21px",
                         letterSpacing: "-1%",
+                        pt: "10px",
                         pb: "10px",
-                        ml: "0%",
+                        ml: "60%",
                       }}
                     >
                       {company}
                     </Typography>
                     {/* Heading for company End */}
                   </Stack>
-                </Typography>
+               
                 {/*Heading for job title End  */}
               </Stack>
             </CardMedia>
             {/* Card Media End */}
+
             {/* Disabled group of buttons */}
             <Stack direction="row">
               <Button
@@ -119,7 +119,8 @@ export default function GreatWork({
                 variant="contained"
                 disabled
                 sx={{
-                  ml: { lg: "12%", md: "12%", sm: "12%", xs: "14%" },
+                  ml: "12%",
+
                   fontFamily: "Poppins",
                   fontWeight: "400",
                   fontSize: "11px",
@@ -138,7 +139,7 @@ export default function GreatWork({
                 variant="contained"
                 disabled
                 sx={{
-                  ml: { lg: "12%", md: "12%", sm: "14%", xs: "14%" },
+                  ml: "12%",
                   fontFamily: "Poppins",
                   fontWeight: "400",
                   fontSize: "11px",
@@ -155,6 +156,7 @@ export default function GreatWork({
               </Button>
             </Stack>
             {/* Buttons End */}
+
             {/* Heading for job type */}
             <Typography
               sx={{
@@ -166,13 +168,15 @@ export default function GreatWork({
                 color: "#FFFFFF",
                 width: "169px",
                 height: "21px",
-                ml: { lg: "15%", md: "15%", sm: "15%", xs: "15%" },
-                mt: { lg: "7%", md: "7%", sm: "7%", xs: "7%" },
+
+                mt: "10%",
+                ml: "5%",
               }}
             >
               {jobType}
             </Typography>
             {/* Heading End */}
+
             {/* Card Content End */}
           </CardContent>
           {/* Card End */}
