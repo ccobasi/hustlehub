@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Box, CircularProgress, Typography, Select, MenuItem, Button } from '@mui/material';
+import { toast } from "react-toastify";
 
 const ContractDetails = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const ContractDetails = () => {
   useEffect(() => {
     const fetchContractDetails = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`);
+        const response = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
         if (response.status === 200) {
           setContract(response.data);
         } else {
@@ -33,7 +34,7 @@ const ContractDetails = () => {
 
   const handleContractStatusChange = async (status) => {
     try {
-      const contractResponse = await axios.get(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`);
+      const contractResponse = await axios.get(`http://localhost:8000/contract/contracts/${id}/`);
       const currentContractData = contractResponse.data;
 
       const updatedData = {
@@ -41,7 +42,7 @@ const ContractDetails = () => {
         status: status
       };
 
-      const response = await axios.put(`https://ccobasi.pythonanywhere.com/contract/contracts/${id}/`, updatedData, {
+      const response = await axios.put(`http://localhost:8000/contract/contracts/${id}/`, updatedData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -54,11 +55,11 @@ const ContractDetails = () => {
       if (error.response) {
         console.log('Error response data:', error.response.data);
       }
+      toast.error("Failed to update contract status. You are not authorized to update contract status!");
     }
   };
 
   const handleReviewClick = () => {
-    // navigate(`/contract/reviews/`);
     navigate(`/contract/reviews/${id}`);
   };
 
@@ -84,10 +85,10 @@ const ContractDetails = () => {
 
   return (
     <Container component="main" maxWidth="md">
-      <Box sx={{ mt: 4, mb: 4 }}>
+      <Box sx={{ mt: 4, mb: 4, p: 2, borderRadius: 2, boxShadow: 3, bgcolor: 'background.paper' }}>
         {contract && (
           <>
-            <Typography variant="h4" sx={{ fontWeight: "600", mb: 2 }}>
+            <Typography variant="h4" sx={{ fontWeight: "600", mb: 2, color: "#87CEEB" }}>
               Contract for {contract.project_title}
             </Typography>
             <Typography variant="h6" sx={{ mb: 1 }}>
@@ -114,7 +115,17 @@ const ContractDetails = () => {
             <Select
               value={contract.status}
               onChange={(e) => handleContractStatusChange(e.target.value)}
-              sx={{ mt: 1 }}
+              sx={{
+                mt: 1,
+                width: '100%',
+                p: 1,
+                borderRadius: 1,
+                bgcolor: '#87CEEB',
+                color: '#fff',
+                '&:hover': {
+                  bgcolor: '#e0e0e0',
+                },
+              }}
             >
               <MenuItem value="pending">Pending</MenuItem>
               <MenuItem value="active">Active</MenuItem>
@@ -126,12 +137,14 @@ const ContractDetails = () => {
                 color="primary"
                 onClick={handleReviewClick}
                 sx={{
-                  mt: 1,
-                  ml: 2,
-                  backgroundColor: "#87CEEB",
-                  color: "#fff",
+                  mt: 2,
                   p: 2,
-                  fontSize: 17
+                  bgcolor: "#87CEEB",
+                  color: "#fff",
+                  fontSize: 17,
+                  '&:hover': {
+                    bgcolor: "#00BFFF",
+                  },
                 }}
               >
                 Leave a Review
@@ -145,4 +158,3 @@ const ContractDetails = () => {
 };
 
 export default ContractDetails;
-

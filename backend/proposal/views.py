@@ -18,10 +18,17 @@ class ProposalCreateView(generics.CreateAPIView):
     # def perform_create(self, serializer):
     #     serializer.save(freelancer=self.request.user)
 
+    # def perform_create(self, serializer):
+    #     project_id = self.request.data.get('project_id')
+    #     project = get_object_or_404(Project, id=project_id)
+    #     serializer.save(freelancer=self.request.user, project=project)
+
     def perform_create(self, serializer):
-        project_id = self.request.data.get('project_id')
+        project_id = self.request.data.get('project')
+        print(f"Received project_id: {project_id}")  # Debugging line
         project = get_object_or_404(Project, id=project_id)
         serializer.save(freelancer=self.request.user, project=project)
+
 
 class ProjectProposalsListView(generics.ListAPIView):
     serializer_class = ProposalSerializer

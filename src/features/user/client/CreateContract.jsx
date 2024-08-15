@@ -20,6 +20,8 @@ const CreateContract = ({ projectId, proposalId, freelancerId, clientId }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  console.log('Client ID:', clientId);
+
 
   const handleCreateContract = async () => {
     setLoading(true);
@@ -37,7 +39,7 @@ const CreateContract = ({ projectId, proposalId, freelancerId, clientId }) => {
     };
 
     try {
-      const response = await axios.post(`https://ccobasi.pythonanywhere.com/contract/contracts/`, contractData, {
+      const response = await axios.post(`http://localhost:8000/contract/contracts/`, contractData, {
         headers: {
           'Content-Type': 'application/json',
         },
