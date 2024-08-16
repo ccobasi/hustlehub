@@ -13,7 +13,7 @@
 //     useEffect(() => {
 //         const verifyEmail = async () => {
 //             try {
-//                 const response = await axios.post("http://localhost:8000/user/verify-email/", { token });
+//                 const response = await axios.get(`https://ccobasi.pythonanywhere.com/user/verify-email/${token}/`);
 //                 if (response.status === 200) {
 //                     navigate("/sign-in");
 //                     toast.success(response.data.message);
@@ -48,7 +48,6 @@
 // };
 
 // export default VerifyEmail;
-
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { Container, Box, Button, Typography } from '@mui/material';
@@ -62,20 +61,24 @@ const VerifyEmail = () => {
     const { token } = useParams();
 
     useEffect(() => {
-        const verifyEmail = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8000/user/verify-email/${token}/`);
-                if (response.status === 200) {
-                    navigate("/sign-in");
-                    toast.success(response.data.message);
-                }
-            } catch (error) {
-                toast.error(error.response?.data?.error || "Failed to verify email. Please try again later.");
-                setIsVerifying(false);
+    console.log("Verifying email with token:", token);
+    const verifyEmail = async () => {
+        try {
+            const response = await axios.get(`https://ccobasi.pythonanywhere.com/user/verify-email/${token}/`);
+            if (response.status === 200) {
+                console.log("Email verified successfully:", response.data);
+                toast.success(response.data.message);
+                navigate("/sign-in");
             }
-        };
-        verifyEmail();
-    }, [token, navigate]);
+        } catch (error) {
+            console.error("Failed to verify email:", error);
+            toast.error(error.response?.data?.error || "Failed to verify email. Please try again later.");
+            setIsVerifying(false);
+        }
+    };
+    verifyEmail();
+}, [token, navigate]);
+
 
     return (
         <Container component="main" maxWidth="xs">

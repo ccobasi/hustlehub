@@ -95,31 +95,60 @@ class LoginSerializer(serializers.ModelSerializer):
             ClientProfile.objects.create(user=user)
 
 
-class PasswordResetRequestSerializer(serializers.Serializer):
-    email=serializers.EmailField(max_length=255)
+# class PasswordResetRequestSerializer(serializers.Serializer):
+#     email=serializers.EmailField(max_length=255)
 
+
+#     class Meta:
+#         fields=['email']
+
+#     def validate(self, attrs):
+#         email=attrs.get('email')
+#         if User.objects.filter(email=email).exists():
+#             user=User.objects.get(email=email)
+#             uidb64=urlsafe_base64_encode(smart_bytes(user.id))
+#             token=PasswordResetTokenGenerator().make_token(user)
+#             request=self.context.get( "request" )
+#             site_domain= get_current_site(request).domain
+#             relative_link=reverse('user:password-reset-confirm', kwargs={'uidb64':uidb64,'token':token})
+#             abslink=f"https://{site_domain} {relative_link}"
+#             email_body=f"Hi use the link below to reset your password \n {abslink}"
+#             data={
+#                 'email_body':email_body,
+#                 'email_subject':"Reset your  password",
+#                 'to_email':user.email
+#             }
+#             send_normal_email(data)
+#         return super().validate(attrs)
+class PasswordResetRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=255)
 
     class Meta:
-        fields=['email']
+        fields = ['email']
 
     def validate(self, attrs):
-        email=attrs.get('email')
+        email = attrs.get('email')
         if User.objects.filter(email=email).exists():
-            user=User.objects.get(email=email)
-            uidb64=urlsafe_base64_encode(smart_bytes(user.id))
-            token=PasswordResetTokenGenerator().make_token(user)
-            request=self.context.get( "request" )
-            site_domain= get_current_site(request).domain
-            relative_link=reverse('user:password-reset-confirm', kwargs={'uidb64':uidb64,'token':token})
-            abslink=f"https://{site_domain} {relative_link}"
-            email_body=f"Hi use the link below to reset your password \n {abslink}"
-            data={
-                'email_body':email_body,
-                'email_subject':"Reset your  password",
-                'to_email':user.email
+            user = User.objects.get(email=email)
+            uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
+            token = PasswordResetTokenGenerator().make_token(user)
+            request = self.context.get("request")
+            site_domain = get_current_site(request).domain
+            relative_link = reverse('user:password-reset-confirm', kwargs={'uidb64': uidb64, 'token': token})
+            abslink = f"https://{site_domain}{relative_link}"
+            email_body = f"Hi, use the link below to reset your password:\n{abslink}"
+            data = {
+                'email_body': email_body,
+                'email_subject': "Reset your password",
+                'to_email': user.email
             }
             send_normal_email(data)
         return super().validate(attrs)
+
+    def create(self, validated_data):
+        # Additional logic if needed
+        return validated_data
+
     
 
 class SetNewPasswordSerializer(serializers.Serializer):

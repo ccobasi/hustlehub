@@ -42,7 +42,7 @@ export default function Proposal() {
 //     };
 
 //     try {
-//       await axios.post('http://localhost:8000/proposal/proposals/', proposal, {
+//       await axios.post('https://ccobasi.pythonanywhere.com/proposal/proposals/', proposal, {
 //         headers: {
 //           Authorization: `Bearer ${localStorage.getItem("access")}`,
 //         },
@@ -75,7 +75,7 @@ const handleSubmit = async (event) => {
       throw new Error("No access token found");
     }
 
-    await axios.post('http://localhost:8000/proposal/proposals/', proposal, {
+    await axios.post('https://ccobasi.pythonanywhere.com/proposal/proposals/', proposal, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

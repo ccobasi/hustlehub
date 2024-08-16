@@ -14,8 +14,8 @@
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const proposalsResponse = await axios.get(`http://localhost:8000/proposal/user/${userId}/count/`);
-//         const contractsResponse = await axios.get(`http://localhost:8000/contract/user/${userId}/count/`);
+//         const proposalsResponse = await axios.get(`https://ccobasi.pythonanywhere.com/proposal/user/${userId}/count/`);
+//         const contractsResponse = await axios.get(`https://ccobasi.pythonanywhere.com/contract/user/${userId}/count/`);
 
 //         setAnalyticsData({
 //           proposals: proposalsResponse.data.count,
@@ -94,8 +94,8 @@ export default function FreelancerSecondFeature() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const proposalsResponse = await axios.get(`http://localhost:8000/proposal/user/${userId}/count/`);
-        const contractsResponse = await axios.get(`http://localhost:8000/contract/user/${userId}/count/`);
+        const proposalsResponse = await axios.get(`https://ccobasi.pythonanywhere.com/proposal/user/${userId}/count/`);
+        const contractsResponse = await axios.get(`https://ccobasi.pythonanywhere.com/contract/user/${userId}/count/`);
 
         setAnalyticsData({
           proposals: proposalsResponse.data.count,
