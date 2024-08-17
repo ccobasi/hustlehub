@@ -115,7 +115,7 @@ export default function ForgetPassword() {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://ccobasi.pythonanywhere.com/user/password-reset/", { email });
+      const response = await axios.post("http://localhost:8000/user/password-reset/", { email });
       if (response.status === 200) {
         toast.success("Password reset link has been sent to your email.");
       }

@@ -62,38 +62,44 @@ class RegisterUserView(GenericAPIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def send_verification_email(self, email, token):
-        verification_link = f"{settings.FRONTEND_URL}/verify-email/{token}/"
-        email_subject = 'Verify your email'
-        email_body = f'Hi,\n\nPlease use the following link to verify your email:\n{verification_link}\n\nThank you!'
+    # def send_verification_email(self, email, token):
+    #     verification_link = f"{settings.FRONTEND_URL}/verify-email/{token}/"
+    #     email_subject = 'Verify your email'
+    #     email_body = f'Hi,\n\nPlease use the following link to verify your email:\n{verification_link}\n\nThank you!'
 
-        send_mail(
-            subject=email_subject,
-            message=email_body,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[email],
-        )
+    #     send_mail(
+    #         subject=email_subject,
+    #         message=email_body,
+    #         from_email=settings.DEFAULT_FROM_EMAIL,
+    #         recipient_list=[email],
+    #     )
 
 
 class VerifyUserEmail(View):
     def get(self, request, token):
+        print(f"Token received: {token}")  # Log token received
         try:
             user = User.objects.get(verification_token=token)
             if user.is_verified:
+                print("Email already verified")  # Log verification status
                 return JsonResponse({'message': 'Email is already verified.'}, status=200)
 
             user.is_verified = True
             user.verification_token = ""  # Clear the token after successful verification
             user.save()
+            print("Email successfully verified")  # Log success
             return JsonResponse({'message': 'Email successfully verified!'}, status=200)
+        
         except User.DoesNotExist:
+            print("Invalid or expired token")  # Log invalid token
             return JsonResponse({'error': 'Invalid or expired token.'}, status=400)
+        
         except Exception as e:
-            # Log the error message for debugging
             print(f"Error verifying email: {e}")
             return JsonResponse({'error': 'An unexpected error occurred. Please try again later.'}, status=500)
 
 
+    
 class LoginUserView(GenericAPIView):
     serializer_class=LoginSerializer
     def post(self, request):
