@@ -16,6 +16,7 @@ def send_verification_email(email, token):
         fail_silently=False,
     )
 
+
 def send_normal_email(data):
     email=EmailMessage(
         subject=data['email_subject'],  

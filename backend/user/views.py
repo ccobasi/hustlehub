@@ -73,20 +73,7 @@ class RegisterUserView(GenericAPIView):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[email],
         )
-        
-# class VerifyUserEmail(APIView):
-#     def post(self, request):
-#         token = request.data.get('token')
-#         try:
-#             user = User.objects.get(verification_token=token)
-#             if user.is_verified:
-#                 return Response({'message': 'Email is already verified.'}, status=status.HTTP_200_OK)
-#             user.is_verified = True
-#             user.verification_token = None
-#             user.save()
-#             return Response({'message': 'Email verified successfully!'}, status=status.HTTP_200_OK)
-#         except User.DoesNotExist:
-#             return Response({'error': 'Invalid verification token'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class VerifyUserEmail(View):
     def get(self, request, token):
@@ -178,3 +165,5 @@ def send_test_email(request):
         return HttpResponse("Test email sent successfully!")
     except Exception as e:
         return HttpResponse(f"Failed to send test email: {e}")
+    
+

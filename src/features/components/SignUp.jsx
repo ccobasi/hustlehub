@@ -132,6 +132,7 @@ const SignUp = () => {
     }
   };
 
+
   if (isRegistered) {
     return (
       <Container component="main" maxWidth="xs">

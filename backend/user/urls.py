@@ -18,6 +18,7 @@ urlpatterns = [
     path("token/refresh/", TokenRefreshView.as_view(), name="refresh"),
     path('logout/', LogoutUserView.as_view(), name='logout'),
     path('send-test-email/', send_test_email),
+    
     # path('generate-otp/', views.generate_otp, name='generate_otp'),
     # path('verify-otp/', views.verify_otp, name='verify_otp'),
     # path("user-auth", include("rest_framework.urls"))
