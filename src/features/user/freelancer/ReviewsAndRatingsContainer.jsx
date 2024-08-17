@@ -11,7 +11,7 @@ const FreelancerReviewsContainer = ({ freelancerId }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/freelancer/${freelancerId}/reviews/`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/freelancer/${freelancerId}/reviews/`);
         setReviews(response.data);
       } catch (error) {
         if (error.response && error.response.status === 404) {

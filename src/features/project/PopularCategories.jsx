@@ -25,7 +25,7 @@ const PopularCategoriesComponent = () => {
   
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/project/user/${user.id}/projects`);
+        const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects`);
         if (response.status !== 200) {
           throw new Error("Failed to fetch projects");
         }

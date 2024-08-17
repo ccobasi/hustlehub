@@ -14,7 +14,7 @@ const FreelancerContract = () => {
   useEffect(() => {
     const fetchContracts = async () => {
   try {
-    const response = await axios.get(`http://localhost:8000/contract/user/${userId}/contracts/`);
+    const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/user/${userId}/contracts/`);
 
   
     if (!Array.isArray(response.data)) {
