@@ -12,38 +12,12 @@ const VerifyEmail = () => {
     const navigate = useNavigate();
     const { token } = useParams();
 
-    // useEffect(() => {
-    //     if (hasRequested) return;  // Prevent re-triggering
-    //     setHasRequested(true);  // Mark the request as made
-
-    //     const verifyEmail = async () => {
-    //         try {
-    //             const response = await axios.get(`https://ccobasi.pythonanywhere.com/user/verify-email/${token}/`);
-    //             if (response.status === 200) {
-    //                 if (response.data.message) {
-    //                     toast.success(response.data.message);
-    //                 } else if (response.data.error) {
-    //                     toast.error(response.data.error);
-    //                     setVerificationFailed(true);
-    //                 }
-    //                 navigate("/sign-in");
-    //             }
-    //         } catch (error) {
-    //             toast.error(error.response?.data?.error || "Failed to verify email. Please try again later.");
-    //             setVerificationFailed(true);
-    //         } finally {
-    //             setIsVerifying(false);
-    //         }
-    //     };
-
-    //     verifyEmail();
-    // }, [token, navigate, hasRequested]);
 
     useEffect(() => {
     if (hasRequested) return;
 
     const verifyEmail = async () => {
-        console.log('Request sent');  // Add this to check how many requests are made
+        console.log('Request sent'); 
         setHasRequested(true);
 
         try {
@@ -55,7 +29,7 @@ const VerifyEmail = () => {
                 navigate("/sign-in");
             }
         } catch (error) {
-            // Commented out the toast.error to test, but you can log the error here
+            
             // console.error("Error:", error);
             setVerificationFailed(true);
         } finally {

@@ -8,6 +8,7 @@ import LoadingIndicator from './features/components/LoadingIndicator';
 const SignUp = lazy(() => import("./features/components/SignUp"));
 const SignIn = lazy(() => import('./features/components/SignIn'));
 const VerifyEmail = lazy(() => import('./features/components/VerifyEmail'));
+// const EmailVerify = lazy(() => import('./features/components/EmailVerify'));
 const ForgetPassword = lazy(() => import('./features/components/ForgetPassword'));
 const ConfirmPasswordReset = lazy(() => import('./features/components/ConfirmPasswordReset'));
 const Notifications = lazy(() => import('./features/notification/Notifications'));
@@ -19,7 +20,7 @@ const FreelancerAnchorTemporaryDrawer = lazy(() => import('./features/components
 const ClientAnchorTemporaryDrawer = lazy(() => import('./features/components/ClientDrawer'));
 const EditFreelancerPage = lazy(() => import('./features/user/freelancer/EditFreelancerPage'));
 const FreelancerSearchPage = lazy(() => import('./features/user/freelancer/FreelancerSearchPage'));
-//const RegistrationLayout = lazy(()=> import('./RegistrationLayout'));
+// const RegistrationLayout = lazy(()=> import('./RegistrationLayout'));
 const SecondLayout = lazy(() => import('./SecondLayout'));
 const AboutPage = lazy(() => import('./features/about/AboutPage'));
 const CategoriesPage  = lazy(() => import('./features/project/CategoriesPage'));
@@ -168,6 +169,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/sign-in" element={ <SignIn />} />
             <Route path="/verify-email/:token" element={ <VerifyEmail />} />
+            {/* <Route path="/verify-email/:token" element={ <EmailVerify />} /> */}
             <Route path="/forget-password" element={<ForgetPassword /> } />
             <Route path="/password-reset-confirm/:uid/token" element={<ConfirmPasswordReset />} />
             <Route path="/notifications/" element={<Notifications />} />
