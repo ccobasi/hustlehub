@@ -34,5 +34,6 @@ export default defineConfig({
       },
     },
   },
-  base: '/frontend/dist/', // Correct base for your configuration
+  // base: '/frontend/dist/', // Correct base for your configuration
+  base: './',
 })

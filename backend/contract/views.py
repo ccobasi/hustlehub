@@ -6,6 +6,7 @@ from .models import Contract
 from proposal.models import Proposal
 from .serializers import ContractSerializer
 from rest_framework.views import APIView
+from user.models import User  
 
 class ContractListCreateView(generics.ListCreateAPIView):
     queryset = Contract.objects.all()
@@ -142,5 +143,12 @@ class UserContractsCountView(APIView):
             'active': active,
             'pending': pending
         })
-    
 
+
+class ClientBalanceView(APIView):
+    def get(self, request, client_id):
+        try:
+            client = User.objects.get(id=client_id)
+            return Response({'credit_balance': client.credit_balance}, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({'error': 'Client not found'}, status=status.HTTP_404_NOT_FOUND)

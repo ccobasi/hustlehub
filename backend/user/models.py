@@ -27,6 +27,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(auto_now=True)
     auth_provider=models.CharField(max_length=50, default=AUTH_PROVIDERS.get('email'))
     verification_token = models.CharField(max_length=255, blank=True, null=True)
+    credit_balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, verbose_name=_("Credit Balance"))
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']

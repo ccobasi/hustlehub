@@ -25,7 +25,7 @@ function FreelancerPage({ userId }) {
     }
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/review/freelancer/${userId}/reviews/`);
+        const response = await axios.get(`http://localhost:8000/review/freelancer/${userId}/reviews/`);
         setReviews(response.data);
       } catch (error) {
         setError(error.message);

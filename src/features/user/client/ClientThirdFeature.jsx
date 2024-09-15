@@ -15,7 +15,7 @@ const ClientThirdFeature = ({ userId }) => {
   useEffect(() => {
     const fetchContracts = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/contract/users/${userId}/contracts/`);
+        const response = await axios.get(`http://localhost:8000/contract/users/${userId}/contracts/`);
         console.log(response.data);  
         setContracts(response.data);
       } catch (error) {
@@ -35,7 +35,7 @@ const ClientThirdFeature = ({ userId }) => {
 
 
   return (
-    <Box>
+    <Box sx={{marginLeft:'210px'}}>
       <Typography variant="h6" sx={{ fontFamily: "Poppins", fontWeight: "600", fontSize: "16px", lineHeight: "20.8px", textAlign: "start" }}>
         My Contracts
       </Typography>

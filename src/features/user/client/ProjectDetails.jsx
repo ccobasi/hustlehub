@@ -17,7 +17,7 @@
 //   useEffect(() => {
 //     const fetchProjectDetails = async () => {
 //       try {
-//         const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/projects/${id}/`);
+//         const response = await axios.get(`http://localhost:8000/project/projects/${id}/`);
 //         if (response.status === 200) {
 //           setProject(response.data);
 //         } else {
@@ -37,7 +37,7 @@
 
 //  const handleProposalStatusChange = async (proposalId, status) => {
 //   try {
-//     const proposalResponse = await axios.get(`https://ccobasi.pythonanywhere.com/proposal/projects/${id}/proposals/${proposalId}/`);
+//     const proposalResponse = await axios.get(`http://localhost:8000/proposal/projects/${id}/proposals/${proposalId}/`);
 //     const proposalData = proposalResponse.data;
 
 //     const updatedData = {
@@ -49,7 +49,7 @@
 
 //     console.log('Updating proposal with data:', updatedData);
 
-//     const response = await axios.put(`https://ccobasi.pythonanywhere.com/proposal/projects/${id}/proposals/${proposalId}/`, updatedData, {
+//     const response = await axios.put(`http://localhost:8000/proposal/projects/${id}/proposals/${proposalId}/`, updatedData, {
 //       headers: {
 //         'Content-Type': 'application/json',
 //       },
@@ -58,7 +58,7 @@
 //     console.log('Response from update:', response);
 
 //     // Refresh project details after updating proposal status
-//     const projectResponse = await axios.get(`https://ccobasi.pythonanywhere.com/project/projects/${id}/`);
+//     const projectResponse = await axios.get(`http://localhost:8000/project/projects/${id}/`);
 //     setProject(projectResponse.data);
 //   } catch (error) {
 //     console.error("Failed to update proposal status:", error);
@@ -197,7 +197,7 @@ const ProjectDetails = () => {
   useEffect(() => {
     const fetchProjectDetails = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/projects/${id}/`);
+        const response = await axios.get(`http://localhost:8000/project/projects/${id}/`);
         if (response.status === 200) {
           console.log('Project Data:', response.data); // Check the data
           setProject(response.data);
@@ -217,7 +217,7 @@ const ProjectDetails = () => {
 
   const handleProposalStatusChange = async (proposalId, status) => {
     try {
-      const proposalResponse = await axios.get(`https://ccobasi.pythonanywhere.com/proposal/projects/${id}/proposals/${proposalId}/`);
+      const proposalResponse = await axios.get(`http://localhost:8000/proposal/projects/${id}/proposals/${proposalId}/`);
       const proposalData = proposalResponse.data;
 
       const updatedData = {
@@ -229,7 +229,7 @@ const ProjectDetails = () => {
 
       console.log('Updating proposal with data:', updatedData);
 
-      const response = await axios.put(`https://ccobasi.pythonanywhere.com/proposal/projects/${id}/proposals/${proposalId}/`, updatedData, {
+      const response = await axios.put(`http://localhost:8000/proposal/projects/${id}/proposals/${proposalId}/`, updatedData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -238,7 +238,7 @@ const ProjectDetails = () => {
       console.log('Response from update:', response);
 
       // Refresh project details after updating proposal status
-      const projectResponse = await axios.get(`https://ccobasi.pythonanywhere.com/project/projects/${id}/`);
+      const projectResponse = await axios.get(`http://localhost:8000/project/projects/${id}/`);
       setProject(projectResponse.data);
     } catch (error) {
       console.error("Failed to update proposal status:", error);

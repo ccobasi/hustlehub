@@ -15,7 +15,7 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/user/verify-email/${token}/`);
+        const response = await axios.get(`http://localhost:8000/user/verify-email/${token}/`);
         if (response.status === 200) {
           toast.success(response.data.message);
           navigate("/sign-in");

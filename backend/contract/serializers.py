@@ -1,8 +1,8 @@
-from rest_framework import serializers
+from rest_framework import serializers # type: ignore
 from .models import Contract
 from proposal.models import Proposal
 from django.utils.translation import gettext_lazy as _
-
+from django.core.exceptions import ValidationError
 
 
 class ContractSerializer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class ContractSerializer(serializers.ModelSerializer):
 
     def get_contract_name(self, obj):
         return str(obj)
-    
+
     def get_client_name(self, obj):
         return f"{obj.client.first_name} {obj.client.last_name}"
 
@@ -25,26 +25,35 @@ class ContractSerializer(serializers.ModelSerializer):
         return f"{obj.freelancer.first_name} {obj.freelancer.last_name}"
 
     def validate(self, data):
-        if 'start_date' in data and 'end_date' in data:
-            if data['start_date'] >= data['end_date']:
-                raise serializers.ValidationError(_("The start date must be before the end date."))
+        client = data.get('client')
+        freelancer = data.get('freelancer')
+        contract_amount = data.get('contract_amount')
+        start_date = data.get('start_date')
+        end_date = data.get('end_date')
+        terms = data.get('terms')
+        project = data.get('project')
+        proposal = data.get('proposal')
 
-        if 'contract_amount' in data and data['contract_amount'] <= 0:
+        if client and contract_amount and client.credit_balance < contract_amount:
+            raise ValidationError(_("Insufficient credit balance to create this contract."))
+
+        if start_date and end_date and start_date >= end_date:
+            raise serializers.ValidationError(_("The start date must be before the end date."))
+
+        if contract_amount is not None and contract_amount <= 0:
             raise serializers.ValidationError(_("The contract amount must be positive."))
 
-        if 'terms' in data and not data.get('terms'):
+        if not terms:
             raise serializers.ValidationError(_("Contract terms must be provided."))
 
-        if 'freelancer' in data and 'client' in data and data['freelancer'] == data['client']:
+        if freelancer == client:
             raise serializers.ValidationError(_("The freelancer and client must be different users."))
 
-        if 'project' in data and 'proposal' in data:
-            if self.instance:
-                if Contract.objects.filter(project=data['project'], proposal=data['proposal']).exclude(id=self.instance.id).exists():
-                    raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
-            else:
-                if Contract.objects.filter(project=data['project'], proposal=data['proposal']).exists():
-                    raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
+        contract_exists_query = Contract.objects.filter(project=project, proposal=proposal)
+        if self.instance:
+            contract_exists_query = contract_exists_query.exclude(id=self.instance.id)
+        if contract_exists_query.exists():
+            raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
 
         return data
 

@@ -2,8 +2,12 @@
 import React, {useState,useEffect} from "react";
 import { Typography, Link, Stack, Container, Box } from "@mui/material";
 import { ClientFirstFeature } from "./Client";
-import ClientSecondFeature from "./ProjectContainer";
+//import ClientSecondFeature from "./ProjectContainer";
 import ClientThirdFeature from './ClientThirdFeature';
+import Sidebar from "../../components/Sidebar";
+import ProjectsGrid from './ProjectsGrid';
+import CustomCard from "./CustomCard";
+
 
 const ClientPage = ({ userId }) => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -11,6 +15,7 @@ const ClientPage = ({ userId }) => {
   
   return (
     <Container component="main" maxWidth="lg">
+      <Sidebar/>
       <ClientFirstFeature />
       <div>
         <Typography
@@ -26,7 +31,7 @@ const ClientPage = ({ userId }) => {
                ? theme.palette.primary.lightModeHeroTitle
                 : theme.palette.primary.darkModeHeroTitle,
             pt: '20px',
-            ml: '15%',
+            ml: '21%',
           }}
         >
           My Projects
@@ -47,7 +52,8 @@ const ClientPage = ({ userId }) => {
         </Typography>
       </div>
 
-      <ClientSecondFeature />
+<ProjectsGrid/>
+      {/* <ClientSecondFeature /> */}
 
       <Box sx={{ mt: '5%' }}>
         <Link
@@ -102,6 +108,7 @@ const ClientPage = ({ userId }) => {
         >
           See all
         </Link>
+        <CustomCard/>
       </Stack>
     </Container>
   );

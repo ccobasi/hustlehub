@@ -155,7 +155,7 @@ const handleDateChange = (date) => {
       };
       console.log("Form data:", formData);
       try {
-        const response = await axios.post("https://ccobasi.pythonanywhere.com/project/projects/", formData);
+        const response = await axios.post("http://localhost:8000/project/projects/", formData);
         const res = response.data || {};
         console.log(res);
         navigate("/client");

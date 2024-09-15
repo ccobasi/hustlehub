@@ -7,32 +7,59 @@ import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import { Stack } from "@mui/material";
-import Divider from "@mui/material/Divider";
 import { ArrowForwardIos } from "@mui/icons-material";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
+ // Data for mobile modal
+ const mobileModalData = [
+  {
+    id: 0,
+    name: "Sign up",
+    url: "/sign-up",
+    icon: (
+      <ArrowForwardIos
+        sx={{
+          ml: "5%",
+          mt: "10px",
+          mb:'10px',
+          width: "24px",
+          height: "24px",
+          color: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.primary.lightModeTitleTextColor
+              : theme.palette.primary.darkModeTitleTextColor,
+        }}
+      />
+    ),
+  },
+  {
+    id: 0,
+    name: "Sign in",
+    url: "/sign-in",
+    icon: (
+      <ArrowForwardIos
+        sx={{
+          ml: "5%",
+          mt: "10px",
+          mb:'10px',
+          width: "24px",
+          height: "24px",
+          color: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.primary.lightModeTitleTextColor
+              : theme.palette.primary.darkModeTitleTextColor,
+        }}
+      />
+    ),
+  },
+];
 
 export default function MobileTransitionsModal() {
-  // Data for mobile modal
-  const mobileModalData = [
-    {
-      id: 0,
-      name: "How It Works",
-      url: "/about",
-      icon: (
-        <ArrowForwardIos
-          sx={{
-            ml: "51%",
-            mt: "20px",
-            width: "24px",
-            height: "24px",
-            color: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.primary.lightModeTitleTextColor
-                : theme.palette.primary.darkModeTitleTextColor,
-          }}
-        />
-      ),
-    },
-  ];
+ 
 
   //Intialization of useState hook
   const [open, setOpen] = React.useState(false);
@@ -42,13 +69,15 @@ export default function MobileTransitionsModal() {
   return (
     <>
       {/* Box for the Mobile Transitions Modal*/}
-      <Box sx={{ display: { xs: "flex", md: "none" } }}>
-        <IconButton onClick={handleOpen}>
-          <MenuIcon
-            sx={{
-              typography: (theme) => theme.typography.mobileMenuIcon,
-            }}
-          />
+      <Box sx={{ display: { xs: "flex", md: "none", } }}>
+        <IconButton onClick={handleOpen} 
+        
+        size="large"
+        aria-label="account of current user"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"  
+        >
+          <MenuIcon sx={{color:"#87CEEB"}} />
         </IconButton>
         <Modal
           aria-labelledby="transition-modal-title"
@@ -67,10 +96,10 @@ export default function MobileTransitionsModal() {
             <Box
               sx={{
                 position: "absolute",
-                top: "25%",
-                left: "70%",
-                transform: "translate(-50%, -50%)",
-                width: "207px",
+                top: "17%",
+                left: "85%",
+                transform: "translate(-20%, -50%)",
+                width: "607px",
                 height: "220px",
                 bgcolor: (theme) =>
                   theme.palette.mode === "light"
@@ -80,51 +109,47 @@ export default function MobileTransitionsModal() {
                 p: 4,
               }}
             >
-              <Box>
-                {mobileModalData.map((item, index) => (
-                  <>
-                    <Stack key={index} direction="row">
-                      <Typography
-                        component="a"
-                        key={index}
-                        href={item.url}
-                        sx={{
-                          color: (theme) =>
-                            theme.palette.mode === "light"
-                              ? theme.palette.primary.lightModeTitleTextColor
-                              : theme.palette.primary.darkModeTitleTextColor,
-                          fontFamily: "Poppins",
-                          textDecoration: "none",
-                          fontWeight: "700",
-                          fontSize: "16px",
-                          lineHeight: "19.2px",
-                          letter: "-1.5%",
-                          marginTop: "10px",
-                          marginBottom: "5px",
-                        }}
-                      >
-                        {item.name}
-                      </Typography>
+             
+             {mobileModalData.map((item, index) => (
+              <Stack key={index} direction="row" >
+                <Typography
+                  component="a"
+                  key={index}
+                  href={item.url}
+                  sx={{
+                    color: (theme) =>
+                      theme.palette.mode === "light"
+                        ? theme.palette.primary.lightModeTitleTextColor
+                        : theme.palette.primary.darkModeTitleTextColor,
+                    fontFamily: "Poppins",
+                    textDecoration: "true",
+                    fontWeight: "600",
+                    fontSize: "16px",
+                    lineHeight: "19.2px",
+                    letter: "-1.5%",
+                    marginTop: "10px",
+                    marginBottom: "5px",
+                }}
+                >
+                  {item.name}
+                </Typography>
+                {item.icon}
+                {/* <Divider
+                  sx={{
+                    width: "134px",
+                    color: (theme) =>
+                      theme.palette.mode === "light"
+                        ? theme.palette.primary.lightModeTitleTextColor
+                        : theme.palette.primary.darkModeTitleTextColor,
+                  }}
+                /> */}
 
-                      {item.icon}
-                    </Stack>
-                    <Divider
-                      sx={{
-                        width: "134px",
-                        color: (theme) =>
-                          theme.palette.mode === "light"
-                            ? theme.palette.primary.lightModeTitleTextColor
-                            : theme.palette.primary.darkModeTitleTextColor,
-                      }}
-                    />
-                  </>
-                ))}
-              </Box>
+              </Stack>
+            ))}
             </Box>
           </Fade>
         </Modal>
       </Box>
-      {/* Box End */}
     </>
   );
 }

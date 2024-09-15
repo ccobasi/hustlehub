@@ -55,7 +55,7 @@ export default function FixedBottomNavigation() {
               }
             />
 
-            <BottomNavigationAction
+            {/* <BottomNavigationAction
               onClick={() => navigate("/message")}
               icon={
                 <Message
@@ -83,9 +83,9 @@ export default function FixedBottomNavigation() {
                   }}
                 />
               }
-            />
+            /> */}
 
-            <BottomNavigationAction
+            {/* <BottomNavigationAction
               onClick={() => navigate("/project-review")}
               icon={
                 <Dashboard
@@ -98,7 +98,7 @@ export default function FixedBottomNavigation() {
                   }}
                 />
               }
-            />
+            /> */}
             {/*  End Actions*/}
           </BottomNavigation>
           {/* Bottom Navigation End */}

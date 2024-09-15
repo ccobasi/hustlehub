@@ -47,7 +47,7 @@ export const HomeCategories = () => {
       {/* Grid End*/}
 
       {/* Link for all Categories */}
-      <Link
+      {/* <Link
         href="/categories"
         sx={{
           typography: (theme) => theme.typography.categoriesSeeAllLink,
@@ -55,8 +55,8 @@ export const HomeCategories = () => {
         }}
       >
         See all
-      </Link>
-      {/* Link End*/}
+      </Link> */}
+      
     </>
   );
 };

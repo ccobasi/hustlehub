@@ -13,7 +13,7 @@
 // //   useEffect(() => {
 // //     const fetchProjectData = async () => {
 // //       try {
-// //         const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects/`, {
+// //         const response = await axios.get(`http://localhost:8000/project/user/${user.id}/projects/`, {
 // //           headers: {
 // //             Authorization: `Bearer ${access}`,
 // //           },
@@ -68,7 +68,7 @@
 //   useEffect(() => {
 //     const fetchProjectData = async () => {
 //       try {
-//         const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects/`, {
+//         const response = await axios.get(`http://localhost:8000/project/user/${user.id}/projects/`, {
 //           headers: {
 //             Authorization: `Bearer ${access}`,
 //           },
@@ -124,7 +124,7 @@ const ClientSecondFeature = () => {
   useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`https://ccobasi.pythonanywhere.com/project/user/${user.id}/projects/`, {
+        const response = await axios.get(`http://localhost:8000/project/user/${user.id}/projects/`, {
           headers: {
             Authorization: `Bearer ${access}`,
           },
@@ -149,7 +149,7 @@ const ClientSecondFeature = () => {
   };
 
   return (
-    <TableContainer component={Paper} sx={{ margin: "auto", maxWidth: "100%" }}>
+    <TableContainer component={Paper} sx={{ margin: "auto", maxWidth: "100%", marginLeft:'210px' }}>
       <Table sx={{ minWidth: 650 }} aria-label="projects table">
         <TableHead>
           <TableRow sx={{ backgroundColor: "#87CEEB", color: "white" }}>

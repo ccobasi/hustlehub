@@ -21,7 +21,7 @@ const VerifyEmail = () => {
         setHasRequested(true);
 
         try {
-            const response = await axios.get(`https://ccobasi.pythonanywhere.com/user/verify-email/${token}/`);
+            const response = await axios.get(`http://localhost:8000/user/verify-email/${token}/`);
             if (response.status === 200) {
                 if (response.data.message) {
                     toast.success(response.data.message);

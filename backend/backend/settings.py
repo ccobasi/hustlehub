@@ -3,13 +3,7 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
-# import django_heroku
-# import dj_database_url
 import environ 
-
-# env = environ.Env(
-#     DEBUG=(bool, False),
-# )
 
 env_path = Path('.') / '.env'
 load_dotenv(env_path)
@@ -76,6 +70,7 @@ INSTALLED_APPS = [
     "contract",
     "review",
     "notification",
+    "payment",
     "rest_framework",
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
@@ -176,15 +171,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# EMAIL_HOST = os.getenv('EMAIL_HOST')
-# EMAIL_PORT = os.getenv('EMAIL_PORT')
-# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-# EMAIL_USE_TLS = True if os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true' else False
-# DEFAULT_FROM_EMAIL = f'HusslingHub {os.getenv("EMAIL_HOST_USER")}' 
+ 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
@@ -199,7 +186,7 @@ CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",
     "http://localhost:5173",    
-    "https://ccobasi.pythonanywhere.com",
+    "http://localhost:8000",
     "http://localhost:5175",
     "http://localhost:5176",
     "https://husslinghub.com",  
@@ -210,7 +197,7 @@ CSRF_TRUSTED_ORIGINS=[
     "http://127.0.0.1:5174/",
     "http://localhost:5175",
     "http://localhost:5176",
-    "https://ccobasi.pythonanywhere.com",
+    "http://localhost:8000",
 ]
 
 # print("CORS_ALLOWED_ORIGINS:", CORS_ALLOWED_ORIGINS)
