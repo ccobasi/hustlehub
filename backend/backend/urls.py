@@ -13,6 +13,7 @@ urlpatterns = [
     path('contract/', include('contract.urls', namespace='contract')),
     path('review/', include('review.urls', namespace='review')),
     path('notification/', include('notification.urls', namespace='notification')),
+    path('payment/', include('payment.urls', namespace='payment')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

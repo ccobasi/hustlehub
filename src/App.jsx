@@ -13,6 +13,7 @@ const ForgetPassword = lazy(() => import('./features/components/ForgetPassword')
 const ConfirmPasswordReset = lazy(() => import('./features/components/ConfirmPasswordReset'));
 const Notifications = lazy(() => import('./features/notification/Notifications'));
 const ClientPage = lazy(() => import('./features/user/client/ClientPage'));
+const PaymentUpload = lazy(() => import('./features/user/client/PaymentUpload'));
 const CreateProjectPage = lazy(() => import('./features/user/client/CreateProjectPage'));
 const ProjectReviewPage = lazy(() => import('./features/user/client/ProjectReviewPage'));
 const FreelancerPage = lazy(() => import('./features/user/freelancer/FreelancerPage'));
@@ -185,6 +186,7 @@ function App() {
             <Route path="/client/:userId" element={<ClientPageWithUser />} />
             <Route path="/contract/:id" element={ <ContractDetails />} />
             <Route path="/contract/reviews/:contractId" element={<ContractReviews />} />
+            <Route path="/upload" element={<PaymentUpload />} />
           </Route>
 
           <Route path="/" element={<UserLayout />}>
