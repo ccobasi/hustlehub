@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     "review",
     "notification",
     "payment",
+    "dispute",
     "rest_framework",
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
