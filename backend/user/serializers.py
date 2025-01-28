@@ -16,7 +16,10 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.template.loader import render_to_string
 from django.utils.crypto import get_random_string
+from django.conf import settings
 
+from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
 
 User = get_user_model()
 
@@ -95,31 +98,7 @@ class LoginSerializer(serializers.ModelSerializer):
             ClientProfile.objects.create(user=user)
 
 
-# class PasswordResetRequestSerializer(serializers.Serializer):
-#     email=serializers.EmailField(max_length=255)
 
-
-#     class Meta:
-#         fields=['email']
-
-#     def validate(self, attrs):
-#         email=attrs.get('email')
-#         if User.objects.filter(email=email).exists():
-#             user=User.objects.get(email=email)
-#             uidb64=urlsafe_base64_encode(smart_bytes(user.id))
-#             token=PasswordResetTokenGenerator().make_token(user)
-#             request=self.context.get( "request" )
-#             site_domain= get_current_site(request).domain
-#             relative_link=reverse('user:password-reset-confirm', kwargs={'uidb64':uidb64,'token':token})
-#             abslink=f"https://{site_domain} {relative_link}"
-#             email_body=f"Hi use the link below to reset your password \n {abslink}"
-#             data={
-#                 'email_body':email_body,
-#                 'email_subject':"Reset your  password",
-#                 'to_email':user.email
-#             }
-#             send_normal_email(data)
-#         return super().validate(attrs)
 class PasswordResetRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
 
@@ -132,10 +111,12 @@ class PasswordResetRequestSerializer(serializers.Serializer):
             user = User.objects.get(email=email)
             uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
             token = PasswordResetTokenGenerator().make_token(user)
-            request = self.context.get("request")
-            site_domain = get_current_site(request).domain
+            
+            frontend_domain = settings.FRONTEND_DOMAIN  
+            
             relative_link = reverse('user:password-reset-confirm', kwargs={'uidb64': uidb64, 'token': token})
-            abslink = f"https://{site_domain}{relative_link}"
+            abslink = f"http://{frontend_domain}/password-reset-confirm/{uidb64}/{token}"
+            
             email_body = f"Hi, use the link below to reset your password:\n{abslink}"
             data = {
                 'email_body': email_body,
@@ -143,44 +124,26 @@ class PasswordResetRequestSerializer(serializers.Serializer):
                 'to_email': user.email
             }
             send_normal_email(data)
+        
         return super().validate(attrs)
 
     def create(self, validated_data):
-        # Additional logic if needed
         return validated_data
-
     
 
 class SetNewPasswordSerializer(serializers.Serializer):
-    password=serializers.CharField(max_length=100, min_length=6, write_only=True)
-    confirm_password=serializers.CharField(max_length=100, min_length=6, write_only=True)
-    uidb64=serializers.CharField(write_only=True)
-    token=serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True)
 
-    class Meta:
-        fields=['password', 'confirm password', 'uidb64', 'token']
+    def validate_password(self, value):
+        validate_password(value)
+        return value
 
-    def validate(self, attrs):
-        try:
-            token=attrs.get('token')
-            uidb64=attrs.get('uidb64')
-            password=attrs.get('password')
-            confirm_password=attrs.get('confirm_password')
-
-            user_id=force_str(urlsafe_base64_decode(uidb64))
-            user=User.objects.get(id=user_id)
-            if not PasswordResetTokenGenerator().check_token(user, token):
-                raise AuthenticationFailed("reset link is invalid or expired", 401)
-            if password != confirm_password:
-                raise AuthenticationFailed("passwords do not match")
-            user.set_password(password)
-            user.save()
-            return user
-        except Exception as e:
-            return AuthenticationFailed("link is invalid or has expired")
-
-
-        # return super().validate(attrs)
+    def save(self, **kwargs):
+        user = self.context['user']
+        password = self.validated_data['password']
+        user.set_password(password)
+        user.save()
+        return user
 
 
 class LogoutUserSerializer(serializers.Serializer):

@@ -2,11 +2,14 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 from .models import Contract
 from proposal.models import Proposal
 from .serializers import ContractSerializer
 from rest_framework.views import APIView
 from user.models import User  
+import logging
+logger = logging.getLogger(__name__)
 
 class ContractListCreateView(generics.ListCreateAPIView):
     queryset = Contract.objects.all()
@@ -15,18 +18,32 @@ class ContractListCreateView(generics.ListCreateAPIView):
 
     def create(self, request, *args, **kwargs):
         proposal_id = request.data.get('proposal')
+        
+        # Log request data
+        logger.info("Received contract creation request data: %s", request.data)
+
+        # Check if proposal ID is provided
         if not proposal_id:
+            logger.error("Proposal ID is missing.")
             return Response({"detail": "Proposal ID is required."}, status=status.HTTP_400_BAD_REQUEST)
         
+        # Check if proposal exists
         try:
             proposal = Proposal.objects.get(id=proposal_id)
+            logger.info("Proposal found: %s", proposal)
         except Proposal.DoesNotExist:
+            logger.error("Proposal with ID %s not found.", proposal_id)
             return Response({"detail": "Proposal not found."}, status=status.HTTP_404_NOT_FOUND)
         
-        # Ensure the client initiating the contract is the owner of the project
+        # Check if user is authorized to create contract for this project
         if proposal.project.client != request.user:
-            return Response({"detail": "You are not authorized to create a contract for this project."}, status=status.HTTP_403_FORBIDDEN)
+            logger.warning("Unauthorized access attempt by user %s to create contract.", request.user)
+            return Response(
+                {"detail": "You are not authorized to create a contract for this project."},
+                status=status.HTTP_403_FORBIDDEN
+            )
         
+        # Prepare contract data based on proposal details
         contract_data = {
             'project': proposal.project.id,
             'proposal': proposal.id,
@@ -38,11 +55,25 @@ class ContractListCreateView(generics.ListCreateAPIView):
             'terms': request.data.get('terms')
         }
 
+        # Log constructed contract data
+        logger.info("Constructed contract data: %s", contract_data)
+
+        # Initialize serializer with contract data
         serializer = self.get_serializer(data=contract_data)
-        serializer.is_valid(raise_exception=True)
+
+        # Validate serializer data and log validation errors
+        try:
+            serializer.is_valid(raise_exception=True)
+        except ValidationError as e:
+            logger.error("Validation error in contract data: %s", serializer.errors)
+            return Response({"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Save the contract if valid
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
+        logger.info("Contract created successfully: %s", serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    
 
 class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Contract.objects.all()

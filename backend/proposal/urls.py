@@ -9,4 +9,5 @@ urlpatterns = [
     path('proposals/', ProposalCreateView.as_view(), name='proposal-create'),
     path('projects/<int:project_pk>/proposals/<int:proposal_pk>/', ProposalDetailView.as_view(), name='proposal-detail'),
     path('user/<int:user_id>/count/', UserProposalsCountView.as_view(), name='user-proposals-count'),
+    path('freelancer/recent-proposals/', FreelancerRecentProposalsView.as_view(), name='freelancer-recent-proposals'),
 ]

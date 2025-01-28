@@ -52,6 +52,8 @@ class ProjectDetailView(APIView):
         return Response(serializer.data)
 
   def put(self, request, pk):
+        print("Request data:", request.data)
+        
         project = self.get_object(pk)
         if not isinstance(project, Project):
             return project  

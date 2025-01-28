@@ -54,7 +54,7 @@ SIMPLE_JWT = {
 # Application definition
 
 INSTALLED_APPS = [
-    "daphne",
+    # "daphne",
     "channels",
     'jazzmin',
     'django.contrib.admin',
@@ -181,6 +181,7 @@ EMAIL_HOST_USER = 'ccobasi8@gmail.com'
 EMAIL_HOST_PASSWORD ='ichhpspneutltdza'  
 DEFAULT_FROM_EMAIL='ccobasi8@gmail.com' 
 FRONTEND_URL = 'http://localhost:5173'
+FRONTEND_DOMAIN = 'localhost:5177'
 
 # CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
@@ -190,6 +191,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:5175",
     "http://localhost:5176",
+    "http://localhost:5177",
     "https://husslinghub.com",  
 ]
 CSRF_TRUSTED_ORIGINS=[
@@ -198,6 +200,7 @@ CSRF_TRUSTED_ORIGINS=[
     "http://127.0.0.1:5174/",
     "http://localhost:5175",
     "http://localhost:5176",
+    "http://localhost:5177",
     "http://localhost:8000",
 ]
 

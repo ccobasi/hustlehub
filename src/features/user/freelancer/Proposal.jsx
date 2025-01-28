@@ -28,34 +28,6 @@ export default function Proposal() {
   const user = JSON.parse(localStorage.getItem("user"));
   const [status, setStatus] = useState('pending');
 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-
-//     const proposal = {
-//       project: project.id,
-//       freelancer: user.id,
-//       proposed_rate: data.get("proposedRate"),
-//       estimated_days: data.get("estimatedNumOfDays"),
-//       cover_letter: data.get("coverLetter"),
-//       status: data.get("status"),
-//     };
-
-//     try {
-//       await axios.post('http://localhost:8000/proposal/proposals/', proposal, {
-//         headers: {
-//           Authorization: `Bearer ${localStorage.getItem("access")}`,
-//         },
-//       });
-//       console.log(localStorage.getItem("access")); 
-
-//       navigate("/browse-project");
-//       toast.success("Proposal submitted successfully");
-//     } catch (error) {
-//       console.error('Error submitting proposal:', error);
-//     }
-//   };
-
 const handleSubmit = async (event) => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);

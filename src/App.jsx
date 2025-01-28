@@ -172,7 +172,7 @@ function App() {
             <Route path="/verify-email/:token" element={ <VerifyEmail />} />
             {/* <Route path="/verify-email/:token" element={ <EmailVerify />} /> */}
             <Route path="/forget-password" element={<ForgetPassword /> } />
-            <Route path="/password-reset-confirm/:uid/token" element={<ConfirmPasswordReset />} />
+            <Route path="/password-reset-confirm/:uid/:token" element={<ConfirmPasswordReset />} />
             <Route path="/notifications/" element={<Notifications />} />
             <Route path="/categories" element={ <CategoriesPage />} />
             {/* <Route path="/notification" element={<NotificationPage />} />
