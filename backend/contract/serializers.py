@@ -76,12 +76,13 @@
 #         if not value.id:
 #             raise serializers.ValidationError(_("The specified client does not exist."))
 #         return value
-from rest_framework import serializers  # type: ignore
+from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from .models import Contract
 from proposal.models import Proposal
-
+from payment.models import UserBalance
+from user.models import User  
 
 class ContractSerializer(serializers.ModelSerializer):
     contract_name = serializers.SerializerMethodField()
@@ -103,8 +104,59 @@ class ContractSerializer(serializers.ModelSerializer):
 
     def get_freelancer_name(self, obj):
         """Returns the freelancer's full name."""
-        return f"{obj.freelancer.first_name} {obj.freelancer.last_name}"    
+        return f"{obj.freelancer.first_name} {obj.freelancer.last_name}"
 
+    # def validate(self, data):
+    #     """Performs validation on multiple fields and raises appropriate errors."""
+    #     client = data.get('client')
+    #     freelancer = data.get('freelancer')
+    #     contract_amount = data.get('contract_amount')
+    #     start_date = data.get('start_date')
+    #     end_date = data.get('end_date')
+    #     terms = data.get('terms')
+    #     project = data.get('project')
+    #     proposal = data.get('proposal')
+
+    #     # Check client's credit balance against contract amount
+    #     if client and contract_amount:
+    #         try:
+    #             user_balance = UserBalance.objects.get(user=client).balance
+    #             if user_balance < contract_amount:
+    #                 raise ValidationError({
+    #                     "non_field_errors": [
+    #                         _("Insufficient credit balance to create this contract. "
+    #                           f"Available: {user_balance}, Required: {contract_amount}.")
+    #                     ]
+    #                 })
+    #         except UserBalance.DoesNotExist:
+    #             raise ValidationError({
+    #                 "non_field_errors": ["No balance record found for this client."]
+    #             })
+
+    #     # Ensure the contract amount is positive
+    #     if contract_amount is not None and contract_amount <= 0:
+    #         raise serializers.ValidationError(_("The contract amount must be positive."))
+
+    #     # Validate that the start date is before the end date
+    #     if start_date and end_date and start_date >= end_date:
+    #         raise serializers.ValidationError(_("The start date must be before the end date."))
+
+    #     # Ensure that contract terms are provided
+    #     if not terms:
+    #         raise serializers.ValidationError(_("Contract terms must be provided."))
+
+    #     # Ensure the freelancer and client are not the same
+    #     if freelancer == client:
+    #         raise serializers.ValidationError(_("The freelancer and client must be different users."))
+
+    #     # Check if a contract for this project and proposal already exists
+    #     existing_contracts = Contract.objects.filter(project=project, proposal=proposal)
+    #     if self.instance:
+    #         existing_contracts = existing_contracts.exclude(id=self.instance.id)
+    #     if existing_contracts.exists():
+    #         raise serializers.ValidationError(_("A contract for this project and proposal already exists."))
+
+    #     return data
     def validate(self, data):
         """Performs validation on multiple fields and raises appropriate errors."""
         client = data.get('client')
@@ -116,15 +168,22 @@ class ContractSerializer(serializers.ModelSerializer):
         project = data.get('project')
         proposal = data.get('proposal')
 
-       # Check client's credit balance against contract amount
-        if client and contract_amount and client.credit_balance < contract_amount:
-            raise ValidationError({
-                "non_field_errors": [
-                    _("Insufficient credit balance to create this contract. "
-                      f"Available: {client.credit_balance}, Required: {contract_amount}.")
-                ]
-            })
-        
+        # Check client's credit balance against contract amount
+        if client and contract_amount:
+            try:
+                user_balance = UserBalance.objects.get(user=client).balance
+                if user_balance < contract_amount:
+                    raise ValidationError({
+                        "non_field_errors": [
+                            _("Insufficient credit balance to create this contract. "
+                              f"Available: {user_balance}, Required: {contract_amount}.")
+                        ]
+                    })
+            except UserBalance.DoesNotExist:
+                raise ValidationError({
+                    "non_field_errors": ["No balance record found for this client."]
+                })
+
         # Ensure the contract amount is positive
         if contract_amount is not None and contract_amount <= 0:
             raise serializers.ValidationError(_("The contract amount must be positive."))

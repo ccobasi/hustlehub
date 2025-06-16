@@ -177,9 +177,14 @@ class UserContractsCountView(APIView):
 
 
 class ClientBalanceView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, client_id):
         try:
             client = User.objects.get(id=client_id)
-            return Response({'credit_balance': client.credit_balance}, status=status.HTTP_200_OK)
+            user_balance = UserBalance.objects.get(user=client)
+            return Response({'credit_balance': float(user_balance.balance)}, status=status.HTTP_200_OK)
         except User.DoesNotExist:
             return Response({'error': 'Client not found'}, status=status.HTTP_404_NOT_FOUND)
+        except UserBalance.DoesNotExist:
+            return Response({'credit_balance': 0.00}, status=status.HTTP_200_OK)
